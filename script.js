@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const thanhTien = price;
     
                 const rowHTML = `<tr>
-                        <td>${componentName}</td>  // **Bỏ cột STT và Đvt**
+                        <td>${componentName}</td> 
                         <td>${price.toLocaleString()}</td>
                         <td>${thanhTien.toLocaleString()}</td>
                         <td>${warranty}</td>
