@@ -174,3 +174,130 @@ footer {
     padding: 10px;
     margin-top: 20px;
 }
+/* Thêm vào cuối file styles.css */
+
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 15px;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-buttons span {
+        display: none;
+    }
+
+    .table-container {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100% !important;
+        padding: 0;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 5px;
+    }
+
+    select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #cpu-brand-selection {
+        margin: 10px 0;
+    }
+
+    #selected-component {
+        margin: 15px;
+    }
+
+    #selected-component img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    #total-price {
+        font-size: 16px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Ẩn hình ảnh desktop nếu cần */
+    .desktop-only {
+        display: none;
+    }
+
+    /* Tối ưu bảng cho mobile */
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Điều chỉnh dropdown */
+    select {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Header mobile */
+    header p {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.3em;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    select {
+        font-size: 13px;
+    }
+
+    .contact-button {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    #total-price {
+        font-size: 14px;
+    }
+}
