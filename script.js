@@ -9,18 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const summaryModal = document.getElementById('summary-modal');
     const closeModalSpan = document.querySelector('.close-modal');
     const totalPriceDiv = document.getElementById('total-price');
-    const selectedComponentDiv = document.getElementById('selected-component');  // Not used, but good to have
+    const selectedComponentDiv = document.getElementById('selected-component');
 
-    // Image preview element
     const imagePreview = document.createElement('img');
     imagePreview.id = 'image-preview';
     imagePreview.style.maxWidth = '200px';
     imagePreview.style.marginTop = '10px';
-    imagePreview.style.display = 'none';  // Initially hidden
-    document.getElementById('selected-component').appendChild(imagePreview); // Add to DOM
+    imagePreview.style.display = 'none';
+    document.getElementById('selected-component').appendChild(imagePreview);
 
-
-    // Helper function to create options
     function createOption(component) {
         const opt = document.createElement('option');
         opt.value = component.name.toLowerCase().replace(/ /g, '-');
@@ -34,10 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return opt;
     }
 
-
-    // Function to populate a select element, optionally with optgroups
     function populateSelect(selectElement, componentsArray, groupByField = null) {
-        selectElement.innerHTML = '<option value="">Chọn ' + selectElement.name + '</option>'; // Clear and add default
+        selectElement.innerHTML = '<option value="">Chọn ' + selectElement.name + '</option>';
 
         if (groupByField) {
             const groupedComponents = {};
@@ -49,41 +44,35 @@ document.addEventListener('DOMContentLoaded', function () {
                 groupedComponents[groupValue].push(component);
             });
 
-            // Sort groups alphabetically
             Object.keys(groupedComponents).sort().forEach(groupName => {
                 const optgroup = document.createElement('optgroup');
                 optgroup.label = groupName;
 
-                // Sort components within each group
                 groupedComponents[groupName].sort((a, b) => a.name.localeCompare(b.name)).forEach(component => {
                     optgroup.appendChild(createOption(component));
                 });
                 selectElement.appendChild(optgroup);
             });
         } else {
-            // No grouping, sort all components alphabetically
             componentsArray.sort((a, b) => a.name.localeCompare(b.name)).forEach(component => {
                 selectElement.appendChild(createOption(component));
             })
         }
     }
 
-
-    // --- Data initialization (using data from HTML) ---
     const components = { cpu: [], mainboard: [], vga: [], ram: [], ssd: [], psu: [], case: [], 'cpu-cooler': [], hdd: [] };
 
-    // Extract data from existing HTML structure (BEST approach)
     document.querySelectorAll('#cpu option, #cpu optgroup').forEach(el => {
-        if (el.tagName === 'OPTGROUP') return; // Skip optgroup labels
-        if (el.value === "") return;         //skip first option
+        if (el.tagName === 'OPTGROUP') return;
+        if (el.value === "") return;
         components.cpu.push({
-            brand: el.parentElement.label,  // Get brand from optgroup
+            brand: el.parentElement.label,
             name: el.textContent,
             socket: el.dataset.socket,
             price: parseInt(el.dataset.price),
             image: el.dataset.image,
             warranty: el.dataset.warranty,
-            note: el.dataset.note || 'NEW'  // Default note to 'NEW' if not present
+            note: el.dataset.note || 'NEW'
         });
     });
 
@@ -93,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         components.mainboard.push({
             brand: el.parentElement.label,
             name: el.textContent,
-            socket: el.dataset.cpuSocket, // Corrected attribute name
+            socket: el.dataset.cpuSocket,
             price: parseInt(el.dataset.price),
             image: el.dataset.image,
             warranty: el.dataset.warranty,
@@ -101,11 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ... extract data for other component types (vga, ram, etc.)
     document.querySelectorAll('select[name="vga"] option').forEach(el => {
         if (el.value === "") return;
         components.vga.push({
-            name: el.textContent.replace(/ - \d+\.\d+ VNĐ$/, ''), // Clean up the name
+            name: el.textContent.replace(/ - \d+\.\d+ VNĐ$/, ''),
             price: parseInt(el.dataset.price),
             image: el.dataset.image,
             warranty: el.dataset.warranty,
@@ -134,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     });
 
+
     document.querySelectorAll('select[name="psu"] option').forEach(el => {
         if (el.value === "") return;
         components.psu.push({
@@ -160,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('select[name="cpu-cooler"] option').forEach(el => {
         if (el.value === "") return;
-        components["cpu-cooler"].push({  // Use bracket notation for names with hyphens
+        components["cpu-cooler"].push({
             name: el.textContent.replace(/ - \d+\.\d+ VNĐ$/, ''),
             price: parseInt(el.dataset.price),
             image: el.dataset.image,
@@ -180,8 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     });
 
-
-    // --- Initial population of selects ---
     populateSelect(cpuSelect, components.cpu, 'brand');
     populateSelect(motherboardSelect, components.mainboard, 'brand');
     populateSelect(document.querySelector('select[name="vga"]'), components.vga);
@@ -192,79 +179,67 @@ document.addEventListener('DOMContentLoaded', function () {
     populateSelect(document.querySelector('select[name="cpu-cooler"]'), components['cpu-cooler']);
     populateSelect(document.querySelector('select[name="hdd"]'), components.hdd);
 
-    // --- Event Handlers ---
 
-    //Shows all CPUs for selected Brand, and compatible motherboards.
     function filterComponents(selectedBrand) {
         const cpuOptions = document.querySelectorAll('#cpu optgroup');
         const motherboardOptions = document.querySelectorAll('#mainboard optgroup, #mainboard option');
 
-        // 1. Show/hide CPU optgroups based on brand
         cpuOptions.forEach(optgroup => {
             optgroup.style.display = (!selectedBrand || optgroup.label.startsWith(selectedBrand)) ? '' : 'none';
         });
 
-        // 2. Reset CPU selection
         cpuSelect.value = '';
 
-        // 3. Show only compatible motherboards
         let hasVisibleMotherboard = false;
         motherboardOptions.forEach(el => {
             if (el.tagName === 'OPTGROUP') {
-                 // Show/hide motherboard optgroups based on selected brand
                 el.style.display = (!selectedBrand || el.label.startsWith(selectedBrand)) ? '' : 'none';
             } else {
-                //For options, check socket compatibility *if* a CPU of the selected brand is chosen.
                 const optionCompatible = !selectedBrand || (el.dataset.cpuSocket && components.cpu.some(cpu => cpu.brand.startsWith(selectedBrand) && cpu.socket === el.dataset.cpuSocket));
-                 el.style.display = optionCompatible? "" : "none";
+                el.style.display = optionCompatible? "" : "none";
                 if(optionCompatible) hasVisibleMotherboard = true;
             }
         });
 
-         // 4. Show/hide motherboard select based on compatibility
         motherboardSelect.classList.toggle('hidden-option', !hasVisibleMotherboard);
-        if (!hasVisibleMotherboard) motherboardSelect.value = ''; // Reset if hidden
+        if (!hasVisibleMotherboard) motherboardSelect.value = '';
 
         updateConfigurationSummary();
     }
 
-    // Filter motherboards by CPU socket
     function filterMotherboardBySocket(cpuSocket) {
-      const motherboardOptions = motherboardSelect.querySelectorAll('option');
-      let hasVisibleMotherboard = false;
+        const motherboardOptions = motherboardSelect.querySelectorAll('option');
+        let hasVisibleMotherboard = false;
 
-      motherboardOptions.forEach(option => {
-          const compatible = !cpuSocket || (option.dataset.socket === cpuSocket);
-          option.style.display = compatible ? '' : 'none';
-          if (compatible) hasVisibleMotherboard = true;
-      });
-        //Show if compatible options exist, otherwise hide and clear
+        motherboardOptions.forEach(option => {
+            const compatible = !cpuSocket || (option.dataset.socket === cpuSocket);
+            option.style.display = compatible ? '' : 'none';
+            if (compatible) hasVisibleMotherboard = true;
+        });
         motherboardSelect.classList.toggle('hidden-option', !hasVisibleMotherboard);
         if (!hasVisibleMotherboard) motherboardSelect.value = '';
         updateConfigurationSummary();
     }
 
-    // Update image preview
     function updateImagePreview(selectedOption) {
-        imagePreview.src = selectedOption?.dataset.image || ''; // Set to empty string if no image
+        imagePreview.src = selectedOption?.dataset.image || '';
         imagePreview.style.display = selectedOption?.dataset.image ? 'block' : 'none';
     }
 
-    // Update configuration summary and total price
     function updateConfigurationSummary() {
         configurationSummaryDiv.innerHTML = '';
         totalPriceDiv.textContent = '';
         modalSummaryDiv.innerHTML = '';
         modalTotalPriceDiv.textContent = '';
-    
+
         let totalPrice = 0;
-        let summaryHTML = '<h2 class="summary-header">Cấu hình PC đã chọn:</h2><table class="summary-table">'; // Đã thêm class "summary-header"
-        summaryHTML += '<thead><tr><th>Linh kiện</th><th>Đơn giá</th><th>Thành tiền</th><th>Bảo Hành</th><th>Ghi chú</th></tr></thead><tbody>'; // **Đã bỏ cột STT, Số lượng, Đvt và sửa tiêu đề**
-        let modalSummaryHTML = summaryHTML; // Bảng modal cũng dùng header đã sửa
-    
+        let summaryHTML = '<h2 class="summary-header">Cấu hình PC đã chọn:</h2><table class="summary-table">';
+        summaryHTML += '<thead><tr><th>Hình ảnh</th><th>Linh kiện</th><th>Đơn giá</th><th>Thành tiền</th><th>Bảo Hành</th><th>Ghi chú</th></tr></thead><tbody>';
+        let modalSummaryHTML = summaryHTML;
+
         const selects = document.querySelectorAll('#components-form select:not(#cpu-brand)');
-        let stt = 1; // **Không dùng STT nữa, có thể bỏ dòng này**
-    
+        let stt = 1;
+
         selects.forEach(select => {
             const selectedOption = select.options[select.selectedIndex];
             if (selectedOption && selectedOption.value) {
@@ -273,42 +248,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 const warranty = selectedOption.dataset.warranty || 'N/A';
                 const note = selectedOption.dataset.note || 'NEW';
                 const thanhTien = price;
-    
+                const imageUrl = selectedOption.dataset.image || 'path/to/default-image.png'; // Use default image if none
+
                 const rowHTML = `<tr>
-                        <td>${componentName}</td> 
-                        <td>${price.toLocaleString()}</td>
-                        <td>${thanhTien.toLocaleString()}</td>
-                        <td>${warranty}</td>
-                        <td>${note}</td>
-                    </tr>`;
-    
+                    <td><img src="${imageUrl}" alt="Hình ảnh ${componentName}" style="max-width: 50px; max-height: 50px; vertical-align: middle;"></td>
+                    <td>${componentName}</td>
+                    <td>${price.toLocaleString()}</td>
+                    <td>${thanhTien.toLocaleString()}</td>
+                    <td>${warranty}</td>
+                    <td>${note}</td>
+                </tr>`;
+
                 summaryHTML += rowHTML;
                 modalSummaryHTML += rowHTML;
                 totalPrice += price;
-                stt++; // **Không dùng STT nữa, có thể bỏ dòng này**
             }
         });
-    
+
         summaryHTML += '</tbody></table>';
         modalSummaryHTML += '</tbody></table>';
-    
+
         configurationSummaryDiv.innerHTML = summaryHTML;
         totalPriceDiv.textContent = `Tổng tiền: ${totalPrice.toLocaleString()} VNĐ`;
         modalSummaryDiv.innerHTML = modalSummaryHTML;
         modalTotalPriceDiv.textContent = `Tổng tiền: ${totalPrice.toLocaleString()} VNĐ`;
-    
-        // Show configuration summary if components are selected (better mobile UX)
+
         if (totalPrice > 0) {
-            configurationSummaryDiv.classList.add('show'); // Thêm class để hiển thị summary
+            configurationSummaryDiv.classList.add('show');
         } else {
-            configurationSummaryDiv.classList.remove('show'); // Ẩn nếu không có component nào
+            configurationSummaryDiv.classList.remove('show');
         }
     }
 
-
-    // --- Event Listener Attachments ---
-
-    //When Brand is selected, filter immediately.
     cpuBrandSelect.addEventListener('change', function () {
         filterComponents(this.value);
     });
@@ -316,14 +287,13 @@ document.addEventListener('DOMContentLoaded', function () {
     cpuSelect.addEventListener('change', function() {
         const selectedCpu = this.options[this.selectedIndex];
         updateImagePreview(selectedCpu);
-        
-        // Lọc mainboard khi chọn CPU
+
         if (selectedCpu && selectedCpu.value) {
             filterMotherboardBySocket(selectedCpu.dataset.socket);
         } else {
             filterMotherboardBySocket(null);
         }
-        
+
         updateConfigurationSummary();
     });
 
@@ -355,6 +325,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Initially hide mainboard
     motherboardSelect.classList.add('hidden-option');
 });
