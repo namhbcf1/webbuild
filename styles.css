@@ -1,3 +1,4 @@
+```css
 /* Reset CSS */
 * {
     margin: 0;
@@ -6,89 +7,89 @@
 }
 
 html {
-    font-size: 16px; /* Kích thước font gốc, sử dụng rem cho dễ điều chỉnh */
+    font-size: 16px;
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Sử dụng font Roboto từ Google Fonts */
+    font-family: 'Roboto', sans-serif;
     line-height: 1.7;
-    background-color: #e3f2fd; /* Xanh nhạt hơn cho background */
-    color: #424242; /* Màu chữ tối hơn một chút */
-    -webkit-font-smoothing: antialiased; /* Làm mịn font chữ trên webkit */
-    -moz-osx-font-smoothing: grayscale; /* Làm mịn font chữ trên Firefox */
-    font-size: 1rem; /* Sử dụng rem cho font body để dễ масштабирование */
+    background-color: #e3f2fd;
+    color: #424242;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1rem;
 }
 
 header {
-    background: linear-gradient(135deg, #03a9f4, #01579b); /* Gradient xanh dương đẹp mắt */
+    background: linear-gradient(135deg, #03a9f4, #01579b);
     color: #fff;
-    padding: 30px 20px; /* Tăng padding cho header */
+    padding: 30px 20px;
     text-align: center;
-    margin-bottom: 20px; /* Thêm margin dưới header */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin-bottom: 15px;
-    font-size: 2.2em; /* Tăng kích thước tiêu đề */
+    font-size: 2.2em;
     font-weight: 700;
-    letter-spacing: -0.02em; /* Điều chỉnh khoảng cách chữ */
+    letter-spacing: -0.02em;
 }
 
 header .contact-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* Tăng khoảng cách giữa các nút */
+    gap: 15px;
     margin-top: 20px;
 }
 
 header .contact-button {
-    background-color: #fff; /* Nút màu trắng */
-    color: #01579b; /* Chữ màu xanh đậm */
-    padding: 12px 25px; /* Padding nút lớn hơn */
+    background-color: #fff;
+    color: #01579b;
+    padding: 12px 25px;
     text-decoration: none;
-    border-radius: 30px; /* Góc bo tròn hơn */
-    display: inline-flex; /* Sử dụng inline-flex */
+    border-radius: 30px;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng transition mượt mà */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho nút */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header .contact-button:hover {
-    background-color: #bbdefb; /* Màu hover nhạt hơn */
-    color: #003366; /* Màu chữ hover đậm hơn */
+    background-color: #bbdefb;
+    color: #003366;
 }
 
 main {
     padding: 20px;
     width: 95%;
     max-width: 1200px;
-    margin: 0 auto; /* Căn giữa main content */
+    margin: 0 auto;
 }
 
 .table-container {
     display: flex;
-    gap: 25px; /* Tăng khoảng cách giữa các cột */
+    gap: 25px;
     margin-top: 30px;
-    flex-wrap: wrap; /* Cho phép container xuống dòng khi không đủ chỗ */
+    flex-wrap: wrap;
 }
 
 .column {
-    flex: 1 1 300px; /* Flex-basis để cột không quá hẹp trên mobile */
+    flex: 1 1 300px;
     background-color: #fff;
     padding: 25px;
-    border-radius: 8px; /* Góc bo tròn hơn cho column */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bóng đổ sâu hơn */
-    border: 1px solid #eceff1; /* Viền nhẹ cho column */
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eceff1;
 }
 
 .column h2 {
     margin-bottom: 20px;
-    color: #01579b; /* Tiêu đề cột màu xanh */
+    color: #01579b;
     font-weight: 600;
     font-size: 1.6em;
 }
@@ -100,72 +101,72 @@ table {
 }
 
 table th, table td {
-    padding: 12px 10px; /* Padding trong ô bảng */
-    border-bottom: 1px solid #eceff1; /* Chỉ border dưới */
+    padding: 12px 10px;
+    border-bottom: 1px solid #eceff1;
     text-align: left;
-    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    vertical-align: middle;
 }
 
 table th {
-    background-color: #f9f9f9; /* Màu nền header bảng nhạt hơn */
+    background-color: #f9f9f9;
     font-weight: 500;
-    color: #616161; /* Màu chữ header bảng */
+    color: #616161;
 }
 
 table tr:last-child td {
-    border-bottom: none; /* Loại bỏ border dưới ở hàng cuối */
+    border-bottom: none;
 }
 
 select {
     width: 100%;
     padding: 12px;
-    border-radius: 8px; /* Bo tròn select */
+    border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 1em;
-    appearance: none; /* Loại bỏ style mặc định của hệ thống */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-position-y: 5px;
-    padding-right: 30px; /* Đủ chỗ cho icon dropdown */
+    padding-right: 30px;
     color: #555;
-    background-color: #fff; /* Nền trắng cho select */
+    background-color: #fff;
     cursor: pointer;
     transition: border-color 0.3s ease;
 }
 
 select:focus {
-    border-color: #64b5f6; /* Màu border khi focus */
-    outline: none; /* Loại bỏ outline mặc định khi focus */
-    box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.2); /* Thêm shadow khi focus */
+    border-color: #64b5f6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.2);
 }
 
 #selected-component {
     margin-top: 30px;
     text-align: center;
-    opacity: 1; /* Luôn hiển thị, ẩn/hiện ảnh bên trong bằng JS */
+    opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Hiệu ứng fade-in */
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 #selected-component.show {
-    opacity: 1; /* Đảm bảo luôn opacity 1 để ảnh hiển thị khi container show */
-    transform: translateY(0); /* Đảm bảo không bị translate khi container show */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #selected-component img {
-    max-width: 100%; /* Responsive image */
+    max-width: 100%;
     height: auto;
-    border-radius: 8px; /* Bo tròn ảnh */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho ảnh */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
-    display: none; /* Ẩn ảnh mặc định, hiển thị bằng JS khi cần */
+    display: none;
 }
 
 #selected-component img.show {
-    display: block; /* Hiển thị ảnh khi có class .show */
+    display: block;
 }
 
 
@@ -174,11 +175,11 @@ select:focus {
     font-size: 1.3em;
     font-weight: bold;
     text-align: center;
-    color: #0277bd; /* Màu xanh cho tổng giá */
+    color: #0277bd;
     padding: 15px;
-    background-color: #f0f8ff; /* Nền nhạt cho tổng giá */
+    background-color: #f0f8ff;
     border-radius: 8px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Inner shadow cho tổng giá */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .button-group {
@@ -186,65 +187,65 @@ select:focus {
     justify-content: center;
     margin-top: 30px;
     gap: 15px;
-    flex-wrap: wrap; /* Cho phép nút xuống dòng trên mobile */
+    flex-wrap: wrap;
 }
 
 .action-button {
-    padding: 14px 30px; /* Padding nút lớn hơn */
+    padding: 14px 30px;
     border: none;
-    border-radius: 30px; /* Bo tròn nút */
+    border-radius: 30px;
     cursor: pointer;
     font-size: 1.1em;
     font-weight: 500;
-    display: inline-flex; /* Sử dụng inline-flex */
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: transform 0.2s ease; /* Hiệu ứng scale khi hover */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Bóng đổ cho nút */
+    transition: transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .action-button:active {
-    transform: scale(0.95); /* Hiệu ứng nhấn nút */
+    transform: scale(0.95);
 }
 
 .primary-btn {
-    background-color: #03a9f4; /* Xanh dương primary */
+    background-color: #03a9f4;
     color: #fff;
 }
 
 .primary-btn:hover {
-    background-color: #0288d1; /* Màu hover đậm hơn */
+    background-color: #0288d1;
 }
 
 .modal {
-    display: none; /* Ẩn modal mặc định */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Cho phép scroll nếu nội dung modal quá dài */
-    background-color: rgba(0, 0, 0, 0.6); /* Background overlay đậm hơn */
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
-    padding: 30px; /* Thêm padding xung quanh modal trên mobile */
+    padding: 30px;
     box-sizing: border-box;
 }
 
 .modal.show-modal {
-    display: flex; /* Hiển thị modal khi có class .show-modal */
+    display: flex;
 }
 
 .modal-content {
     background-color: #fff;
     padding: 30px;
-    border-radius: 12px; /* Bo tròn modal content */
-    width: 90%; /* Modal rộng hơn trên mobile */
-    max-width: 700px; /* Max width lớn hơn */
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
     position: relative;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Bóng đổ modal sâu hơn */
-    animation: fadeIn 0.3s ease-out forwards; /* Animation fade-in */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-out forwards;
 }
 
 @keyframes fadeIn {
@@ -257,14 +258,14 @@ select:focus {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 1.8em; /* Nút close lớn hơn */
+    font-size: 1.8em;
     cursor: pointer;
-    color: #757575; /* Màu nút close nhạt hơn */
+    color: #757575;
     transition: color 0.2s ease;
 }
 
 .close-modal:hover {
-    color: #212121; /* Màu hover đậm hơn */
+    color: #212121;
 }
 
 .hidden-option {
@@ -272,7 +273,7 @@ select:focus {
 }
 
 footer {
-    background-color: #01579b; /* Footer màu xanh đậm hơn */
+    background-color: #01579b;
     color: #fff;
     text-align: center;
     padding: 15px;
@@ -280,48 +281,45 @@ footer {
     font-size: 0.9em;
 }
 
-/* ... CSS trước đó ... */
-
 #configuration-summary {
-    width: 100%; /* **Đảm bảo container bảng rộng 100%** */
-    max-width: none; /* **Loại bỏ max-width để container có thể mở rộng hết cỡ** */
+    width: 100%;
+    max-width: none;
     margin-top: 20px;
     opacity: 0;
     height: 0;
     overflow: hidden;
     transition: opacity 0.5s ease, height 0.5s ease;
-    display: flex;             /* **Sử dụng Flexbox cho container** */
-    flex-direction: column;     /* **Bố trí các phần tử con theo chiều dọc** */
-    align-items: center;        /* **Căn giữa các phần tử con theo chiều ngang (trong container)** */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #configuration-summary.show {
     opacity: 1;
     height: auto;
     padding-bottom: 20px;
-    display: flex; /* **Đảm bảo Flexbox vẫn được kích hoạt khi .show** */
+    display: flex;
 }
 
 .summary-header {
     text-align: center;
     margin-bottom: 10px;
     font-size: 1.3em;
-    width: 100%; /* **Tiêu đề rộng 100% trong container** */
+    width: 100%;
 }
 
-/* Container cho hình ảnh linh kiện */
 #summary-components-images {
-    display: flex;             /* **Sử dụng Flexbox cho container hình ảnh** */
-    flex-wrap: wrap;            /* **Cho phép hình ảnh xuống dòng khi không đủ chỗ** */
-    justify-content: center;    /* **Căn giữa hình ảnh theo chiều ngang** */
-    gap: 15px;                 /* **Khoảng cách giữa các hình ảnh** */
-    margin-bottom: 20px;        /* **Margin dưới container hình ảnh** */
-    width: 100%;             /* **Container hình ảnh rộng 100%** */
-    max-width: 100%;           /* **Không vượt quá chiều rộng container cha** */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 100%;
 }
 
 #summary-components-images img {
-    max-width: 150px;          /* **Chiều rộng tối đa của mỗi hình ảnh (tùy chỉnh)** */
+    max-width: 150px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -330,8 +328,8 @@ footer {
 
 #configuration-summary table {
     font-size: 0.9em;
-    width: 100%; /* **Bảng rộng 100% trong container của nó** */
-    max-width: 100%; /* **Không vượt quá chiều rộng container cha** */
+    width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 0;
@@ -371,76 +369,32 @@ footer {
 
 /* Responsive adjustments - cải thiện mobile */
 @media only screen and (max-width: 768px) {
-    /* ... Các CSS responsive khác ... */
+
 
     #summary-components-images {
-        gap: 10px; /* Giảm khoảng cách hình ảnh trên mobile */
-        margin-bottom: 15px; /* Giảm margin dưới container hình ảnh trên mobile */
+        gap: 10px;
+        margin-bottom: 15px;
     }
 
     #summary-components-images img {
-        max-width: 100px; /* Giảm kích thước hình ảnh trên mobile */
+        max-width: 100px;
     }
 
 
-    /* ... Các CSS responsive khác ... */
 }
 
 @media only screen and (max-width: 480px) {
-    /* ... Các CSS responsive khác ... */
+
 
     #summary-components-images {
-        gap: 8px; /* Giảm khoảng cách hình ảnh trên mobile nhỏ hơn */
-        margin-bottom: 10px; /* Giảm margin dưới container hình ảnh trên mobile nhỏ hơn */
+        gap: 8px;
+        margin-bottom: 10px;
     }
 
     #summary-components-images img {
-        max-width: 80px; /* Giảm kích thước hình ảnh trên mobile nhỏ hơn nữa */
+        max-width: 80px;
     }
 
-    /* ... Các CSS responsive khác ... */
+
 }
-
-/* --- Safari iOS Specific Adjustments (Conditional Hack - dùng khi cần thiết) --- */
-@supports (-webkit-overflow-scrolling: touch) and (not (-moz-os-pixels-per-px: 0)) {
-    /* Đoạn CSS này CHỈ áp dụng cho Safari trên iOS và macOS */
-
-    /*  Nếu bảng vẫn không hiển thị đúng trên Safari iOS,
-        bạn có thể thử các điều chỉnh sau (uncomment và thử từng cái một): */
-
-    /* table {
-        display: table !important; !* Thử ép Safari render table như 'table' *!
-    } */
-
-    /* Có thể thử tăng độ đặc hiệu để chắc chắn ghi đè các style khác */
-    /* #configuration-summary table,
-    #configuration-summary table th,
-    #configuration-summary table td {
-        width: auto !important;
-        height: auto !important;
-        display: table-cell !important; !* Đảm bảo các cell là table-cell *!
-        overflow: visible !important; !*  Đảm bảo không bị ẩn nội dung *!
-        white-space: normal !important; !* Cho phép chữ xuống dòng *!
-    } */
-
-    /* Thử đặt lại overflow cho container của bảng nếu nghi ngờ overflow gây ra vấn đề */
-    /* .table-container {
-        overflow: visible !important;
-    } */
-
-    /* Quan trọng: Sau khi thử các "hack" này, hãy test kỹ trên các trình duyệt khác
-       để đảm bảo không gây ra tác dụng phụ không mong muốn. */
-}
-
-
-/* Accessibility Note:
-   -  Luôn kiểm tra độ tương phản màu chữ và màu nền, đặc biệt cho text quan trọng.
-   -  Sử dụng các công cụ kiểm tra tương phản màu (ví dụ: WebAIM Contrast Checker)
-      để đảm bảo WCAG compliance.
-   -  Ví dụ:  Kiểm tra tương phản của:
-      + Màu chữ #424242 trên nền #e3f2fd.
-      + Màu chữ #01579b trên nền #fff (nút contact).
-      + Màu chữ #fff trên nền header gradient.
-      + Màu chữ #616161 trên nền #f9f9f9 (header bảng).
-      + Màu chữ #0277bd trên nền #f0f8ff (tổng giá).
-*/
+```
