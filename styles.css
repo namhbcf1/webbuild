@@ -480,3 +480,81 @@ footer {
       + Màu chữ #616161 trên nền #f9f9f9 (header bảng).
       + Màu chữ #0277bd trên nền #f0f8ff (tổng giá).
 */
+/* ... CSS trước đó ... */
+
+#configuration-summary table {
+    font-size: 0.9em; /* Giảm kích thước font chữ trong bảng để vừa vặn hơn */
+}
+
+#configuration-summary table th,
+#configuration-summary table td {
+    padding: 8px 6px; /* Giảm padding trong ô bảng để tiết kiệm không gian */
+    text-align: left; /* Căn trái nội dung ô */
+    white-space: nowrap; /* Ngăn chữ trong ô bị xuống dòng (nếu cần) */
+    overflow: hidden;        /* Ẩn phần nội dung tràn ra ngoài */
+    text-overflow: ellipsis; /* Hiển thị dấu "..." nếu nội dung bị tràn */
+    max-width: 150px;       /* Giới hạn chiều rộng tối đa của cột (tùy chỉnh) */
+}
+
+#configuration-summary table th:nth-child(1), /* Cột Linh kiện */
+#configuration-summary table td:nth-child(1) {
+    max-width: 200px; /* Cột Linh kiện có thể rộng hơn chút */
+    white-space: normal; /* Cho phép tên linh kiện xuống dòng nếu cần */
+    text-overflow: clip; /* Không dùng ellipsis cho cột tên, ưu tiên hiển thị hết tên */
+    overflow: visible; /* Hiển thị đầy đủ tên linh kiện, cho phép tràn nếu cần */
+}
+#configuration-summary table th:nth-child(2), /* Cột Đơn giá */
+#configuration-summary table td:nth-child(2),
+#configuration-summary table th:nth-child(3), /* Cột Thành tiền */
+#configuration-summary table td:nth-child(3),
+#configuration-summary table th:nth-child(4), /* Cột Bảo Hành */
+#configuration-summary table td:nth-child(4),
+#configuration-summary table th:nth-child(5), /* Cột Ghi chú */
+#configuration-summary table td:nth-child(5) {
+    text-align: right; /* Căn phải các cột số và cột ghi chú */
+    max-width: 100px; /* Giới hạn chiều rộng các cột số và ghi chú */
+}
+
+
+/* Responsive adjustments - cải thiện mobile */
+@media only screen and (max-width: 768px) {
+    /* ... Các CSS responsive khác ... */
+
+    table {
+        font-size: 0.8em; /* Giảm font chữ bảng trong responsive */
+    }
+     #configuration-summary table {
+        font-size: 0.95em; /* Tăng font chữ bảng tóm tắt lớn hơn chút trong responsive */
+    }
+
+    th, td {
+        padding: 8px 5px; /* Giảm padding ô bảng trong responsive */
+    }
+    #configuration-summary table th,
+    #configuration-summary table td {
+        padding: 6px 4px; /* Giảm padding ô bảng tóm tắt nhỏ hơn nữa trong responsive */
+    }
+
+
+    /* ... Các CSS responsive khác ... */
+}
+
+@media only screen and (max-width: 480px) {
+    /* ... Các CSS responsive khác ... */
+
+    table {
+        font-size: 0.75em; /* Giảm font chữ bảng nhỏ hơn nữa trong responsive nhỏ hơn */
+    }
+    #configuration-summary table {
+        font-size: 0.85em; /* Tăng font chữ bảng tóm tắt lớn hơn chút trong responsive nhỏ hơn */
+    }
+    th, td {
+        padding: 6px 4px; /* Giảm padding ô bảng trong responsive nhỏ hơn */
+    }
+     #configuration-summary table th,
+    #configuration-summary table td {
+        padding: 5px 3px; /* Giảm padding ô bảng tóm tắt nhỏ hơn nữa trong responsive nhỏ hơn */
+    }
+
+    /* ... Các CSS responsive khác ... */
+}
