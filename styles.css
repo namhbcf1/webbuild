@@ -280,161 +280,125 @@ footer {
     font-size: 0.9em;
 }
 
+/* ... CSS trước đó ... */
+
 #configuration-summary {
+    width: 100%; /* **Đảm bảo container bảng rộng 100%** */
+    max-width: none; /* **Loại bỏ max-width để container có thể mở rộng hết cỡ** */
+    margin-top: 20px;
     opacity: 0;
-    height: 0; /* Initially collapsed */
-    overflow: hidden; /* Hide content when collapsed */
-    transition: opacity 0.5s ease, height 0.5s ease; /* Smooth transition */
-    margin-top: 20px; /* Add margin when shown */
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, height 0.5s ease;
+    display: flex;             /* **Sử dụng Flexbox cho container** */
+    flex-direction: column;     /* **Bố trí các phần tử con theo chiều dọc** */
+    align-items: center;        /* **Căn giữa các phần tử con theo chiều ngang (trong container)** */
 }
 
 #configuration-summary.show {
     opacity: 1;
-    height: auto; /* Expand to content height */
-    padding-bottom: 20px; /* Example: Add some padding when shown */
+    height: auto;
+    padding-bottom: 20px;
+    display: flex; /* **Đảm bảo Flexbox vẫn được kích hoạt khi .show** */
 }
 
 .summary-header {
-    text-align: center; /* Center the header on mobile */
+    text-align: center;
     margin-bottom: 10px;
-    font-size: 1.3em; /* Adjust header size for mobile */
+    font-size: 1.3em;
+    width: 100%; /* **Tiêu đề rộng 100% trong container** */
+}
+
+/* Container cho hình ảnh linh kiện */
+#summary-components-images {
+    display: flex;             /* **Sử dụng Flexbox cho container hình ảnh** */
+    flex-wrap: wrap;            /* **Cho phép hình ảnh xuống dòng khi không đủ chỗ** */
+    justify-content: center;    /* **Căn giữa hình ảnh theo chiều ngang** */
+    gap: 15px;                 /* **Khoảng cách giữa các hình ảnh** */
+    margin-bottom: 20px;        /* **Margin dưới container hình ảnh** */
+    width: 100%;             /* **Container hình ảnh rộng 100%** */
+    max-width: 100%;           /* **Không vượt quá chiều rộng container cha** */
+}
+
+#summary-components-images img {
+    max-width: 150px;          /* **Chiều rộng tối đa của mỗi hình ảnh (tùy chỉnh)** */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#configuration-summary table {
+    font-size: 0.9em;
+    width: 100%; /* **Bảng rộng 100% trong container của nó** */
+    max-width: 100%; /* **Không vượt quá chiều rộng container cha** */
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 0;
+    display: table;
+    overflow-x: visible;
+    -webkit-overflow-scrolling: auto;
+}
+
+#configuration-summary table th,
+#configuration-summary table td {
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: middle;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: none;
+}
+
+#configuration-summary table th:nth-child(1),
+#configuration-summary table td:nth-child(1) {
+    max-width: none;
+}
+
+#configuration-summary table th:nth-child(2),
+#configuration-summary table td:nth-child(2),
+#configuration-summary table th:nth-child(3),
+#configuration-summary table td:nth-child(3),
+#configuration-summary table th:nth-child(4),
+#configuration-summary table td:nth-child(4),
+#configuration-summary table th:nth-child(5),
+#configuration-summary table td:nth-child(5) {
+    text-align: right;
+    max-width: none;
 }
 
 
 /* Responsive adjustments - cải thiện mobile */
 @media only screen and (max-width: 768px) {
-    header {
-        padding: 20px 15px;
-        text-align: center;
+    /* ... Các CSS responsive khác ... */
+
+    #summary-components-images {
+        gap: 10px; /* Giảm khoảng cách hình ảnh trên mobile */
+        margin-bottom: 15px; /* Giảm margin dưới container hình ảnh trên mobile */
     }
 
-    header h1 {
-        font-size: 1.8em;
-        margin-bottom: 10px;
-    }
-
-    header .contact-buttons {
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 15px;
-    }
-
-    header .contact-button {
-        padding: 10px 20px;
-        font-size: 0.95em;
-    }
-
-    .table-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .column {
-        width: 100% !important;
-        padding: 15px;
-        margin-bottom: 20px; /* Thêm margin giữa các cột trên mobile */
-    }
-
-    .column h2 {
-        font-size: 1.4em;
-        margin-bottom: 15px;
-    }
-
-    table {
-        font-size: 0.9em;
-        display: block; /* Quan trọng cho responsive table trên mobile */
-        overflow-x: auto; /* Quan trọng cho responsive table trên mobile */
-        -webkit-overflow-scrolling: touch; /* Quan trọng cho responsive table trên mobile (iOS) */
-    }
-
-    th, td {
-        padding: 10px 8px;
-    }
-
-    select {
-        font-size: 0.95em;
-        padding: 10px;
-    }
-
-    #cpu-brand-selection {
-        margin: 15px 0;
-    }
-
-    #selected-component {
-        margin: 20px 15px;
-    }
-
-    #selected-component img {
-        max-width: 90%; /* Ảnh nhỏ hơn một chút trên mobile */
-        height: auto;
-    }
-
-    #total-price {
-        font-size: 1.1em;
-        padding: 12px;
-        margin: 15px 0;
-    }
-
-    .button-group {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .action-button {
-        width: 100%;
-        padding: 14px;
-        font-size: 0.95em;
-    }
-
-    .modal-content {
-        width: 95%; /* Modal full width trên mobile */
-        padding: 25px;
-    }
-
-    .desktop-only {
-        display: none;
+    #summary-components-images img {
+        max-width: 100px; /* Giảm kích thước hình ảnh trên mobile */
     }
 
 
-    select {
-        max-width: 100%; /* Select full width trên mobile */
-    }
-
-    header p {
-        font-size: 0.9em;
-        margin-bottom: 8px;
-    }
+    /* ... Các CSS responsive khác ... */
 }
 
 @media only screen and (max-width: 480px) {
-    header h1 {
-        font-size: 1.5em;
+    /* ... Các CSS responsive khác ... */
+
+    #summary-components-images {
+        gap: 8px; /* Giảm khoảng cách hình ảnh trên mobile nhỏ hơn */
+        margin-bottom: 10px; /* Giảm margin dưới container hình ảnh trên mobile nhỏ hơn */
     }
 
-    table {
-        font-size: 0.85em;
+    #summary-components-images img {
+        max-width: 80px; /* Giảm kích thước hình ảnh trên mobile nhỏ hơn nữa */
     }
 
-    select {
-        font-size: 0.85em;
-    }
-
-    .contact-button {
-        font-size: 0.85em;
-        padding: 8px 15px;
-    }
-
-    #total-price {
-        font-size: 1em;
-    }
-
-    .action-button {
-        font-size: 0.9em;
-    }
-
-    .modal-content {
-        padding: 20px;
-    }
+    /* ... Các CSS responsive khác ... */
 }
 
 /* --- Safari iOS Specific Adjustments (Conditional Hack - dùng khi cần thiết) --- */
@@ -480,81 +444,3 @@ footer {
       + Màu chữ #616161 trên nền #f9f9f9 (header bảng).
       + Màu chữ #0277bd trên nền #f0f8ff (tổng giá).
 */
-/* ... CSS trước đó ... */
-
-#configuration-summary table {
-    font-size: 0.9em; /* Giảm kích thước font chữ trong bảng để vừa vặn hơn */
-}
-
-#configuration-summary table th,
-#configuration-summary table td {
-    padding: 8px 6px; /* Giảm padding trong ô bảng để tiết kiệm không gian */
-    text-align: left; /* Căn trái nội dung ô */
-    white-space: nowrap; /* Ngăn chữ trong ô bị xuống dòng (nếu cần) */
-    overflow: hidden;        /* Ẩn phần nội dung tràn ra ngoài */
-    text-overflow: ellipsis; /* Hiển thị dấu "..." nếu nội dung bị tràn */
-    max-width: 150px;       /* Giới hạn chiều rộng tối đa của cột (tùy chỉnh) */
-}
-
-#configuration-summary table th:nth-child(1), /* Cột Linh kiện */
-#configuration-summary table td:nth-child(1) {
-    max-width: 200px; /* Cột Linh kiện có thể rộng hơn chút */
-    white-space: normal; /* Cho phép tên linh kiện xuống dòng nếu cần */
-    text-overflow: clip; /* Không dùng ellipsis cho cột tên, ưu tiên hiển thị hết tên */
-    overflow: visible; /* Hiển thị đầy đủ tên linh kiện, cho phép tràn nếu cần */
-}
-#configuration-summary table th:nth-child(2), /* Cột Đơn giá */
-#configuration-summary table td:nth-child(2),
-#configuration-summary table th:nth-child(3), /* Cột Thành tiền */
-#configuration-summary table td:nth-child(3),
-#configuration-summary table th:nth-child(4), /* Cột Bảo Hành */
-#configuration-summary table td:nth-child(4),
-#configuration-summary table th:nth-child(5), /* Cột Ghi chú */
-#configuration-summary table td:nth-child(5) {
-    text-align: right; /* Căn phải các cột số và cột ghi chú */
-    max-width: 100px; /* Giới hạn chiều rộng các cột số và ghi chú */
-}
-
-
-/* Responsive adjustments - cải thiện mobile */
-@media only screen and (max-width: 768px) {
-    /* ... Các CSS responsive khác ... */
-
-    table {
-        font-size: 0.8em; /* Giảm font chữ bảng trong responsive */
-    }
-     #configuration-summary table {
-        font-size: 0.95em; /* Tăng font chữ bảng tóm tắt lớn hơn chút trong responsive */
-    }
-
-    th, td {
-        padding: 8px 5px; /* Giảm padding ô bảng trong responsive */
-    }
-    #configuration-summary table th,
-    #configuration-summary table td {
-        padding: 6px 4px; /* Giảm padding ô bảng tóm tắt nhỏ hơn nữa trong responsive */
-    }
-
-
-    /* ... Các CSS responsive khác ... */
-}
-
-@media only screen and (max-width: 480px) {
-    /* ... Các CSS responsive khác ... */
-
-    table {
-        font-size: 0.75em; /* Giảm font chữ bảng nhỏ hơn nữa trong responsive nhỏ hơn */
-    }
-    #configuration-summary table {
-        font-size: 0.85em; /* Tăng font chữ bảng tóm tắt lớn hơn chút trong responsive nhỏ hơn */
-    }
-    th, td {
-        padding: 6px 4px; /* Giảm padding ô bảng trong responsive nhỏ hơn */
-    }
-     #configuration-summary table th,
-    #configuration-summary table td {
-        padding: 5px 3px; /* Giảm padding ô bảng tóm tắt nhỏ hơn nữa trong responsive nhỏ hơn */
-    }
-
-    /* ... Các CSS responsive khác ... */
-}
