@@ -6,7 +6,8 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Kích hoạt cuộn mượt */
+    font-size: 16px; /* Kích thước font gốc, sử dụng rem cho dễ điều chỉnh */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
     color: #424242; /* Màu chữ tối hơn một chút */
     -webkit-font-smoothing: antialiased; /* Làm mịn font chữ trên webkit */
     -moz-osx-font-smoothing: grayscale; /* Làm mịn font chữ trên Firefox */
+    font-size: 1rem; /* Sử dụng rem cho font body để dễ масштабирование */
 }
 
 header {
@@ -143,14 +145,14 @@ select:focus {
 #selected-component {
     margin-top: 30px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1; /* Luôn hiển thị, ẩn/hiện ảnh bên trong bằng JS */
+    transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease; /* Hiệu ứng fade-in */
 }
 
 #selected-component.show {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Đảm bảo luôn opacity 1 để ảnh hiển thị khi container show */
+    transform: translateY(0); /* Đảm bảo không bị translate khi container show */
 }
 
 #selected-component img {
@@ -159,7 +161,13 @@ select:focus {
     border-radius: 8px; /* Bo tròn ảnh */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho ảnh */
     margin-bottom: 15px;
+    display: none; /* Ẩn ảnh mặc định, hiển thị bằng JS khi cần */
 }
+
+#selected-component img.show {
+    display: block; /* Hiển thị ảnh khi có class .show */
+}
+
 
 #total-price {
     margin-top: 25px;
@@ -272,6 +280,27 @@ footer {
     font-size: 0.9em;
 }
 
+#configuration-summary {
+    opacity: 0;
+    height: 0; /* Initially collapsed */
+    overflow: hidden; /* Hide content when collapsed */
+    transition: opacity 0.5s ease, height 0.5s ease; /* Smooth transition */
+    margin-top: 20px; /* Add margin when shown */
+}
+
+#configuration-summary.show {
+    opacity: 1;
+    height: auto; /* Expand to content height */
+    padding-bottom: 20px; /* Example: Add some padding when shown */
+}
+
+.summary-header {
+    text-align: center; /* Center the header on mobile */
+    margin-bottom: 10px;
+    font-size: 1.3em; /* Adjust header size for mobile */
+}
+
+
 /* Responsive adjustments - cải thiện mobile */
 @media only screen and (max-width: 768px) {
     header {
@@ -313,6 +342,9 @@ footer {
 
     table {
         font-size: 0.9em;
+        display: block; /* Quan trọng cho responsive table trên mobile */
+        overflow-x: auto; /* Quan trọng cho responsive table trên mobile */
+        -webkit-overflow-scrolling: touch; /* Quan trọng cho responsive table trên mobile (iOS) */
     }
 
     th, td {
@@ -363,11 +395,6 @@ footer {
         display: none;
     }
 
-    table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
 
     select {
         max-width: 100%; /* Select full width trên mobile */
@@ -379,25 +406,6 @@ footer {
     }
 }
 
-#configuration-summary {
-    opacity: 0;
-    height: 0; /* Initially collapsed */
-    overflow: hidden; /* Hide content when collapsed */
-    transition: opacity 0.5s ease, height 0.5s ease; /* Smooth transition */
-    margin-top: 20px; /* Add margin when shown */
-}
-
-#configuration-summary.show {
-    opacity: 1;
-    height: auto; /* Expand to content height */
-    padding-bottom: 20px; /* Example: Add some padding when shown */
-}
-
-.summary-header {
-    text-align: center; /* Center the header on mobile */
-    margin-bottom: 10px;
-    font-size: 1.3em; /* Adjust header size for mobile */
-} 
 @media only screen and (max-width: 480px) {
     header h1 {
         font-size: 1.5em;
@@ -428,10 +436,47 @@ footer {
         padding: 20px;
     }
 }
-@media only screen and (max-width: 768px) {
-    table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
+
+/* --- Safari iOS Specific Adjustments (Conditional Hack - dùng khi cần thiết) --- */
+@supports (-webkit-overflow-scrolling: touch) and (not (-moz-os-pixels-per-px: 0)) {
+    /* Đoạn CSS này CHỈ áp dụng cho Safari trên iOS và macOS */
+
+    /*  Nếu bảng vẫn không hiển thị đúng trên Safari iOS,
+        bạn có thể thử các điều chỉnh sau (uncomment và thử từng cái một): */
+
+    /* table {
+        display: table !important; !* Thử ép Safari render table như 'table' *!
+    } */
+
+    /* Có thể thử tăng độ đặc hiệu để chắc chắn ghi đè các style khác */
+    /* #configuration-summary table,
+    #configuration-summary table th,
+    #configuration-summary table td {
+        width: auto !important;
+        height: auto !important;
+        display: table-cell !important; !* Đảm bảo các cell là table-cell *!
+        overflow: visible !important; !*  Đảm bảo không bị ẩn nội dung *!
+        white-space: normal !important; !* Cho phép chữ xuống dòng *!
+    } */
+
+    /* Thử đặt lại overflow cho container của bảng nếu nghi ngờ overflow gây ra vấn đề */
+    /* .table-container {
+        overflow: visible !important;
+    } */
+
+    /* Quan trọng: Sau khi thử các "hack" này, hãy test kỹ trên các trình duyệt khác
+       để đảm bảo không gây ra tác dụng phụ không mong muốn. */
 }
+
+
+/* Accessibility Note:
+   -  Luôn kiểm tra độ tương phản màu chữ và màu nền, đặc biệt cho text quan trọng.
+   -  Sử dụng các công cụ kiểm tra tương phản màu (ví dụ: WebAIM Contrast Checker)
+      để đảm bảo WCAG compliance.
+   -  Ví dụ:  Kiểm tra tương phản của:
+      + Màu chữ #424242 trên nền #e3f2fd.
+      + Màu chữ #01579b trên nền #fff (nút contact).
+      + Màu chữ #fff trên nền header gradient.
+      + Màu chữ #616161 trên nền #f9f9f9 (header bảng).
+      + Màu chữ #0277bd trên nền #f0f8ff (tổng giá).
+*/
