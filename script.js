@@ -185,7 +185,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const motherboardOptions = document.querySelectorAll('#mainboard optgroup, #mainboard option');
 
         cpuOptions.forEach(optgroup => {
-            optgroup.style.display = (!selectedBrand || optgroup.label.startsWith(selectedBrand)) ? '' : 'none';
+            const isVisible = !selectedBrand || optgroup.label.startsWith(selectedBrand);
+            optgroup.style.display = isVisible ? '' : 'none';
+            optgroup.querySelectorAll('option').forEach(option => {
+                option.disabled = !isVisible; // Disable options in hidden optgroups
+            });
         });
 
         cpuSelect.value = '';
@@ -193,10 +197,15 @@ document.addEventListener('DOMContentLoaded', function () {
         let hasVisibleMotherboard = false;
         motherboardOptions.forEach(el => {
             if (el.tagName === 'OPTGROUP') {
-                el.style.display = (!selectedBrand || el.label.startsWith(selectedBrand)) ? '' : 'none';
+                const isVisible = !selectedBrand || el.label.startsWith(selectedBrand);
+                el.style.display = isVisible ? '' : 'none';
+                el.querySelectorAll('option').forEach(option => {
+                    option.disabled = !isVisible; // Disable options in hidden optgroups
+                });
             } else {
                 const optionCompatible = !selectedBrand || (el.dataset.cpuSocket && components.cpu.some(cpu => cpu.brand.startsWith(selectedBrand) && cpu.socket === el.dataset.cpuSocket));
                 el.style.display = optionCompatible? "" : "none";
+                el.disabled = !optionCompatible; // Disable incompatible motherboard options directly
                 if(optionCompatible) hasVisibleMotherboard = true;
             }
         });
@@ -214,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
         motherboardOptions.forEach(option => {
             const compatible = !cpuSocket || (option.dataset.socket === cpuSocket);
             option.style.display = compatible ? '' : 'none';
+            option.disabled = !compatible; // Disable incompatible options
             if (compatible) hasVisibleMotherboard = true;
         });
         motherboardSelect.classList.toggle('hidden-option', !hasVisibleMotherboard);
@@ -242,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         selects.forEach(select => {
             const selectedOption = select.options[select.selectedIndex];
-            if (selectedOption && selectedOption.value) {
+            if (selectedOption && selectedOption.value && !selectedOption.disabled) { // Check if option is not disabled
                 const componentName = selectedOption.textContent;
                 const price = parseFloat(selectedOption.dataset.price) || 0;
                 const warranty = selectedOption.dataset.warranty || 'N/A';
