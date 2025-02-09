@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Image preview element
     const imagePreview = document.createElement('img');
     imagePreview.id = 'image-preview';
-    imagePreview.style.maxWidth = '100%'; /* Make image responsive within its container */
-    imagePreview.style.height = 'auto';
+    imagePreview.style.maxWidth = '200px';
     imagePreview.style.marginTop = '10px';
     imagePreview.style.display = 'none';  // Initially hidden
-    selectedComponentDiv.appendChild(imagePreview); // Append to existing div
+    document.getElementById('selected-component').appendChild(imagePreview); // Add to DOM
+
 
     // Helper function to create options
     function createOption(component) {
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (component.note) opt.dataset.note = component.note;
         return opt;
     }
+
 
     // Function to populate a select element, optionally with optgroups
     function populateSelect(selectElement, componentsArray, groupByField = null) {
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
     // --- Data initialization (using data from HTML) ---
     const components = { cpu: [], mainboard: [], vga: [], ram: [], ssd: [], psu: [], case: [], 'cpu-cooler': [], hdd: [] };
 
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             price: parseInt(el.dataset.price),
             image: el.dataset.image,
             warranty: el.dataset.warranty,
-            note: el.dataset.note || 'NEW'   // Default note to 'NEW' if not present
+            note: el.dataset.note || 'NEW'  // Default note to 'NEW' if not present
         });
     });
 
@@ -178,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     });
 
+
     // --- Initial population of selects ---
     populateSelect(cpuSelect, components.cpu, 'brand');
     populateSelect(motherboardSelect, components.mainboard, 'brand');
@@ -208,17 +211,17 @@ document.addEventListener('DOMContentLoaded', function () {
         let hasVisibleMotherboard = false;
         motherboardOptions.forEach(el => {
             if (el.tagName === 'OPTGROUP') {
-                // Show/hide motherboard optgroups based on selected brand
+                 // Show/hide motherboard optgroups based on selected brand
                 el.style.display = (!selectedBrand || el.label.startsWith(selectedBrand)) ? '' : 'none';
             } else {
                 //For options, check socket compatibility *if* a CPU of the selected brand is chosen.
                 const optionCompatible = !selectedBrand || (el.dataset.cpuSocket && components.cpu.some(cpu => cpu.brand.startsWith(selectedBrand) && cpu.socket === el.dataset.cpuSocket));
-                el.style.display = optionCompatible ? "" : "none";
-                if (optionCompatible) hasVisibleMotherboard = true;
+                 el.style.display = optionCompatible? "" : "none";
+                if(optionCompatible) hasVisibleMotherboard = true;
             }
         });
 
-        // 4. Show/hide motherboard select based on compatibility
+         // 4. Show/hide motherboard select based on compatibility
         motherboardSelect.classList.toggle('hidden-option', !hasVisibleMotherboard);
         if (!hasVisibleMotherboard) motherboardSelect.value = ''; // Reset if hidden
 
@@ -227,14 +230,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Filter motherboards by CPU socket
     function filterMotherboardBySocket(cpuSocket) {
-        const motherboardOptions = motherboardSelect.querySelectorAll('option');
-        let hasVisibleMotherboard = false;
+      const motherboardOptions = motherboardSelect.querySelectorAll('option');
+      let hasVisibleMotherboard = false;
 
-        motherboardOptions.forEach(option => {
-            const compatible = !cpuSocket || (option.dataset.socket === cpuSocket);
-            option.style.display = compatible ? '' : 'none';
-            if (compatible) hasVisibleMotherboard = true;
-        });
+      motherboardOptions.forEach(option => {
+          const compatible = !cpuSocket || (option.dataset.socket === cpuSocket);
+          option.style.display = compatible ? '' : 'none';
+          if (compatible) hasVisibleMotherboard = true;
+      });
         //Show if compatible options exist, otherwise hide and clear
         motherboardSelect.classList.toggle('hidden-option', !hasVisibleMotherboard);
         if (!hasVisibleMotherboard) motherboardSelect.value = '';
@@ -245,8 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateImagePreview(selectedOption) {
         imagePreview.src = selectedOption?.dataset.image || ''; // Set to empty string if no image
         imagePreview.style.display = selectedOption?.dataset.image ? 'block' : 'none';
-        // Make sure image is visible when container is shown (important for mobile)
-        selectedComponentDiv.classList.add('show'); // Ensure container is shown if image exists
     }
 
     // Update configuration summary and total price
@@ -255,15 +256,15 @@ document.addEventListener('DOMContentLoaded', function () {
         totalPriceDiv.textContent = '';
         modalSummaryDiv.innerHTML = '';
         modalTotalPriceDiv.textContent = '';
-
+    
         let totalPrice = 0;
-        let summaryHTML = '<h2 class="summary-header">Cấu hình PC đã chọn:</h2><table class="summary-table">'; // Added class to header
-        summaryHTML += '<thead><tr><th>STT</th><th>Tên, mã, loại linh kiện</th><th>Đvt</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th><th>Bảo Hành</th><th>Ghi chú</th></tr></thead><tbody>';
-        let modalSummaryHTML = summaryHTML; // Start with the same header
-
+        let summaryHTML = '<h2 class="summary-header">Cấu hình PC đã chọn:</h2><table class="summary-table">'; // Đã thêm class "summary-header"
+        summaryHTML += '<thead><tr><th>Linh kiện</th><th>Đơn giá</th><th>Thành tiền</th><th>Bảo Hành</th><th>Ghi chú</th></tr></thead><tbody>'; // **Đã bỏ cột STT, Số lượng, Đvt và sửa tiêu đề**
+        let modalSummaryHTML = summaryHTML; // Bảng modal cũng dùng header đã sửa
+    
         const selects = document.querySelectorAll('#components-form select:not(#cpu-brand)');
-        let stt = 1;
-
+        let stt = 1; // **Không dùng STT nữa, có thể bỏ dòng này**
+    
         selects.forEach(select => {
             const selectedOption = select.options[select.selectedIndex];
             if (selectedOption && selectedOption.value) {
@@ -272,40 +273,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 const warranty = selectedOption.dataset.warranty || 'N/A';
                 const note = selectedOption.dataset.note || 'NEW';
                 const thanhTien = price;
-
+    
                 const rowHTML = `<tr>
-                        <td>${stt}</td>
-                        <td>${componentName}</td>
-                        <td>Chiếc</td>
-                        <td>1</td>
+                        <td>${componentName}</td>  // **Bỏ cột STT và Đvt**
                         <td>${price.toLocaleString()}</td>
                         <td>${thanhTien.toLocaleString()}</td>
                         <td>${warranty}</td>
                         <td>${note}</td>
                     </tr>`;
-
+    
                 summaryHTML += rowHTML;
                 modalSummaryHTML += rowHTML;
                 totalPrice += price;
-                stt++;
+                stt++; // **Không dùng STT nữa, có thể bỏ dòng này**
             }
         });
-
+    
         summaryHTML += '</tbody></table>';
         modalSummaryHTML += '</tbody></table>';
-
+    
         configurationSummaryDiv.innerHTML = summaryHTML;
         totalPriceDiv.textContent = `Tổng tiền: ${totalPrice.toLocaleString()} VNĐ`;
         modalSummaryDiv.innerHTML = modalSummaryHTML;
         modalTotalPriceDiv.textContent = `Tổng tiền: ${totalPrice.toLocaleString()} VNĐ`;
-
+    
         // Show configuration summary if components are selected (better mobile UX)
         if (totalPrice > 0) {
-            configurationSummaryDiv.classList.add('show'); // Add class to show summary
+            configurationSummaryDiv.classList.add('show'); // Thêm class để hiển thị summary
         } else {
-            configurationSummaryDiv.classList.remove('show'); // Hide if no components selected
+            configurationSummaryDiv.classList.remove('show'); // Ẩn nếu không có component nào
         }
     }
+
 
     // --- Event Listener Attachments ---
 
@@ -314,17 +313,17 @@ document.addEventListener('DOMContentLoaded', function () {
         filterComponents(this.value);
     });
 
-    cpuSelect.addEventListener('change', function () {
+    cpuSelect.addEventListener('change', function() {
         const selectedCpu = this.options[this.selectedIndex];
         updateImagePreview(selectedCpu);
-
+        
         // Lọc mainboard khi chọn CPU
         if (selectedCpu && selectedCpu.value) {
             filterMotherboardBySocket(selectedCpu.dataset.socket);
         } else {
             filterMotherboardBySocket(null);
         }
-
+        
         updateConfigurationSummary();
     });
 
@@ -343,20 +342,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calculateButton.addEventListener('click', function () {
         updateConfigurationSummary();
-        summaryModal.classList.add('show-modal'); // Use class to show modal (consistent with CSS)
+        summaryModal.style.display = 'block';
     });
 
     closeModalSpan.addEventListener('click', function () {
-        summaryModal.classList.remove('show-modal'); // Use class to hide modal
+        summaryModal.style.display = 'none';
     });
 
     window.addEventListener('click', function (event) {
         if (event.target == summaryModal) {
-            summaryModal.classList.remove('show-modal'); // Use class to hide modal
+            summaryModal.style.display = 'none';
         }
     });
 
     // Initially hide mainboard
     motherboardSelect.classList.add('hidden-option');
-    updateConfigurationSummary(); // Initial summary update, consider if needed at start
 });
