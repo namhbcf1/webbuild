@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <header>
         <h1>BUILD PC TRUONG PHAT COMPUTER</h1>
@@ -35,7 +37,7 @@
 
             <div class="table-container">
                 <div class="column">
-                    <h2>Linh Kiện Chính (Bên Trái)</h2>
+                    <h2>Linh Kiện Chính</h2>
                     <table>
                         <thead>
                             <tr>
@@ -50,58 +52,181 @@
                                     <select id="cpu" name="cpu">
                                         <option value="">Chọn CPU</option>
                                         <optgroup label="INTEL - Core i3">
-                                            <option value="intel-core-i3-9100f" data-price="500000" data-image="images/intel-core-i3-9100f.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1151-v2">Intel Core i3-9100F (Giá: 500.000 VNĐ)</option>
-                                            <option value="intel-core-i3-10100f" data-price="1100000" data-image="images/intel-core-i3-10100f.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1200">Intel Core i3-10100F (Giá: 1.100.000 VNĐ)</option>
-                                            <option value="intel-core-i3-10105" data-price="1800000" data-image="images/intel-core-i3-10105.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1200">Intel Core i3-10105 (Giá: 1.800.000 VNĐ)</option>
-                                            <option value="intel-core-i3-10105f" data-price="1100000" data-image="images/intel-core-i3-10105f.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1200">Intel Core i3-10105F (Giá: 1.100.000 VNĐ)</option>
-                                            <option value="intel-core-i3-12100F" data-price="1350000" data-image="images/intel-core-i3-12100F.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i3-12100F (Giá: 1.350.000 VNĐ)</option>
-                                            <option value="intel-core-i3-13100F" data-price="2100000" data-image="images/intel-core-i3-13100.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i3-13100 (Giá: 2.100.000 VNĐ)</option>
-                                            <option value="intel-core-i3-14100F" data-price="2300000" data-image="images/intel-core-i3-13100.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i3-13100 (Giá: 2.300.000 VNĐ)</option>
+                                            <option value="intel-core-i3-9100f" data-price="500000"
+                                                data-image="images/intel-core-i3-9100f.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1151-v2">Intel Core i3-9100F
+                                                (Giá: 500.000 VNĐ)</option>
+                                            <option value="intel-core-i3-10100f" data-price="1100000"
+                                                data-image="images/intel-core-i3-10100f.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1200">Intel Core i3-10100F
+                                                (Giá: 1.100.000 VNĐ)</option>
+                                            <option value="intel-core-i3-10105" data-price="1800000"
+                                                data-image="images/intel-core-i3-10105.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1200">Intel Core i3-10105 (Giá:
+                                                1.800.000 VNĐ)</option>
+                                            <option value="intel-core-i3-10105f" data-price="1100000"
+                                                data-image="images/intel-core-i3-10105f.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1200">Intel Core i3-10105F
+                                                (Giá: 1.100.000 VNĐ)</option>
+                                            <option value="intel-core-i3-12100F" data-price="1350000"
+                                                data-image="images/intel-core-i3-12100F.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i3-12100F
+                                                (Giá: 1.350.000 VNĐ)</option>
+                                            <option value="intel-core-i3-13100F" data-price="2100000"
+                                                data-image="images/intel-core-i3-13100.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i3-13100 (Giá:
+                                                2.100.000 VNĐ)</option>
+                                            <option value="intel-core-i3-14100F" data-price="2300000"
+                                                data-image="images/intel-core-i3-13100.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i3-13100 (Giá:
+                                                2.300.000 VNĐ)</option>
                                         </optgroup>
                                         <optgroup label="INTEL - Core i5 (3rd Gen - 14th Gen)">
-                                            <option value="intel-core-i5-3470" data-price="250000" data-image="images/intel-core-i5-3470.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1155">Intel Core i5-3470 (Cũ) (Giá: 250.000 VNĐ)</option>
-                                            <option value="intel-core-i5-4570" data-price="400000" data-image="images/intel-core-i5-4570.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1150">Intel Core i5-4570 (Cũ) (Giá: 400.000 VNĐ)</option>
-                                            <option value="intel-core-i5-6500" data-price="900000" data-image="images/intel-core-i5-6500.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151">Intel Core i5-6500 (Cũ) (Giá: 900.000 VNĐ)</option>
-                                            <option value="intel-core-i5-7400" data-price="1100000" data-image="images/intel-core-i5-7400.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151">Intel Core i5-7400 (Cũ) (Giá: 1.100.000 VNĐ)</option>
-                                            <option value="intel-core-i5-8400" data-price="900000" data-image="images/intel-core-i5-8400.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i5-8400 (Cũ) (Giá: 900.000 VNĐ)</option>
-                                            <option value="intel-core-i5-9400f" data-price="1100000" data-image="images/intel-core-i5-9400f.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1151-v2">Intel Core i5-9400F (Giá: 1.100.000 VNĐ)</option>
-                                            <option value="intel-core-i5-10400f" data-price="1600000" data-image="images/intel-core-i5-10400f.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1200">Intel Core i5-10400F (Giá: 1.600.000 VNĐ)</option>
-                                            <option value="intel-core-i5-11400f" data-price="1700000" data-image="images/intel-core-i5-11400f.jpg" data-brand="Intel" data-warranty="12 tháng" data-socket="LGA1200">Intel Core i5-11400F (Giá: 1.700.000 VNĐ)</option>
-                                            <option value="intel-core-i5-12400f" data-price="2400000" data-image="images/intel-core-i5-12400f.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-12400F (Giá: 2.400.000 VNĐ)</option>
-                                            <option value="intel-core-i5-12600f" data-price="3400000" data-image="images/intel-core-i5-13400f.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-12600KF (Giá: 3.400.000 VNĐ)</option>
-                                            <option value="intel-core-i5-13400f" data-price="2800000" data-image="images/intel-core-i5-13400f.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-13400F (Giá: 2.800.000 VNĐ)</option>
-                                            <option value="intel-core-i5-13600kf" data-price="4400000" data-image="images/intel-core-i5-14600kf.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-13600KF (Giá: 4.400.000 VNĐ)</option>
-                                            <option value="intel-core-i5-14600kf" data-price="4600000" data-image="images/intel-core-i5-14600kf.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-14600KF (Giá: 4.600.000 VNĐ)</option>
+                                            <option value="intel-core-i5-3470" data-price="250000"
+                                                data-image="images/intel-core-i5-3470.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1155">Intel Core i5-3470 (Cũ)
+                                                (Giá: 250.000 VNĐ)</option>
+                                            <option value="intel-core-i5-4570" data-price="400000"
+                                                data-image="images/intel-core-i5-4570.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1150">Intel Core i5-4570 (Cũ)
+                                                (Giá: 400.000 VNĐ)</option>
+                                            <option value="intel-core-i5-6500" data-price="900000"
+                                                data-image="images/intel-core-i5-6500.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151">Intel Core i5-6500 (Cũ)
+                                                (Giá: 900.000 VNĐ)</option>
+                                            <option value="intel-core-i5-7400" data-price="1100000"
+                                                data-image="images/intel-core-i5-7400.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151">Intel Core i5-7400 (Cũ)
+                                                (Giá: 1.100.000 VNĐ)</option>
+                                            <option value="intel-core-i5-8400" data-price="900000"
+                                                data-image="images/intel-core-i5-8400.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i5-8400 (Cũ)
+                                                (Giá: 900.000 VNĐ)</option>
+                                            <option value="intel-core-i5-9400f" data-price="1100000"
+                                                data-image="images/intel-core-i5-9400f.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1151-v2">Intel Core i5-9400F
+                                                (Giá: 1.100.000 VNĐ)</option>
+                                            <option value="intel-core-i5-10400f" data-price="1600000"
+                                                data-image="images/intel-core-i5-10400f.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1200">Intel Core i5-10400F
+                                                (Giá: 1.600.000 VNĐ)</option>
+                                            <option value="intel-core-i5-11400f" data-price="1700000"
+                                                data-image="images/intel-core-i5-11400f.jpg" data-brand="Intel"
+                                                data-warranty="12 tháng" data-socket="LGA1200">Intel Core i5-11400F
+                                                (Giá: 1.700.000 VNĐ)</option>
+                                            <option value="intel-core-i5-12400f" data-price="2400000"
+                                                data-image="images/intel-core-i5-12400f.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-12400F
+                                                (Giá: 2.400.000 VNĐ)</option>
+                                            <option value="intel-core-i5-12600f" data-price="3400000"
+                                                data-image="images/intel-core-i5-13400f.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-12600KF
+                                                (Giá: 3.400.000 VNĐ)</option>
+                                            <option value="intel-core-i5-13400f" data-price="2800000"
+                                                data-image="images/intel-core-i5-13400f.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-13400F
+                                                (Giá: 2.800.000 VNĐ)</option>
+                                            <option value="intel-core-i5-13600kf" data-price="4400000"
+                                                data-image="images/intel-core-i5-14600kf.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-13600KF
+                                                (Giá: 4.400.000 VNĐ)</option>
+                                            <option value="intel-core-i5-14600kf" data-price="4600000"
+                                                data-image="images/intel-core-i5-14600kf.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i5-14600KF
+                                                (Giá: 4.600.000 VNĐ)</option>
                                         </optgroup>
                                         <optgroup label="INTEL - Core i7">
-                                            <option value="intel-core-i7-8700" data-price="24000000" data-image="images/intel-core-i7-8700.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-8700 (Cũ) (Giá: 24.000.000 VNĐ)</option>
-                                            <option value="intel-core-i7-9700k" data-price="2800000" data-image="images/intel-core-i7-9700k.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-9700K (Cũ) (Giá: 2.800.000 VNĐ)</option>
-                                            <option value="intel-core-i7-10700k" data-price="4000000" data-image="images/intel-core-i7-9700k.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-9700K (Cũ) (Giá: 4.000.000 VNĐ)</option>
-                                            <option value="intel-core-i7-10700kF" data-price="280000" data-image="images/intel-core-i7-9700k.jpg" data-brand="Intel (Cũ)" data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-9700K (Cũ) (Giá: 280.000 VNĐ)</option>
-                                            <option value="intel-core-i7-12700f" data-price="8800000" data-image="images/intel-core-i7-12700f.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i7-12700F (Giá: 8.800.000 VNĐ)</option>
-                                            <option value="intel-core-i7-13700k" data-price="10500000" data-image="images/intel-core-i7-13700k.jpg" data-brand="Intel" data-warranty="36 tháng" data-socket="LGA1700">Intel Core i7-13700K (Giá: 10.500.000 VNĐ)</option>
+                                            <option value="intel-core-i7-8700" data-price="24000000"
+                                                data-image="images/intel-core-i7-8700.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-8700 (Cũ)
+                                                (Giá: 24.000.000 VNĐ)</option>
+                                            <option value="intel-core-i7-9700k" data-price="2800000"
+                                                data-image="images/intel-core-i7-9700k.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-9700K
+                                                (Cũ) (Giá: 2.800.000 VNĐ)</option>
+                                            <option value="intel-core-i7-10700k" data-price="4000000"
+                                                data-image="images/intel-core-i7-9700k.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-9700K
+                                                (Cũ) (Giá: 4.000.000 VNĐ)</option>
+                                            <option value="intel-core-i7-10700kF" data-price="280000"
+                                                data-image="images/intel-core-i7-9700k.jpg" data-brand="Intel (Cũ)"
+                                                data-warranty="1 tháng" data-socket="LGA1151-v2">Intel Core i7-9700K
+                                                (Cũ) (Giá: 280.000 VNĐ)</option>
+                                            <option value="intel-core-i7-12700f" data-price="8800000"
+                                                data-image="images/intel-core-i7-12700f.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i7-12700F
+                                                (Giá: 8.800.000 VNĐ)</option>
+                                            <option value="intel-core-i7-13700k" data-price="10500000"
+                                                data-image="images/intel-core-i7-13700k.jpg" data-brand="Intel"
+                                                data-warranty="36 tháng" data-socket="LGA1700">Intel Core i7-13700K
+                                                (Giá: 10.500.000 VNĐ)</option>
                                         </optgroup>
                                         <optgroup label="AMD - Ryzen 5">
-                                            <option value="amd-ryzen-5-3600" data-price="1600000" data-image="images/amd-ryzen-5-3600.jpg" data-brand="AMD (Cũ)" data-warranty="1 tháng" data-socket="AM4">amd-ryzen-5-3600 (Cũ) (Giá: 1.600.000 VNĐ)</option>
-                                            <option value="amd-ryzen-5-5500" data-price="1900000" data-image="images/amd-ryzen-5-5500.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-5-5500 (Giá: 1.900.000 VNĐ)</option>
-                                            <option value="amd-ryzen-5-5600" data-price="2400000" data-image="images/5600.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-5-5600 (Giá: 2.400.000 VNĐ)</option>
-                                            <option value="amd-ryzen-5-5600X" data-price="2800000" data-image="images/5600.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-5-5600X (Giá: 2.800.000 VNĐ)</option>
-                                            <option value="amd-ryzen-5-5600G" data-price="2800000" data-image="images/5600.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-5-5600G (Giá: 2.800.000 VNĐ)</option>
-                                            <option value="amd-ryzen-5-7500f" data-price="3800000" data-image="images/amd-ryzen-5-7500f.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM5">amd-ryzen-5-7500f (Giá: 3.800.000 VNĐ)</option>
+                                            <option value="amd-ryzen-5-3600" data-price="1600000"
+                                                data-image="images/amd-ryzen-5-3600.jpg" data-brand="AMD (Cũ)"
+                                                data-warranty="1 tháng" data-socket="AM4">amd-ryzen-5-3600 (Cũ) (Giá:
+                                                1.600.000 VNĐ)</option>
+                                            <option value="amd-ryzen-5-5500" data-price="1900000"
+                                                data-image="images/amd-ryzen-5-5500.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM4">amd-ryzen-5-5500 (Giá:
+                                                1.900.000 VNĐ)</option>
+                                            <option value="amd-ryzen-5-5600" data-price="2400000"
+                                                data-image="images/5600.jpg" data-brand="AMD" data-warranty="36 tháng"
+                                                data-socket="AM4">amd-ryzen-5-5600 (Giá: 2.400.000 VNĐ)</option>
+                                            <option value="amd-ryzen-5-5600X" data-price="2800000"
+                                                data-image="images/5600.jpg" data-brand="AMD" data-warranty="36 tháng"
+                                                data-socket="AM4">amd-ryzen-5-5600X (Giá: 2.800.000 VNĐ)</option>
+                                            <option value="amd-ryzen-5-5600G" data-price="2800000"
+                                                data-image="images/5600G.jpg" data-brand="AMD" data-warranty="36 tháng"
+                                                data-socket="AM4">amd-ryzen-5-5600G (Giá: 2.800.000 VNĐ)</option>
+                                            <option value="amd-ryzen-5-7500f" data-price="3800000"
+                                                data-image="images/amd-ryzen-5-7500f.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM5">amd-ryzen-5-7500f (Giá:
+                                                3.800.000 VNĐ)</option>
                                         </optgroup>
                                         <optgroup label="AMD - Ryzen 7">
-                                            <option value="amd-ryzen-7-3700x" data-price="2500000" data-image="images/amd-ryzen-7-3700x.jpg" data-brand="AMD (Cũ)" data-warranty="1 tháng" data-socket="AM4">amd-ryzen-7-3700x (Cũ) (Giá: 2.500.000 VNĐ)</option>
-                                            <option value="amd-ryzen-7-5700x" data-price="3300000" data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5700x (Giá: 3.300.000 VNĐ)</option>
-                                            <option value="amd-ryzen-7-5700x3D" data-price="5000000" data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5700x3D (Giá: 5.000.000 VNĐ)</option>
-                                            <option value="amd-ryzen-7-5800x" data-price="3800000" data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5800x (Giá: 3.800.000 VNĐ)</option>
-                                            <option value="amd-ryzen-7-7700x" data-price="6100000" data-image="images/amd-ryzen-7-7700x.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM5">amd-ryzen-7-7700x (Giá: 6.100.000 VNĐ)</option>
+                                            <option value="amd-ryzen-7-3700x" data-price="2500000"
+                                                data-image="images/amd-ryzen-7-3700x.jpg" data-brand="AMD (Cũ)"
+                                                data-warranty="1 tháng" data-socket="AM4">amd-ryzen-7-3700x (Cũ) (Giá:
+                                                2.500.000 VNĐ)</option>
+                                            <option value="amd-ryzen-7-5700x" data-price="3300000"
+                                                data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5700x (Giá:
+                                                3.300.000 VNĐ)</option>
+                                            <option value="amd-ryzen-7-5700x3D" data-price="5000000"
+                                                data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5700x3D (Giá:
+                                                5.000.000 VNĐ)</option>
+                                            <option value="amd-ryzen-7-5800x" data-price="3800000"
+                                                data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5800x (Giá:
+                                                3.800.000 VNĐ)</option>
+                                            <option value="amd-ryzen-7-7700x" data-price="6100000"
+                                                data-image="images/amd-ryzen-7-7700x.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM5">amd-ryzen-7-7700x (Giá:
+                                                6.100.000 VNĐ)</option>
                                         </optgroup>
                                         <optgroup label="AMD - Ryzen 9">
-                                            <option value="amd-ryzen-9-5900x" data-price="5500000" data-image="images/amd-ryzen-9-5900x.jpg" data-brand="AMD (Cũ)" data-warranty="1 tháng" data-socket="AM4">amd-ryzen-9-5900x (Cũ) (Giá: 5.500.000 VNĐ)</option>
-                                            <option value="amd-ryzen-9-5950x" data-price="7500000" data-image="images/amd-ryzen-9-5900x.jpg" data-brand="AMD (Cũ)" data-warranty="1 tháng" data-socket="AM4">amd-ryzen-9-5950x (Cũ) (Giá: 7.500.000 VNĐ)</option>
-                                            <option value="amd-ryzen-9-7900x" data-price="8300000" data-image="images/amd-ryzen-9-7900x.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM5">amd-ryzen-9-7900x (Giá: 8.300.000 VNĐ)</option>
-                                            <option value="amd-ryzen-9-7950x" data-price="11600000" data-image="images/amd-ryzen-9-7900x.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM5">amd-ryzen-9-7950x (Giá: 11.600.000 VNĐ)</option>
-                                            <option value="amd-ryzen-9-7950x3d" data-price="12000000" data-image="images/amd-ryzen-9-7950x3d.jpg" data-brand="AMD" data-warranty="36 tháng" data-socket="AM5">amd-ryzen-9-7950x3d (Giá: 12.000.000 VNĐ)</option>
+                                            <option value="amd-ryzen-9-5900x" data-price="5500000"
+                                                data-image="images/amd-ryzen-9-5900x.jpg" data-brand="AMD (Cũ)"
+                                                data-warranty="1 tháng" data-socket="AM4">amd-ryzen-9-5900x (Cũ) (Giá:
+                                                5.500.000 VNĐ)</option>
+                                            <option value="amd-ryzen-9-5950x" data-price="7500000"
+                                                data-image="images/amd-ryzen-9-5900x.jpg" data-brand="AMD (Cũ)"
+                                                data-warranty="1 tháng" data-socket="AM4">amd-ryzen-9-5950x (Cũ) (Giá:
+                                                7.500.000 VNĐ)</option>
+                                            <option value="amd-ryzen-9-7900x" data-price="8300000"
+                                                data-image="images/amd-ryzen-9-7900x.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM5">amd-ryzen-9-7900x (Giá:
+                                                8.300.000 VNĐ)</option>
+                                            <option value="amd-ryzen-9-7950x" data-price="11600000"
+                                                data-image="images/amd-ryzen-9-7900x.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM5">amd-ryzen-9-7950x (Giá:
+                                                11.600.000 VNĐ)</option>
+                                            <option value="amd-ryzen-9-7950x3d" data-price="12000000"
+                                                data-image="images/amd-ryzen-9-7950x3d.jpg" data-brand="AMD"
+                                                data-warranty="36 tháng" data-socket="AM5">amd-ryzen-9-7950x3d (Giá:
+                                                12.000.000 VNĐ)</option>
                                         </optgroup>
                                     </select>
                                 </td>
@@ -112,55 +237,244 @@
                                     <select name="mainboard" id="mainboard">
                                         <option value="">Chọn Mainboard</option>
                                         <optgroup label="INTEL - H Series">
-                                            <option value="gigabyte-h61m-ds2" data-price="700000" data-image="images/gigabyte-h61m-ds2.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1155">Gigabyte H61M-DS2 (LGA1155 - Cũ)</option>
-                                            <option value="asus-h81m-e" data-price="850000" data-image="images/asus-h81m-e.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1150">ASUS H81M-E (LGA1150 - Cũ)</option>
-                                            <option value="gigabyte-h110m-ds2" data-price="950000" data-image="images/gigabyte-h110m-ds2.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151">Gigabyte H110M-DS2 (LGA1151 - Cũ)</option>
-                                            <option value="asus-h310m-e" data-price="1200000" data-image="images/asus-h310m-e.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">ASUS H310M-E (LGA1151-v2 - Cũ)</option>
-                                            <option value="gigabyte-h410m-h-v2" data-price="1500000" data-image="images/gigabyte-h410m-h-v2.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1200">Gigabyte H410M H V2 (LGA1200 - Cũ)</option>
-                                            <option value="asus-prime-h510m-e" data-price="1800000" data-image="images/asus-prime-h510m-e.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1200">ASUS Prime H510M-E (LGA1200 - Cũ)</option>
-                                            <option value="gigabyte-h610m-h-ddr4" data-price="2500000" data-image="images/gigabyte-h610m-h-ddr4.jpg" data-brand="Gigabyte" data-warranty="36 tháng" data-cpu-socket="LGA1700">Gigabyte H610M H DDR4 (LGA1700)</option>
-                                            <option value="asus-prime-h610m-k-d4" data-price="2800000" data-image="images/asus-prime-h610m-k-d4.jpg" data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="LGA1700">ASUS Prime H610M-K D4 (LGA1700)</option>
-                                            <option value="msi-pro-h610m-e-ddr4" data-price="2600000" data-image="images/msi-pro-h610m-e-ddr4.jpg" data-brand="MSI" data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI PRO H610M-E DDR4 (LGA1700)</option>
+                                            <option value="gigabyte-h61m-ds2" data-price="700000"
+                                                data-image="images/gigabyte-h61m-ds2.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1155">Gigabyte H61M-DS2
+                                                (LGA1155 - Cũ)</option>
+                                            <option value="asus-h81m-e" data-price="850000"
+                                                data-image="images/asus-h81m-e.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1150">ASUS H81M-E (LGA1150 -
+                                                Cũ)</option>
+                                            <option value="gigabyte-h110m-ds2" data-price="950000"
+                                                data-image="images/gigabyte-h110m-ds2.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151">Gigabyte H110M-DS2
+                                                (LGA1151 - Cũ)</option>
+                                            <option value="asus-h310m-e" data-price="1200000"
+                                                data-image="images/asus-h310m-e.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">ASUS H310M-E
+                                                (LGA1151-v2 - Cũ)</option>
+                                            <option value="gigabyte-h410m-h-v2" data-price="1500000"
+                                                data-image="images/gigabyte-h410m-h-v2.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1200">Gigabyte H410M H V2
+                                                (LGA1200 - Cũ)</option>
+                                            <option value="asus-prime-h510m-e" data-price="1800000"
+                                                data-image="images/asus-prime-h510m-e.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1200">ASUS Prime H510M-E
+                                                (LGA1200 - Cũ)</option>
+                                            <option value="gigabyte-h610m-h-ddr4" data-price="2500000"
+                                                data-image="images/gigabyte-h610m-h-ddr4.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">Gigabyte H610M H DDR4
+                                                (LGA1700)</option>
+                                            <option value="asus-prime-h610m-k-d4" data-price="2800000"
+                                                data-image="images/asus-prime-h610m-k-d4.jpg" data-brand="ASUS"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">ASUS Prime H610M-K D4
+                                                (LGA1700)</option>
+                                            <option value="msi-pro-h610m-e-ddr4" data-price="2600000"
+                                                data-image="images/msi-pro-h610m-e-ddr4.jpg" data-brand="MSI"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI PRO H610M-E DDR4
+                                                (LGA1700)</option>
+                                            <option value="huannanzhi-h610m-k-ddr4" data-price="2600000"
+                                                data-image="images/huannanzhi-h610m-k-ddr4.jpg" data-brand="HNZ"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">
+                                                huannanzhi-h610m-k-ddr4 (LGA1700)</option>
                                         </optgroup>
                                         <optgroup label="INTEL - B Series">
-                                            <option value="gigabyte-b75m-d3v" data-price="800000" data-image="images/gigabyte-b75m-d3v.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1155">Gigabyte B75M-D3V (LGA1155 - Cũ)</option>
-                                            <option value="asus-b85m-g" data-price="950000" data-image="images/asus-b85m-g.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1150">ASUS B85M-G (LGA1150 - Cũ)</option>
-                                            <option value="gigabyte-b150m-d3h" data-price="1100000" data-image="images/gigabyte-b150m-d3h.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151">Gigabyte B150M-D3H (LGA1151 - Cũ)</option>
-                                            <option value="asus-prime-b250m-a" data-price="1300000" data-image="images/asus-prime-b250m-a.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151">ASUS Prime B250M-A (LGA1151 - Cũ)</option>
-                                            <option value="gigabyte-b360m-d3h" data-price="1500000" data-image="images/gigabyte-b360m-d3h.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">Gigabyte B360M D3H (LGA1151-v2 - Cũ)</option>
-                                            <option value="asus-prime-b365m-a" data-price="1700000" data-image="images/asus-prime-b365m-a.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">ASUS Prime B365M-A (LGA1151-v2 - Cũ)</option>
-                                            <option value="gigabyte-b460m-ds3h-ac" data-price="1900000" data-image="images/gigabyte-b460m-ds3h-ac.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1200">Gigabyte B460M DS3H AC (LGA1200 - Cũ)</option>
-                                            <option value="asus-prime-b560m-a" data-price="2200000" data-image="images/asus-prime-b560m-a.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1200">ASUS Prime B560M-A (LGA1200 - Cũ)</option>
-                                            <option value="gigabyte-b660m-ds3h-ax-ddr4" data-price="3200000" data-image="images/gigabyte-b660m-ds3h-ax-ddr4.jpg" data-brand="Gigabyte" data-warranty="36 tháng" data-cpu-socket="LGA1700">Gigabyte B660M DS3H AX DDR4 (LGA1700)</option>
-                                            <option value="asus-prime-b660m-a-wifi-d4" data-price="3800000" data-image="images/asus-prime-b660m-a-wifi-d4.jpg" data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="LGA1700">ASUS Prime B660M-A WIFI D4 (LGA1700)</option>
-                                            <option value="msi-mag-b760m-mortar-wifi-ddr4" data-price="4500000" data-image="images/msi-mag-b760m-mortar-wifi-ddr4.jpg" data-brand="MSI" data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI MAG B760M MORTAR WIFI DDR4 (LGA1700)</option>
+                                            <option value="gigabyte-b75m-d3v" data-price="800000"
+                                                data-image="images/gigabyte-b75m-d3v.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1155">Gigabyte B75M-D3V
+                                                (LGA1155 - Cũ)</option>
+                                            <option value="asus-b85m-g" data-price="950000"
+                                                data-image="images/asus-b85m-g.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1150">ASUS B85M-G (LGA1150 -
+                                                Cũ)</option>
+                                            <option value="gigabyte-b150m-d3h" data-price="1100000"
+                                                data-image="images/gigabyte-b150m-d3h.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151">Gigabyte B150M-D3H
+                                                (LGA1151 - Cũ)</option>
+                                            <option value="asus-prime-b250m-a" data-price="1300000"
+                                                data-image="images/asus-prime-b250m-a.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151">ASUS Prime B250M-A
+                                                (LGA1151 - Cũ)</option>
+                                            <option value="gigabyte-b360m-d3h" data-price="1500000"
+                                                data-image="images/gigabyte-b360m-d3h.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">Gigabyte B360M D3H
+                                                (LGA1151-v2 - Cũ)</option>
+                                            <option value="asus-prime-b365m-a" data-price="1700000"
+                                                data-image="images/asus-prime-b365m-a.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">ASUS Prime B365M-A
+                                                (LGA1151-v2 - Cũ)</option>
+                                            <option value="gigabyte-b460m-ds3h-ac" data-price="1900000"
+                                                data-image="images/gigabyte-b460m-ds3h-ac.jpg"
+                                                data-brand="Gigabyte (Cũ)" data-warranty="1 tháng"
+                                                data-cpu-socket="LGA1200">Gigabyte B460M DS3H AC (LGA1200 - Cũ)</option>
+                                            <option value="asus-prime-b560m-a" data-price="2200000"
+                                                data-image="images/asus-prime-b560m-a.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1200">ASUS Prime B560M-A
+                                                (LGA1200 - Cũ)</option>
+                                            <option value="gigabyte-b660m-ds3h-ax-ddr4" data-price="3200000"
+                                                data-image="images/gigabyte-b660m-ds3h-ax-ddr4.jpg"
+                                                data-brand="Gigabyte" data-warranty="36 tháng"
+                                                data-cpu-socket="LGA1700">Gigabyte B660M DS3H AX DDR4 (LGA1700)</option>
+                                            <option value="asus-prime-b660m-a-wifi-d4" data-price="3800000"
+                                                data-image="images/asus-prime-b660m-a-wifi-d4.jpg" data-brand="ASUS"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">ASUS Prime B660M-A
+                                                WIFI D4 (LGA1700)</option>
+                                            <option value="msi-mag-b760m-mortar-wifi-ddr4" data-price="4500000"
+                                                data-image="images/msi-mag-b760m-mortar-wifi-ddr4.jpg" data-brand="MSI"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI MAG B760M MORTAR
+                                                WIFI DDR4 (LGA1700)</option>
+                                            <option value="jginyue-b760m-k-wifi-ddr4" data-price="2150000"
+                                                data-image="images/jginyue-b760m-k-wifi-ddr4.jpg" data-brand="JGINYUE"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">JGINYUE B760M-K WIFI
+                                                DDR4 (LGA1700)</option>
+                                            <option value="gigabyte-b760m-k-ddr4-v2" data-price="2250000"
+                                                data-image="images/gigabyte-b760m-k-ddr4-v2.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">Gigabyte B760M K DDR4
+                                                V2 (LGA1700)</option>
+                                            <option value="gigabyte-b760m-d2h" data-price="2490000"
+                                                data-image="images/gigabyte-b760m-d2h.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">Gigabyte B760M D2H
+                                                (LGA1700)</option>
+                                            <option value="asus-prime-b760m-k-d4" data-price="2499000"
+                                                data-image="images/asus-prime-b760m-k-d4.jpg" data-brand="ASUS"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">ASUS PRIME B760M-K D4
+                                                (LGA1700)</option>
+                                            <option value="jginyue-b760i-snow-dream-ddr4" data-price="2450000"
+                                                data-image="images/jginyue-b760i-snow-dream-ddr4.jpg"
+                                                data-brand="JGINYUE" data-warranty="36 tháng" data-cpu-socket="LGA1700">
+                                                JGINYUE B760I SNOW DREAM DDR4 (LGA1700)</option>
+                                            <option value="gigabyte-b760m-gaming-wifi-plus-ddr5" data-price="3250000"
+                                                data-image="images/gigabyte-b760m-gaming-wifi-plus-ddr5.jpg"
+                                                data-brand="Gigabyte" data-warranty="36 tháng"
+                                                data-cpu-socket="LGA1700">Gigabyte B760M GAMING WIFI PLUS DDR5 (LGA1700)
+                                            </option>
+                                            <option value="asrock-b760m-pro-rs-ddr4" data-price="2950000"
+                                                data-image="images/asrock-b760m-pro-rs-ddr4.jpg" data-brand="ASRock"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">ASRock B760M PRO RS
+                                                DDR4 (LGA1700)</option>
+                                            <option value="asrock-b760m-hdv-m2-d4" data-price="2090000"
+                                                data-image="images/asrock-b760m-hdv-m2-d4.jpg" data-brand="ASRock"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">ASRock B760M-HDV/M.2
+                                                D4 (LGA1700)</option>
+                                            <option value="huananzhi-b760m-d4-ddr4-black" data-price="1890000"
+                                                data-image="images/huananzhi-b760m-d4-ddr4-black.jpg"
+                                                data-brand="HUANANZHI" data-warranty="24 tháng"
+                                                data-cpu-socket="LGA1700">HUANANZHI B760M-D4 DDR4 BLACK (LGA1700)
+                                            </option>
+                                            <option value="msi-pro-b760m-p-ddr4" data-price="2570000"
+                                                data-image="images/msi-pro-b760m-p-ddr4.jpg" data-brand="MSI"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI PRO B760M-P DDR4
+                                                (LGA1700)</option>
+                                            <option value="msi-pro-b760m-e-ddr4" data-price="2290000"
+                                                data-image="images/msi-pro-b760m-e-ddr4.jpg" data-brand="MSI"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI PRO B760M-E DDR4
+                                                (LGA1700)</option>
+                                            <option value="colorful-cvn-b760m-frozen-ddr5-v2-wifi" data-price="3590000"
+                                                data-image="images/colorful-cvn-b760m-frozen-ddr5-v2-wifi.jpg"
+                                                data-brand="Colorful" data-warranty="36 tháng"
+                                                data-cpu-socket="LGA1700">Colorful CVN B760M FROZEN DDR5 V2.0 WIFI
+                                                (LGA1700)</option>
                                         </optgroup>
                                         <optgroup label="INTEL - Z Series">
-                                            <option value="asus-z77-v-lx2" data-price="1200000" data-image="images/asus-z77-v-lx2.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1155">ASUS Z77-V LX2 (LGA1155 - Cũ)</option>
-                                            <option value="gigabyte-z87-hd3" data-price="1500000" data-image="images/gigabyte-z87-hd3.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1150">Gigabyte Z87-HD3 (LGA1150 - Cũ)</option>
-                                            <option value="asus-z170-a" data-price="1800000" data-image="images/asus-z170-a.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151">ASUS Z170-A (LGA1151 - Cũ)</option>
-                                            <option value="gigabyte-z270-gaming-k3" data-price="2100000" data-image="images/gigabyte-z270-gaming-k3.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151">Gigabyte Z270 Gaming K3 (LGA1151 - Cũ)</option>
-                                            <option value="asus-rog-strix-z390-e-gaming" data-price="3500000" data-image="images/asus-rog-strix-z390-e-gaming.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1151-v2">ASUS ROG STRIX Z390-E GAMING (LGA1151-v2 - Cũ)</option>
-                                            <option value="msi-mpg-z490-gaming-plus" data-price="3800000" data-image="images/msi-mpg-z490-gaming-plus.jpg" data-brand="MSI (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1200">MSI MPG Z490 GAMING PLUS (LGA1200 - Cũ)</option>
-                                            <option value="asus-rog-strix-z590-e-gaming-wifi" data-price="4500000" data-image="images/asus-rog-strix-z590-e-gaming-wifi.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="LGA1200">ASUS ROG STRIX Z590-E GAMING WIFI (LGA1200 - Cũ)</option>
-                                            <option value="asus-rog-strix-z790-f-gaming-wifi" data-price="9500000" data-image="images/asus-rog-strix-z790-f-gaming-wifi.jpg" data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="LGA1700">ASUS ROG STRIX Z790-F GAMING WIFI (LGA1700)</option>
-                                            <option value="msi-mag-z790-tomahawk-wifi" data-price="7500000" data-image="images/msi-mag-z790-tomahawk-wifi.jpg" data-brand="MSI" data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI MAG Z790 TOMAHAWK WIFI (LGA1700)</option>
-                                        </optgroup>
-                                        <optgroup label="AMD - A Series">
-                                            <option value="asus-prime-a320m-k" data-price="900000" data-image="images/asus-prime-a320m-k.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="AM4">ASUS Prime A320M-K (AM4 - Cũ)</option>
-                                            <option value="asus-prime-a520m-k" data-price="1500000" data-image="images/asus-prime-a520m-k.jpg" data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="AM4">ASUS Prime A520M-K (AM4)</option>
+                                            <option value="asus-z77-v-lx2" data-price="1200000"
+                                                data-image="images/asus-z77-v-lx2.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1155">ASUS Z77-V LX2
+                                                (LGA1155 - Cũ)</option>
+                                            <option value="gigabyte-z87-hd3" data-price="1500000"
+                                                data-image="images/gigabyte-z87-hd3.jpg" data-brand="Gigabyte (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1150">Gigabyte Z87-HD3
+                                                (LGA1150 - Cũ)</option>
+                                            <option value="asus-z170-a" data-price="1800000"
+                                                data-image="images/asus-z170-a.jpg" data-brand="ASUS (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1151">ASUS Z170-A (LGA1151 -
+                                                Cũ)</option>
+                                            <option value="gigabyte-z270-gaming-k3" data-price="2100000"
+                                                data-image="images/gigabyte-z270-gaming-k3.jpg"
+                                                data-brand="Gigabyte (Cũ)" data-warranty="1 tháng"
+                                                data-cpu-socket="LGA1151">Gigabyte Z270 Gaming K3 (LGA1151 - Cũ)
+                                            </option>
+                                            <option value="asus-rog-strix-z390-e-gaming" data-price="3500000"
+                                                data-image="images/asus-rog-strix-z390-e-gaming.jpg"
+                                                data-brand="ASUS (Cũ)" data-warranty="1 tháng"
+                                                data-cpu-socket="LGA1151-v2">ASUS ROG STRIX Z390-E GAMING (LGA1151-v2 -
+                                                Cũ)</option>
+                                            <option value="msi-mpg-z490-gaming-plus" data-price="3800000"
+                                                data-image="images/msi-mpg-z490-gaming-plus.jpg" data-brand="MSI (Cũ)"
+                                                data-warranty="1 tháng" data-cpu-socket="LGA1200">MSI MPG Z490 GAMING
+                                                PLUS (LGA1200 - Cũ)</option>
+                                            <option value="asus-rog-strix-z590-e-gaming-wifi" data-price="4500000"
+                                                data-image="images/asus-rog-strix-z590-e-gaming-wifi.jpg"
+                                                data-brand="ASUS (Cũ)" data-warranty="1 tháng"
+                                                data-cpu-socket="LGA1200">ASUS ROG STRIX Z590-E GAMING WIFI (LGA1200 -
+                                                Cũ)</option>
+                                            <option value="asus-rog-strix-z790-f-gaming-wifi" data-price="9500000"
+                                                data-image="images/asus-rog-strix-z790-f-gaming-wifi.jpg"
+                                                data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="LGA1700">
+                                                ASUS ROG STRIX Z790-F GAMING WIFI (LGA1700)</option>
+                                            <option value="msi-mag-z790-tomahawk-wifi" data-price="7500000"
+                                                data-image="images/msi-mag-z790-tomahawk-wifi.jpg" data-brand="MSI"
+                                                data-warranty="36 tháng" data-cpu-socket="LGA1700">MSI MAG Z790 TOMAHAWK
+                                                WIFI (LGA1700)</option>
                                         </optgroup>
                                         <optgroup label="AMD - B Series">
-                                            <option value="gigabyte-b350m-ds3h" data-price="1200000" data-image="images/gigabyte-b350m-ds3h.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="AM4">Gigabyte B350M-DS3H (AM4 - Cũ)</option>
-                                            <option value="gigabyte-b450m-ds3h-v2" data-price="1800000" data-image="images/gigabyte-b450m-ds3h-v2.jpg" data-brand="Gigabyte" data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B450M DS3H V2 (AM4)</option>
-                                            <option value="msi-mag-b550m-mortar-wifi" data-price="3500000" data-image="images/msi-mag-b550m-mortar-wifi.jpg" data-brand="MSI" data-warranty="36 tháng" data-cpu-socket="AM4">MSI MAG B550M MORTAR WIFI (AM4)</option>
-                                            <option value="asus-tuf-gaming-b650m-plus-wifi" data-price="5800000" data-image="images/asus-tuf-gaming-b650m-plus-wifi.jpg" data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="AM5">ASUS TUF GAMING B650M-PLUS WIFI (AM5)</option>
-                                            <option value="msi-mag-b650-tomahawk-wifi" data-price="6200000" data-image="images/msi-mag-b650-tomahawk-wifi.jpg" data-brand="MSI" data-warranty="36 tháng" data-cpu-socket="AM5">MSI MAG B650 TOMAHAWK WIFI (AM5)</option>
+                                            <option value="gigabyte-b450m-ds3h" data-price="1800000"
+                                                data-image="images/gigabyte-b450m-ds3h-v2.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B450M DS3H V2
+                                                (AM4)</option>
+                                            <option value="msi-b450m-a-pro-max-2" data-price="1800000"
+                                                data-image="images/gigabyte-b450m-ds3h-v2.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B450M DS3H V2
+                                                (AM4)</option>
+                                            <option value="asrock-b450m-hdv" data-price="1800000"
+                                                data-image="images/gigabyte-b450m-ds3h-v2.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B450M DS3H V2
+                                                (AM4)</option>
+                                            <option value="amd-jginyue-b450m-pro" data-price="1499000"
+                                                data-image="images/amd-jginyue-b450m-pro.jpg" data-brand="JGINYUE"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">AMD JGINYUE B450M PRO
+                                                (AM4)</option>
+                                            <option value="msi-b450m-pro-m2-max" data-price="Liên hệ"
+                                                data-image="images/msi-b450m-pro-m2-max.jpg" data-brand="MSI"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">MSI B450M PRO-M2 MAX
+                                                (AM4)</option>
+                                            <option value="asus-prime-b450m-a-ii" data-price="1890000"
+                                                data-image="images/asus-prime-b450m-a-ii.jpg" data-brand="ASUS"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">ASUS PRIME B450M-A II
+                                                (AM4)</option>
+                                            <option value="jginyue-b450m-ti" data-price="1800000"
+                                                data-image="images/gigabyte-b450m-ds3h-v2.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B450M DS3H V2
+                                                (AM4)</option>
+                                            <option value="gigabyte-b550m-aorus-elite" data-price="2550000"
+                                                data-image="images/gigabyte-b550m-aorus-elite.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B550M AORUS
+                                                ELITE (AM4)</option>
+                                            <option value="asrock-b550m-wifi" data-price="2399000"
+                                                data-image="images/asrock-b550m-wifi.jpg" data-brand="ASRock"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">ASRock B550M WIFI (AM4)
+                                            </option>
+                                            <option value="asrock-b550m-pro4" data-price="2299000"
+                                                data-image="images/asrock-b550m-pro4.jpg" data-brand="ASRock"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">ASRock B550M PRO4 (AM4)
+                                            </option>
+                                            <option value="gigabyte-b550m-gaming-wifi" data-price="2699000"
+                                                data-image="images/gigabyte-b550m-gaming-wifi.jpg" data-brand="Gigabyte"
+                                                data-warranty="36 tháng" data-cpu-socket="AM4">Gigabyte B550M GAMING
+                                                WIFI (AM4)</option>
                                         </optgroup>
                                         <optgroup label="AMD - X Series">
-                                            <option value="gigabyte-x370-gaming-k3" data-price="1500000" data-image="images/gigabyte-x370-gaming-k3.jpg" data-brand="Gigabyte (Cũ)" data-warranty="1 tháng" data-cpu-socket="AM4">Gigabyte X370-GAMING K3 (AM4 - Cũ)</option>
-                                            <option value="asus-rog-crosshair-viii-hero-wifi" data-price="4800000" data-image="images/asus-rog-crosshair-viii-hero-wifi.jpg" data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="AM4">ASUS ROG CROSSHAIR VIII HERO WIFI (AM4 - Cũ)</option>
-                                            <option value="asus-rog-crosshair-x670e-hero" data-price="12500000" data-image="images/asus-rog-crosshair-x670e-hero.jpg" data-brand="ASUS" data-warranty="36 tháng" data-cpu-socket="AM5">ASUS ROG CROSSHAIR X670E HERO (AM5)</option>
+                                            <option value="gigabyte-x370-gaming-k3" data-price="1500000"
+                                                data-image="images/gigabyte-x370-gaming-k3.jpg"
+                                                data-brand="Gigabyte (Cũ)" data-warranty="1 tháng"
+                                                data-cpu-socket="AM4">Gigabyte X370-GAMING K3 (AM4 - Cũ)</option>
+                                            <option value="asus-rog-crosshair-viii-hero-wifi" data-price="4800000"
+                                                data-image="images/asus-rog-crosshair-viii-hero-wifi.jpg"
+                                                data-brand="ASUS (Cũ)" data-warranty="1 tháng" data-cpu-socket="AM4">
+                                                ASUS ROG CROSSHAIR VIII HERO WIFI (AM4 - Cũ)</option>
+                                            <option value="asus-rog-crosshair-x670e-hero" data-price="12500000"
+                                                data-image="images/asus-rog-crosshair-x670e-hero.jpg" data-brand="ASUS"
+                                                data-warranty="36 tháng" data-cpu-socket="AM5">ASUS ROG CROSSHAIR X670E
+                                                HERO (AM5)</option>
                                         </optgroup>
                                     </select>
                                 </td>
@@ -170,32 +484,324 @@
                                 <td>
                                     <select name="vga">
                                         <option value="">Chọn VGA</option>
-                                        <option value="asus-geforce-rtx-3050-8gb-gddr6" data-price="7500000" data-image="images/asus-geforce-rtx-3050-8gb-gddr6.jpg" data-brand="ASUS" data-warranty="36 tháng">ASUS GeForce RTX 3050 8GB GDDR6 - 7.500.000 VNĐ</option>
-                                        <option value="gigabyte-geforce-rtx-3060-eagle-oc-12g" data-price="9800000" data-image="images/gigabyte-geforce-rtx-3060-eagle-oc-12g.jpg" data-brand="GIGABYTE" data-warranty="36 tháng">GIGABYTE GeForce RTX 3060 EAGLE OC 12G - 9.800.000 VNĐ</option>
-                                        <option value="asus-geforce-rtx-3060-ti" data-price="12000000" data-image="images/asus-geforce-rtx-3060-ti.jpg" data-brand="ASUS" data-warranty="36 tháng">ASUS GeForce RTX 3060 Ti - 12.000.000 VNĐ</option>
-                                        <option value="msi-geforce-rtx-4060-ventus-2x-black-8g-oc" data-price="11500000" data-image="images/msi-geforce-rtx-4060-ventus-2x-black-8g-oc.jpg" data-brand="MSI" data-warranty="36 tháng">MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC - 11.500.000 VNĐ</option>
-                                        <option value="msi-geforce-rtx-4070" data-price="18000000" data-image="images/msi-geforce-rtx-4070.jpg" data-brand="MSI" data-warranty="36 tháng">MSI GeForce RTX 4070 - 18.000.000 VNĐ</option>
-                                        <option value="asus-rog-strix-geforce-rtx-4070-ti-oc-12gb-gddr6x" data-price="25500000" data-image="images/asus-rog-strix-geforce-rtx-4070-ti-oc-12gb-gddr6x.jpg" data-brand="ASUS ROG STRIX" data-warranty="36 tháng">ASUS ROG STRIX GeForce RTX 4070 Ti OC 12GB GDDR6X - 25.500.000 VNĐ</option>
-                                        <option value="amd-radeon-rx-570" data-price="3000000" data-image="images/amd-radeon-rx-570.jpg" data-brand="AMD" data-warranty="12 tháng">AMD Radeon RX 570 - 3.000.000 VNĐ</option>
-                                        <option value="amd-radeon-rx-580" data-price="3500000" data-image="images/amd-radeon-rx-580.jpg" data-brand="AMD" data-warranty="12 tháng">AMD Radeon RX 580 - 3.500.000 VNĐ</option>
-                                        <option value="nvidia-geforce-gtx-750-ti" data-price="2000000" data-image="images/nvidia-geforce-gtx-750-ti.jpg" data-brand="NVIDIA" data-warranty="12 tháng">NVIDIA GeForce GTX 750 Ti - 2.000.000 VNĐ</option>
-                                        <option value="nvidia-geforce-gtx-1660" data-price="5000000" data-image="images/nvidia-geforce-gtx-1660.jpg" data-brand="NVIDIA" data-warranty="12 tháng">NVIDIA GeForce GTX 1660 - 5.000.000 VNĐ</option>
-                                        <option value="nvidia-geforce-gtx-2060" data-price="7000000" data-image="images/nvidia-geforce-gtx-2060.jpg" data-brand="NVIDIA" data-warranty="12 tháng">NVIDIA GeForce GTX 2060 - 7.000.000 VNĐ</option>
-                                        <option value="nvidia-geforce-gtx-2070" data-price="9000000" data-image="images/nvidia-geforce-gtx-2070.jpg" data-brand="NVIDIA" data-warranty="12 tháng">NVIDIA GeForce GTX 2070 - 9.000.000 VNĐ</option>
-                                        <option value="nvidia-geforce-gtx-2080" data-price="12000000" data-image="images/nvidia-geforce-gtx-2080.jpg" data-brand="NVIDIA" data-warranty="12 tháng">NVIDIA GeForce GTX 2080 - 12.000.000 VNĐ</option>
-                                    </select>
-                                </td>
-                            </tr>
+                                        <!-- Đồ cũ -->
+
+                                        <!-- Đồ cũ -->
+                                        <option value="-gtx-1050ti-4gb-gddr5-colorful-like-new"
+                                            data-price="1.990.000" data-image="images/1050ti-4gb.jpg"
+                                            data-brand="COLORFUL" data-warranty="3 tháng"> 1050Ti 4GB GDDR5
+                                            COLORFUL (Cũ) - 1.990.000 VNĐ</option>
+                                        <option value="-gtx-1050ti-4gb-gddr5-msi-gaming-like-new"
+                                            data-price="2.050.000" data-image="images/1050ti-4gb-msi.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> 1050Ti 4GB GDDR5 MSI
+                                            GAMING (Cũ) - 2.050.000 VNĐ</option>
+                                        <option value="-gtx-1050ti-4gb-gddr5-asus-rog-like-new"
+                                            data-price="2.100.000" data-image="images/1050ti-4gb-asus.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> 1050Ti 4GB GDDR5 ASUS
+                                            ROG (Cũ) - 2.100.000 VNĐ</option>
+                                        <option value="-gtx-1050ti-4gb-gddr5-gigabyte-gaming-like-new"
+                                            data-price="2.000.000" data-image="images/1050ti-4gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> 1050Ti 4GB GDDR5
+                                            GIGABYTE GAMING (Cũ) - 2.000.000 VNĐ</option>
+                                        <option value="-gtx-1050ti-4gb-gddr5-zotac-gaming-like-new"
+                                            data-price="2.020.000" data-image="images/1050ti-4gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> 1050Ti 4GB GDDR5
+                                            ZOTAC GAMING (Cũ) - 2.020.000 VNĐ</option>
+                                        <option value="-gtx-1060-6gb-gddr5-galax-cu"
+                                            data-price="2.290.000" data-image="images/1060-6gb.jpg" data-brand="GALAX"
+                                            data-warranty="3 tháng"> 1060 6GB GDDR5 GALAX (Cũ) - 2.290.000
+                                            VNĐ</option>
+                                        <option value="-gtx-1060-6gb-gddr5-msi-gaming-cu"
+                                            data-price="2.350.000" data-image="images/1060-6gb-msi.jpg" data-brand="MSI"
+                                            data-warranty="3 tháng"> 1060 6GB GDDR5 MSI GAMING (Cũ) -
+                                            2.350.000 VNĐ</option>
+                                        <option value="-gtx-1060-6gb-gddr5-asus-rog-cu"
+                                            data-price="2.400.000" data-image="images/1060-6gb-asus.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> 1060 6GB GDDR5 ASUS
+                                            ROG (Cũ) - 2.400.000 VNĐ</option>
+                                        <option value="-gtx-1060-6gb-gddr5-gigabyte-gaming-cu"
+                                            data-price="2.300.000" data-image="images/1060-6gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> 1060 6GB GDDR5
+                                            GIGABYTE GAMING (Cũ) - 2.300.000 VNĐ</option>
+                                        <option value="-gtx-1060-6gb-gddr5-zotac-gaming-cu"
+                                            data-price="2.320.000" data-image="images/1060-6gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> 1060 6GB GDDR5 ZOTAC
+                                            GAMING (Cũ) - 2.320.000 VNĐ</option>
+                                        <option value="-gtx-1070-8gb-gddr5-msi-armor-cu-99"
+                                            data-price="3.490.000" data-image="images/1070-8gb.jpg" data-brand="MSI"
+                                            data-warranty="3 tháng"> 1070 8GB GDDR5 MSI ARMOR (Cũ ) -
+                                            3.490.000 VNĐ</option>
+                                        <option value="-gtx-1070-8gb-gddr5-asus-rog-cu-99"
+                                            data-price="3.550.000" data-image="images/1070-8gb-asus.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> 1070 8GB GDDR5 ASUS
+                                            ROG (Cũ ) - 3.550.000 VNĐ</option>
+                                        <option value="-gtx-1070-8gb-gddr5-gigabyte-gaming-cu-99"
+                                            data-price="3.500.000" data-image="images/1070-8gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> 1070 8GB GDDR5
+                                            GIGABYTE GAMING (Cũ ) - 3.500.000 VNĐ</option>
+                                        <option value="-gtx-1070-8gb-gddr5-zotac-gaming-cu-99"
+                                            data-price="3.520.000" data-image="images/1070-8gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> 1070 8GB GDDR5 ZOTAC
+                                            GAMING (Cũ ) - 3.520.000 VNĐ</option>
+                                        <option value="-gtx-1070ti-8gb-gddr5-asus-cu-gaming-like-new"
+                                            data-price="3.990.000" data-image="images/1070ti-8gb.jpg" data-brand="ASUS"
+                                            data-warranty="3 tháng"> 1070Ti 8GB GDDR5 ASUS CU GAMING (Like
+                                            New) - 3.990.000 VNĐ</option>
+                                        <option value="-gtx-1070ti-8gb-gddr5-msi-gaming-cu-like-new"
+                                            data-price="3.950.000" data-image="images/1070ti-8gb-msi.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> 1070Ti 8GB GDDR5 MSI
+                                            GAMING (Cũ) - 3.950.000 VNĐ</option>
+                                        <option
+                                            value="-gtx-1070ti-8gb-gddr5-gigabyte-gaming-cu-like-new"
+                                            data-price="3.980.000" data-image="images/1070ti-8gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> 1070Ti 8GB GDDR5
+                                            GIGABYTE GAMING (Cũ) - 3.980.000 VNĐ</option>
+                                        <option value="-gtx-1070ti-8gb-gddr5-zotac-gaming-cu-like-new"
+                                            data-price="3.970.000" data-image="images/1070ti-8gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> 1070Ti 8GB GDDR5
+                                            ZOTAC GAMING (Cũ) - 3.970.000 VNĐ</option>
+                                        <option value="-gtx-1660-super-6gb-gddr6-zotac-gaming-cu-99"
+                                            data-price="3.990.000" data-image="images/1660-super-6gb.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> 1660 Super 6GB GDDR6
+                                            ZOTAC GAMING (Cũ ) - 3.990.000 VNĐ</option>
+                                        <option value="-gtx-1660-super-6gb-gddr6-msi-gaming-cu-99"
+                                            data-price="4.050.000" data-image="images/1660-super-6gb-msi.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> 1660 Super 6GB GDDR6
+                                            MSI GAMING (Cũ ) - 4.050.000 VNĐ</option>
+                                        <option value="-gtx-1660-super-6gb-gddr6-asus-rog-cu-99"
+                                            data-price="4.100.000" data-image="images/1660-super-6gb-asus.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> 1660 Super 6GB GDDR6
+                                            ASUS ROG (Cũ ) - 4.100.000 VNĐ</option>
+                                        <option
+                                            value="-gtx-1660-super-6gb-gddr6-gigabyte-gaming-cu-99"
+                                            data-price="4.000.000" data-image="images/1660-super-6gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> 1660 Super 6GB
+                                            GDDR6 GIGABYTE GAMING (Cũ ) - 4.000.000 VNĐ</option>
+                                        <option value="-rtx-2060-6gb-gddr6-asus-dual-cu-99"
+                                            data-price="5.490.000" data-image="images/rtx-2060-6gb.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> RTX 2060 6GB GDDR6 ASUS
+                                            DUAL (Cũ ) - 5.490.000 VNĐ</option>
+                                        <option value="-rtx-2060-6gb-gddr6-msi-gaming-cu-99"
+                                            data-price="5.450.000" data-image="images/rtx-2060-6gb-msi.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> RTX 2060 6GB GDDR6 MSI
+                                            GAMING (Cũ ) - 5.450.000 VNĐ</option>
+                                        <option value="-rtx-2060-6gb-gddr6-gigabyte-gaming-cu-99"
+                                            data-price="5.400.000" data-image="images/rtx-2060-6gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> RTX 2060 6GB GDDR6
+                                            GIGABYTE GAMING (Cũ ) - 5.400.000 VNĐ</option>
+                                        <option value="-rtx-2060-6gb-gddr6-zotac-gaming-cu-99"
+                                            data-price="5.420.000" data-image="images/rtx-2060-6gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> RTX 2060 6GB GDDR6 ZOTAC
+                                            GAMING (Cũ ) - 5.420.000 VNĐ</option>
+                                        <option value="-rtx-2070-super-8gb-gddr6-asus-turbo-evo-cu-99"
+                                            data-price="6.990.000" data-image="images/rtx-2070-super-8gb.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> RTX 2070 Super 8GB GDDR6
+                                            ASUS TURBO EVO (Cũ ) - 6.990.000 VNĐ</option>
+                                        <option value="-rtx-2070-super-8gb-gddr6-msi-gaming-cu-99"
+                                            data-price="6.950.000" data-image="images/rtx-2070-super-8gb-msi.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> RTX 2070 Super 8GB GDDR6
+                                            MSI GAMING (Cũ ) - 6.950.000 VNĐ</option>
+                                        <option
+                                            value="-rtx-2070-super-8gb-gddr6-gigabyte-gaming-cu-99"
+                                            data-price="6.900.000" data-image="images/rtx-2070-super-8gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> RTX 2070 Super 8GB
+                                            GDDR6 GIGABYTE GAMING (Cũ ) - 6.900.000 VNĐ</option>
+                                        <option value="-rtx-2070-super-8gb-gddr6-zotac-gaming-cu-99"
+                                            data-price="6.920.000" data-image="images/rtx-2070-super-8gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> RTX 2070 Super 8GB GDDR6
+                                            ZOTAC GAMING (Cũ ) - 6.920.000 VNĐ</option>
+                                        <option value="-rtx-3070-8gb-gddr6-asus-tuf-gaming-oc-cu-99"
+                                            data-price="10.990.000" data-image="images/rtx-3070-8gb.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng"> RTX 3070 8GB GDDR6 ASUS
+                                            TUF GAMING OC (Cũ ) - 10.990.000 VNĐ</option>
+                                        <option value="-rtx-3070-8gb-gddr6-msi-gaming-cu-99"
+                                            data-price="10.950.000" data-image="images/rtx-3070-8gb-msi.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> RTX 3070 8GB GDDR6 MSI
+                                            GAMING (Cũ ) - 10.950.000 VNĐ</option>
+                                        <option value="-rtx-3070-8gb-gddr6-gigabyte-gaming-cu-99"
+                                            data-price="10.900.000" data-image="images/rtx-3070-8gb-gigabyte.jpg"
+                                            data-brand="GIGABYTE" data-warranty="3 tháng"> RTX 3070 8GB GDDR6
+                                            GIGABYTE GAMING (Cũ ) - 10.900.000 VNĐ</option>
+                                        <option value="-rtx-3070-8gb-gddr6-zotac-gaming-cu-99"
+                                            data-price="10.920.000" data-image="images/rtx-3070-8gb-zotac.jpg"
+                                            data-brand="ZOTAC" data-warranty="3 tháng"> RTX 3070 8GB GDDR6 ZOTAC
+                                            GAMING (Cũ ) - 10.920.000 VNĐ</option>
+                                        <option value="-rtx-3070ti-8gb-gddr6x-msi-ventus-3x-oc-cu-99"
+                                            data-price="12.990.000" data-image="images/rtx-3070ti-8gb.jpg"
+                                            data-brand="MSI" data-warranty="3 tháng"> RTX 3070Ti 8GB GDDR6X MSI
+                                            VENTUS 3X OC (Cũ ) - 12.990.000 VNĐ</option>
+                                        <!-- RTX 3070Ti ASUS -->
+                                        <option value="-rtx-3070ti-8gb-gddr6x-asus-rog-cu-99"
+                                            data-price="13.050.000" data-image="images/rtx-3070ti-8gb-asus.jpg"
+                                            data-brand="ASUS" data-warranty="3 tháng">
+                                             RTX 3070Ti 8GB GDDR6X ASUS ROG (Cũ ) - 13.050.000 VNĐ
+                                        </option>
+
+                                        <!-- RTX 2060 Super Colorful -->
+                                        <option value="colorful--rtx-2060-super-8gb" data-price="5.390.000"
+                                            data-image="images/colorful--rtx-2060-super-8gb.jpg"
+                                            data-brand="Colorful" data-warranty="24 tháng">
+                                            Colorful  RTX 2060 SUPER 8GB - 5.390.000 VNĐ
+                                        </option>
+                                        <option value="colorful-rtx-2060-6gb" data-price="4.690.000"
+                                            data-image="images/colorful-rtx-2060-6gb.jpg" data-brand="Colorful"
+                                            data-warranty="24 tháng">Colorful RTX 2060 6GB DDR6 - 4.690.000 VNĐ</option>
+                                        <option value="ocpc-rtx-2060-super-8gb" data-price="5.890.000"
+                                            data-image="images/ocpc-rtx-2060-super-8gb.jpg" data-brand="OCPC"
+                                            data-warranty="36 tháng">OCPC RTX 2060 SUPER 8GB GDDR6 - 5.890.000 VNĐ
+                                        </option>
+                                        <option value="asl-rtx-3050-6gb" data-price="4.250.000"
+                                            data-image="images/asl-rtx-3050-6gb.jpg" data-brand="ASL"
+                                            data-warranty="36 tháng">ASL RTX 3050 6GB GDDR6 (Tray) - 4.250.000 VNĐ
+                                        </option>
+                                        <option value="pny-rtx-3050-6gb-verto" data-price="4.350.000"
+                                            data-image="images/pny-rtx-3050-6gb-verto.jpg" data-brand="PNY"
+                                            data-warranty="36 tháng">PNY RTX 3050 6GB VERTO™ Dual Fan - 4.350.000 VNĐ
+                                        </option>
+                                        <option value="neo-forza--rtx-3060-12gb" data-price="6.650.000"
+                                            data-image="images/neo-forza--rtx-3060-12gb.jpg"
+                                            data-brand="NEO FORZA" data-warranty="36 tháng">NEO FORZA  RTX 3060
+                                            12GB LHR DDR6 - 6.650.000 VNĐ</option>
+                                        <option value="gigabyte-rtx-3060-gaming-oc-12gb" data-price="7.590.000"
+                                            data-image="images/gigabyte-rtx-3060-gaming-oc-12gb.jpg"
+                                            data-brand="Gigabyte" data-warranty="36 tháng">Gigabyte RTX 3060 GAMING OC
+                                            12GB - 7.590.000 VNĐ</option>
+                                        <option value="inno3d-rtx-3060-twin-x2-12gb" data-price="7.450.000"
+                                            data-image="images/inno3d-rtx-3060-twin-x2-12gb.jpg" data-brand="Inno3D"
+                                            data-warranty="36 tháng">Inno3D RTX 3060 TWIN X2 12GB GDDR6 - 7.450.000 VNĐ
+                                        </option>
+                                        <option value="colorful-igame-rtx-3060-ultra-w-oc-12g-v" data-price="7.990.000"
+                                            data-image="images/colorful-igame-rtx-3060-ultra-w-oc-12g-v.jpg"
+                                            data-brand="Colorful" data-warranty="36 tháng">Colorful iGame RTX 3060 Ultra
+                                            W OC 12G-V - 7.990.000 VNĐ</option>
+                                        <option value="ocpc-rtx-3070-8gb" data-price="7.650.000"
+                                            data-image="images/ocpc-rtx-3070-8gb.jpg" data-brand="OCPC"
+                                            data-warranty="18 tháng">OCPC RTX 3070 8GB (Cũ) 97% - 7.650.000 VNĐ
+                                        </option>
+                                        <option value="zotac-rtx-4060-ti-16gb-amp" data-price="11.750.000"
+                                            data-image="images/zotac-rtx-4060-ti-16gb-amp.jpg" data-brand="ZOTAC"
+                                            data-warranty="36 tháng">ZOTAC RTX 4060 TI 16GB AMP GDDR6 - 11.750.000 VNĐ
+                                        </option>
+                                        <option value="asus-dual-rtx-4060-oc-8gb" data-price="7.550.000"
+                                            data-image="images/asus-dual-rtx-4060-oc-8gb.jpg" data-brand="ASUS"
+                                            data-warranty="36 tháng">ASUS DUAL RTX 4060 OC 8GB GDDR6 - 7.550.000 VNĐ
+                                        </option>
+                                        <option value="msi-rtx-4070-ti-super-16g-ventus-3x-oc" data-price="23.150.000"
+                                            data-image="images/msi-rtx-4070-ti-super-16g-ventus-3x-oc.jpg"
+                                            data-brand="MSI" data-warranty="36 tháng">MSI RTX 4070 TI SUPER 16G VENTUS
+                                            3X OC - 23.150.000 VNĐ</option>
+                                        <option value="inno3d-rtx-4070-ti-super-x3-oc-16gb" data-price="22.400.000"
+                                            data-image="images/inno3d-rtx-4070-ti-super-x3-oc-16gb.jpg"
+                                            data-brand="Inno3D" data-warranty="36 tháng">Inno3D RTX 4070 Ti SUPER X3 OC
+                                            16GB - 22.400.000 VNĐ</option>
+                                        <option value="msi-rtx-5080-16g-ventus-3x-oc-plus" data-price="39.900.000"
+                                            data-image="images/msi-rtx-5080-16g-ventus-3x-oc-plus.jpg" data-brand="MSI"
+                                            data-warranty="36 tháng">MSI RTX 5080 16G VENTUS 3X OC PLUS - 39.900.000 VNĐ
+                                        </option>
                             <tr>
                                 <td>RAM</td>
                                 <td>
                                     <select name="ram">
-                                        <option value="">Chọn RAM</option>
-                                        <option value="kingston-fury-8gb-ddr4-3200mhz" data-price="1200000" data-image="images/kingston-fury-8gb-ddr4-3200mhz.jpg" data-brand="Kingston Fury" data-warranty="36 tháng">Kingston Fury 8GB DDR4 3200MHz - 1.200.000 VNĐ</option>
-                                        <option value="kingston-fury-16gb-ddr4-3200mhz" data-price="2500000" data-image="images/kingston-fury-16gb-ddr4-3200mhz.jpg" data-brand="Kingston Fury" data-warranty="36 tháng">Kingston Fury 16GB DDR4 3200MHz - 2.500.000 VNĐ</option>
-                                        <option value="corsair-vengeance-16gb-ddr5-5200mhz" data-price="3200000" data-image="images/corsair-vengeance-16gb-ddr5-5200mhz.jpg" data-brand="Corsair Vengeance" data-warranty="60 tháng">Corsair Vengeance 16GB DDR5 5200MHz - 3.200.000 VNĐ</option>
-                                        <option value="corsair-vengeance-32gb-ddr5-5200mhz" data-price="5000000" data-image="images/corsair-vengeance-32gb-ddr5-5200mhz.jpg" data-brand="Corsair Vengeance" data-warranty="60 tháng">Corsair Vengeance 32GB DDR5 5200MHz - 5.000.000 VNĐ</option>
-                                    </select>
+                                        <option value="ram-ocpc-xt-ii-16gb" data-price="690000"
+                                            data-image="images/ram-ocpc-xt-ii-16gb.jpg" data-brand="OCPC"
+                                            data-warranty="36 tháng">RAM OCPC XT II 16GB BUS 3200 DDR4 BLACK - 690.000
+                                            VNĐ</option>
+                                        <option value="kit-ram-crucial-pro-32gb" data-price="2190000"
+                                            data-image="images/kit-ram-crucial-pro-32gb.jpg" data-brand="Crucial"
+                                            data-warranty="36 tháng">KIT RAM CRUCIAL PRO 32GB (2x16GB) BUS 5600 DDR5 TẢN
+                                            NHIỆT - 2.190.000 VNĐ</option>
+                                        <option value="kit-ram-pny-xlr8-gaming-32gb" data-price="2890000"
+                                            data-image="images/kit-ram-pny-xlr8-gaming-32gb.jpg" data-brand="PNY"
+                                            data-warranty="36 tháng">KIT RAM PNY XLR8 GAMING 32G (2X16GB) DDR5 RGB
+                                            6000MHZ - 2.890.000 VNĐ</option>
+                                        <option value="ram-16gb-pny-xlr8-d4-3200" data-price="990000"
+                                            data-image="images/ram-16gb-pny-xlr8-d4-3200.jpg" data-brand="PNY"
+                                            data-warranty="36 tháng">RAM 16GB PNY XLR8 D4 3200 U CL16 TẢN - 990.000 VNĐ
+                                        </option>
+                                        <option value="kit-ram-juhor-16gb" data-price="899000"
+                                            data-image="images/kit-ram-juhor-16gb.jpg" data-brand="JUHOR"
+                                            data-warranty="36 tháng">KIT RAM JUHOR 16GB (2x8GB) RGB DDR4 3200Mhz WHITE -
+                                            899.000 VNĐ</option>
+                                        <option value="ram-pc-drr4-xstar-16gb" data-price="599000"
+                                            data-image="images/ram-pc-drr4-xstar-16gb.jpg" data-brand="XSTAR"
+                                            data-warranty="36 tháng">Ram PC DRR4 XSTAR 16GB BUS 3200Mhz Tản Nhiệt Thép -
+                                            599.000 VNĐ</option>
+                                        <option value="ram-corsair-vengeance-lpx-16gb" data-price="750000"
+                                            data-image="images/ram-corsair-vengeance-lpx-16gb.jpg" data-brand="Corsair"
+                                            data-warranty="36 tháng">RAM CORSAIR VENGEANCE LPX 16GB (1x16GB) DDR4
+                                            3200MHz( CL16) - 750.000 VNĐ</option>
+                                        <option value="ram-samsung-16gb-ddr4-2400mhz" data-price="550000"
+                                            data-image="images/ram-samsung-16gb-ddr4-2400mhz.jpg" data-brand="Samsung"
+                                            data-warranty="12 tháng">RAM Samsung 16GB DDR4 2400MHz ECC Registered -
+                                            550.000 VNĐ</option>
+                                        <option value="ram-drr4-xstar-16g-bus-3200" data-price="860000"
+                                            data-image="images/ram-drr4-xstar-16g-bus-3200.jpg" data-brand="XSTAR"
+                                            data-warranty="36 tháng">Ram DRR4 XSTAR 16G BUS 3200 LED RGB (White) -
+                                            860.000 VNĐ</option>
+                                        <option value="ram-ddr4-ecc-32gb-bus-2133mhz" data-price="800000"
+                                            data-image="images/ram-ddr4-ecc-32gb-bus-2133mhz.jpg" data-brand="ECC"
+                                            data-warranty="12 tháng">RAM DDR4 ECC 32GB Bus 2133Mhz - 800.000 VNĐ
+                                        </option>
+                                        <option value="ram-adata-xpg-gammix-d35-16gb" data-price="600000"
+                                            data-image="images/ram-adata-xpg-gammix-d35-16gb.jpg" data-brand="ADATA"
+                                            data-warranty="36 tháng">RAM ADATA XPG GAMMIX D35 16GB 3200 Mhz DDR4 BLACK
+                                            TẢN NHIỆT - 600.000 VNĐ</option>
+                                        <option value="ram-pc-drr4-xstar-8gb" data-price="349000"
+                                            data-image="images/ram-pc-drr4-xstar-8gb.jpg" data-brand="XSTAR"
+                                            data-warranty="36 tháng">Ram PC DRR4 XSTAR 8GB BUS 3200Mhz Tản Nhiệt Thép -
+                                            349.000 VNĐ</option>
+                                        <option value="ram-drr4-xstar-16g-bus-3200-black" data-price="860000"
+                                            data-image="images/ram-drr4-xstar-16g-bus-3200-black.jpg" data-brand="XSTAR"
+                                            data-warranty="36 tháng">RAM DRR4 XSTAR 16G BUS 3200 LED RGB (BLACK) -
+                                            860.000 VNĐ</option>
+                                        <option value="ram-teamgroup-delta-rgb-16gb-white" data-price="990000"
+                                            data-image="images/ram-teamgroup-delta-rgb-16gb-white.jpg"
+                                            data-brand="TEAMGROUP" data-warranty="60 tháng">RAM TEAMGROUP DELTA RGB 16GB
+                                            DDR4 3200MHz WHITE - 990.000 VNĐ</option>
+                                        <option value="ram-teamgroup-delta-rgb-16gb-black" data-price="990000"
+                                            data-image="images/ram-teamgroup-delta-rgb-16gb-black.jpg"
+                                            data-brand="TEAMGROUP" data-warranty="60 tháng">RAM TEAMGROUP DELTA RGB 16GB
+                                            DDR4 3200MHZ BLACK - 990.000 VNĐ</option>
+                                        <option value="ram-gskill-ripjaws-v-16gb" data-price="990000"
+                                            data-image="images/ram-gskill-ripjaws-v-16gb.jpg" data-brand="G.Skill"
+                                            data-warranty="36 tháng">RAM GSKILL RIPJAWS V 16GB (1*16GB) DDR4 BUS 3200 -
+                                            990.000 VNĐ</option>
+                                        <option value="ram-team-vulcan-z-16gb" data-price="990000"
+                                            data-image="images/ram-team-vulcan-z-16gb.jpg" data-brand="TEAM"
+                                            data-warranty="36 tháng">RAM TEAM VULCAN Z 16GB (1*16GB) DDR4 BUS 3200 -
+                                            990.000 VNĐ</option>
+                                        <option value="ram-kingston-fury-beast-8gb" data-price="510000"
+                                            data-image="images/ram-kingston-fury-beast-8gb.jpg" data-brand="Kingston"
+                                            data-warranty="36 tháng">Ram Kingston FURY Beast 8GB DDR4 3200Mhz - 510.000
+                                            VNĐ</option>
+                                        <option value="ram-adata-spectrix-d50-16gb" data-price="1000000"
+                                            data-image="images/ram-adata-spectrix-d50-16gb.jpg" data-brand="ADATA"
+                                            data-warranty="60 tháng">RAM ADATA SPECTRIX D50 16GB (1x16GB) DDR4 3200MHz
+                                            GREY RGB - 1.000.000 VNĐ</option>
+                                        <option value="ram-kingston-fury-beast-16gb" data-price="850000"
+                                            data-image="images/ram-kingston-fury-beast-16gb.jpg" data-brand="Kingston"
+                                            data-warranty="36 tháng">Ram Kingston FURY Beast 16GB DDR4 3200Mhz - 850.000
+                                            VNĐ</option>
+                                        <option value="ram-pc-ddr4-kingbank-16gb" data-price="599000"
+                                            data-image="images/ram-pc-ddr4-kingbank-16gb.jpg" data-brand="Kingbank"
+                                            data-warranty="60 tháng">Ram PC DDR4 Kingbank 16GB(1x16GB) Bus 3200 -
+                                            599.000 VNĐ</option>
+                                        <option value="ram-adata-xpg-spectrix-d50-8gb" data-price="599000"
+                                            data-image="images/ram-adata-xpg-spectrix-d50-8gb.jpg" data-brand="ADATA"
+                                            data-warranty="60 tháng">RAM ADATA XPG SPECTRIX D50 8GB (1x8GB) BUS 3200MHz
+                                            DDR4 LED RGB WHITE - 599.000 VNĐ</option>
+                                        <option value="ram-adata-spectrix-d50-16gb-white" data-price="1000000"
+                                            data-image="images/ram-adata-spectrix-d50-16gb-white.jpg" data-brand="ADATA"
+                                            data-warranty="60 tháng">RAM ADATA SPECTRIX D50 16GB (1x16GB) DDR4 3200MHz
+                                            WHITE RGB - 1.000.000 VNĐ</option>
+                                        <option value="ram-corsair-vengeance-rgb-rs-64gb" data-price="3490000"
+                                            data-image="images/ram-corsair-vengeance-rgb-rs-64gb.jpg"
+                                            data-brand="Corsair" data-warranty="36 tháng">RAM CORSAIR VENGEANCE RGB RS
+                                            64GB (2X32GB) DDR4 3200MHZ - 3.490.000 VNĐ</option>
+                                        <option value="ram-laptop-adata-premier-8gb" data-price="690000"
+                                            data-image="images/ram-laptop-adata-premier-8gb.jpg" data-brand="ADATA"
+                                            data-warranty="60 tháng">Ram Laptop Adata Premier 8GB 3200Mhz DDR4 - 690.000
+                                            VNĐ</option>
                                 </td>
                             </tr>
                             <tr>
@@ -203,10 +809,38 @@
                                 <td>
                                     <select name="ssd">
                                         <option value="">Chọn SSD</option>
-                                        <option value="kingston-nvme-pcie-gen3-250gb" data-price="800000" data-image="images/kingston-nvme-pcie-gen3-250gb.jpg" data-brand="Kingston" data-warranty="36 tháng">Kingston NVMe PCIe Gen3 250GB - 800.000 VNĐ</option>
-                                        <option value="kingston-nv2-500gb-nvme-gen4" data-price="1200000" data-image="images/kingston-nv2-500gb-nvme-gen4.jpg" data-brand="Kingston" data-warranty="36 tháng">Kingston NV2 500GB NVMe Gen4 - 1.200.000 VNĐ</option>
-                                        <option value="kingston-nv2-1tb-nvme-gen4" data-price="2200000" data-image="images/kingston-nv2-1tb-nvme-gen4.jpg" data-brand="Kingston" data-warranty="36 tháng">Kingston NV2 1TB NVMe Gen4 - 2.200.000 VNĐ</option>
-                                        <option value="samsung-980-pro-1tb-nvme-gen4" data-price="4500000" data-image="images/samsung-980-pro-1tb-nvme-gen4.jpg" data-brand="Samsung" data-warranty="60 tháng">Samsung 980 Pro 1TB NVMe Gen4 - 4.500.000 VNĐ</option>
+                                        <option value="samsung-pm9a1-512gb" data-price="1350000"
+                                            data-image="images/samsung-pm9a1-512gb.jpg" data-brand="Samsung"
+                                            data-warranty="36 tháng">SSD Gen 4 Samsung PM9A1 NVMe 512GB (6900/5000 MB/s)
+                                            OEM 980 Pro - 1.350.000 VNĐ</option>
+                                        <option value="adata-legend-800-500gb" data-price="970000"
+                                            data-image="images/adata-legend-800-500gb.jpg" data-brand="ADATA"
+                                            data-warranty="36 tháng">SSD ADATA LEGEND 800 500GB Gen4 X4 (3500/2800 MB/s)
+                                            - 970.000 VNĐ</option>
+                                        <option value="sk-hynix-pc801sss-1tb" data-price="1999000"
+                                            data-image="images/sk-hynix-pc801-1tb.jpg" data-brand="SK Hynix"
+                                            data-warranty="36 tháng">SSD NVME SK Hynix PC801 1TB (7000/6500 MB/s) Gen4 -
+                                            1.999.000 VNĐ</option>
+                                        <option value="samsung-pm9b1-256gb" data-price="649000"
+                                            data-image="images/samsung-pm9b1-256gb.jpg" data-brand="Samsung"
+                                            data-warranty="36 tháng">SSD Samsung PM9B1 256GB (3300/1500 MB/s) Gen4 -
+                                            649.000 VNĐ</option>
+                                        <option value="crucial-p3-plus-1tb" data-price="1490000"
+                                            data-image="images/crucial-p3-plus-1tb.jpg" data-brand="Crucial"
+                                            data-warranty="36 tháng">SSD Crucial P3 Plus 1TB Gen4 (5000/3600 MB/s) -
+                                            1.490.000 VNĐ</option>
+                                        <option value="samsung-990-pro-1tb" data-price="Liên hệ"
+                                            data-image="images/samsung-990-pro-1tb.jpg" data-brand="Samsung"
+                                            data-warranty="36 tháng">SSD Samsung 990 Pro 1TB (7450/6900 MB/s) Gen4 -
+                                            Liên hệ</option>
+                                        <option value="kingston-nv2-500gb" data-price="895000"
+                                            data-image="images/kingston-nv2-500gb.jpg" data-brand="Kingston"
+                                            data-warranty="36 tháng">SSD Kingston NV2 500GB PCIe Gen4 - 895.000 VNĐ
+                                        </option>
+                                        <option value="lexar-nm790-s2tb" data-price="2599000"
+                                            data-image="images/lexar-nm790-2tb.jpg" data-brand="Lexar"
+                                            data-warranty="36 tháng">SSD Lexar NM790 2TB Gen4 (7400/6500 MB/s) -
+                                            2.599.000 VNĐ</option>
                                     </select>
                                 </td>
                             </tr>
@@ -214,7 +848,7 @@
                     </table>
                 </div>
                 <div class="column">
-                    <h2>Linh Kiện Chính (Bên Phải) & Tùy Chọn</h2>
+                    <h2>Linh Kiện Phụ & Tùy Chọn</h2>
                     <table>
                         <thead>
                             <tr>
@@ -228,10 +862,104 @@
                                 <td>
                                     <select name="psu">
                                         <option value="">Chọn PSU</option>
-                                        <option value="coolermaster-mwe-500-white-v2-500w-80-plus" data-price="800000" data-image="images/coolermaster-mwe-500-white-v2-500w-80-plus.jpg" data-brand="Cooler Master" data-warranty="24 tháng">Cooler Master MWE 500 White V2 500W 80 Plus - 800.000 VNĐ</option>
-                                        <option value="corsair-cv550-550w-80-plus-bronze" data-price="1200000" data-image="images/corsair-cv550-550w-80-plus-bronze.jpg" data-brand="Corsair" data-warranty="36 tháng">Corsair CV550 550W 80 Plus Bronze - 1.200.000 VNĐ</option>
-                                        <option value="corsair-cv650-650w-80-plus-bronze" data-price="1800000" data-image="images/corsair-cv650-650w-80-plus-bronze.jpg" data-brand="Corsair" data-warranty="36 tháng">Corsair CV650 650W 80 Plus Bronze - 1.800.000 VNĐ</option>
-                                        <option value="seasonic-focus-gx-850-850w-80-plus-gold" data-price="3200000" data-image="images/seasonic-focus-gx-850-850w-80-plus-gold.jpg" data-brand="Seasonic" data-warranty="60 tháng">Seasonic Focus GX-850 850W 80 Plus Gold - 3.200.000 VNĐ</option>
+                                        <option value="nguon-gigabyte-650w" data-price="1099000"
+                                            data-image="images/nguon-gigabyte-650w.jpg" data-brand="Gigabyte"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Gigabyte 650W - 1.099.000 VNĐ
+                                        </option>
+                                        <option value="nguon-xigmatek-x-power-ii-450" data-price="520000"
+                                            data-image="images/nguon-xigmatek-x-power-ii-450.jpg" data-brand="Xigmatek"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Xigmatek X- Power II 450 - 520.000
+                                            VNĐ</option>
+                                        <option value="nguon-xigmatek-x-350" data-price="399000"
+                                            data-image="images/nguon-xigmatek-x-350.jpg" data-brand="Xigmatek"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Xigmatek X-350 - 399.000 VNĐ
+                                        </option>
+                                        <option value="nguon-corsair-cv750" data-price="1690000"
+                                            data-image="images/nguon-corsair-cv750.jpg" data-brand="Corsair"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Corsair CV750 - 750W 80 Plus -
+                                            1.690.000 VNĐ</option>
+                                        <option value="nguon-corsair-cv650" data-price="1349000"
+                                            data-image="images/nguon-corsair-cv650.jpg" data-brand="Corsair"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Corsair CV650 - 80 Plus Bronze -
+                                            1.349.000 VNĐ</option>
+                                        <option value="nguon-corsair-cv550" data-price="1149000"
+                                            data-image="images/nguon-corsair-cv550.jpg" data-brand="Corsair"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Corsair CV550 - 550W - 1.149.000 VNĐ
+                                        </option>
+                                        <option value="nguon-huntkey-500w" data-price="760000"
+                                            data-image="images/nguon-huntkey-500w.jpg" data-brand="Huntkey"
+                                            data-warranty="36 tháng">Nguồn Máy Tính HUNTKEY 500W - 760.000 VNĐ</option>
+                                        <option value="nguon-huntkey-400w" data-price="520000"
+                                            data-image="images/nguon-huntkey-400w.jpg" data-brand="Huntkey"
+                                            data-warranty="36 tháng">Nguồn Máy Tính HUNTKEY 400W - 520.000 VNĐ</option>
+                                        <option value="nguon-sama-700w" data-price="1100000"
+                                            data-image="images/nguon-sama-700w.jpg" data-brand="Sama"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Sama 700W (80 Plus Bronze) -
+                                            1.100.000 VNĐ</option>
+                                        <option value="nguon-aigo-vk650" data-price="849000"
+                                            data-image="images/nguon-aigo-vk650.jpg" data-brand="Aigo"
+                                            data-warranty="36 tháng">Nguồn Máy Tính AIGO VK650 - 650W (85 Plus) -
+                                            849.000 VNĐ</option>
+                                        <option value="nguon-aigo-vk550" data-price="600000"
+                                            data-image="images/nguon-aigo-vk550.jpg" data-brand="Aigo"
+                                            data-warranty="36 tháng">Nguồn Máy Tính AIGO VK550 - 550W - 600.000 VNĐ
+                                        </option>
+                                        <option value="nguon-aigo-vk450" data-price="490000"
+                                            data-image="images/nguon-aigo-vk450.jpg" data-brand="Aigo"
+                                            data-warranty="36 tháng">Nguồn Máy Tính AIGO VK450 - 450W - 490.000 VNĐ
+                                        </option>
+                                        <option value="nguon-aigo-vk350" data-price="390000"
+                                            data-image="images/nguon-aigo-vk350.jpg" data-brand="Aigo"
+                                            data-warranty="36 tháng">Nguồn Máy Tính AIGO VK350 - 350W - 390.000 VNĐ
+                                        </option>
+                                        <option value="nguon-corsair-cx650" data-price="1389000"
+                                            data-image="images/nguon-corsair-cx650.jpg" data-brand="Corsair"
+                                            data-warranty="60 tháng">Nguồn Máy Tính Corsair CX650 650W 80 Plus Bronze -
+                                            1.389.000 VNĐ</option>
+                                        <option value="nguon-antec-cuprum-strike-csk650" data-price="1390000"
+                                            data-image="images/nguon-antec-cuprum-strike-csk650.jpg" data-brand="Antec"
+                                            data-warranty="60 tháng">Nguồn Máy Tính ANTEC CUPRUM STRIKE CSK650 (650W, 80
+                                            Plus Bronze) - 1.390.000 VNĐ</option>
+                                        <option value="nguon-acer-ac750-fr" data-price="1590000"
+                                            data-image="images/nguon-acer-ac750-fr.jpg" data-brand="Acer"
+                                            data-warranty="36 tháng">Nguồn Máy Tính ACER AC750 FR 750W PCIE 5.0 (80 Plus
+                                            Bronze) - 1.590.000 VNĐ</option>
+                                        <option value="nguon-aigo-gb750" data-price="1290000"
+                                            data-image="images/nguon-aigo-gb750.jpg" data-brand="Aigo"
+                                            data-warranty="36 tháng">Nguồn Máy Tính AIGO GB750 - 750W (80 Plus Bronze) -
+                                            1.290.000 VNĐ</option>
+                                        <option value="nguon-corsair-cx750" data-price="1550000"
+                                            data-image="images/nguon-corsair-cx750.jpg" data-brand="Corsair"
+                                            data-warranty="60 tháng">Nguồn Máy Tính Corsair CX750 750W 80 Plus Bronze -
+                                            1.550.000 VNĐ</option>
+                                        <option value="nguon-antec-g850" data-price="2190000"
+                                            data-image="images/nguon-antec-g850.jpg" data-brand="Antec"
+                                            data-warranty="60 tháng">Nguồn Máy Tính ANTEC G850 850W (80 Plus Gold) -
+                                            2.190.000 VNĐ</option>
+                                        <option value="nguon-acer-ac1000" data-price="2990000"
+                                            data-image="images/nguon-acer-ac1000.jpg" data-brand="Acer"
+                                            data-warranty="36 tháng">Nguồn Máy Tính ACER AC1000 1000W (80 Plus Gold) -
+                                            2.990.000 VNĐ</option>
+                                        <option value="nguon-corsair-rm1000e" data-price="4450000"
+                                            data-image="images/nguon-corsair-rm1000e.jpg" data-brand="Corsair"
+                                            data-warranty="84 tháng">Nguồn Máy Tính Corsair RM1000e - 1000W ATX 3.0 (80
+                                            Plus Gold) - 4.450.000 VNĐ</option>
+                                        <option value="nguon-gigabyte-ud1000gm-pg5" data-price="3560000"
+                                            data-image="images/nguon-gigabyte-ud1000gm-pg5.jpg" data-brand="Gigabyte"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Gigabyte UD1000GM PG5 1000W PCIe Gen
+                                            5.0 (80 Plus Gold) - 3.560.000 VNĐ</option>
+                                        <option value="nguon-thermalright-tg-1000" data-price="2400000"
+                                            data-image="images/nguon-thermalright-tg-1000.jpg" data-brand="Thermalright"
+                                            data-warranty="36 tháng">Nguồn Máy Tính Thermalright TG-1000 1000W ATX 3.0
+                                            (80 Plus Gold) - 2.400.000 VNĐ</option>
+                                        <option value="nguon-sama-btx-550" data-price="699000"
+                                            data-image="images/nguon-sama-btx-550.jpg" data-brand="Sama"
+                                            data-warranty="36 tháng">Nguồn Máy Tính SAMA BTX-550 550W (80 Plus Bronze) -
+                                            699.000 VNĐ</option>
+                                        <option value="nguon-corsair-rm850e" data-price="2900000"
+                                            data-image="images/nguon-corsair-rm850e.jpg" data-brand="Corsair"
+                                            data-warranty="84 tháng">Nguồn Máy Tính Corsair RM850e ATX 3.0 850W (80 Plus
+                                            Gold) - 2.900.000 VNĐ</option>
                                     </select>
                                 </td>
                             </tr>
@@ -241,22 +969,41 @@
                                     <select name="case">
                                         <option value="">Chọn Case</option>
                                         <optgroup label="XIGMATEK">
-                                            <option value="xigmatek-gemini-m-no-fan" data-price="500000" data-image="images/xigmatek-gemini-m-no-fan.jpg" data-brand="Xigmatek" data-warranty="12 tháng">Xigmatek Gemini M No Fan - 500.000 VNĐ</option>
-                                            <option value="xigmatek-nyx-4-no-fan" data-price="750000" data-image="images/xigmatek-nyx-4-no-fan.jpg" data-brand="Xigmatek" data-warranty="12 tháng">Xigmatek NYX 4 No Fan - 750.000 VNĐ</option>
-                                            <option value="xigmatek-aquarius-plus-en44311" data-price="1500000" data-image="images/xigmatek-aquarius-plus-en44311.jpg" data-brand="Xigmatek" data-warranty="12 tháng">Xigmatek AQUARIUS PLUS EN44311 - 1.500.000 VNĐ</option>
+                                            <option value="xigmatek-gemini-m-no-fan" data-price="500000"
+                                                data-image="images/xigmatek-gemini-m-no-fan.jpg" data-brand="Xigmatek"
+                                                data-warranty="12 tháng">Xigmatek Gemini M No Fan - 500.000 VNĐ</option>
+                                            <option value="xigmatek-nyx-4-no-fan" data-price="750000"
+                                                data-image="images/xigmatek-nyx-4-no-fan.jpg" data-brand="Xigmatek"
+                                                data-warranty="12 tháng">Xigmatek NYX 4 No Fan - 750.000 VNĐ</option>
+                                            <option value="xigmatek-aquarius-plus-en44311" data-price="1500000"
+                                                data-image="images/xigmatek-aquarius-plus-en44311.jpg"
+                                                data-brand="Xigmatek" data-warranty="12 tháng">Xigmatek AQUARIUS PLUS
+                                                EN44311 - 1.500.000 VNĐ</option>
                                         </optgroup>
                                         <optgroup label="VSP KENNO">
-                                            <option value="vsp-kenno-v270w" data-price="650000" data-image="images/vsp-kenno-v270w.jpg" data-brand="VSP KENNO" data-warranty="12 tháng">VSP KENNO V270W - 650.000 VNĐ</option>
-                                            <option value="vsp-kenno-v350" data-price="800000" data-image="images/vsp-kenno-v350.jpg" data-brand="VSP KENNO" data-warranty="12 tháng">VSP KENNO V350 - 800.000 VNĐ</option>
+                                            <option value="vsp-kenno-v270w" data-price="650000"
+                                                data-image="images/vsp-kenno-v270w.jpg" data-brand="VSP KENNO"
+                                                data-warranty="12 tháng">VSP KENNO V270W - 650.000 VNĐ</option>
+                                            <option value="vsp-kenno-v350" data-price="800000"
+                                                data-image="images/vsp-kenno-v350.jpg" data-brand="VSP KENNO"
+                                                data-warranty="12 tháng">VSP KENNO V350 - 800.000 VNĐ</option>
                                         </optgroup>
                                         <optgroup label="COOLERMASTER">
-                                            <option value="coolermaster-masterbox-q300l-m-atx" data-price="900000" data-image="images/coolermaster-masterbox-q300l-m-atx.jpg" data-brand="Cooler Master" data-warranty="12 tháng">Cooler Master MasterBox Q300L m-ATX - 900.000 VNĐ</option>
+                                            <option value="coolermaster-masterbox-q300l-m-atx" data-price="900000"
+                                                data-image="images/coolermaster-masterbox-q300l-m-atx.jpg"
+                                                data-brand="Cooler Master" data-warranty="12 tháng">Cooler Master
+                                                MasterBox Q300L m-ATX - 900.000 VNĐ</option>
                                         </optgroup>
                                         <optgroup label="NZXT">
-                                            <option value="nzxt-h510-flow-m-atx" data-price="2200000" data-image="images/nzxt-h510-flow-m-atx.jpg" data-brand="NZXT" data-warranty="24 tháng">NZXT H510 Flow m-ATX - 2.200.000 VNĐ</option>
+                                            <option value="nzxt-h510-flow-m-atx" data-price="2200000"
+                                                data-image="images/nzxt-h510-flow-m-atx.jpg" data-brand="NZXT"
+                                                data-warranty="24 tháng">NZXT H510 Flow m-ATX - 2.200.000 VNĐ</option>
                                         </optgroup>
                                         <optgroup label="LIAN LI">
-                                            <option value="lian-li-lancool-216-rgb-black" data-price="3500000" data-image="images/lian-li-lancool-216-rgb-black.jpg" data-brand="Lian Li" data-warranty="12 tháng">Lian Li Lancool 216 RGB Black - 3.500.000 VNĐ</option>
+                                            <option value="lian-li-lancool-216-rgb-black" data-price="3500000"
+                                                data-image="images/lian-li-lancool-216-rgb-black.jpg"
+                                                data-brand="Lian Li" data-warranty="12 tháng">Lian Li Lancool 216 RGB
+                                                Black - 3.500.000 VNĐ</option>
                                         </optgroup>
                                     </select>
                                 </td>
@@ -266,11 +1013,22 @@
                                 <td>
                                     <select name="cpu-cooler">
                                         <option value="">Chọn Tản nhiệt CPU (tùy chọn)</option>
-                                        <option value="jonsbo-cr-1000-rgb" data-price="350000" data-image="images/jonsbo-cr-1000-rgb.jpg" data-brand="Jonsbo" data-warranty="12 tháng">Jonsbo CR-1000 RGB - 350.000 VNĐ</option>
-                                        <option value="ct-air-01" data-price="450000" data-image="images/ct-air-01.jpg" data-brand="Cooler Master" data-warranty="12 tháng">CT-Air 01 - 450.000 VNĐ</option>
-                                        <option value="coolermaster-hyper-212-rgb-black-edition" data-price="900000" data-image="images/coolermaster-hyper-212-rgb-black-edition.jpg" data-brand="Cooler Master" data-warranty="12 tháng">Cooler Master Hyper 212 RGB Black Edition - 900.000 VNĐ</option>
-                                        <option value="noctua-nh-d15" data-price="2800000" data-image="images/noctua-nh-d15.jpg" data-brand="Noctua" data-warranty="72 tháng">Noctua NH-D15 - 2.800.000 VNĐ</option>
-                                        <option value="deepcool-ak620-zero-dark" data-price="1500000" data-image="images/deepcool-ak620-zero-dark.jpg" data-brand="Deepcool" data-warranty="12 tháng">Deepcool AK620 Zero Dark - 1.500.000 VNĐ</option>
+                                        <option value="jonsbo-cr-1000-rgb" data-price="350000"
+                                            data-image="images/jonsbo-cr-1000-rgb.jpg" data-brand="Jonsbo"
+                                            data-warranty="12 tháng">Jonsbo CR-1000 RGB - 350.000 VNĐ</option>
+                                        <option value="ct-air-01" data-price="450000" data-image="images/ct-air-01.jpg"
+                                            data-brand="Cooler Master" data-warranty="12 tháng">CT-Air 01 - 450.000 VNĐ
+                                        </option>
+                                        <option value="coolermaster-hyper-212-rgb-black-edition" data-price="900000"
+                                            data-image="images/coolermaster-hyper-212-rgb-black-edition.jpg"
+                                            data-brand="Cooler Master" data-warranty="12 tháng">Cooler Master Hyper 212
+                                            RGB Black Edition - 900.000 VNĐ</option>
+                                        <option value="noctua-nh-d15" data-price="2800000"
+                                            data-image="images/noctua-nh-d15.jpg" data-brand="Noctua"
+                                            data-warranty="72 tháng">Noctua NH-D15 - 2.800.000 VNĐ</option>
+                                        <option value="deepcool-ak620-zero-dark" data-price="1500000"
+                                            data-image="images/deepcool-ak620-zero-dark.jpg" data-brand="Deepcool"
+                                            data-warranty="12 tháng">Deepcool AK620 Zero Dark - 1.500.000 VNĐ</option>
                                     </select>
                                 </td>
                             </tr>
@@ -278,11 +1036,47 @@
                                 <td>Ổ cứng HDD</td>
                                 <td>
                                     <select name="hdd">
-                                        <option value="">Chọn HDD (tùy chọn)</option>
-                                        <option value="western-digital-blue-1tb-3.5-inch" data-price="1200000" data-image="images/western-digital-blue-1tb-3.5-inch.jpg" data-brand="Western Digital" data-warranty="24 tháng">Western Digital Blue 1TB 3.5 inch - 1.200.000 VNĐ</option>
-                                        <option value="seagate-barracuda-2tb-3.5-inch" data-price="1500000" data-image="images/seagate-barracuda-2tb-3.5-inch.jpg" data-brand="Seagate" data-warranty="24 tháng">Seagate Barracuda 2TB 3.5 inch - 1.500.000 VNĐ</option>
-                                        <option value="western-digital-purple-2tb-3.5-inch" data-price="2500000" data-image="images/western-digital-purple-2tb-3.5-inch.jpg" data-brand="Western Digital" data-warranty="24 tháng">Western Digital Purple 2TB 3.5 inch - 2.500.000 VNĐ</option>
-                                        <option value="seagate-barracuda-4tb-3.5-inch" data-price="2800000" data-image="images/seagate-barracuda-4tb-3.5-inch.jpg" data-brand="Seagate" data-warranty="24 tháng">Seagate Barracuda 4TB 3.5 inch - 2.800.000 VNĐ</option>
+                                        <option value="wd-elements-portable-1tb" data-price="1609000"
+                                            data-image="images/wd-elements-portable-1tb.jpg"
+                                            data-brand="Western Digital" data-warranty="24 tháng">Ổ cứng di động HDD WD
+                                            Elements Portable 1TB 2.5" USB 3.0 - 1.609.000 VNĐ</option>
+                                        <option value="wd-blue-1tb" data-price="1330000"
+                                            data-image="images/wd-blue-1tb.jpg" data-brand="Western Digital"
+                                            data-warranty="24 tháng">Ổ cứng HDD WD Blue 1TB 3.5 inch, 7200RPM, SATA,
+                                            64MB Cache - 1.330.000 VNĐ</option>
+                                        <option value="seagate-barracuda-1tb" data-price="Liên hệ"
+                                            data-image="images/seagate-barracuda-1tb.jpg" data-brand="Seagate"
+                                            data-warranty="24 tháng">Ổ cứng HDD Seagate BarraCuda 1TB 3.5 inch, 7200RPM,
+                                            SATA, 64MB Cache - Liên hệ</option>
+                                        <option value="wd-ultrastar-hc320-8tb" data-price="5190000"
+                                            data-image="images/wd-ultrastar-hc320-8tb.jpg" data-brand="Western Digital"
+                                            data-warranty="36 tháng">Ổ cứng HDD WD Ultrastar HC320 8TB 3.5 inch,
+                                            7200RPM, SATA, 256MB Cache - 5.190.000 VNĐ</option>
+                                        <option value="seagate-skyhawk-4tb" data-price="2650000"
+                                            data-image="images/seagate-skyhawk-4tb.jpg" data-brand="Seagate"
+                                            data-warranty="24 tháng">Ổ cứng HDD Seagate SkyHawk 4TB 3.5 inch, 5400RPM,
+                                            SATA, 256MB Cache - 2.650.000 VNĐ</option>
+                                        <option value="wd-blue-2tb" data-price="1590000"
+                                            data-image="images/wd-blue-2tb.jpg" data-brand="Western Digital"
+                                            data-warranty="24 tháng">Ổ cứng HDD WD Blue 2TB 3.5 inch, 7200RPM, SATA,
+                                            256MB Cache - 1.590.000 VNĐ</option>
+                                        <option value="seagate-ironwolf-pro-4tb" data-price="2590000"
+                                            data-image="images/seagate-ironwolf-pro-4tb.jpg" data-brand="Seagate"
+                                            data-warranty="24 tháng">Ổ cứng HDD Seagate IronWolf Pro 4TB 3.5 inch,
+                                            7200RPM, SATA, 256MB Cache - 2.590.000 VNĐ</option>
+                                        <option value="wd-enterprise-ultrastar-dc-hc330-10tb" data-price="7599000"
+                                            data-image="images/wd-enterprise-ultrastar-dc-hc330-10tb.jpg"
+                                            data-brand="Western Digital" data-warranty="60 tháng">Ổ cứng HDD WD
+                                            Enterprise Ultrastar DC HC330 10TB 3.5 inch, 7200RPM, SATA, 256MB Cache -
+                                            7.599.000 VNĐ</option>
+                                        <option value="seagate-barracuda-8tb" data-price="4990000"
+                                            data-image="images/seagate-barracuda-8tb.jpg" data-brand="Seagate"
+                                            data-warranty="24 tháng">Ổ cứng HDD Seagate BarraCuda 8TB 3.5 inch, 5400RPM,
+                                            SATA, 256MB Cache - 4.990.000 VNĐ</option>
+                                        <option value="wd-blue-6tb" data-price="3850000"
+                                            data-image="images/wd-blue-6tb.jpg" data-brand="Western Digital"
+                                            data-warranty="24 tháng">Ổ cứng HDD WD Blue 6TB 3.5 inch, 5400RPM, SATA,
+                                            256MB Cache - 3.850.000 VNĐ</option>
                                     </select>
                                 </td>
                             </tr>
@@ -329,18 +1123,19 @@
             <a href="https://zalo.me/0836768597" target="_blank" class="contact-button">
                 <i class="fab fa-zalo"></i> Liên hệ qua Zalo
             </a>
-            <span>CALL    0836768597    </span>
-            
+            <span>CALL 0836768597 </span>
+
             <a href="https://www.facebook.com/tpcom.hb" target="_blank" class="contact-button">
                 <i class="fab fa-facebook"></i> Liên hệ qua Facebook
             </a>
         </div>
     </header>
     <footer>
-        
+
         <p>&copy; 2025 BUILD PC TRUONG PHAT COMPUTER. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
