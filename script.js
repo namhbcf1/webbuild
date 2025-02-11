@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (component.brand) opt.dataset.brand = component.brand;
         if (component.note) opt.dataset.note = component.note;
         if (component.memoryType) opt.dataset.memoryType = component.memoryType;
-        if (component.buss) opt.dataset.buss = component.buss;  // thêm dòng này
         return opt;
     }
 
@@ -120,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
             warranty: el.dataset.warranty,
             note: el.dataset.note || 'NEW',
             memoryType: el.dataset.memoryType,  // thêm thuộc tính memoryType
-            buss: el.dataset.buss                // thêm thuộc tính buss
         });
     });
     document.querySelectorAll('select[name="ssd"] option').forEach(el => {
@@ -243,21 +241,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Sự kiện change cho mainboard: sử dụng dữ liệu dataset và tên mainboard (chuẩn hóa) để lọc RAM
     // Sự kiện change cho mainboard: lấy các thuộc tính dataset và tên mainboard (đã trim)
-    // Sự kiện change cho mainboard: lấy dữ liệu memoryType và buss từ dataset của mainboard
-    // Sự kiện change cho mainboard: lấy dữ liệu memoryType và buss từ dataset của mainboard
+
     motherboardSelect.addEventListener('change', function () {
         const selectedMain = this.options[this.selectedIndex];
-        // Lấy thuộc tính memoryType và buss, chuẩn hóa (toUpperCase và trim)
         const memoryType = selectedMain.dataset.memoryType ? selectedMain.dataset.memoryType.toUpperCase() : '';
-        const buss = selectedMain.dataset.buss ? selectedMain.dataset.buss.trim() : '';
-        console.log(`Mainboard được chọn: memoryType = ${memoryType}, buss = ${buss}`);
-        filterRamByMemoryType(memoryType, buss);
+        console.log(`Mainboard được chọn: memoryType = ${memoryType}`);
+        filterRamByMemoryType(memoryType);
     });
-
-    function filterRamByMemoryType(memoryType, buss) {
+    
+    function filterRamByMemoryType(memoryType) {
         const ramOptions = ramSelect.querySelectorAll('option');
         const ramGroups = ramSelect.querySelectorAll('optgroup');
-
+    
         // Nếu chưa có mainboard được chọn, hiển thị tất cả RAM
         if (!memoryType) {
             ramOptions.forEach(option => {
@@ -271,19 +266,17 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("Chưa có mainboard được chọn, hiển thị tất cả RAM");
             return;
         }
-
-        console.log(`Filter RAM: so sánh theo memoryType = ${memoryType} và buss = ${buss}`);
-
+    
+        console.log(`Filter RAM: so sánh theo memoryType = ${memoryType}`);
+    
         ramOptions.forEach(option => {
             const ramMemoryType = option.dataset.memoryType ? option.dataset.memoryType.toUpperCase() : '';
-            const ramBuss = option.dataset.buss ? option.dataset.buss.trim() : '';
-
-            // Nếu buss của mainboard không có, chỉ so sánh memoryType; nếu có, so sánh cả buss.
-            const isCompatible = buss ? ((ramMemoryType === memoryType) && (ramBuss === buss))
-                : (ramMemoryType === memoryType);
-
-            console.log(`Option ${option.value}: memoryType = ${ramMemoryType}, buss = ${ramBuss}, isCompatible = ${isCompatible}`);
-
+    
+            // So sánh memoryType
+            const isCompatible = ramMemoryType === memoryType;
+    
+            console.log(`Option ${option.value}: memoryType = ${ramMemoryType}, isCompatible = ${isCompatible}`);
+    
             if (isCompatible) {
                 option.style.display = '';
                 option.disabled = false;
@@ -292,17 +285,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 option.disabled = true;
             }
         });
-
+    
         // Ẩn/hiện các optgroup dựa trên việc có option nào hiển thị không
         ramGroups.forEach(group => {
             const hasVisibleOptions = Array.from(group.querySelectorAll('option')).some(opt => opt.style.display !== 'none');
             group.style.display = hasVisibleOptions ? '' : 'none';
         });
-
+    
         // Reset lựa chọn RAM về option mặc định, để người dùng tự chọn sau
         ramSelect.value = '';
         console.log("RAM được chọn:", ramSelect.value);
     }
+    
 
 
     function updateImagePreview(selectedOption) {
