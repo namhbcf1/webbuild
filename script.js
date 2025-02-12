@@ -40,8 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function populateSelect(selectElement, componentsArray, groupByField = null) {
+        // Tạo option mặc định
         selectElement.innerHTML = '<option value="">Chọn ' + selectElement.name + '</option>';
-
+    
         if (groupByField) {
             const groupedComponents = {};
             componentsArray.forEach(component => {
@@ -51,20 +52,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 groupedComponents[groupValue].push(component);
             });
-
+    
+            // Sắp xếp theo tên nhóm (nếu cần) và bên trong mỗi nhóm theo giá tăng dần
             Object.keys(groupedComponents).sort().forEach(groupName => {
                 const optgroup = document.createElement('optgroup');
                 optgroup.label = groupName;
-
-                groupedComponents[groupName].sort((a, b) => a.name.localeCompare(b.name)).forEach(component => {
-                    optgroup.appendChild(createOption(component));
-                });
+    
+                groupedComponents[groupName]
+                    .sort((a, b) => a.price - b.price) // sắp xếp theo giá tăng dần
+                    .forEach(component => {
+                        optgroup.appendChild(createOption(component));
+                    });
                 selectElement.appendChild(optgroup);
             });
         } else {
-            componentsArray.sort((a, b) => a.name.localeCompare(b.name)).forEach(component => {
-                selectElement.appendChild(createOption(component));
-            })
+            // Sắp xếp toàn bộ mảng theo giá tăng dần
+            componentsArray.sort((a, b) => a.price - b.price)
+                .forEach(component => {
+                    selectElement.appendChild(createOption(component));
+                });
         }
     }
 
