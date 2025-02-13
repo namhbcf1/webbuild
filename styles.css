@@ -11,6 +11,10 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
+#summary-modal {
+    z-index: 9999;
+    position: fixed;
+}
 
 body {
     font-family: 'Nunito Sans', sans-serif; /* Modern, readable font */
@@ -291,12 +295,9 @@ footer {
 }
 
 #configuration-summary {
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-    transition: opacity 0.5s ease, height 0.5s ease;
-    margin-top: 20px;
-    width: 100%;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #configuration-summary.show {
