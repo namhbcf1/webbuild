@@ -1,3 +1,5 @@
+let imagePreview;
+
 document.addEventListener('DOMContentLoaded', function () {
     console.log(document.getElementById('ram'));
     const cpuBrandSelect = document.getElementById('cpu-brand');
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const configurationSummaryDiv = document.getElementById('configuration-summary');
     const modalSummaryDiv = document.getElementById('modal-summary');
     const modalTotalPriceDiv = document.getElementById('modal-total-price');
-    const summaryModal = document.getElementById('summary-modal');
+    const summaryModal = document.getElementById("summary-modal");
     const closeModalSpan = document.querySelector('.close-modal');
     const totalPriceDiv = document.getElementById('total-price');
     const selectedComponentDiv = document.getElementById('selected-component');
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function populateSelect(selectElement, componentsArray, groupByField = null) {
         // Tạo option mặc định
         selectElement.innerHTML = '<option value="">Chọn ' + selectElement.name + '</option>';
-    
+
         if (groupByField) {
             const groupedComponents = {};
             componentsArray.forEach(component => {
@@ -52,12 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 groupedComponents[groupValue].push(component);
             });
-    
+
             // Sắp xếp theo tên nhóm (nếu cần) và bên trong mỗi nhóm theo giá tăng dần
             Object.keys(groupedComponents).sort().forEach(groupName => {
                 const optgroup = document.createElement('optgroup');
                 optgroup.label = groupName;
-    
+
                 groupedComponents[groupName]
                     .sort((a, b) => a.price - b.price) // sắp xếp theo giá tăng dần
                     .forEach(component => {
@@ -73,8 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         }
     }
-
-    const components = { cpu: [], mainboard: [], vga: [], ram: [], ssd: [], psu: [], case: [], 'cpu-cooler': [], hdd: [] };
+    document.querySelectorAll('option[data-price]').forEach(option => {
+        option.dataset.price = option.dataset.price.replace(/\./g, '');
+    });
+    const components = { cpu: [], mainboard: [], vga: [], ram: [], ssd: [], psu: [], case: [], 'cpu-cooler': [], hdd: [] , monitor: [] };
 
     document.querySelectorAll('#cpu option, #cpu optgroup').forEach(el => {
         if (el.tagName === 'OPTGROUP') return;
@@ -89,15 +93,16 @@ document.addEventListener('DOMContentLoaded', function () {
             note: el.dataset.note || 'NEW'
         });
     });
+    
 
     document.querySelectorAll('#mainboard option, #mainboard optgroup').forEach(el => {
         if (el.tagName === 'OPTGROUP') return;
         if (el.value === "") return;
         components.mainboard.push({
             brand: el.parentElement.label,
-            name: el.textContent,
+            name: el.textContent.trim(),
             socket: el.dataset.cpuSocket,
-            price: parseInt(el.dataset.price),
+            price: parseInt(el.dataset.price.replace(/\./g, ""), 10), // Loại bỏ dấu . trước khi parse
             image: el.dataset.image,
             warranty: el.dataset.warranty,
             note: el.dataset.note || 'NEW',
@@ -105,16 +110,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+
+    components.vga = [];
     document.querySelectorAll('select[name="vga"] option').forEach(el => {
         if (el.value === "") return;
+
+        let price = el.dataset.price.replace(/\./g, '');  // Loại bỏ dấu chấm
+        price = parseInt(price); // Chuyển thành số nguyên
+
+        console.log("VGA Price:", price); // Debug xem giá trị có đúng không
+
         components.vga.push({
             name: el.textContent.replace(/ - \d+\.\d+ VNĐ$/, ''),
-            price: parseInt(el.dataset.price),
+            price: price,
             image: el.dataset.image,
             warranty: el.dataset.warranty,
             note: el.dataset.note || 'NEW'
-        })
+        });
     });
+
 
     document.querySelectorAll('select[name="ram"] option').forEach(el => {
         if (el.value === "") return;
@@ -176,6 +190,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('select[name="hdd"] option').forEach(el => {
         if (el.value === "") return;
         components.hdd.push({
+            name: el.textContent.replace(/ - \d+\.\d+ VNĐ$/, ''),
+            price: parseInt(el.dataset.price),
+            image: el.dataset.image,
+            warranty: el.dataset.warranty,
+            note: el.dataset.note || 'NEW'
+        })
+    });
+    document.querySelectorAll('select[name="monitor"] option').forEach(el => {
+        if (el.value === "") return;
+        components.monitor.push({
             name: el.textContent.replace(/ - \d+\.\d+ VNĐ$/, ''),
             price: parseInt(el.dataset.price),
             image: el.dataset.image,
@@ -254,11 +278,11 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`Mainboard được chọn: memoryType = ${memoryType}`);
         filterRamByMemoryType(memoryType);
     });
-    
+
     function filterRamByMemoryType(memoryType) {
         const ramOptions = ramSelect.querySelectorAll('option');
         const ramGroups = ramSelect.querySelectorAll('optgroup');
-    
+
         // Nếu chưa có mainboard được chọn, hiển thị tất cả RAM
         if (!memoryType) {
             ramOptions.forEach(option => {
@@ -272,17 +296,17 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("Chưa có mainboard được chọn, hiển thị tất cả RAM");
             return;
         }
-    
+
         console.log(`Filter RAM: so sánh theo memoryType = ${memoryType}`);
-    
+
         ramOptions.forEach(option => {
             const ramMemoryType = option.dataset.memoryType ? option.dataset.memoryType.toUpperCase() : '';
-    
+
             // So sánh memoryType
             const isCompatible = ramMemoryType === memoryType;
-    
+
             console.log(`Option ${option.value}: memoryType = ${ramMemoryType}, isCompatible = ${isCompatible}`);
-    
+
             if (isCompatible) {
                 option.style.display = '';
                 option.disabled = false;
@@ -291,24 +315,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 option.disabled = true;
             }
         });
-    
+
         // Ẩn/hiện các optgroup dựa trên việc có option nào hiển thị không
         ramGroups.forEach(group => {
             const hasVisibleOptions = Array.from(group.querySelectorAll('option')).some(opt => opt.style.display !== 'none');
             group.style.display = hasVisibleOptions ? '' : 'none';
         });
-    
+
         // Reset lựa chọn RAM về option mặc định, để người dùng tự chọn sau
         ramSelect.value = '';
         console.log("RAM được chọn:", ramSelect.value);
     }
-    
 
 
-    function updateImagePreview(selectedOption) {
-        imagePreview.src = selectedOption?.dataset.image || '';
-        imagePreview.style.display = selectedOption?.dataset.image ? 'block' : 'none';
+
+    function updateImagePreview() {
+        const imagePreviewContainer = document.getElementById('image-preview-container');
+        imagePreviewContainer.innerHTML = ''; // Xóa hình ảnh cũ
+        let hasImage = false;
+
+        const selects = document.querySelectorAll('#components-form select:not(#cpu-brand)');
+        selects.forEach(select => {
+            const selectedOption = select.options[select.selectedIndex];
+            if (selectedOption && selectedOption.value && !selectedOption.disabled) {
+                const imageUrl = selectedOption.dataset.image;
+                if (imageUrl) {
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = `Hình ảnh ${selectedOption.textContent}`;
+                    image.style.maxWidth = '200px';
+                    image.style.margin = '10px';
+                    imagePreviewContainer.appendChild(image);
+                    hasImage = true;
+                }
+            }
+        });
+
+        if (!hasImage) {
+            imagePreviewContainer.innerHTML = '<p>Hình ảnh linh kiện sẽ hiển thị ở đây khi bạn chọn.</p>';
+        }
     }
+
 
     function updateConfigurationSummary() {
         configurationSummaryDiv.innerHTML = '';
@@ -322,8 +369,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let modalSummaryHTML = summaryHTML;
 
         const selects = document.querySelectorAll('#components-form select:not(#cpu-brand)');
-        let stt = 1;
-
         selects.forEach(select => {
             const selectedOption = select.options[select.selectedIndex];
             if (selectedOption && selectedOption.value && !selectedOption.disabled) {
@@ -331,18 +376,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 const price = parseFloat(selectedOption.dataset.price) || 0;
                 const warranty = selectedOption.dataset.warranty || 'N/A';
                 const note = selectedOption.dataset.note || 'NEW';
-                const thanhTien = price;
                 const imageUrl = selectedOption.dataset.image || 'path/to/default-image.png';
-
                 const rowHTML = `<tr>
                 <td><img src="${imageUrl}" alt="Hình ảnh ${componentName}" style="max-width: 50px; max-height: 50px; vertical-align: middle;"></td>
                 <td>${componentName}</td>
                 <td>${price.toLocaleString()}</td>
-                <td>${thanhTien.toLocaleString()}</td>
+                <td>${price.toLocaleString()}</td>
                 <td>${warranty}</td>
                 <td>${note}</td>
             </tr>`;
-
                 summaryHTML += rowHTML;
                 modalSummaryHTML += rowHTML;
                 totalPrice += price;
@@ -356,13 +398,51 @@ document.addEventListener('DOMContentLoaded', function () {
         totalPriceDiv.textContent = `Tổng tiền: ${totalPrice.toLocaleString()} VNĐ`;
         modalSummaryDiv.innerHTML = modalSummaryHTML;
         modalTotalPriceDiv.textContent = `Tổng tiền: ${totalPrice.toLocaleString()} VNĐ`;
-
-        if (totalPrice > 0) {
-            configurationSummaryDiv.classList.add('show');
-        } else {
-            configurationSummaryDiv.classList.remove('show');
-        }
     }
+
+    document.querySelectorAll('#components-form select:not(#cpu-brand)').forEach(select => {
+        select.addEventListener('change', function () {
+            updateImagePreview();
+            updateConfigurationSummary();
+        });
+    });
+
+    calculateButton.addEventListener('click', function () {
+        updateConfigurationSummary();
+        summaryModal.style.display = 'block';
+    });
+
+    closeModalSpan.addEventListener('click', function () {
+        summaryModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target == summaryModal) {
+            summaryModal.style.display = 'none';
+        }
+    });
+
+    document.querySelectorAll('#components-form select:not(#cpu-brand)').forEach(select => {
+        select.addEventListener('change', function () {
+            updateImagePreview();
+            updateConfigurationSummary();
+        });
+    });
+
+    calculateButton.addEventListener('click', function () {
+        updateConfigurationSummary();
+        summaryModal.style.display = 'block';
+    });
+
+    closeModalSpan.addEventListener('click', function () {
+        summaryModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target == summaryModal) {
+            summaryModal.style.display = 'none';
+        }
+    });
 
     cpuBrandSelect.addEventListener('change', function () {
         filterComponents(this.value);
@@ -380,6 +460,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         updateConfigurationSummary();
     });
+
+    document.querySelectorAll('#components-form select:not(#cpu-brand):not(#cpu):not(#mainboard):not(#ram)')
+        .forEach(select => {
+            select.addEventListener('change', function () {
+                updateImagePreview(this.options[this.selectedIndex]);
+                updateConfigurationSummary();
+            });
+        });
 
 
     document.querySelectorAll('#components-form select:not(#cpu-brand):not(#cpu):not(#mainboard):not(#ram)')
