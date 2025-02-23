@@ -1,0 +1,183 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header .contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header .contact-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header .contact-button i {
+    margin-right: 5px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.selection-section {
+    margin-bottom: 20px;
+}
+
+.selection-section h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.component {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.component h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.image-preview {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-preview h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#image-preview-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.total-price {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.total-price h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.total-price p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.button-group {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.action-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+.summary-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.summary-section h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    margin-top: 20px;
+}
+/* Hiệu ứng modal */
+.modal {
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Card linh kiện */
+.component-card {
+    transition: transform 0.2s ease;
+}
+
+.component-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

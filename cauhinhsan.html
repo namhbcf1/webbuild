@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUILD PC TRUONG PHAT COMPUTER - Chọn Linh Kiện Máy Tính</title>
+    <link rel="stylesheet" href="buildsan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build PC - Trường Phát Computer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="contact-buttons">
+            <a href="https://zalo.me/0836768597" target="_blank" class="contact-button">
+                <i class="fab fa-zalo"></i> Liên hệ qua Zalo
+            </a>
+            <span>CALL 0836768597</span>
+            <a href="https://www.facebook.com/tpcom.hb" target="_blank" class="contact-button">
+                <i class="fab fa-facebook"></i> Liên hệ qua Facebook
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>XÂY DỰNG CẤU HÌNH PC</h1>
+        <section id="budget-range-selection" class="selection-section">
+            <h2>Chọn Cấu Hình Tầm Tiền Mong Muốn (VNĐ)</h2>
+            <select id="budget-range" name="budget-range" class="dropdown">
+                <option value="">Chọn tầm tiền mong muốn</option>
+                <option value="2m-3m">2 - 3 triệu</option>
+                <option value="3m-4m">3 - 4 triệu</option>
+                <option value="4m-5m">4 - 5 triệu</option>
+                <option value="5m-6m">5 - 6 triệu</option>
+                <option value="6m-7m">6 - 7 triệu</option>
+                <option value="7m-8m">7 - 8 triệu</option>
+                <option value="8m-9m">8 - 9 triệu</option>
+                <option value="9m-10m">9 - 10 triệu</option>
+                <option value="10m-11m">10 - 11 triệu</option>
+                <option value="11m-12m">11 - 12 triệu</option>
+                <option value="12m-13m">12 - 13 triệu</option>
+                <option value="13m-14m">13 - 14 triệu</option>
+                <option value="14m-15m">14 - 15 triệu</option>
+                <option value="15m-16m">15 - 16 triệu</option>
+                <option value="16m-17m">16 - 17 triệu</option>
+                <option value="17m-18m">17 - 18 triệu</option>
+                <option value="18m-19m">18 - 19 triệu</option>
+                <option value="19m-20m">19 - 20 triệu</option>
+                <option value="20m-25m">20 - 25 triệu</option>
+                <option value="25m-30m">25 - 30 triệu</option>
+                <option value="30m-35m">30 - 35 triệu</option>
+                <option value="35m-40m">35 - 40 triệu</option>
+                <option value="over-40m">Trên 40 triệu</option>
+            </select>
+        </section>
+        
+        <section id="cpu-type-selection" class="selection-section">
+            <h2>Chọn Loại CPU</h2>
+            <select id="cpu-type" name="cpu-type" class="dropdown">
+                <option value="Intel">INTEL</option>
+                <option value="Amd">AMD</option>
+            </select>
+        </section>
+        
+        <section id="game-selection" class="selection-section">
+            <h2>Chọn Game Muốn Chơi</h2>
+            <select id="game-genre" name="game-genre" class="dropdown">
+                <option value="">Chọn thể loại game hoặc tên game</option>
+                <option value="all-games">Tất cả các game</option>
+                <option value="game-offline">Game Offline</option>
+                <option value="game-esport">Game Esport</option>
+                <option value="valorant">Valorant</option>
+                <option value="csgo">CS:GO</option>
+                <option value="lol">Liên Minh Huyền Thoại (LOL)</option>
+                <option value="dota2">DOTA 2</option>
+                <option value="overwatch">Overwatch</option>
+                <option value="apex-legends">Apex Legends</option>
+                <option value="gta-v">GTA V</option>
+                <option value="cyberpunk-2077">Cyberpunk 2077</option>
+                <option value="elden-ring">Elden Ring</option>
+                <option value="god-of-war">God of War</option>
+            </select>
+        </section>
+
+        <section id="component-selection" class="selection-grid">
+            <div class="component">
+                <h2>Chọn CPU</h2>
+                <select id="cpu" name="cpu" class="dropdown">
+                    <option value="" disabled selected>Chọn CPU</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn Mainboard</h2>
+                <select id="mainboard" name="mainboard" class="dropdown">
+                    <option value="" disabled selected>Chọn Mainboard</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn Card Đồ Họa (VGA)</h2>
+                <select id="vga" name="vga" class="dropdown">
+                    <option value="" disabled selected>Chọn VGA</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn RAM</h2>
+                <select id="ram" name="ram" class="dropdown">
+                    <option value="" disabled selected>Chọn RAM</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn Ổ Cứng SSD</h2>
+                <select id="ssd" name="ssd" class="dropdown">
+                    <option value="" disabled selected>Chọn SSD</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn Nguồn (PSU)</h2>
+                <select id="psu" name="psu" class="dropdown">
+                    <option value="" disabled selected>Chọn PSU</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn Vỏ Case</h2>
+                <select id="case" name="case" class="dropdown">
+                    <option value="" disabled selected>Chọn Case</option>
+                </select>
+            </div>
+            <div class="component">
+                <h2>Chọn Tản Nhiệt CPU</h2>
+                <select id="cpu-cooler" name="cpu-cooler" class="dropdown">
+                    <option value="" disabled selected>Chọn Tản Nhiệt CPU</option>
+                </select>
+            </div>
+        </section>
+
+
+        <section id="selected-components">
+            <h2>Linh kiện đã chọn</h2>
+            <div id="selected-components-list"></div>
+        </section>
+             
+        <div id="summary-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Cấu hình chi tiết</h2>
+                <div id="modal-summary"></div>
+                <div id="modal-total-price"></div>
+                <div id="image-preview-container"></div>
+            </div>
+        </div>
+
+        <section id="total-price" class="total-price">
+            <h2>Tổng Tiền Dự Kiến</h2>
+            <p>0 VNĐ</p> <!-- Cần cập nhật nội dung thẻ p này -->
+        </section>
+
+        <div class="button-group">
+            <button type="button" class="action-button primary-btn" id="calculate-button">
+                <i class="fas fa-calculator"></i> Tính Toán Chi Phí
+            </button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BUILD PC TRUONG PHAT COMPUTER. All rights reserved.</p>
+    </footer>
+
+    <script src="buildsan.js"></script>
+</body>
+</html>
