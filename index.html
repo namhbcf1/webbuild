@@ -22,6 +22,11 @@
                 <i class="fab fa-facebook"></i> Liên hệ qua Facebook
             </a>
         </div>
+
+        <a href="cauhinhsan.html" class="next-button">
+            <i class="fas fa-external-link-alt"></i> CẤU HÌNH BUILD SẴN
+        </a>
+        
     </header>
 
     <main>
@@ -36,6 +41,7 @@
             </section>
 
             <div class="table-container">
+                
                 <div class="column">
                     <h2>Linh Kiện Chính</h2>
                     <table>
@@ -188,7 +194,7 @@
                                                 data-warranty="36 tháng" data-socket="AM5">
                                                 amd-ryzen-5-7600-tray (Giá: 4.300.000 VNĐ)
                                             </option>
-                                            <option value="amd-ryzen-5-7600x-tray" data-price="4800000"
+                                            <option value="amd-ryzen-5-7600x-tray" data-price="4500000"
                                                 data-image="images/amd-ryzen-5-7600x-tray.jpg" data-brand="AMD"
                                                 data-warranty="36 tháng" data-socket="AM5">
                                                 amd-ryzen-5-7600x-tray (Giá: 4.800.000 VNĐ)
@@ -203,10 +209,10 @@
                                                 data-image="images/amd-ryzen-7-5700x.jpg" data-brand="AMD"
                                                 data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5700x (Giá:
                                                 3.300.000 VNĐ)</option>
-                                            <option value="amd-ryzen-7-5700x3D" data-price="5100000"
+                                            <option value="amd-ryzen-7-5700x3D" data-price="5300000"
                                                 data-image="images/amd-ryzen-7-5700x3d.jpg" data-brand="AMD"
                                                 data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5700x3D (Giá:
-                                                5.100.000 VNĐ)</option>
+                                                5.300.000 VNĐ)</option>
                                             <option value="amd-ryzen-7-5800x" data-price="3800000"
                                                 data-image="images/amd-ryzen-7-5800x.jpg" data-brand="AMD"
                                                 data-warranty="36 tháng" data-socket="AM4">amd-ryzen-7-5800x (Giá:
@@ -215,10 +221,10 @@
                                                 data-image="images/amd-ryzen-7-7700x.jpg" data-brand="AMD"
                                                 data-warranty="36 tháng" data-socket="AM5">amd-ryzen-7-7700x (Giá:
                                                 6.100.000 VNĐ)</option>
-                                            <option value="amd-ryzen-7-7800x3d-tray" data-price="10590000"
+                                            <option value="amd-ryzen-7-7800x3d-tray" data-price="10390000"
                                                 data-image="images/amd-ryzen-7-7800x3d-tray.jpg" data-brand="AMD"
                                                 data-warranty="36 tháng" data-socket="AM5">
-                                                amd-ryzen-7-7800x3d-tray (Giá: 10.590.000 VNĐ)
+                                                amd-ryzen-7-7800x3d-tray (Giá: 10.390.000 VNĐ)
                                             </option>
                                             <option value="amd-ryzen-7-7700-tray" data-price="6299000"
                                                 data-image="images/amd-ryzen-7-7700-tray.jpg" data-brand="AMD"
@@ -951,41 +957,38 @@
                             <tr>
                                 <td>Vỏ máy tính (Case)</td>
                                 <td>
-                                    <select name="case">
+                                    <select name="case" id="caseSelect">
                                         <option value="">Chọn Case</option>
                                         <optgroup label="XIGMATEK">
                                             <option value="xigmatek-nyx-air-3f" data-price="600000"
-                                                data-image="xigmatek-nyx-air-3f.jpg" data-brand="Xigmatek"
-                                                data-warranty="12 tháng">Xigmatek NYX AIR 3F - 600.000 VNĐ</option>
-
+                                                data-image="images/xigmatek-nyx-air-3f.jpg" data-brand="Xigmatek"
+                                                data-warranty="12 tháng">Xigmatek NYX AIR 3F</option>
+                                    
                                             <option value="xigmatek-cubi-m-black" data-price="799000"
-                                                data-image="xigmatek-cubi-m-black.jpg" data-brand="Xigmatek"
-                                                data-warranty="12 tháng">Xigmatek Cubi M Black - 799.000 VNĐ
-                                            </option>
+                                                data-image="images/xigmatek-cubi-m-black.jpg" data-brand="Xigmatek"
+                                                data-warranty="12 tháng">Xigmatek Cubi M Black</option>
+                                    
                                             <option value="xigmatek-cubi-m-nano-m-atx-black" data-price="600000"
-                                                data-image="xigmatek-cubi-m-nano-m-atx-black.jpg" data-brand="Xigmatek"
-                                                data-warranty="12 tháng">
-                                                Xigmatek Cubi M Nano M-ATX Black - 600.000 VNĐ
-                                            </option>
+                                                data-image="images/xigmatek-cubi-m-nano-m-atx-black.jpg" data-brand="Xigmatek"
+                                                data-warranty="12 tháng">Xigmatek Cubi M Nano M-ATX Black</option>
+                                    
                                             <option value="xigmatek-gemini-m-no-fan" data-price="500000"
                                                 data-image="images/xigmatek-gemini-m-no-fan.jpg" data-brand="Xigmatek"
-                                                data-warranty="12 tháng">Xigmatek Gemini M No Fan - 500.000 VNĐ</option>
+                                                data-warranty="12 tháng">Xigmatek Gemini M No Fan</option>
                                         </optgroup>
                                         <optgroup label="KENNO">
                                             <option value="kenoo-esport-mk400" data-price="699000"
                                                 data-image="images/kenoo-esport-mk400.jpg" data-brand="KENOO"
-                                                data-warranty="12 tháng">Vỏ Case Máy Tính KENOO ESPORT MK400 (MATX, Case
-                                                Bể Cá, Kính Cong) - 699.000 VNĐ</option>
-
+                                                data-warranty="12 tháng">Vỏ Case Máy Tính KENOO ESPORT MK400 (MATX, Case Bể Cá, Kính Cong)</option>
                                         </optgroup>
                                         <optgroup label="GAMING START">
                                             <option value="gaming-start-ga" data-price="360000"
                                                 data-image="images/gaming-start-ga3fg.jpg" data-brand="Gaming Start"
-                                                data-warranty="12 tháng">Vỏ Case 2 Mặt Kính Cường Lực Gaming
-                                                Start GA3 - 360.000 VNĐ</option>
+                                                data-warranty="12 tháng">Vỏ Case 2 Mặt Kính Cường Lực Gaming Start GA3</option>
+                                    
                                             <option value="gaming-start-ga" data-price="499000"
                                                 data-image="images/gaming-start-ga3f.jpg" data-brand="Gaming Start"
-                                                data-warranty="12 tháng">Vỏ Case Gaming Start GA - 499.000 VNĐ</option>
+                                                data-warranty="12 tháng">Vỏ Case Gaming Start GA</option>
                                         </optgroup>
                                     </select>
                                 </td>
