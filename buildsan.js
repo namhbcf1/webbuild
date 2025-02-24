@@ -1,6 +1,3 @@
-// script.js
-
-// ===== Dữ liệu linh kiện (Placeholder - CẦN THAY THẾ BẰNG DỮ LIỆU THẬT CỦA BẠN) =====
 const cpuData = {
     "intel-core-i3-9100f": {
         name: "Intel Core i3-9100F",
@@ -9,6 +6,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "12 tháng",
         socket: "LGA1151-v2",
+        cores: 4,
+        threads: 4,
+        technology: "14nm",
+        ram_support: "DDR4",
+        ram_bus: "2400MHz",
+        condition: "2ND"
     },
     "intel-core-i3-10100f": {
         name: "Intel Core i3-10100F",
@@ -17,22 +20,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "12 tháng",
         socket: "LGA1200",
-    },
-    "intel-core-i3-10105": {
-        name: "Intel Core i3-10105",
-        price: 1800000,
-        image: "images/intel-core-i3-10105.jpg",
-        brand: "Intel",
-        warranty: "12 tháng",
-        socket: "LGA1200",
-    },
-    "intel-core-i3-10105f": {
-        name: "Intel Core i3-10105F",
-        price: 1100000,
-        image: "images/intel-core-i3-10105f.jpg",
-        brand: "Intel",
-        warranty: "12 tháng",
-        socket: "LGA1200",
+        cores: 4,
+        threads: 8,
+        technology: "14nm",
+        ram_support: "DDR4",
+        ram_bus: "2666MHz",
+        condition: "2nd"
     },
     "intel-core-i3-12100F": {
         name: "Intel Core i3-12100F",
@@ -41,6 +34,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 4,
+        threads: 8,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i3-13100F": {
         name: "Intel Core i3-13100",
@@ -49,6 +48,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 4,
+        threads: 8,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i3-14100F": {
         name: "Intel Core i3-13100",
@@ -57,6 +62,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 4,
+        threads: 8,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i5-3470": {
         name: "Intel Core i5-3470 (Cũ)",
@@ -65,6 +76,12 @@ const cpuData = {
         brand: "Intel (Cũ)",
         warranty: "1 tháng",
         socket: "LGA1155",
+        cores: 4,
+        threads: 4,
+        technology: "22nm",
+        ram_support: "DDR3",
+        ram_bus: "1600MHz",
+        condition: "2ND"
     },
     "intel-core-i5-4570": {
         name: "Intel Core i5-4570 (Cũ)",
@@ -73,6 +90,12 @@ const cpuData = {
         brand: "Intel (Cũ)",
         warranty: "1 tháng",
         socket: "LGA1150",
+        cores: 4,
+        threads: 4,
+        technology: "22nm",
+        ram_support: "DDR3",
+        ram_bus: "1600MHz",
+        condition: "2ND"
     },
     "intel-core-i5-6500": {
         name: "Intel Core i5-6500 (Cũ)",
@@ -81,22 +104,12 @@ const cpuData = {
         brand: "Intel (Cũ)",
         warranty: "1 tháng",
         socket: "LGA1151",
-    },
-    "intel-core-i5-7400": {
-        name: "Intel Core i5-7400 (Cũ)",
-        price: 1100000,
-        image: "images/intel-core-i5-7400.jpg",
-        brand: "Intel (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151",
-    },
-    "intel-core-i5-8400": {
-        name: "Intel Core i5-8400 (Cũ)",
-        price: 900000,
-        image: "images/intel-core-i5-8400.jpg",
-        brand: "Intel (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
+        cores: 4,
+        threads: 4,
+        technology: "14nm",
+        ram_support: "DDR4",
+        ram_bus: "2133MHz",
+        condition: "2ND"
     },
     "intel-core-i5-9400f": {
         name: "Intel Core i5-9400F",
@@ -105,6 +118,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "12 tháng",
         socket: "LGA1151-v2",
+        cores: 6,
+        threads: 6,
+        technology: "14nm",
+        ram_support: "DDR4",
+        ram_bus: "2666MHz",
+        condition: "NEW"
     },
     "intel-core-i5-10400f": {
         name: "Intel Core i5-10400F",
@@ -113,6 +132,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "12 tháng",
         socket: "LGA1200",
+        cores: 6,
+        threads: 12,
+        technology: "14nm",
+        ram_support: "DDR4",
+        ram_bus: "2666MHz",
+        condition: "NEW"
     },
     "intel-core-i5-11400f": {
         name: "Intel Core i5-11400F",
@@ -121,6 +146,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "12 tháng",
         socket: "LGA1200",
+        cores: 6,
+        threads: 12,
+        technology: "14nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i5-12400f": {
         name: "Intel Core i5-12400F",
@@ -129,6 +160,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 6,
+        threads: 12,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i5-12600f": {
         name: "Intel Core i5-12600KF",
@@ -137,6 +174,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 10,
+        threads: 16,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i5-13400f": {
         name: "Intel Core i5-13400F",
@@ -145,6 +188,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 10,
+        threads: 16,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i5-13600kf": {
         name: "Intel Core i5-13600KF",
@@ -153,6 +202,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 14,
+        threads: 20,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i5-14600kf": {
         name: "Intel Core i5-14600KF",
@@ -161,38 +216,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
-    },
-    "intel-core-i7-8700": {
-        name: "Intel Core i7-8700 (Cũ)",
-        price: 24000000,
-        image: "images/intel-core-i7-8700.jpg",
-        brand: "Intel (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
-    },
-    "intel-core-i7-9700k": {
-        name: "Intel Core i7-9700K (Cũ)",
-        price: 2800000,
-        image: "images/intel-core-i7-9700k.jpg",
-        brand: "Intel (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
-    },
-    "intel-core-i7-10700k": {
-        name: "Intel Core i7-9700K (Cũ)",
-        price: 4000000,
-        image: "images/intel-core-i7-9700k.jpg",
-        brand: "Intel (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
-    },
-    "intel-core-i7-10700kF": {
-        name: "Intel Core i7-9700K (Cũ)",
-        price: 280000,
-        image: "images/intel-core-i7-9700k.jpg",
-        brand: "Intel (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
+        cores: 14,
+        threads: 20,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i7-12700f": {
         name: "Intel Core i7-12700F",
@@ -201,6 +230,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 12,
+        threads: 20,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "intel-core-i7-13700k": {
         name: "Intel Core i7-13700K",
@@ -209,6 +244,12 @@ const cpuData = {
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
+        cores: 16,
+        threads: 24,
+        technology: "Intel 7",
+        ram_support: "DDR4/DDR5",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-5-3600": {
         name: "amd-ryzen-5-3600 (Cũ)",
@@ -217,14 +258,12 @@ const cpuData = {
         brand: "AMD (Cũ)",
         warranty: "1 tháng",
         socket: "AM4",
-    },
-    "amd-ryzen-5-5500": {
-        name: "amd-ryzen-5-5500",
-        price: 1900000,
-        image: "images/amd-ryzen-5-5500.jpg",
-        brand: "AMD",
-        warranty: "36 tháng",
-        socket: "AM4",
+        cores: 6,
+        threads: 12,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "2ND"
     },
     "amd-ryzen-5-5600": {
         name: "amd-ryzen-5-5600",
@@ -233,6 +272,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
+        cores: 6,
+        threads: 12,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-5-5600X": {
         name: "amd-ryzen-5-5600X",
@@ -241,14 +286,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
-    },
-    "amd-ryzen-5-5600G": {
-        name: "amd-ryzen-5-5600G",
-        price: 2800000,
-        image: "images/5600G.jpg",
-        brand: "AMD",
-        warranty: "36 tháng",
-        socket: "AM4",
+        cores: 6,
+        threads: 12,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-5-7500f": {
         name: "amd-ryzen-5-7500f",
@@ -257,14 +300,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
-    },
-    "amd-ryzen-5-7600-tray": {
-        name: "amd-ryzen-5-7600-tray",
-        price: 4500000,
-        image: "images/amd-ryzen-5-7600-tray.jpg",
-        brand: "AMD",
-        warranty: "36 tháng",
-        socket: "AM5",
+        cores: 6,
+        threads: 12,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-5-7600x-tray": {
         name: "amd-ryzen-5-7600x-tray",
@@ -273,14 +314,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
-    },
-    "amd-ryzen-7-3700x": {
-        name: "amd-ryzen-7-3700x (Cũ)",
-        price: 2500000,
-        image: "images/amd-ryzen-7-3700x.jpg",
-        brand: "AMD (Cũ)",
-        warranty: "1 tháng",
-        socket: "AM4",
+        cores: 6,
+        threads: 12,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-7-5700x": {
         name: "amd-ryzen-7-5700x",
@@ -289,6 +328,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
+        cores: 8,
+        threads: 16,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-7-5700x3D": {
         name: "amd-ryzen-7-5700x3D",
@@ -297,6 +342,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
+        cores: 8,
+        threads: 16,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-7-5800x": {
         name: "amd-ryzen-7-5800x",
@@ -305,6 +356,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
+        cores: 8,
+        threads: 16,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-7-7700x": {
         name: "amd-ryzen-7-7700x",
@@ -313,6 +370,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
+        cores: 8,
+        threads: 16,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-7-7800x3d-tray": {
         name: "amd-ryzen-7-7800x3d-tray",
@@ -321,14 +384,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
-    },
-    "amd-ryzen-7-7700-tray": {
-        name: "amd-ryzen-7-7700-tray",
-        price: 6299000,
-        image: "images/amd-ryzen-7-7700-tray.jpg",
-        brand: "AMD",
-        warranty: "36 tháng",
-        socket: "AM5",
+        cores: 8,
+        threads: 16,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-9-5900x": {
         name: "amd-ryzen-9-5900x (Cũ)",
@@ -337,6 +398,12 @@ const cpuData = {
         brand: "AMD (Cũ)",
         warranty: "1 tháng",
         socket: "AM4",
+        cores: 12,
+        threads: 24,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "2ND"
     },
     "amd-ryzen-9-5950x": {
         name: "amd-ryzen-9-5950x (Cũ)",
@@ -345,6 +412,12 @@ const cpuData = {
         brand: "AMD (Cũ)",
         warranty: "1 tháng",
         socket: "AM4",
+        cores: 16,
+        threads: 32,
+        technology: "7nm",
+        ram_support: "DDR4",
+        ram_bus: "3200MHz",
+        condition: "2ND"
     },
     "amd-ryzen-9-7900x": {
         name: "amd-ryzen-9-7900x",
@@ -353,6 +426,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
+        cores: 12,
+        threads: 24,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-9-7950x": {
         name: "amd-ryzen-9-7950x",
@@ -361,6 +440,12 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
+        cores: 16,
+        threads: 32,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
     "amd-ryzen-9-7950x3d": {
         name: "amd-ryzen-9-7950x3d",
@@ -369,17 +454,14 @@ const cpuData = {
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM5",
-    },
-    "amd-ryzen-9-7900-tray": {
-        name: "amd-ryzen-9-7900-tray",
-        price: 9130000,
-        image: "images/amd-ryzen-9-7900-tray.jpg",
-        brand: "AMD",
-        warranty: "36 tháng",
-        socket: "AM5",
+        cores: 16,
+        threads: 32,
+        technology: "5nm",
+        ram_support: "DDR5",
+        ram_bus: "5200MHz",
+        condition: "NEW"
     },
 };
-
 const mainboardData = {
     "gigabyte-h61m-ds2": {
         name: "Gigabyte H61M-DS2 (LGA1155 - Cũ)",
@@ -389,6 +471,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1155",
         memoryType: "DDR3",
+        condition: "2ND",
+        nvmeSlots: 0,
+        pcieVersion: "2.0"
     },
     "asus-h81m-e": {
         name: "ASUS H81M-E (LGA1150 - Cũ)",
@@ -398,6 +483,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1150",
         memoryType: "DDR3",
+        condition: "2ND",
+        nvmeSlots: 0,
+        pcieVersion: "2.0"
     },
     "gigabyte-h110m-ds2": {
         name: "Gigabyte H110M-DS2",
@@ -407,6 +495,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1151",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 0,
+        pcieVersion: "3.0"
     },
     "asus-h310m-e": {
         name: "ASUS H310M-E",
@@ -416,6 +507,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1151-v2",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0"
     },
     "gigabyte-h410m-h-v2": {
         name: "Gigabyte H410M H V2",
@@ -425,6 +519,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1200",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0"
     },
     "asus-prime-h510m-e": {
         name: "ASUS Prime H510M-E",
@@ -434,16 +531,22 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1200",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0"
     },
-    "asus-prime-h610m-k-DDR4": {
+    "asus-prime-h610m-k-ddr4": {
         name: "ASUS PRIME H610M-K D4",
         price: 1600000,
-        image: "images/asus-prime-h610m-k-DDR4.jpg",
+        image: "images/asus-prime-h610m-k-ddr4.jpg",
         brand: "ASUS",
         warranty: "36 tháng",
         socket: "LGA1700",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "gigabyte-h610m-h-ddr4": {
         name: "GIGABYTE H610M H DDR4",
@@ -453,7 +556,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "LGA1700",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "msi-pro-h610m-b-ddr4": {
         name: "MSI PRO H610M-B DDR4",
@@ -463,7 +569,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "LGA1700",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "hnz-h610m-k-ddr4": {
         name: "Huananzhi H610M-K DDR4",
@@ -473,7 +582,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "LGA1700",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asus-b85m-g": {
         name: "ASUS B85M-G (LGA1150 - Cũ)",
@@ -483,6 +595,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1150",
         memoryType: "DDR3",
+        condition: "2ND",
+        nvmeSlots: 0,
+        pcieVersion: "2.0"
     },
     "gigabyte-b150m-d3h": {
         name: "Gigabyte B150M-D3H",
@@ -492,6 +607,9 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1151",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0"
     },
     "asus-prime-b250m-a": {
         name: "ASUS Prime B250M-A",
@@ -501,120 +619,147 @@ const mainboardData = {
         warranty: "1 tháng",
         socket: "LGA1151",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0"
     },
     "gigabyte-b360m-d3h": {
-        name: "Gigabyte B360M D3H",
-        price: 1500000,
-        image: "images/gigabyte-b360m-d3h.jpg",
-        brand: "Gigabyte (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
-        memoryType: "DDR4",
+        "name": "Gigabyte B360M D3H",
+        "price": 1500000,
+        "image": "images/gigabyte-b360m-d3h.jpg",
+        "brand": "Gigabyte (Cũ)",
+        "warranty": "1 tháng",
+        "socket": "LGA1151-v2",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "nvmeSlots": 1,
+        "pcieVersion": "3.0"
     },
     "asus-prime-b365m-a": {
-        name: "ASUS Prime B365M-A",
-        price: 11000000,
-        image: "images/asus-prime-b365m-a.jpg",
-        brand: "ASUS (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151-v2",
-        memoryType: "DDR4",
+        "name": "ASUS Prime B365M-A",
+        "price": 11000000,
+        "image": "images/asus-prime-b365m-a.jpg",
+        "brand": "ASUS (Cũ)",
+        "warranty": "1 tháng",
+        "socket": "LGA1151-v2",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "nvmeSlots": 1,
+        "pcieVersion": "3.0"
     },
     "gigabyte-b460m-ds3h-ac": {
-        name: "Gigabyte B460M DS3H AC",
-        price: 1900000,
-        image: "images/gigabyte-b460m-ds3h-ac.jpg",
-        brand: "Gigabyte (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1200",
-        memoryType: "DDR4",
+        "name": "Gigabyte B460M DS3H AC",
+        "price": 1900000,
+        "image": "images/gigabyte-b460m-ds3h-ac.jpg",
+        "brand": "Gigabyte (Cũ)",
+        "warranty": "1 tháng",
+        "socket": "LGA1200",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "nvmeSlots": 1,
+        "pcieVersion": "3.0"
     },
     "asus-prime-b560m-a": {
-        name: "ASUS Prime B560M-A",
-        price: 1700000,
-        image: "images/asus-prime-b560m-a.jpg",
-        brand: "ASUS (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1200",
-        memoryType: "DDR4",
+        "name": "ASUS Prime B560M-A",
+        "price": 1700000,
+        "image": "images/asus-prime-b560m-a.jpg",
+        "brand": "ASUS (Cũ)",
+        "warranty": "1 tháng",
+        "socket": "LGA1200",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "main-huananzhi-b760m-DDR4-den": {
-        name: "Main Huananzhi B760M-DDR4 (Màu đen)",
-        price: 1800000,
-        image: "images/main-huananzhi-b760m-DDR4-den.jpg",
-        brand: "Huananzhi",
-        warranty: "36 tháng",
-        socket: "LGA1700",
-        memoryType: "DDR4",
-        buss: "3200",
+        "name": "Main Huananzhi B760M-DDR4 (Màu đen)",
+        "price": 1800000,
+        "image": "images/main-huananzhi-b760m-DDR4-den.jpg",
+        "brand": "Huananzhi",
+        "warranty": "36 tháng",
+        "socket": "LGA1700",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "buss": "3200",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "mainboard-gigabyte-b760m-d-ddr4": {
-        name: "Mainboard Gigabyte B760M D DDR4",
-        price: 2390000,
-        image: "images/mainboard-gigabyte-b760m-d-ddr4.jpg",
-        brand: "Gigabyte",
-        warranty: "36 tháng",
-        socket: "LGA1700",
-        memoryType: "DDR4",
-        buss: "3200",
+        "name": "Mainboard Gigabyte B760M D DDR4",
+        "price": 2390000,
+        "image": "images/mainboard-gigabyte-b760m-d-ddr4.jpg",
+        "brand": "Gigabyte",
+        "warranty": "36 tháng",
+        "socket": "LGA1700",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "buss": "3200",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "mainboard-msi-pro-b760m-e-ddr4": {
-        name: "Mainboard MSI PRO B760M-E DDR4",
-        price: 2450000,
-        image: "images/mainboard-msi-pro-b760m-e-ddr4.jpg",
-        brand: "MSI",
-        warranty: "36 tháng",
-        socket: "B760",
-        memoryType: "DDR4",
-        buss: "3200",
+        "name": "Mainboard MSI PRO B760M-E DDR4",
+        "price": 2450000,
+        "image": "images/mainboard-msi-pro-b760m-e-ddr4.jpg",
+        "brand": "MSI",
+        "warranty": "36 tháng",
+        "socket": "B760",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "buss": "3200",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "mainboard-asus-prime-b760m-k-ddr4": {
-        name: "Mainboard Asus PRIME B760M-K DDR4",
-        price: 2490000,
-        image: "images/mainboard-asus-prime-b760m-k-ddr4.jpg",
-        brand: "Asus",
-        warranty: "36 tháng",
-        socket: "LGA1700",
-        memoryType: "DDR4",
-        buss: "3200",
+        "name": "Mainboard Asus PRIME B760M-K DDR4",
+        "price": 2490000,
+        "image": "images/mainboard-asus-prime-b760m-k-ddr4.jpg",
+        "brand": "Asus",
+        "warranty": "36 tháng",
+        "socket": "LGA1700",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "buss": "3200",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "mainboard-gigabyte-b760m-h-ddr4": {
-        name: "Mainboard Gigabyte B760M H DDR4",
-        price: 2699000,
-        image: "images/mainboard-gigabyte-b760m-h-ddr4.jpg",
-        brand: "Gigabyte",
-        warranty: "36 tháng",
-        socket: "LGA1700",
-        memoryType: "DDR4",
-        buss: "3200",
+        "name": "Mainboard Gigabyte B760M H DDR4",
+        "price": 2699000,
+        "image": "images/mainboard-gigabyte-b760m-h-ddr4.jpg",
+        "brand": "Gigabyte",
+        "warranty": "36 tháng",
+        "socket": "LGA1700",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "buss": "3200",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "mainboard-asrock-b760m-pro-rs-DDR4-wifi": {
-        name: "Mainboard ASRock B760M Pro RS/DDR4 WIFI",
-        price: 2990000,
-        image: "images/mainboard-asrock-b760m-pro-rs-DDR4-wifi.jpg",
-        brand: "ASRock",
-        warranty: "36 tháng",
-        socket: "LGA1700",
-        memoryType: "DDR4",
-        buss: "3200",
+        "name": "Mainboard ASRock B760M Pro RS/DDR4 WIFI",
+        "price": 2990000,
+        "image": "images/mainboard-asrock-b760m-pro-rs-DDR4-wifi.jpg",
+        "brand": "ASRock",
+        "warranty": "36 tháng",
+        "socket": "LGA1700",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "buss": "3200",
+        "nvmeSlots": 2,
+        "pcieVersion": "4.0"
     },
     "gigabyte-b450m-ds3h": {
-        name: "Gigabyte B450M DS3H V2 (AM4)",
-        price: 1400000,
-        image: "images/gigabyte-b450m-ds3h-v2.jpg",
-        brand: "Gigabyte",
-        warranty: "36 tháng",
-        socket: "AM4",
-        memoryType: "DDR4",
-    },
-    "asrock-b450m-hdv": {
-        name: "ASRock B450M-HDV (AM4)",
-        price: 1400000,
-        image: "images/asrock-b450m-hdv.jpg",
-        brand: "ASRock",
-        warranty: "36 tháng",
-        socket: "AM4",
-        memoryType: "DDR4",
+        "name": "Gigabyte B450M DS3H V2 (AM4)",
+        "price": 1400000,
+        "image": "images/gigabyte-b450m-ds3h-v2.jpg",
+        "brand": "Gigabyte",
+        "warranty": "36 tháng",
+        "socket": "AM4",
+        "memoryType": "DDR4",
+        "condition": "NEW",
+        "nvmeSlots": 1,
+        "pcieVersion": "3.0"
     },
     "jginyue-b450m-ti": {
         name: "JGinyue B450M-TI (AM4)",
@@ -624,6 +769,9 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM4",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0"
     },
     "gigabyte-b550m-aorus-elite": {
         name: "Gigabyte B550M AORUS ELITE (AM4)",
@@ -633,6 +781,9 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM4",
         memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asrock-b550m-wifi": {
         name: "ASRock B550M WIFI (AM4)",
@@ -642,7 +793,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM4",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asrock-b550m-se": {
         name: "ASRock B550M SE (AM4)",
@@ -652,7 +806,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM4",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asrock-b550m-pro4": {
         name: "ASRock B550M PRO4 (AM4)",
@@ -662,7 +819,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM4",
         memoryType: "DDR4",
+        condition: "NEW",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "gigabyte-b550m-gaming-wifi": {
         name: "Gigabyte B550M GAMING WIFI (AM4)",
@@ -673,6 +833,8 @@ const mainboardData = {
         socket: "AM4",
         memoryType: "DDR4",
         buss: "3200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "jginyue-b650m-d": {
         name: "DDR5 - MAINBOARD JGINYUE B650M-D (AM5)",
@@ -682,7 +844,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "6400",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "jginyue-b650m-pro": {
         name: "DDR5 - MAINBOARD JGINYUE B650M PRO (AM5)",
@@ -692,7 +857,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5200",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asrock-b650m-hdv-m2": {
         name: "DDR5 - MAINBOARD ASRock B650M-HDV/M.2 (AM5)",
@@ -702,7 +870,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "msi-pro-b650m-p": {
         name: "DDR5 - MAINBOARD MSI PRO B650M-P (AM5)",
@@ -712,7 +883,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asus-tuf-gaming-b650m-e": {
         name: "DDR5 - MAINBOARD ASUS TUF GAMING B650M-E (AM5)",
@@ -722,7 +896,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "gigabyte-b650m-gaming-plus-wifi": {
         name: "DDR5 - MAINBOARD GIGABYTE B650M GAMING PLUS WIFI (AM5)",
@@ -732,7 +909,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asus-tuf-gaming-b650m-e-wifi": {
         name: "DDR5 - MAINBOARD ASUS TUF GAMING B650M-E WIFI (AM5)",
@@ -742,7 +922,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "msi-b650m-gaming-plus-wifi": {
         name: "DDR5 - MAINBOARD MSI B650M GAMING PLUS WIFI (AM5)",
@@ -752,7 +935,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "gigabyte-b650m-aorus-elite": {
         name: "DDR5 - MAINBOARD GIGABYTE B650M AORUS ELITE (AM5)",
@@ -762,7 +948,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "msi-pro-b650m-a-wifi": {
         name: "DDR5 - MAINBOARD MSI PRO B650M-A WIFI (AM5)",
@@ -772,7 +961,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 1,
+        pcieVersion: "4.0"
     },
     "asus-tuf-gaming-x670e-plus-wifi": {
         name: "DDR5 - MAINBOARD ASUS TUF GAMING X670E-PLUS WIFI (AM5)",
@@ -782,7 +974,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 2,
+        pcieVersion: "5.0"
     },
     "asrock-x870-pro-rs-wifi": {
         name: "DDR5 - MAINBOARD ASRock X870 PRO RS WiFi (AM5)",
@@ -792,7 +987,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 2,
+        pcieVersion: "5.0"
     },
     "asus-rog-strix-x670e-a-gaming-wifi": {
         name: "DDR5 - MAINBOARD ASUS ROG STRIX X670E-A GAMING WIFI (AM5)",
@@ -802,7 +1000,10 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
+        nvmeSlots: 2,
+        pcieVersion: "5.0"
     },
     "asus-rog-strix-x670e-f-gaming-wifi": {
         name: "DDR5 - MAINBOARD ASUS ROG STRIX X670E-F GAMING WIFI (AM5)",
@@ -812,10 +1013,12 @@ const mainboardData = {
         warranty: "36 tháng",
         socket: "AM5",
         memoryType: "DDR5",
+        condition: "NEW",
         buss: "5600",
-    },
+        nvmeSlots: 2,
+        pcieVersion: "5.0"
+    }
 };
-
 const vgaData = {
     "gtx-1050ti-4gb-gddr5-colorful-like-new": {
         name: "1050Ti 4GB GDDR5 ASUS/GIGA/MSI",
@@ -823,6 +1026,10 @@ const vgaData = {
         image: "images/1050ti-4gb.jpg",
         brand: "COLORFUL",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "4GB",
+        vram_type: "GDDR5",
+        card_type: "NVIDIA"
     },
     "gtx-1060-3gb-gddr5-msi-gaming-cu": {
         name: "1060 3GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -830,6 +1037,10 @@ const vgaData = {
         image: "images/1060-3gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "3GB",
+        vram_type: "GDDR5",
+        card_type: "NVIDIA"
     },
     "gtx-1060-6gb-gddr5-msi-gaming-cu": {
         name: "1060 6GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -837,6 +1048,10 @@ const vgaData = {
         image: "images/1060-6gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "6GB",
+        vram_type: "GDDR5",
+        card_type: "NVIDIA"
     },
     "gtx-1070-8gb-gddr5-msi-gaming-cu-99": {
         name: "1070 8GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -844,6 +1059,10 @@ const vgaData = {
         image: "images/1070-8gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR5",
+        card_type: "NVIDIA"
     },
     "gtx-1070ti-8gb-gddr5-msi-gaming-cu-like-new": {
         name: "1070Ti 8GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -851,6 +1070,10 @@ const vgaData = {
         image: "images/1070ti-8gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR5",
+        card_type: "NVIDIA"
     },
     "gtx-1660-super-6gb-gddr6-gigabyte-gaming-cu-99": {
         name: "1660 Super 6GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -858,6 +1081,10 @@ const vgaData = {
         image: "images/1660-super-6gb-gigabyte.jpg",
         brand: "GIGABYTE",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "6GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "-rtx-2060-6gb-gddr6-msi-gaming-cu-99": {
         name: "RTX 2060 6GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -865,6 +1092,10 @@ const vgaData = {
         image: "images/rtx-2060-6gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "6GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "rtx-2070-super-8gb-gddr6-msi-gaming-cu-99": {
         name: "RTX 2070 Super 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -872,6 +1103,10 @@ const vgaData = {
         image: "images/rtx-2070-super-8gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "rtx-3070-8gb-gddr6-msi-gaming-cu-99": {
         name: "RTX 3070 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
@@ -879,6 +1114,10 @@ const vgaData = {
         image: "images/rtx-3070-8gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "rtx-3070ti-8gb-gddr6x-asus-rog-cu-99": {
         name: "RTX 3070Ti 8GB GDDR6X /GIGA/MSI/ASUS (Cũ)",
@@ -886,13 +1125,21 @@ const vgaData = {
         image: "images/rtx-3070ti-8gb-asus.jpg",
         brand: "ASUS",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR6X",
+        card_type: "NVIDIA"
     },
     "colorful--rtx-2060-super-8gb": {
-        name: "RTX 2060 Super 8GB GDDR/GIGA/MSI/ASUS GAMING (Cũ)",
+        name: "RTX 2060 Super 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 3900000,
         image: "images/colorful--rtx-2060-super-8gb.jpg",
         brand: "Colorful",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "asl-rtx-3050-6gb": {
         name: "ASL RTX 3050 6GB GDDR6 (NEW)",
@@ -900,6 +1147,10 @@ const vgaData = {
         image: "images/asl-rtx-3050-6gb.jpg",
         brand: "ASL",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "6GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "pny-rtx-3050-6gb-verto": {
         name: "PNY RTX 3050 6GB VERTO™ Dual Fan (NEW)",
@@ -907,6 +1158,10 @@ const vgaData = {
         image: "images/pny-rtx-3050-6gb-verto.jpg",
         brand: "PNY",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "6GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "gigabyte-rtx-3060-gaming-oc-12gb": {
         name: "Gigabyte RTX 3060 GAMING OC 12GB (NEW)",
@@ -914,6 +1169,10 @@ const vgaData = {
         image: "images/gigabyte-rtx-3060-gaming-oc-12gb.jpg",
         brand: "Gigabyte",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "12GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "inno3d-rtx-3060-twin-x2-12gb": {
         name: "Inno3D RTX 3060 TWIN X2 12GB GDDR6 (NEW)",
@@ -921,6 +1180,10 @@ const vgaData = {
         image: "images/inno3d-rtx-3060-twin-x2-12gb.jpg",
         brand: "Inno3D",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "12GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "colorful-igame-rtx-3060-ultra-w-oc-12g-v": {
         name: "Colorful iGame RTX 3060 Ultra W OC 12G-V (NEW)",
@@ -928,6 +1191,10 @@ const vgaData = {
         image: "images/colorful-igame-rtx-3060-ultra-w-oc-12g-v.jpg",
         brand: "Colorful",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "12GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "msi-rtx-4060-ti-16gb-amp": {
         name: "msi RTX 4060 TI 16GB AMP GDDR6 (NEW)",
@@ -935,6 +1202,10 @@ const vgaData = {
         image: "images/msi-rtx-4060-ti-16gb-amp.jpg",
         brand: "msi",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "16GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "asus-dual-rtx-4060-oc-8gb": {
         name: "ASUS DUAL RTX 4060 OC 8GB GDDR6 (NEW)",
@@ -942,6 +1213,10 @@ const vgaData = {
         image: "images/asus-dual-rtx-4060-oc-8gb.jpg",
         brand: "ASUS",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "8GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
     },
     "msi-rtx-4070-ti-super-16g-ventus-3x-oc": {
         name: "MSI RTX 4070 TI SUPER 16G VENTUS 3X OC (NEW)",
@@ -949,6 +1224,10 @@ const vgaData = {
         image: "images/msi-rtx-4070-ti-super-16g-ventus-3x-oc.jpg",
         brand: "MSI",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "16GB",
+        vram_type: "GDDR6X",
+        card_type: "NVIDIA"
     },
     "inno3d-rtx-4070-ti-super-x3-oc-16gb": {
         name: "Inno3D RTX 4070 Ti SUPER X3 OC 16GB (NEW)",
@@ -956,6 +1235,10 @@ const vgaData = {
         image: "images/inno3d-rtx-4070-ti-super-x3-oc-16gb.jpg",
         brand: "Inno3D",
         warranty: "36 tháng",
+        condition: "NEW",
+        vram: "16GB",
+        vram_type: "GDDR6X",
+        card_type: "NVIDIA"
     },
     "msi-rtx-5080-16g-ventus-3x-oc-plus": {
         name: "MSI RTX 5080 16G VENTUS 3X OC PLUS (NEW)",
@@ -963,7 +1246,11 @@ const vgaData = {
         image: "images/msi-rtx-5080-16g-ventus-3x-oc-plus.jpg",
         brand: "MSI",
         warranty: "36 tháng",
-    },
+        condition: "NEW",
+        vram: "16GB",
+        vram_type: "GDDR6X",
+        card_type: "NVIDIA"
+    }
 };
 
 const ramData = {
@@ -976,6 +1263,7 @@ const ramData = {
         speed: "5200MHz",
         size: "16GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-corsair-vengeance-16gb-ddr5-5200.jpg"
     },
     "ram-tridentz-16gb-ddr5-6000": {
@@ -986,6 +1274,7 @@ const ramData = {
         speed: "6000MHz",
         size: "16GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-tridentz-16gb-ddr5-6000.jpg"
     },
     "ram-tridentz-32gb-ddr5-6000": {
@@ -996,6 +1285,7 @@ const ramData = {
         speed: "6000MHz",
         size: "32GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-tridentz-32gb-ddr5-6000.jpg"
     },
     "ram-adata-xpg-32gb-ddr5-6000": {
@@ -1006,6 +1296,7 @@ const ramData = {
         speed: "6000MHz",
         size: "32GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-adata-xpg-32gb-ddr5-6000.jpg"
     },
 
@@ -1016,6 +1307,7 @@ const ramData = {
         image: "images/sstc-ddr4-3200mhz-16gb.jpg",
         brand: "SSTC",
         warranty: "36 tháng",
+        condition: "NEW",
         type: "DDR4",
         speed: "3200MHz"
     },
@@ -1028,6 +1320,7 @@ const ramData = {
         speed: "3200MHz",
         size: "16GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-corsair-vengeance-16gb-ddr4-3200.jpg"
     },
     "ram-kingston-hyperx-16gb-ddr4-3200": {
@@ -1038,6 +1331,7 @@ const ramData = {
         speed: "3200MHz",
         size: "16GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-kingston-hyperx-16gb-ddr4-3200.jpg"
     },
     "ram-adata-xpg-16gb-ddr4-3200": {
@@ -1048,6 +1342,7 @@ const ramData = {
         speed: "3200MHz",
         size: "16GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-adata-xpg-16gb-ddr4-3200.jpg"
     },
     "ram-tridentz-16gb-ddr4-3600": {
@@ -1058,6 +1353,7 @@ const ramData = {
         speed: "3600MHz",
         size: "16GB",
         warranty: "36 tháng",
+        condition: "NEW",
         image: "images/ram-tridentz-16gb-ddr4-3600.jpg"
     },
 };
@@ -1068,6 +1364,9 @@ const ssdData = {
         image: "images/sstc-oceanic-whitetip-256gb.jpg",
         brand: "SSTC",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen3 x4",
+        speed: "Read 3100MB/s, Write 2000MB/s"
     },
     "sstc-oceanic-whitetip-512gb": {
         name: "SSD SSTC Oceanic Whitetip NVMe M.2 MAX-III 512GB",
@@ -1075,6 +1374,9 @@ const ssdData = {
         image: "images/sstc-oceanic-whitetip-512gb.jpg",
         brand: "SSTC",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen3 x4",
+        speed: "Read 3100MB/s, Write 2000MB/s"
     },
     "samsung-990-evoplus-1tb": {
         name: "SSD Samsung 990 EVO PLUS 1TB M.2 NVMe PCIe Gen4.0 x4",
@@ -1082,6 +1384,9 @@ const ssdData = {
         image: "images/samsung-990-evoplus-1tb.jpg",
         brand: "Samsung",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen4 x4",
+        speed: "Read 5000MB/s, Write 4200MB/s"
     },
     "kingston-nv3-500gb": {
         name: "SSD Kingston NV3 500GB PCIe 4.0 x4 M.2 NVMe",
@@ -1089,13 +1394,19 @@ const ssdData = {
         image: "images/kingston-nv3-500gb.jpg",
         brand: "Kingston",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen4 x4",
+        speed: "Read 3500MB/s, Write 2800MB/s"
     },
     "samsung-980-500gb": {
-        name: "SSD Samsung 980 500GB M.2 NVMe PCIe Gen 3.0 x4",
+        name: "SSD Samsung 980 500GB M.2 NVMe PCIe Gen3.0 x4",
         price: 1479000,
         image: "images/samsung-980-500gb.jpg",
         brand: "Samsung",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen3 x4",
+        speed: "Read 3100MB/s, Write 2600MB/s"
     },
     "kingston-nv3-1tb": {
         name: "SSD Kingston NV3 1TB PCIe 4.0 x4 M.2 NVMe",
@@ -1103,6 +1414,9 @@ const ssdData = {
         image: "images/kingston-nv3-1tb.jpg",
         brand: "Kingston",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen4 x4",
+        speed: "Read 3500MB/s, Write 2800MB/s"
     },
     "samsung-980-1tb": {
         name: "SSD Samsung 980 1TB M.2 NVMe PCIe Gen4.0 x4",
@@ -1110,6 +1424,9 @@ const ssdData = {
         image: "images/samsung-980-1tb.jpg",
         brand: "Samsung",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen4 x4",
+        speed: "Read 3500MB/s, Write 3000MB/s"
     },
     "samsung-pm9a1-512gb": {
         name: "SSD Gen 4 Samsung PM9A1 NVMe 512GB OEM 980 Pro",
@@ -1117,6 +1434,9 @@ const ssdData = {
         image: "images/samsung-pm9a1-512gb.jpg",
         brand: "Samsung",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen4 x4",
+        speed: "Read 6400MB/s, Write 2700MB/s"
     },
     "kingston-nv2-500gb": {
         name: "SSD Kingston NV2 500GB PCIe Gen4",
@@ -1124,8 +1444,12 @@ const ssdData = {
         image: "images/kingston-nv2-500gb.jpg",
         brand: "Kingston",
         warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen4 x4",
+        speed: "Read 3500MB/s, Write 2100MB/s"
     }
 };
+
 
 
 const psuData = {
@@ -1135,6 +1459,15 @@ const psuData = {
         image: "images/vsp-elite-dt660-650w.jpg",
         brand: "VSP",
         warranty: "36 tháng",
+        condition: "NEW",
+        power: "650W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["2x 8-pin (4+4) ATX12V"],
+            pcie: ["2x 8-pin (6+2)"],
+            sata: 4,
+            molex: 2
+        }
     },
     "vsp-vgp750brn-80plus-bronze-750w": {
         name: "Nguồn VSP VGP750BRN 80Plus Bronze 750W",
@@ -1142,6 +1475,15 @@ const psuData = {
         image: "images/vsp-vgp750brn-80plus-bronze-750w.jpg",
         brand: "VSP",
         warranty: "36 tháng",
+        condition: "NEW",
+        power: "750W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["1x 8-pin (4+4) ATX12V"],
+            pcie: ["2x 8-pin (6+2)"],
+            sata: 6,
+            molex: 3
+        }
     },
     "nguon-corsair-cv750": {
         name: "Nguồn Máy Tính Corsair CV750 - 750W 80 Plus",
@@ -1149,6 +1491,15 @@ const psuData = {
         image: "images/nguon-corsair-cv750.jpg",
         brand: "Corsair",
         warranty: "36 tháng",
+        condition: "NEW",
+        power: "750W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["1x 8-pin (4+4) ATX12V"],
+            pcie: ["4x 8-pin (6+2)"],
+            sata: 8,
+            molex: 4
+        }
     },
     "nguon-thermalright-tg-1000": {
         name: "Nguồn Máy Tính Thermalright TG-1000 1000W ATX 3.0 (80 Plus Gold)",
@@ -1156,6 +1507,15 @@ const psuData = {
         image: "images/nguon-thermalright-tg-1000.jpg",
         brand: "Thermalright",
         warranty: "36 tháng",
+        condition: "NEW",
+        power: "1000W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["2x 8-pin (4+4) ATX12V"],
+            pcie: ["3x 8-pin (6+2)", "1x 12-pin (12VHPWR)"],
+            sata: 8,
+            molex: 4
+        }
     },
     "nguon-corsair-rm850e": {
         name: "Nguồn Máy Tính Corsair RM850e ATX 3.0 850W (80 Plus Gold)",
@@ -1163,6 +1523,15 @@ const psuData = {
         image: "images/nguon-corsair-rm850e.jpg",
         brand: "Corsair",
         warranty: "36 tháng",
+        condition: "NEW",
+        power: "850W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["2x 8-pin (4+4) ATX12V"],
+            pcie: ["3x 8-pin (6+2)", "1x 12-pin (12VHPWR)"],
+            sata: 10,
+            molex: 4
+        }
     },
     "nguon-centaur-750w-80-plus": {
         name: "Nguồn Centaur 750W 80 Plus",
@@ -1170,8 +1539,19 @@ const psuData = {
         image: "images/nguon-centaur-750w-80-plus.jpg",
         brand: "Khác",
         warranty: "36 tháng",
+        condition: "NEW",
+        power: "750W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["1x 8-pin (4+4) ATX12V"],
+            pcie: ["2x 8-pin (6+2)"],
+            sata: 6,
+            molex: 3
+        }
     }
 };
+
+
 
 const caseData = {
     "xigmatek-nyx-air-3f": {
@@ -1180,6 +1560,7 @@ const caseData = {
         image: "images/xigmatek-nyx-air-3f.jpg",
         brand: "Xigmatek",
         warranty: "12 tháng",
+        condition: "NEW",
     },
     "xigmatek-cubi-m-black": {
         name: "Xigmatek Cubi M Black",
@@ -1187,6 +1568,7 @@ const caseData = {
         image: "images/xigmatek-cubi-m-black.jpg",
         brand: "Xigmatek",
         warranty: "12 tháng",
+        condition: "NEW",
     },
     "xigmatek-cubi-m-nano-m-atx-black": {
         name: "Xigmatek Cubi M Nano M-ATX Black",
@@ -1194,6 +1576,7 @@ const caseData = {
         image: "images/xigmatek-cubi-m-nano-m-atx-black.jpg",
         brand: "Xigmatek",
         warranty: "12 tháng",
+        condition: "NEW",
     },
     "xigmatek-gemini-m-no-fan": {
         name: "Xigmatek Gemini M No Fan",
@@ -1201,6 +1584,7 @@ const caseData = {
         image: "images/xigmatek-gemini-m-no-fan.jpg",
         brand: "Xigmatek",
         warranty: "12 tháng",
+        condition: "NEW",
     },
     "kenoo-esport-mk400": {
         name: "Vỏ Case Máy Tính KENOO ESPORT MK400 (MATX, Case Bể Cá, Kính Cong)",
@@ -1208,6 +1592,7 @@ const caseData = {
         image: "images/kenoo-esport-mk400.jpg",
         brand: "KENOO",
         warranty: "12 tháng",
+        condition: "NEW",
     },
     "gaming-start-ga3": {
         name: "Vỏ Case 2 Mặt Kính Cường Lực Gaming Start GA3",
@@ -1215,6 +1600,7 @@ const caseData = {
         image: "images/gaming-start-ga3fg.jpg",
         brand: "Gaming Start",
         warranty: "12 tháng",
+        condition: "NEW",
     },
     "gaming-start-ga": {
         name: "Vỏ Case Gaming Start GA",
@@ -1222,6 +1608,7 @@ const caseData = {
         image: "images/gaming-start-ga3f.jpg",
         brand: "Gaming Start",
         warranty: "12 tháng",
+        condition: "NEW",
     }
 };
 
@@ -1232,6 +1619,9 @@ const cpuCoolerData = {
         image: "images/jonsbo-cr-1000-rgb.jpg",
         brand: "Jonsbo",
         warranty: "12 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA775", "LGA1150", "LGA1151", "LGA1155", "LGA1156", "AMD AM4", "AM3+", "AM3", "AM2+", "AM2", "FM2+", "FM2", "FM1"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "ct-air-01": {
         name: "CT-Air 01",
@@ -1239,57 +1629,82 @@ const cpuCoolerData = {
         image: "images/ct-air-01.jpg",
         brand: "Cooler Master",
         warranty: "12 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-frost-spirit-140": {
         name: "Thermalright Frost Spirit 140",
         price: 1100000,
         image: "images/thermalright-frost-spirit-140.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-peerless-assassin-120-se-argb": {
         name: "Thermalright Peerless Assassin 120 SE ARGB",
         price: 740000,
         image: "images/thermalright-peerless-assassin-120-se-argb.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-aqua-elite-360-argb-black": {
         name: "Thermalright Aqua Elite 360 ARGB Black",
         price: 1400000,
         image: "images/thermalright-aqua-elite-360-argb-black.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-frozen-warframe-360-se-white-argb": {
         name: "Thermalright Frozen Warframe 360 SE White ARGB",
         price: 2100000,
         image: "images/thermalright-frozen-warframe-360-se-white-argb.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-frozen-warframe-360-se-black-argb": {
         name: "Thermalright Frozen Warframe 360 SE Black ARGB",
         price: 2050000,
-        image: "images/thermalright-frozen-warframe-360-se-white-argb.jpg",
+        image: "images/thermalright-frozen-warframe-360-se-black-argb.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-frozen-warframe-240-se-white-argb": {
         name: "Thermalright Frozen Warframe 240 SE White ARGB",
         price: 1600000,
         image: "images/thermalright-frozen-warframe-240-se-white-argb.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
     "thermalright-frozen-warframe-240-se-black-argb": {
         name: "Thermalright Frozen Warframe 240 SE Black ARGB",
         price: 1550000,
         image: "images/thermalright-frozen-warframe-240-se-black-argb.jpg",
         brand: "Thermalright",
-        warranty: "12 tháng",
+        warranty: "24 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
+        sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     }
 };
+
 
 const hddData = {
     "wd-blue-500gb": {
@@ -1319,6 +1734,7 @@ const hddData = {
         image: "images/wd-blue-1tb.jpg",
         brand: "Western Digital",
         warranty: "24 tháng",
+        condition: "NEW",
     },
     "seagate-skyhawk-4tb": {
         name: "Ổ cứng HDD Seagate SkyHawk 4TB 3.5 inch, 5400RPM, SATA, 256MB Cache",
@@ -1326,6 +1742,7 @@ const hddData = {
         image: "images/seagate-skyhawk-4tb.jpg",
         brand: "Seagate",
         warranty: "24 tháng",
+        condition: "NEW",
     },
     "wd-blue-2tb": {
         name: "Ổ cứng HDD WD Blue 2TB 3.5 inch, 7200RPM, SATA, 256MB Cache",
@@ -1333,6 +1750,7 @@ const hddData = {
         image: "images/wd-blue-2tb.jpg",
         brand: "Western Digital",
         warranty: "24 tháng",
+        condition: "NEW",
     }
 };
 
@@ -1343,6 +1761,10 @@ const monitorData = {
         image: "images/duan-ip25f180.jpg",
         brand: "DUAN",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "180Hz",
+        screenSize: "25 inch"
     },
     "duan-da272qp": {
         name: "Màn hình DUAN 27 inch 2K 100Hz DA272QP IPS",
@@ -1350,6 +1772,10 @@ const monitorData = {
         image: "images/duan-da272qp.jpg",
         brand: "DUAN",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "100Hz",
+        screenSize: "27 inch"
     },
     "duan-dt-ip2409s": {
         name: "Màn hình DUAN DT-IP2409S 23.8 inch IPS Full HD 100Hz 1ms",
@@ -1357,6 +1783,10 @@ const monitorData = {
         image: "images/duan-dt-ip2409s.jpg",
         brand: "DUAN",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "100Hz",
+        screenSize: "23.8 inch"
     },
     "duan-ip278s": {
         name: "Màn hình DUAN IP278S 27 inch 180Hz IPS 1ms",
@@ -1364,6 +1794,10 @@ const monitorData = {
         image: "images/duan-ip278s.jpg",
         brand: "DUAN",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "180Hz",
+        screenSize: "27 inch"
     },
     "duan-dt-v2218s": {
         name: "Màn hình DUAN 22 inch DT-V2218S 100Hz 1ms VA FHD",
@@ -1371,6 +1805,10 @@ const monitorData = {
         image: "images/duan-dt-v2218s.jpg",
         brand: "DUAN",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "VA",
+        refreshRate: "100Hz",
+        screenSize: "22 inch"
     },
     "dell-ultrasharp-u2424h": {
         name: "Màn hình Dell UltraSharp U2424H 23.8 inch FHD IPS 120Hz 5ms",
@@ -1378,6 +1816,10 @@ const monitorData = {
         image: "images/dell-ultrasharp-u2424h.jpg",
         brand: "Dell",
         warranty: "36 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "120Hz",
+        screenSize: "23.8 inch"
     },
     "dell-s2725h": {
         name: "Màn hình Dell S2725H 27 inch FHD IPS 100Hz 4ms loa",
@@ -1385,6 +1827,10 @@ const monitorData = {
         image: "images/dell-s2725h.jpg",
         brand: "Dell",
         warranty: "36 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "100Hz",
+        screenSize: "27 inch"
     },
     "asus-proart-pa248qv": {
         name: "Màn hình ASUS ProArt PA248QV 24 inch WUXGA IPS 75Hz 5ms",
@@ -1392,6 +1838,10 @@ const monitorData = {
         image: "images/asus-proart-pa248qv.jpg",
         brand: "ASUS",
         warranty: "36 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "75Hz",
+        screenSize: "24 inch"
     },
     "samsung-odyssey-g4-ls25bg400eexxv": {
         name: "Màn hình Gaming Samsung Odyssey G4 LS25BG400EEXXV 25 inch FHD IPS 240Hz",
@@ -1399,6 +1849,10 @@ const monitorData = {
         image: "images/samsung-odyssey-g4-ls25bg400eexxv.jpg",
         brand: "Samsung",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "240Hz",
+        screenSize: "25 inch"
     },
     "lg-ultragear-27gs75q-b": {
         name: "Màn hình Gaming LG UltraGear 27GS75Q-B 27 inch IPS 2K 200Hz 1ms",
@@ -1406,6 +1860,10 @@ const monitorData = {
         image: "images/lg-ultragear-27gs75q-b.jpg",
         brand: "LG",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "IPS",
+        refreshRate: "200Hz",
+        screenSize: "27 inch"
     },
     "lg-ultragear-24gs50f-b": {
         name: "Màn hình LG UltraGear 24GS50F-B Gaming 23.7 inch VA FHD 180Hz 1ms",
@@ -1413,8 +1871,13 @@ const monitorData = {
         image: "images/lg-ultragear-24gs50f-b.jpg",
         brand: "LG",
         warranty: "24 tháng",
+        condition: "NEW",
+        panelType: "VA",
+        refreshRate: "180Hz",
+        screenSize: "23.7 inch"
     }
 };
+
 document.getElementById('cpu-type').addEventListener('change', function () {
     const selectedCpuType = this.value; // Lấy giá trị được chọn (Intel hoặc AMD)
     const cpuSelect = document.getElementById('cpu'); // Dropdown chọn CPU
@@ -1493,9 +1956,9 @@ const components = {
     ssd: ssdData,
     psu: psuData,
     case: caseData,
-    'cpu-cooler': cpuCoolerData,
-    hdd: hddData,
-    monitor: monitorData
+    cpuCooler: cpuCoolerData,
+    hdd: hddData,     // <-- Đảm bảo có dòng này
+    monitor: monitorData // <-- Đảm bảo có dòng này
 };
 
 // Cấu hình global
@@ -1507,7 +1970,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '3m-4m': {
@@ -1517,7 +1980,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '4m-5m': {
@@ -1527,7 +1990,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '5m-6m': {
@@ -1537,7 +2000,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '6m-7m': {
@@ -1547,7 +2010,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '7m-8m': {
@@ -1557,7 +2020,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '8m-9m': {
@@ -1567,7 +2030,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '9m-10m': {
@@ -1577,7 +2040,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '10m-11m': {
@@ -1587,7 +2050,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '11m-12m': {
@@ -1597,7 +2060,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '12m-13m': {
@@ -1607,7 +2070,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '13m-14m': {
@@ -1617,7 +2080,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     },
     '14m-15m': {
@@ -1627,7 +2090,7 @@ const intelBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-650w"
     }
 };
@@ -1640,7 +2103,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '3m-4m': {
@@ -1650,7 +2113,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '4m-5m': {
@@ -1660,7 +2123,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '5m-6m': {
@@ -1670,7 +2133,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '6m-7m': {
@@ -1680,7 +2143,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '7m-8m': {
@@ -1690,7 +2153,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '8m-9m': {
@@ -1700,7 +2163,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '9m-10m': {
@@ -1710,7 +2173,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '10m-11m': {
@@ -1720,7 +2183,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '11m-12m': {
@@ -1730,7 +2193,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '12m-13m': {
@@ -1740,7 +2203,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '13m-14m': {
@@ -1750,7 +2213,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     },
     '14m-15m': {
@@ -1760,7 +2223,7 @@ const amdBudgetConfigs = {
         ram: "sstc-ddr4-3200mhz-16gb",
         ssd: "sstc-oceanic-whitetip-256gb",
         case: "gaming-start-ga",
-        'cpu-cooler': "jonsbo-cr-1000-rgb",
+        cpuCooler: "jonsbo-cr-1000-rgb",
         psu: "vsp-elite-dt660-450w"
     }
 };
@@ -1770,30 +2233,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const componentSelects = {
         cpu: document.getElementById('cpu'),
         mainboard: document.getElementById('mainboard'),
-        // ... các phần tử khác
         vga: document.getElementById('vga'),
         ram: document.getElementById('ram'),
         ssd: document.getElementById('ssd'),
         psu: document.getElementById('psu'),
         case: document.getElementById('case'),
-        'cpu-cooler': document.getElementById('cpu-cooler'),
-        hdd: document.getElementById('hdd'),
-        monitor: document.getElementById('monitor')
+        cpuCooler: document.getElementById('cpuCooler'),
+        hdd: document.getElementById('hdd'),     // <-- Đảm bảo có dòng này
+        monitor: document.getElementById('monitor')    // <-- Đảm bảo có dòng này
     };
     Object.entries(componentSelects).forEach(([name, element]) => {
         if (!element) {
             console.error(`Không tìm thấy phần tử #${name}`);
         }
     });
+    populateDropdowns('cpu', 'cpu', cpuData);
+    populateDropdowns('mainboard', 'mainboard', mainboardData);
+    populateDropdowns('vga', 'vga', vgaData);
+    populateDropdowns('ram', 'ram', ramData);
+    populateDropdowns('ssd', 'ssd', ssdData);
+    populateDropdowns('psu', 'psu', psuData);
+    populateDropdowns('case', 'case', caseData);
+    populateDropdowns('cpuCooler', 'cpuCooler', cpuCoolerData);
+    populateDropdowns('hdd', 'hdd', hddData);     // <-- Đảm bảo có dòng này
+    populateDropdowns('monitor', 'monitor', monitorData); // <-- Đảm bảo có dòng này
 
     // Các phần tử hiển thị
     const totalPriceDisplay = document.getElementById('total-price');
     const selectedComponentsList = document.getElementById('selected-components-list');
     const summaryModal = document.getElementById('summary-modal');
-    const modalSummaryContent = document.getElementById('modal-summary');
+    const modalSummaryContent = document.getElementById('modal-components-list'); // SỬA ĐỔI ID CHO ĐÚNG
     const modalTotalPriceDisplay = document.getElementById('modal-total-price');
     const imagePreviewContainer = document.getElementById('image-preview-container');
     const calculateButton = document.getElementById('calculate-button');
+
 
     // Thêm CSS
     const style = document.createElement('style');
@@ -1837,12 +2310,35 @@ document.addEventListener('DOMContentLoaded', function () {
             margin: 50px auto;
             border-radius: 10px;
         }
+         /* CSS cho bảng */
+        .component-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .component-table th, .component-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .component-table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .component-table img {
+            max-width: 70px; /* Điều chỉnh kích thước ảnh trong bảng */
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     `;
     document.head.appendChild(style);
 
     function updateSelectedComponents() {
         selectedComponentsList.innerHTML = '';
         let total = 0;
+        const selectedComponentsDetails = []; // Khởi tạo mảng để chứa thông tin chi tiết linh kiện
 
         // Tính toán tổng giá và tạo card
         for (const [type, select] of Object.entries(componentSelects)) {
@@ -1853,18 +2349,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const card = document.createElement('div');
                 card.className = 'component-card';
+
                 card.innerHTML = `
                     ${component.image ? `<img src="${component.image}" class="component-image" alt="${component.name}">` : ''}
-                    <div class="component-info">
-                        <h3>${component.name}</h3>
-                        <p>Giá: ${component.price.toLocaleString()} VNĐ</p>
+                    <h3>${component.name} - ${component.price.toLocaleString()} VNĐ</h3>
+                    <div class="component-info" style="display: none;">
                         ${component.socket ? `<p>Socket: ${component.socket}</p>` : ''}
                         ${component.memoryType ? `<p>Loại RAM: ${component.memoryType}</p>` : ''}
+                        ${component.cores ? `<p>Cores: ${component.cores}</p>` : ''}
+                        ${component.threads ? `<p>Threads: ${component.threads}</p>` : ''}
+                        ${component.technology ? `<p>Technology: ${component.technology}</p>` : ''}
+                        ${component.ram_support ? `<p>RAM Support: ${component.ram_support}</p>` : ''}
+                        ${component.ram_bus ? `<p>RAM Bus: ${component.ram_bus}</p>` : ''}
+                        ${component.vram ? `<p>VRAM: ${component.vram}</p>` : ''}
+                        ${component.vram_type ? `<p>VRAM Type: ${component.vram_type}</p>` : ''}
+                        ${component.card_type ? `<p>Card Type: ${component.card_type}</p>` : ''}
+                        ${component.type ? `<p>Type: ${component.type}</p>` : ''}
+                        ${component.speed ? `<p>Speed: ${component.speed}</p>` : ''}
+                        ${component.size ? `<p>Size: ${component.size}</p>` : ''}
+                        ${component.nvmeSlots ? `<p>NVMe Slots: ${component.nvmeSlots}</p>` : ''}
+                        ${component.pcieVersion ? `<p>PCIe Version: ${component.pcieVersion}</p>` : ''}
+                        ${component.panelType ? `<p>Panel Type: ${component.panelType}</p>` : ''}
+                        ${component.refreshRate ? `<p>Refresh Rate: ${component.refreshRate}</p>` : ''}
+                        ${component.screenSize ? `<p>Screen Size: ${component.screenSize}</p>` : ''}
+        
+                        ${component.sockets ? `<p>Sockets hỗ trợ: ${component.sockets.join(', ')}</p>` : ''}
+${component.sync ? `<p>Đồng bộ: ${component.sync}</p>` : ''}
+
+        
+                        ${component.connectors ? `<div class="connectors">
+                            <p>Connectors:</p>
+                            <ul>
+                                ${component.connectors.mainboard ? `<li>Mainboard: ${component.connectors.mainboard}</li>` : ''}
+                                ${component.connectors.cpu ? `<li>CPU: ${Array.isArray(component.connectors.cpu) ? component.connectors.cpu.join(', ') : component.connectors.cpu}</li>` : ''}
+                                ${component.connectors.pcie ? `<li>PCIe: ${Array.isArray(component.connectors.pcie) ? component.connectors.pcie.join(', ') : component.connectors.pcie}</li>` : ''}
+                                ${component.connectors.sata ? `<li>SATA: ${component.connectors.sata}</li>` : ''}
+                                ${component.connectors.molex ? `<li>Molex: ${component.connectors.molex}</li>` : ''}
+                            </ul>
+                        </div>` : ''}
+        
+                        ${component.power ? `<p>Power: ${component.power}</p>` : ''}
                     </div>
                 `;
+
+                // Thêm sự kiện click để hiển thị thông tin chi tiết
+                card.addEventListener("click", function () {
+                    const info = card.querySelector(".component-info");
+                    info.style.display = info.style.display === "none" ? "block" : "none";
+                });
+
                 selectedComponentsList.appendChild(card);
+                selectedComponentsDetails.push(component);
             }
         }
+
+
+
+
+
+
+
+
 
         // Cập nhật tổng giá - FIX CHÍNH
         const priceElement = totalPriceDisplay.querySelector('p');
@@ -1873,8 +2418,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.error('Không tìm thấy phần tử hiển thị giá');
         }
-        
-        return total;
+
+        return { total, selectedComponentsDetails }; // Trả về object chứa cả tổng tiền và danh sách chi tiết
     }
 
     function calculateTotalPriceAndSummary() {
@@ -1882,33 +2427,80 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Missing modal elements");
             return;
         }
-    
-        const total = updateSelectedComponents();
-    
-        // Xử lý danh sách component
-        modalSummaryContent.innerHTML = Object.entries(componentSelects)
-            .filter(([_, select]) => select?.value)
-            .map(([type, select]) => {
-                const component = components[type]?.[select.value];
-                return component 
-                    ? `<li><strong>${type.toUpperCase()}:</strong> ${component.name} - ${component.price.toLocaleString()} VNĐ</li>`
-                    : '<li>Thành phần không hợp lệ</li>';
-            }).join('');
-    
-        // Xử lý tổng giá
-        modalTotalPriceDisplay.textContent = `Tổng cộng: ${total.toLocaleString()} VNĐ`;
-    
-        // Xử lý hình ảnh
-        imagePreviewContainer.innerHTML = Object.values(componentSelects)
-            .filter(select => select?.value)
-            .map(select => {
-                const component = components[select.id]?.[select.value];
-                return component?.image 
-                    ? `<img src="${component.image}" style="max-width: 100px; margin: 5px;" alt="${component.name}">`
-                    : '';
-            }).join('');
-    }
 
+        const calculationResult = updateSelectedComponents(); // Get the return value
+        const total = calculationResult.total;         // Extract total
+        const selectedComponentsDetails = calculationResult.selectedComponentsDetails; // Extract selectedComponentsDetails
+
+        modalSummaryContent.innerHTML = ''; // Xóa nội dung cũ của modal
+        imagePreviewContainer.innerHTML = ''; // Xóa ảnh cũ nếu có
+
+        // Ẩn phần hiển thị text tổng tiền trong modal (chỉ hiển thị bảng)
+        modalTotalPriceDisplay.style.display = 'none';
+
+        // Tạo bảng HTML để hiển thị thông tin chi tiết
+        const table = document.createElement('table');
+        table.className = 'component-table'; // Thêm class để CSS (tùy chọn)
+
+        // Tạo hàng tiêu đề bảng
+        const headerRow = table.insertRow();
+        const headers = ['Loại', 'Hình ảnh', 'Tên Linh Kiện', 'Giá Tiền', 'Bảo hành', 'Tình trạng']; // Thêm "Loại"
+        headers.forEach(headerText => {
+            const headerCell = document.createElement('th');
+            headerCell.textContent = headerText;
+            headerRow.appendChild(headerCell);
+        });
+
+        // Thêm dữ liệu linh kiện vào bảng
+        selectedComponentsDetails.forEach(component => {
+            const dataRow = table.insertRow();
+
+            // Ô Hình ảnh
+
+
+            // Ô Loại linh kiện (type) - Lấy từ key của componentSelects
+            const typeCell = dataRow.insertCell();
+            let componentType = '';
+            for (const [type, select] of Object.entries(componentSelects)) {
+                if (select.value === Object.keys(components[type]).find(key => components[type][key] === component)) {
+                    componentType = type.toUpperCase(); // In hoa loại linh kiện
+                    break;
+                }
+            }
+            typeCell.textContent = componentType;
+
+            const imageCell = dataRow.insertCell();
+            if (component.image) {
+                const img = document.createElement('img');
+                img.src = component.image;
+                img.alt = component.name;
+                img.style.maxWidth = '70px'; // Điều chỉnh kích thước ảnh trong bảng
+                imageCell.appendChild(img);
+            }
+
+
+            // Ô Tên linh kiện
+            const nameCell = dataRow.insertCell();
+            nameCell.textContent = component.name;
+
+            // Ô Giá
+            const priceCell = dataRow.insertCell();
+            priceCell.textContent = `${component.price.toLocaleString()} VNĐ`;
+
+            // Ô Bảo hành
+            const warrantyCell = dataRow.insertCell();
+            warrantyCell.textContent = component.warranty || 'Không có';
+
+            // Ô Tình trạng
+            const conditionCell = dataRow.insertCell();
+            conditionCell.textContent = component.condition || 'Không rõ';
+        });
+
+        modalSummaryContent.appendChild(table); // Thêm bảng vào modal
+        summaryModal.style.display = 'block'; // Hiển thị modal
+        modalTotalPriceDisplay.style.display = 'block'; // Đảm bảo phần tử hiển thị
+        modalTotalPriceDisplay.textContent = `Tổng cộng: ${total.toLocaleString()} VNĐ`; // Cập nhật giá tiền
+    }
     function autoSelectConfig() {
         isAutoSelecting = true;
 
@@ -1943,12 +2535,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 Object.entries(components[type]).forEach(([key, component]) => {
                     const option = document.createElement('option');
                     option.value = key;
-                    option.textContent = component.name;
+                    option.textContent = `${component.name} - ${component.price.toLocaleString()} VNĐ`;
                     select.appendChild(option);
                 });
             }
         });
     }
+
 
     // Event Listeners
     document.getElementById('game-genre').addEventListener('change', autoSelectConfig);
@@ -1956,7 +2549,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('cpu-type').addEventListener('change', autoSelectConfig);
 
     calculateButton.addEventListener('click', () => {
-        summaryModal.style.display = "block";
+        console.log("Nút Tính Toán Chi Phí đã được bấm!");
+        calculateTotalPriceAndSummary(); // Gọi hàm tính toán và tạo bảng
+        summaryModal.style.display = "block"; // Hiển thị modal sau khi tạo bảng
     });
 
     document.querySelector('.close-modal').addEventListener('click', () => {
