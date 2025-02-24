@@ -484,5 +484,7 @@ footer p {
     flex: 1;
     min-width: 300px; /* Đảm bảo không quá nhỏ */
 }
-
+.cpu-options, .mainboard-options {
+    display: none;
+}
 /* Media Query: Hiển thị dạng cột trên màn hình nhỏ */
