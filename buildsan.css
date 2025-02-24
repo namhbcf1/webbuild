@@ -275,7 +275,6 @@ footer p {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-
 .close-modal {
     color: #aaa;
     float: right;
@@ -291,22 +290,7 @@ footer p {
 }
 
 #modal-components-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    justify-content: center;
-    padding: 10px;
-}
-
-.modal .component-card {
-    width: 100%;
-    max-width: 140px;
-    padding: 8px;
-    text-align: center;
-}
-
-.modal .component-card img.component-image {
-    max-width: 60px;
+    overflow-x: auto;
 }
 
 .component-table {
@@ -363,9 +347,13 @@ footer p {
 }
 
 #modal-total-price {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--secondary-color);
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--hover-border-color);
 }
 
 .modal-visible {
@@ -397,13 +385,12 @@ footer p {
 }
 
 .component-card img.component-image {
-    max-width: 60px;
+    max-width: 80px;
     height: auto;
     border-radius: 6px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .component-card .component-info h3 {
     font-size: 1em;
@@ -426,13 +413,18 @@ footer p {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        max-width: none;
-        margin: 5% auto;
-        padding: 15px;
+@media (max-width: 78px) {
+    .selection-grid, .additional-components-grid {
+        grid-template-columns: 1fr;
     }
+    .component-card {
+        width: 100%;
+    }
+}
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
 }
 
 /* Giảm kích thước hình ảnh trong linh kiện đã chọn */
