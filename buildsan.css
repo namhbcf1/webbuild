@@ -413,18 +413,20 @@ footer p {
 }
 
 /* Responsive Design */
-@media (max-width: 78px) {
-    .selection-grid, .additional-components-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .choices-container {
+        flex-direction: column; /* Chuyển thành cột dọc */
+        align-items: center;
     }
-    .component-card {
+
+    .main-choices, .optional-choices {
         width: 100%;
+        min-width: unset;
     }
-}
-.components-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+
+    .component-card {
+        width: 100%; /* Card co giãn toàn màn hình */
+    }
 }
 
 /* Giảm kích thước hình ảnh trong linh kiện đã chọn */
@@ -462,3 +464,17 @@ footer p {
 .component-card.active .component-info {
     display: block;
 }
+.choices-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Lựa chọn chính và phụ */
+.main-choices, .optional-choices {
+    flex: 1;
+    min-width: 300px; /* Đảm bảo không quá nhỏ */
+}
+
+/* Media Query: Hiển thị dạng cột trên màn hình nhỏ */
