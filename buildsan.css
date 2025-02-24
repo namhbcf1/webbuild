@@ -275,6 +275,7 @@ footer p {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
+
 .close-modal {
     color: #aaa;
     float: right;
@@ -290,7 +291,22 @@ footer p {
 }
 
 #modal-components-list {
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.modal .component-card {
+    width: 100%;
+    max-width: 140px;
+    padding: 8px;
+    text-align: center;
+}
+
+.modal .component-card img.component-image {
+    max-width: 60px;
 }
 
 .component-table {
@@ -347,13 +363,9 @@ footer p {
 }
 
 #modal-total-price {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--secondary-color);
+    font-size: 1.5em;
     text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px dashed var(--hover-border-color);
+    margin-top: 20px;
 }
 
 .modal-visible {
@@ -385,12 +397,13 @@ footer p {
 }
 
 .component-card img.component-image {
-    max-width: 80px;
+    max-width: 60px;
     height: auto;
     border-radius: 6px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 .component-card .component-info h3 {
     font-size: 1em;
@@ -414,18 +427,11 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .choices-container {
-        flex-direction: column; /* Chuyển thành cột dọc */
-        align-items: center;
-    }
-
-    .main-choices, .optional-choices {
-        width: 100%;
-        min-width: unset;
-    }
-
-    .component-card {
-        width: 100%; /* Card co giãn toàn màn hình */
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 5% auto;
+        padding: 15px;
     }
 }
 
