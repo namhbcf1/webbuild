@@ -70,6 +70,31 @@ header .contact-button:hover {
     background-color: #0056b3; /* Darker blue on hover */
     transform: translateY(-2px); /* Slight lift on hover */
 }
+.next-button {
+    display: block;
+    width: fit-content;
+    margin: 30px auto; /* Căn giữa */
+    padding: 15px 30px;
+    font-size: 1.5em; /* Tăng kích thước chữ */
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(45deg, #ff9800, #ff5722); /* Hiệu ứng màu gradient */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+.next-button i {
+    margin-right: 10px;
+}
+
+.next-button:hover {
+    background: linear-gradient(45deg, #ff5722, #e64a19);
+    box-shadow: 0 7px 20px rgba(255, 87, 34, 0.6);
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
+}
 
 main {
     padding: 30px 20px;
