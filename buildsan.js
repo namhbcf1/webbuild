@@ -1,5 +1,19 @@
 const cpuData = {
-    "intel-core-i3-9100f": {
+    "1220v3": { // Added Xeon E3-1220V3
+        name: "Intel Xeon E3-1220 v3",
+        price: 300000, // Example price, adjust as needed
+        image: "images/intel-xeon-e3-1220v3.jpg", // Replace with correct image path
+        brand: "Intel",
+        warranty: "12 tháng", // Or specify if different
+        socket: "LGA1150", // Correct socket
+        cores: 4,
+        threads: 4,
+        technology: "22nm",
+        ram_support: "DDR3", // Or DDR3L
+        ram_bus: "1600MHz", // Or specify max supported speed
+        condition: "2ND" // Or "New" if applicable
+    },
+    "9100f": {
         name: "Intel Core i3-9100F",
         price: 500000,
         image: "images/intel-core-i3-9100f.jpg",
@@ -13,7 +27,7 @@ const cpuData = {
         ram_bus: "2400MHz",
         condition: "2ND"
     },
-    "intel-core-i3-10100f": {
+    "10100f": {
         name: "Intel Core i3-10100F",
         price: 1100000,
         image: "images/intel-core-i3-10100f.jpg",
@@ -27,7 +41,7 @@ const cpuData = {
         ram_bus: "2666MHz",
         condition: "2nd"
     },
-    "intel-core-i3-12100F": {
+    "12100F": {
         name: "Intel Core i3-12100F",
         price: 1350000,
         image: "images/intel-core-i3-12100F.jpg",
@@ -41,7 +55,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i3-13100F": {
+    "13100F": {
         name: "Intel Core i3-13100",
         price: 2100000,
         image: "images/intel-core-i3-13100.jpg",
@@ -55,7 +69,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i3-14100F": {
+    "14100F": {
         name: "Intel Core i3-13100",
         price: 2300000,
         image: "images/intel-core-i3-13100.jpg",
@@ -69,7 +83,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i5-3470": {
+    "3470": {
         name: "Intel Core i5-3470 (Cũ)",
         price: 250000,
         image: "images/intel-core-i5-3470.jpg",
@@ -83,7 +97,7 @@ const cpuData = {
         ram_bus: "1600MHz",
         condition: "2ND"
     },
-    "intel-core-i5-4570": {
+    "4570": {
         name: "Intel Core i5-4570 (Cũ)",
         price: 400000,
         image: "images/intel-core-i5-4570.jpg",
@@ -97,7 +111,7 @@ const cpuData = {
         ram_bus: "1600MHz",
         condition: "2ND"
     },
-    "intel-core-i5-6500": {
+    "6500": {
         name: "Intel Core i5-6500 (Cũ)",
         price: 900000,
         image: "images/intel-core-i5-6500.jpg",
@@ -111,7 +125,7 @@ const cpuData = {
         ram_bus: "2133MHz",
         condition: "2ND"
     },
-    "intel-core-i5-9400f": {
+    "9400f": {
         name: "Intel Core i5-9400F",
         price: 1100000,
         image: "images/intel-core-i5-9400f.jpg",
@@ -125,7 +139,7 @@ const cpuData = {
         ram_bus: "2666MHz",
         condition: "NEW"
     },
-    "intel-core-i5-10400f": {
+    "10400f": {
         name: "Intel Core i5-10400F",
         price: 1600000,
         image: "images/intel-core-i5-10400f.jpg",
@@ -139,7 +153,7 @@ const cpuData = {
         ram_bus: "2666MHz",
         condition: "NEW"
     },
-    "intel-core-i5-11400f": {
+    "11400f": {
         name: "Intel Core i5-11400F",
         price: 1700000,
         image: "images/intel-core-i5-11400f.jpg",
@@ -153,7 +167,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i5-12400f": {
+    "12400f": {
         name: "Intel Core i5-12400F",
         price: 2400000,
         image: "images/intel-core-i5-12400f.jpg",
@@ -167,7 +181,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i5-12600f": {
+    "12600f": {
         name: "Intel Core i5-12600KF",
         price: 3400000,
         image: "images/intel-core-i5-13400f.jpg",
@@ -181,7 +195,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i5-13400f": {
+    "13400f": {
         name: "Intel Core i5-13400F",
         price: 2800000,
         image: "images/intel-core-i5-13400f.jpg",
@@ -195,7 +209,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i5-13600kf": {
+    "13600kf": {
         name: "Intel Core i5-13600KF",
         price: 4400000,
         image: "images/intel-core-i5-14600kf.jpg",
@@ -209,7 +223,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i5-14600kf": {
+    "14600kf": {
         name: "Intel Core i5-14600KF",
         price: 4600000,
         image: "images/intel-core-i5-14600kf.jpg",
@@ -223,7 +237,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i7-12700f": {
+    "12700f": {
         name: "Intel Core i7-12700F",
         price: 8800000,
         image: "images/intel-core-i7-12700f.jpg",
@@ -237,7 +251,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "intel-core-i7-13700k": {
+    "13700k": {
         name: "Intel Core i7-13700K",
         price: 10500000,
         image: "images/intel-core-i7-13700k.jpg",
@@ -251,8 +265,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-5-3600": {
-        name: "amd-ryzen-5-3600 (Cũ)",
+    "3600": {
+        name: "AMD Ryzen 5 3600 (Cũ)",
         price: 1600000,
         image: "images/amd-ryzen-5-3600.jpg",
         brand: "AMD (Cũ)",
@@ -265,10 +279,10 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "2ND"
     },
-    "amd-ryzen-5-5600": {
-        name: "amd-ryzen-5-5600",
+    "5600": {
+        name: "AMD Ryzen 5 5600",
         price: 2400000,
-        image: "images/5600.jpg",
+        image: "images/amd-ryzen-5-5600.jpg",
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
@@ -279,10 +293,10 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-5-5600X": {
-        name: "amd-ryzen-5-5600X",
+    "5600X": {
+        name: "AMD Ryzen 5 5600X",
         price: 2800000,
-        image: "images/5600.jpg",
+        image: "images/amd-ryzen-5-5600.jpg",
         brand: "AMD",
         warranty: "36 tháng",
         socket: "AM4",
@@ -293,8 +307,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-5-7500f": {
-        name: "amd-ryzen-5-7500f",
+    "7500f": {
+        name: "AMD Ryzen 5 7500F",
         price: 3800000,
         image: "images/amd-ryzen-5-7500f.jpg",
         brand: "AMD",
@@ -307,8 +321,8 @@ const cpuData = {
         ram_bus: "5200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-5-7600x-tray": {
-        name: "amd-ryzen-5-7600x-tray",
+    "7600x": {
+        name: "AMD Ryzen 5 7600X",
         price: 4800000,
         image: "images/amd-ryzen-5-7600x-tray.jpg",
         brand: "AMD",
@@ -321,8 +335,8 @@ const cpuData = {
         ram_bus: "5200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-7-5700x": {
-        name: "amd-ryzen-7-5700x",
+    "5700x": {
+        name: "AMD Ryzen 7 5700X",
         price: 3300000,
         image: "images/amd-ryzen-7-5700x.jpg",
         brand: "AMD",
@@ -335,8 +349,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-7-5700x3D": {
-        name: "amd-ryzen-7-5700x3D",
+    "5700x3D": {
+        name: "AMD Ryzen 7 5700X3D",
         price: 5300000,
         image: "images/amd-ryzen-7-5700x3d.jpg",
         brand: "AMD",
@@ -349,8 +363,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-7-5800x": {
-        name: "amd-ryzen-7-5800x",
+    "5800x": {
+        name: "AMD Ryzen 7 5800X",
         price: 3800000,
         image: "images/amd-ryzen-7-5800x.jpg",
         brand: "AMD",
@@ -363,8 +377,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-7-7700x": {
-        name: "amd-ryzen-7-7700x",
+    "7700x": {
+        name: "AMD Ryzen 7 7700X",
         price: 6100000,
         image: "images/amd-ryzen-7-7700x.jpg",
         brand: "AMD",
@@ -377,8 +391,8 @@ const cpuData = {
         ram_bus: "5200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-7-7800x3d-tray": {
-        name: "amd-ryzen-7-7800x3d-tray",
+    "7800x3d": {
+        name: "AMD Ryzen 7 7800X3D",
         price: 10390000,
         image: "images/amd-ryzen-7-7800x3d-tray.jpg",
         brand: "AMD",
@@ -391,8 +405,8 @@ const cpuData = {
         ram_bus: "5200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-9-5900x": {
-        name: "amd-ryzen-9-5900x (Cũ)",
+    "5900x": {
+        name: "AMD Ryzen 9 5900X (Cũ)",
         price: 5500000,
         image: "images/amd-ryzen-9-5900x.jpg",
         brand: "AMD (Cũ)",
@@ -405,8 +419,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "2ND"
     },
-    "amd-ryzen-9-5950x": {
-        name: "amd-ryzen-9-5950x (Cũ)",
+    "5950x": {
+        name: "AMD Ryzen 9 5950X (Cũ)",
         price: 7500000,
         image: "images/amd-ryzen-9-5900x.jpg",
         brand: "AMD (Cũ)",
@@ -419,8 +433,8 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "2ND"
     },
-    "amd-ryzen-9-7900x": {
-        name: "amd-ryzen-9-7900x",
+    "7900x": {
+        name: "AMD Ryzen 9 7900X",
         price: 8300000,
         image: "images/amd-ryzen-9-7900x.jpg",
         brand: "AMD",
@@ -433,8 +447,8 @@ const cpuData = {
         ram_bus: "5200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-9-7950x": {
-        name: "amd-ryzen-9-7950x",
+    "7950x": {
+        name: "AMD Ryzen 9 7950X",
         price: 11600000,
         image: "images/amd-ryzen-9-7900x.jpg",
         brand: "AMD",
@@ -447,8 +461,8 @@ const cpuData = {
         ram_bus: "5200MHz",
         condition: "NEW"
     },
-    "amd-ryzen-9-7950x3d": {
-        name: "amd-ryzen-9-7950x3d",
+    "7950x3d": {
+        name: "AMD Ryzen 9 7950X3D",
         price: 12000000,
         image: "images/amd-ryzen-9-7950x3d.jpg",
         brand: "AMD",
@@ -460,10 +474,10 @@ const cpuData = {
         ram_support: "DDR5",
         ram_bus: "5200MHz",
         condition: "NEW"
-    },
+    }
 };
 const mainboardData = {
-    "gigabyte-h61m-ds2": {
+    "H61": {
         name: "Gigabyte H61M-DS2 (LGA1155 - Cũ)",
         price: 400000,
         image: "images/gigabyte-h61m-ds2.jpg",
@@ -475,9 +489,9 @@ const mainboardData = {
         nvmeSlots: 0,
         pcieVersion: "2.0"
     },
-    "asus-h81m-e": {
+    "H81": {
         name: "ASUS H81M-E (LGA1150 - Cũ)",
-        price: 500000,
+        price: 450000,
         image: "images/asus-h81m-e.jpg",
         brand: "ASUS (Cũ)",
         warranty: "1 tháng",
@@ -487,7 +501,7 @@ const mainboardData = {
         nvmeSlots: 0,
         pcieVersion: "2.0"
     },
-    "gigabyte-h110m-ds2": {
+    "H110": {
         name: "Gigabyte H110M-DS2",
         price: 650000,
         image: "images/gigabyte-h110m-ds2.jpg",
@@ -499,7 +513,7 @@ const mainboardData = {
         nvmeSlots: 0,
         pcieVersion: "3.0"
     },
-    "asus-h310m-e": {
+    "H310": {
         name: "ASUS H310M-E",
         price: 700000,
         image: "images/asus-h310m-e.jpg",
@@ -511,7 +525,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "3.0"
     },
-    "gigabyte-h410m-h-v2": {
+    "H410": {
         name: "Gigabyte H410M H V2",
         price: 800000,
         image: "images/gigabyte-h410m-h-v2.jpg",
@@ -523,7 +537,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "3.0"
     },
-    "asus-prime-h510m-e": {
+    "H510": {
         name: "ASUS Prime H510M-E",
         price: 900000,
         image: "images/asus-prime-h510m-e.jpg",
@@ -535,7 +549,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "3.0"
     },
-    "asus-prime-h610m-k-ddr4": {
+    "ASUS-H610": {
         name: "ASUS PRIME H610M-K D4",
         price: 1600000,
         image: "images/asus-prime-h610m-k-ddr4.jpg",
@@ -548,7 +562,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "4.0"
     },
-    "gigabyte-h610m-h-ddr4": {
+    "GIGA-H610": {
         name: "GIGABYTE H610M H DDR4",
         price: 1790000,
         image: "images/gigabyte-h610m-h-ddr4.jpg",
@@ -561,7 +575,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "4.0"
     },
-    "msi-pro-h610m-b-ddr4": {
+    "MSI-H610": {
         name: "MSI PRO H610M-B DDR4",
         price: 1790000,
         image: "images/msi-pro-h610m-b-ddr4.jpg",
@@ -574,7 +588,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "4.0"
     },
-    "hnz-h610m-k-ddr4": {
+    "HNZ-H610": {
         name: "Huananzhi H610M-K DDR4",
         price: 1350000,
         image: "images/hnz-h610m-k-ddr4.jpg",
@@ -587,43 +601,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "4.0"
     },
-    "asus-b85m-g": {
-        name: "ASUS B85M-G (LGA1150 - Cũ)",
-        price: 500000,
-        image: "images/asus-b85m-g.jpg",
-        brand: "ASUS (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1150",
-        memoryType: "DDR3",
-        condition: "2ND",
-        nvmeSlots: 0,
-        pcieVersion: "2.0"
-    },
-    "gigabyte-b150m-d3h": {
-        name: "Gigabyte B150M-D3H",
-        price: 6000000,
-        image: "images/gigabyte-b150m-d3h.jpg",
-        brand: "Gigabyte (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151",
-        memoryType: "DDR4",
-        condition: "NEW",
-        nvmeSlots: 1,
-        pcieVersion: "3.0"
-    },
-    "asus-prime-b250m-a": {
-        name: "ASUS Prime B250M-A",
-        price: 7000000,
-        image: "images/asus-prime-b250m-a.jpg",
-        brand: "ASUS (Cũ)",
-        warranty: "1 tháng",
-        socket: "LGA1151",
-        memoryType: "DDR4",
-        condition: "NEW",
-        nvmeSlots: 1,
-        pcieVersion: "3.0"
-    },
-    "gigabyte-b360m-d3h": {
+    "B360": {
         "name": "Gigabyte B360M D3H",
         "price": 1500000,
         "image": "images/gigabyte-b360m-d3h.jpg",
@@ -635,7 +613,7 @@ const mainboardData = {
         "nvmeSlots": 1,
         "pcieVersion": "3.0"
     },
-    "asus-prime-b365m-a": {
+    "B365": {
         "name": "ASUS Prime B365M-A",
         "price": 11000000,
         "image": "images/asus-prime-b365m-a.jpg",
@@ -647,7 +625,7 @@ const mainboardData = {
         "nvmeSlots": 1,
         "pcieVersion": "3.0"
     },
-    "gigabyte-b460m-ds3h-ac": {
+    "B460": {
         "name": "Gigabyte B460M DS3H AC",
         "price": 1900000,
         "image": "images/gigabyte-b460m-ds3h-ac.jpg",
@@ -659,7 +637,7 @@ const mainboardData = {
         "nvmeSlots": 1,
         "pcieVersion": "3.0"
     },
-    "asus-prime-b560m-a": {
+    "B560": {
         "name": "ASUS Prime B560M-A",
         "price": 1700000,
         "image": "images/asus-prime-b560m-a.jpg",
@@ -671,7 +649,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "main-huananzhi-b760m-DDR4-den": {
+    "HNZ-B760": {
         "name": "Main Huananzhi B760M-DDR4 (Màu đen)",
         "price": 1800000,
         "image": "images/main-huananzhi-b760m-DDR4-den.jpg",
@@ -684,7 +662,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "mainboard-gigabyte-b760m-d-ddr4": {
+    "GIGA-B760": {
         "name": "Mainboard Gigabyte B760M D DDR4",
         "price": 2390000,
         "image": "images/mainboard-gigabyte-b760m-d-ddr4.jpg",
@@ -697,7 +675,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "mainboard-msi-pro-b760m-e-ddr4": {
+    "MSI-B760": {
         "name": "Mainboard MSI PRO B760M-E DDR4",
         "price": 2450000,
         "image": "images/mainboard-msi-pro-b760m-e-ddr4.jpg",
@@ -710,7 +688,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "mainboard-asus-prime-b760m-k-ddr4": {
+    "ASUS-B760": {
         "name": "Mainboard Asus PRIME B760M-K DDR4",
         "price": 2490000,
         "image": "images/mainboard-asus-prime-b760m-k-ddr4.jpg",
@@ -723,7 +701,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "mainboard-gigabyte-b760m-h-ddr4": {
+    "GIGA-B760": {
         "name": "Mainboard Gigabyte B760M H DDR4",
         "price": 2699000,
         "image": "images/mainboard-gigabyte-b760m-h-ddr4.jpg",
@@ -736,7 +714,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "mainboard-asrock-b760m-pro-rs-DDR4-wifi": {
+    "ASROCK-B760": {
         "name": "Mainboard ASRock B760M Pro RS/DDR4 WIFI",
         "price": 2990000,
         "image": "images/mainboard-asrock-b760m-pro-rs-DDR4-wifi.jpg",
@@ -749,7 +727,7 @@ const mainboardData = {
         "nvmeSlots": 2,
         "pcieVersion": "4.0"
     },
-    "gigabyte-b450m-ds3h": {
+    "GIGA-B450": {
         "name": "Gigabyte B450M DS3H V2 (AM4)",
         "price": 1400000,
         "image": "images/gigabyte-b450m-ds3h-v2.jpg",
@@ -761,7 +739,7 @@ const mainboardData = {
         "nvmeSlots": 1,
         "pcieVersion": "3.0"
     },
-    "jginyue-b450m-ti": {
+    "JGINYUE-B450": {
         name: "JGinyue B450M-TI (AM4)",
         price: 1390000,
         image: "images/jginyue-b450m-ti.jpg",
@@ -773,7 +751,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "3.0"
     },
-    "gigabyte-b550m-aorus-elite": {
+    "GIGA-B550": {
         name: "Gigabyte B550M AORUS ELITE (AM4)",
         price: 2550000,
         image: "images/gigabyte-b550m-aorus-elite.jpg",
@@ -836,7 +814,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "4.0"
     },
-    "jginyue-b650m-d": {
+    "JGINYUE-B650": {
         name: "DDR5 - MAINBOARD JGINYUE B650M-D (AM5)",
         price: 1900000,
         image: "images/jginyue-b650m-d.jpg",
@@ -849,7 +827,7 @@ const mainboardData = {
         nvmeSlots: 1,
         pcieVersion: "4.0"
     },
-    "jginyue-b650m-pro": {
+    "JGINYUE-B650-PRO": {
         name: "DDR5 - MAINBOARD JGINYUE B650M PRO (AM5)",
         price: 2100000,
         image: "images/jginyue-b650m-pro.jpg",
@@ -1020,7 +998,18 @@ const mainboardData = {
     }
 };
 const vgaData = {
-    "gtx-1050ti-4gb-gddr5-colorful-like-new": {
+    "750ti": { // Added 750Ti
+            name: "GTX 750Ti GIGA-MSI-ASUS",
+            price: 1000000, // Example price, adjust as needed
+            image: "images/750ti.jpg", // Replace with correct image path
+            brand: "NVIDIA", // Or specify the brand if known
+            warranty: "3 tháng", // Or specify if different
+            condition: "2ND", // Or "New" if applicable
+            vram: "2GB", // Or specify if different
+            vram_type: "GDDR5", // Or specify if different
+            card_type: "NVIDIA"
+        },
+    "1050ti-4gb": {
         name: "1050Ti 4GB GDDR5 ASUS/GIGA/MSI",
         price: 1590000,
         image: "images/1050ti-4gb.jpg",
@@ -1031,7 +1020,7 @@ const vgaData = {
         vram_type: "GDDR5",
         card_type: "NVIDIA"
     },
-    "gtx-1060-3gb-gddr5-msi-gaming-cu": {
+    "1060-3g": {
         name: "1060 3GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 1800000,
         image: "images/1060-3gb-msi.jpg",
@@ -1042,7 +1031,7 @@ const vgaData = {
         vram_type: "GDDR5",
         card_type: "NVIDIA"
     },
-    "gtx-1060-6gb-gddr5-msi-gaming-cu": {
+    "1060-6gb": {
         name: "1060 6GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 2100000,
         image: "images/1060-6gb-msi.jpg",
@@ -1053,7 +1042,7 @@ const vgaData = {
         vram_type: "GDDR5",
         card_type: "NVIDIA"
     },
-    "gtx-1070-8gb-gddr5-msi-gaming-cu-99": {
+    "1070-8gb": {
         name: "1070 8GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 2800000,
         image: "images/1070-8gb-msi.jpg",
@@ -1064,7 +1053,7 @@ const vgaData = {
         vram_type: "GDDR5",
         card_type: "NVIDIA"
     },
-    "gtx-1070ti-8gb-gddr5-msi-gaming-cu-like-new": {
+    "1070ti-8gb": {
         name: "1070Ti 8GB GDDR5 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 3000000,
         image: "images/1070ti-8gb-msi.jpg",
@@ -1075,7 +1064,7 @@ const vgaData = {
         vram_type: "GDDR5",
         card_type: "NVIDIA"
     },
-    "gtx-1660-super-6gb-gddr6-gigabyte-gaming-cu-99": {
+    "1660s": {
         name: "1660 Super 6GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 2900000,
         image: "images/1660-super-6gb-gigabyte.jpg",
@@ -1086,7 +1075,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "-rtx-2060-6gb-gddr6-msi-gaming-cu-99": {
+    "2060": {
         name: "RTX 2060 6GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 3400000,
         image: "images/rtx-2060-6gb-msi.jpg",
@@ -1097,7 +1086,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "rtx-2070-super-8gb-gddr6-msi-gaming-cu-99": {
+    "2070s": {
         name: "RTX 2070 Super 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 4500000,
         image: "images/rtx-2070-super-8gb-msi.jpg",
@@ -1108,7 +1097,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "rtx-3070-8gb-gddr6-msi-gaming-cu-99": {
+    "3070": {
         name: "RTX 3070 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 5900000,
         image: "images/rtx-3070-8gb-msi.jpg",
@@ -1119,7 +1108,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "rtx-3070ti-8gb-gddr6x-asus-rog-cu-99": {
+    "3070ti": {
         name: "RTX 3070Ti 8GB GDDR6X /GIGA/MSI/ASUS (Cũ)",
         price: 7500000,
         image: "images/rtx-3070ti-8gb-asus.jpg",
@@ -1130,7 +1119,7 @@ const vgaData = {
         vram_type: "GDDR6X",
         card_type: "NVIDIA"
     },
-    "colorful--rtx-2060-super-8gb": {
+    "2060s": {
         name: "RTX 2060 Super 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 3900000,
         image: "images/colorful--rtx-2060-super-8gb.jpg",
@@ -1141,7 +1130,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "asl-rtx-3050-6gb": {
+    "3050-6gb": {
         name: "ASL RTX 3050 6GB GDDR6 (NEW)",
         price: 4250000,
         image: "images/asl-rtx-3050-6gb.jpg",
@@ -1152,18 +1141,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "pny-rtx-3050-6gb-verto": {
-        name: "PNY RTX 3050 6GB VERTO™ Dual Fan (NEW)",
-        price: 4350000,
-        image: "images/pny-rtx-3050-6gb-verto.jpg",
-        brand: "PNY",
-        warranty: "36 tháng",
-        condition: "NEW",
-        vram: "6GB",
-        vram_type: "GDDR6",
-        card_type: "NVIDIA"
-    },
-    "gigabyte-rtx-3060-gaming-oc-12gb": {
+    "3060-12g-new": {
         name: "Gigabyte RTX 3060 GAMING OC 12GB (NEW)",
         price: 7290000,
         image: "images/gigabyte-rtx-3060-gaming-oc-12gb.jpg",
@@ -1174,29 +1152,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "inno3d-rtx-3060-twin-x2-12gb": {
-        name: "Inno3D RTX 3060 TWIN X2 12GB GDDR6 (NEW)",
-        price: 7250000,
-        image: "images/inno3d-rtx-3060-twin-x2-12gb.jpg",
-        brand: "Inno3D",
-        warranty: "36 tháng",
-        condition: "NEW",
-        vram: "12GB",
-        vram_type: "GDDR6",
-        card_type: "NVIDIA"
-    },
-    "colorful-igame-rtx-3060-ultra-w-oc-12g-v": {
-        name: "Colorful iGame RTX 3060 Ultra W OC 12G-V (NEW)",
-        price: 7990000,
-        image: "images/colorful-igame-rtx-3060-ultra-w-oc-12g-v.jpg",
-        brand: "Colorful",
-        warranty: "36 tháng",
-        condition: "NEW",
-        vram: "12GB",
-        vram_type: "GDDR6",
-        card_type: "NVIDIA"
-    },
-    "msi-rtx-4060-ti-16gb-amp": {
+    "4060ti-16G": {
         name: "msi RTX 4060 TI 16GB AMP GDDR6 (NEW)",
         price: 10750000,
         image: "images/msi-rtx-4060-ti-16gb-amp.jpg",
@@ -1207,7 +1163,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "asus-dual-rtx-4060-oc-8gb": {
+    "4060-new": {
         name: "ASUS DUAL RTX 4060 OC 8GB GDDR6 (NEW)",
         price: 7250000,
         image: "images/asus-dual-rtx-4060-oc-8gb.jpg",
@@ -1218,7 +1174,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "msi-rtx-4070-ti-super-16g-ventus-3x-oc": {
+    "4070ti-new": {
         name: "MSI RTX 4070 TI SUPER 16G VENTUS 3X OC (NEW)",
         price: 22150000,
         image: "images/msi-rtx-4070-ti-super-16g-ventus-3x-oc.jpg",
@@ -1229,7 +1185,7 @@ const vgaData = {
         vram_type: "GDDR6X",
         card_type: "NVIDIA"
     },
-    "inno3d-rtx-4070-ti-super-x3-oc-16gb": {
+    "4070ti-super": {
         name: "Inno3D RTX 4070 Ti SUPER X3 OC 16GB (NEW)",
         price: 21400000,
         image: "images/inno3d-rtx-4070-ti-super-x3-oc-16gb.jpg",
@@ -1240,22 +1196,11 @@ const vgaData = {
         vram_type: "GDDR6X",
         card_type: "NVIDIA"
     },
-    "msi-rtx-5080-16g-ventus-3x-oc-plus": {
-        name: "MSI RTX 5080 16G VENTUS 3X OC PLUS (NEW)",
-        price: 38900000,
-        image: "images/msi-rtx-5080-16g-ventus-3x-oc-plus.jpg",
-        brand: "MSI",
-        warranty: "36 tháng",
-        condition: "NEW",
-        vram: "16GB",
-        vram_type: "GDDR6X",
-        card_type: "NVIDIA"
-    }
 };
 
 const ramData = {
     // DDR5 RAM
-    "ram-corsair-vengeance-16gb-ddr5-5200": {
+    "Cosair-16-5200": {
         name: "RAM Corsair Vengeance Black Heatspreader 16GB (Bus 5200)",
         price: 1200000,
         brand: "Corsair",
@@ -1266,7 +1211,7 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-corsair-vengeance-16gb-ddr5-5200.jpg"
     },
-    "ram-tridentz-16gb-ddr5-6000": {
+    "tridentz-16-6000": {
         name: "RAM TridentZ 16GB DDR5 (Bus 6000) ",
         price: 1500000,
         brand: "TridentZ",
@@ -1277,7 +1222,7 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-tridentz-16gb-ddr5-6000.jpg"
     },
-    "ram-tridentz-32gb-ddr5-6000": {
+    "tridentz-32-6000": {
         name: "RAM TridentZ 16GB DDR5 (Bus 6000) ",
         price: 2900000,
         brand: "TridentZ",
@@ -1288,7 +1233,7 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-tridentz-32gb-ddr5-6000.jpg"
     },
-    "ram-adata-xpg-32gb-ddr5-6000": {
+    "adata-32-6000": {
         name: "RAM Adata XPG 32GB DDR5 (Bus 6000)",
         price: 2450000,
         brand: "Adata",
@@ -1301,7 +1246,7 @@ const ramData = {
     },
 
     // DDR4 RAM
-    "sstc-ddr4-3200mhz-16gb": {
+    "sstc-16": {
         name: "RAM SSTC 16GB DDR4 3200MHz",
         price: 700000,
         image: "images/sstc-ddr4-3200mhz-16gb.jpg",
@@ -1309,10 +1254,23 @@ const ramData = {
         warranty: "36 tháng",
         condition: "NEW",
         type: "DDR4",
-        speed: "3200MHz"
+        speed: "3200MHz",
+        size: "16GB"
+    },
+    "sstc-8": {
+        name: "RAM SSTC 8GB DDR4 3200MHz",
+        price: 350000,
+        image: "images/sstc-ddr4-3200mhz-8gb.jpg",
+        brand: "SSTC",
+        warranty: "36 tháng",
+        condition: "NEW",
+        type: "DDR4",
+        speed: "3200MHz",
+        size: "8GB"
     },
 
-    "ram-corsair-vengeance-16gb-ddr4-3200": {
+
+    "cosair-16": {
         name: "RAM Corsair Vengeance LPX 16GB DDR4 (Bus 3200)",
         price: 900000,
         brand: "Corsair",
@@ -1323,7 +1281,7 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-corsair-vengeance-16gb-ddr4-3200.jpg"
     },
-    "ram-kingston-hyperx-16gb-ddr4-3200": {
+    "furry-16": {
         name: "RAM Kingston HyperX Fury 16GB DDR4 (Bus 3200)",
         price: 950000,
         brand: "Kingston",
@@ -1334,7 +1292,7 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-kingston-hyperx-16gb-ddr4-3200.jpg"
     },
-    "ram-adata-xpg-16gb-ddr4-3200": {
+    "adata-16": {
         name: "RAM Adata XPG 16GB DDR4 (Bus 3200)",
         price: 880000,
         brand: "Adata",
@@ -1345,7 +1303,7 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-adata-xpg-16gb-ddr4-3200.jpg"
     },
-    "ram-tridentz-16gb-ddr4-3600": {
+    "tridentz-16": {
         name: "RAM G.Skill TridentZ 16GB DDR4 (Bus 3600)",
         price: 1100000,
         brand: "G.Skill",
@@ -1356,9 +1314,30 @@ const ramData = {
         condition: "NEW",
         image: "images/ram-tridentz-16gb-ddr4-3600.jpg"
     },
+    "D38G": {
+        name: "RAM DDR3 8G 1600MHz",
+        price: 130000,
+        image: "images/d3-8gb.jpg",
+        brand: "SSTC",
+        warranty: "3 tháng",
+        condition: "2ND",
+        type: "DDR3",
+        speed: "1600MHz",
+        size: "8GB"
+    },
 };
 const ssdData = {
-    "sstc-oceanic-whitetip-256gb": {
+    "sata-sstc-256": {
+            name: "SSD SSTC Oceanic Whitetip SATA III 256GB", // Changed to SATA
+            price: 450000,
+            image: "images/sstc-oceanic-whitetip-256gb.jpg",
+            brand: "SSTC",
+            warranty: "36 tháng",
+            condition: "NEW",
+            type: "SATA III", // Changed to SATA III
+            speed: "Read 550MB/s, Write 500MB/s" // Example SATA speeds - adjust!
+        },
+    "sstc-256": {
         name: "SSD SSTC Oceanic Whitetip NVMe M.2 MAX-III 256GB",
         price: 599000,
         image: "images/sstc-oceanic-whitetip-256gb.jpg",
@@ -1368,7 +1347,7 @@ const ssdData = {
         type: "NVMe PCIe Gen3 x4",
         speed: "Read 3100MB/s, Write 2000MB/s"
     },
-    "sstc-oceanic-whitetip-512gb": {
+    "sstc-512gb": {
         name: "SSD SSTC Oceanic Whitetip NVMe M.2 MAX-III 512GB",
         price: 899000,
         image: "images/sstc-oceanic-whitetip-512gb.jpg",
@@ -1378,7 +1357,7 @@ const ssdData = {
         type: "NVMe PCIe Gen3 x4",
         speed: "Read 3100MB/s, Write 2000MB/s"
     },
-    "samsung-990-evoplus-1tb": {
+    "990evo-1tb": {
         name: "SSD Samsung 990 EVO PLUS 1TB M.2 NVMe PCIe Gen4.0 x4",
         price: 2230000,
         image: "images/samsung-990-evoplus-1tb.jpg",
@@ -1388,17 +1367,7 @@ const ssdData = {
         type: "NVMe PCIe Gen4 x4",
         speed: "Read 5000MB/s, Write 4200MB/s"
     },
-    "kingston-nv3-500gb": {
-        name: "SSD Kingston NV3 500GB PCIe 4.0 x4 M.2 NVMe",
-        price: 1289000,
-        image: "images/kingston-nv3-500gb.jpg",
-        brand: "Kingston",
-        warranty: "36 tháng",
-        condition: "NEW",
-        type: "NVMe PCIe Gen4 x4",
-        speed: "Read 3500MB/s, Write 2800MB/s"
-    },
-    "samsung-980-500gb": {
+    "samsung-500gb": {
         name: "SSD Samsung 980 500GB M.2 NVMe PCIe Gen3.0 x4",
         price: 1479000,
         image: "images/samsung-980-500gb.jpg",
@@ -1408,17 +1377,7 @@ const ssdData = {
         type: "NVMe PCIe Gen3 x4",
         speed: "Read 3100MB/s, Write 2600MB/s"
     },
-    "kingston-nv3-1tb": {
-        name: "SSD Kingston NV3 1TB PCIe 4.0 x4 M.2 NVMe",
-        price: 1829000,
-        image: "images/kingston-nv3-1tb.jpg",
-        brand: "Kingston",
-        warranty: "36 tháng",
-        condition: "NEW",
-        type: "NVMe PCIe Gen4 x4",
-        speed: "Read 3500MB/s, Write 2800MB/s"
-    },
-    "samsung-980-1tb": {
+    "samsung-1tb": {
         name: "SSD Samsung 980 1TB M.2 NVMe PCIe Gen4.0 x4",
         price: 2000000,
         image: "images/samsung-980-1tb.jpg",
@@ -1428,7 +1387,7 @@ const ssdData = {
         type: "NVMe PCIe Gen4 x4",
         speed: "Read 3500MB/s, Write 3000MB/s"
     },
-    "samsung-pm9a1-512gb": {
+    "samsung-512gb": {
         name: "SSD Gen 4 Samsung PM9A1 NVMe 512GB OEM 980 Pro",
         price: 1450000,
         image: "images/samsung-pm9a1-512gb.jpg",
@@ -1438,22 +1397,48 @@ const ssdData = {
         type: "NVMe PCIe Gen4 x4",
         speed: "Read 6400MB/s, Write 2700MB/s"
     },
-    "kingston-nv2-500gb": {
-        name: "SSD Kingston NV2 500GB PCIe Gen4",
-        price: 895000,
-        image: "images/kingston-nv2-500gb.jpg",
-        brand: "Kingston",
+    "crucial-500gb": {
+        name: "SSD Crucial P3 500GB PCIe Gen3",
+        price: 895000, // Giá có thể thay đổi tùy theo thị trường
+        image: "images/crucial-p3-500gb.jpg", // Đảm bảo có hình ảnh tương ứng
+        brand: "Crucial",
         warranty: "36 tháng",
         condition: "NEW",
-        type: "NVMe PCIe Gen4 x4",
-        speed: "Read 3500MB/s, Write 2100MB/s"
+        type: "NVMe PCIe Gen3 x4",
+        speed: "Read 3500MB/s, Write 1900MB/s" // Tốc độ đọc/ghi của Crucial P3 500GB
+    },
+    "crucial-1tb": {
+        name: "SSD Crucial P3 1TB PCIe Gen3",
+        price: 895000, // Giá có thể thay đổi tùy theo thị trường
+        image: "images/crucial-p3-1TB.jpg", // Đảm bảo có hình ảnh tương ứng
+        brand: "Crucial",
+        warranty: "36 tháng",
+        condition: "NEW",
+        type: "NVMe PCIe Gen3 x4",
+        speed: "Read 3500MB/s, Write 1900MB/s" // Tốc độ đọc/ghi của Crucial P3 500GB
     }
 };
 
 
 
 const psuData = {
-    "vsp-elite-dt660-650w": {
+    "350W": {
+        name: "Nguồn VSP Delta P350W",
+        price: 350000,
+        image: "images/vsp-delta-p350w.jpg",
+        brand: "VSP",
+        warranty: "24 tháng",
+        condition: "NEW",
+        power: "350W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["1x 4+4-pin ATX12V"],
+            pcie: ["1x 6+2-pin"],
+            sata: 3,
+            molex: 2
+        }
+    },
+    "DT660": {
         name: "Nguồn VSP Elite DT660 650W",
         price: 750000,
         image: "images/vsp-elite-dt660-650w.jpg",
@@ -1469,7 +1454,7 @@ const psuData = {
             molex: 2
         }
     },
-    "vsp-vgp750brn-80plus-bronze-750w": {
+    "VSP750": {
         name: "Nguồn VSP VGP750BRN 80Plus Bronze 750W",
         price: 1100000,
         image: "images/vsp-vgp750brn-80plus-bronze-750w.jpg",
@@ -1485,7 +1470,7 @@ const psuData = {
             molex: 3
         }
     },
-    "nguon-corsair-cv750": {
+    "COSAIR750": {
         name: "Nguồn Máy Tính Corsair CV750 - 750W 80 Plus",
         price: 1690000,
         image: "images/nguon-corsair-cv750.jpg",
@@ -1501,7 +1486,7 @@ const psuData = {
             molex: 4
         }
     },
-    "nguon-thermalright-tg-1000": {
+    "TMR1000": {
         name: "Nguồn Máy Tính Thermalright TG-1000 1000W ATX 3.0 (80 Plus Gold)",
         price: 2400000,
         image: "images/nguon-thermalright-tg-1000.jpg",
@@ -1517,7 +1502,7 @@ const psuData = {
             molex: 4
         }
     },
-    "nguon-corsair-rm850e": {
+    "COSAIR850": {
         name: "Nguồn Máy Tính Corsair RM850e ATX 3.0 850W (80 Plus Gold)",
         price: 1800000,
         image: "images/nguon-corsair-rm850e.jpg",
@@ -1533,7 +1518,7 @@ const psuData = {
             molex: 4
         }
     },
-    "nguon-centaur-750w-80-plus": {
+    "CENTAUR750": {
         name: "Nguồn Centaur 750W 80 Plus",
         price: 899000,
         image: "images/nguon-centaur-750w-80-plus.jpg",
@@ -1554,7 +1539,7 @@ const psuData = {
 
 
 const caseData = {
-    "xigmatek-nyx-air-3f": {
+    "NYX3F": {
         name: "Xigmatek NYX AIR 3F",
         price: 600000,
         image: "images/xigmatek-nyx-air-3f.jpg",
@@ -1562,7 +1547,7 @@ const caseData = {
         warranty: "12 tháng",
         condition: "NEW",
     },
-    "xigmatek-cubi-m-black": {
+    "CUBIM": {
         name: "Xigmatek Cubi M Black",
         price: 799000,
         image: "images/xigmatek-cubi-m-black.jpg",
@@ -1570,7 +1555,7 @@ const caseData = {
         warranty: "12 tháng",
         condition: "NEW",
     },
-    "xigmatek-cubi-m-nano-m-atx-black": {
+    "NANO": {
         name: "Xigmatek Cubi M Nano M-ATX Black",
         price: 600000,
         image: "images/xigmatek-cubi-m-nano-m-atx-black.jpg",
@@ -1578,7 +1563,7 @@ const caseData = {
         warranty: "12 tháng",
         condition: "NEW",
     },
-    "xigmatek-gemini-m-no-fan": {
+    "GEMINI": {
         name: "Xigmatek Gemini M No Fan",
         price: 500000,
         image: "images/xigmatek-gemini-m-no-fan.jpg",
@@ -1586,7 +1571,7 @@ const caseData = {
         warranty: "12 tháng",
         condition: "NEW",
     },
-    "kenoo-esport-mk400": {
+    "MK400": {
         name: "Vỏ Case Máy Tính KENOO ESPORT MK400 (MATX, Case Bể Cá, Kính Cong)",
         price: 699000,
         image: "images/kenoo-esport-mk400.jpg",
@@ -1594,17 +1579,17 @@ const caseData = {
         warranty: "12 tháng",
         condition: "NEW",
     },
-    "gaming-start-ga3": {
-        name: "Vỏ Case 2 Mặt Kính Cường Lực Gaming Start GA3",
-        price: 360000,
+    "GA3": {
+        name: "Vỏ Case 2 Mặt Kính Cường Lực ",
+        price: 300000,
         image: "images/gaming-start-ga3fg.jpg",
         brand: "Gaming Start",
         warranty: "12 tháng",
         condition: "NEW",
     },
-    "gaming-start-ga": {
+    "GA": {
         name: "Vỏ Case Gaming Start GA",
-        price: 300000,
+        price: 500000,
         image: "images/gaming-start-ga3f.jpg",
         brand: "Gaming Start",
         warranty: "12 tháng",
@@ -1613,7 +1598,18 @@ const caseData = {
 };
 
 const cpuCoolerData = {
-    "jonsbo-cr-1000-rgb": {
+    "STOCK": {
+        name: "Tản nhiệt Stock Intel",
+        price: 60000,
+        image: "images/stock-intel-cooler.jpg",
+        brand: "Intel",
+        warranty: "Không bảo hành",
+        condition: "NEW",
+        sockets: ["Intel LGA1700", "LGA1200", "LGA115x"],
+        sync: "Không hỗ trợ"
+    },
+    
+    "CR1000": {
         name: "Jonsbo CR-1000 RGB",
         price: 330000,
         image: "images/jonsbo-cr-1000-rgb.jpg",
@@ -1623,7 +1619,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA775", "LGA1150", "LGA1151", "LGA1155", "LGA1156", "AMD AM4", "AM3+", "AM3", "AM2+", "AM2", "FM2+", "FM2", "FM1"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "ct-air-01": {
+    "AIR01": {
         name: "CT-Air 01",
         price: 290000,
         image: "images/ct-air-01.jpg",
@@ -1643,7 +1639,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "thermalright-peerless-assassin-120-se-argb": {
+    "TMR120SE": {
         name: "Thermalright Peerless Assassin 120 SE ARGB",
         price: 740000,
         image: "images/thermalright-peerless-assassin-120-se-argb.jpg",
@@ -1653,7 +1649,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "thermalright-aqua-elite-360-argb-black": {
+    "TMR-ELITE-360": {
         name: "Thermalright Aqua Elite 360 ARGB Black",
         price: 1400000,
         image: "images/thermalright-aqua-elite-360-argb-black.jpg",
@@ -1663,7 +1659,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "thermalright-frozen-warframe-360-se-white-argb": {
+    "TMR360W": {
         name: "Thermalright Frozen Warframe 360 SE White ARGB",
         price: 2100000,
         image: "images/thermalright-frozen-warframe-360-se-white-argb.jpg",
@@ -1673,7 +1669,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "thermalright-frozen-warframe-360-se-black-argb": {
+    "TMR360B": {
         name: "Thermalright Frozen Warframe 360 SE Black ARGB",
         price: 2050000,
         image: "images/thermalright-frozen-warframe-360-se-black-argb.jpg",
@@ -1683,7 +1679,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "thermalright-frozen-warframe-240-se-white-argb": {
+    "TMR240W": {
         name: "Thermalright Frozen Warframe 240 SE White ARGB",
         price: 1600000,
         image: "images/thermalright-frozen-warframe-240-se-white-argb.jpg",
@@ -1693,7 +1689,7 @@ const cpuCoolerData = {
         sockets: ["Intel LGA1150", "LGA1151", "LGA1155", "LGA1156", "LGA1200", "LGA1700", "AMD AM4", "AM5"],
         sync: "Hỗ trợ đồng bộ với bo mạch chủ thông qua đầu cắm 5V ARGB"
     },
-    "thermalright-frozen-warframe-240-se-black-argb": {
+    "TMR240B": {
         name: "Thermalright Frozen Warframe 240 SE Black ARGB",
         price: 1550000,
         image: "images/thermalright-frozen-warframe-240-se-black-argb.jpg",
@@ -1755,7 +1751,7 @@ const hddData = {
 };
 
 const monitorData = {
-    "duan-ip25f180": {
+    "ip25f180": {
         name: "Màn hình DUAN IP25F180 25 inch IPS 180Hz 1ms",
         price: 2200000,
         image: "images/duan-ip25f180.jpg",
@@ -1766,7 +1762,7 @@ const monitorData = {
         refreshRate: "180Hz",
         screenSize: "25 inch"
     },
-    "duan-da272qp": {
+    "da272qp": {
         name: "Màn hình DUAN 27 inch 2K 100Hz DA272QP IPS",
         price: 3200000,
         image: "images/duan-da272qp.jpg",
@@ -1777,7 +1773,7 @@ const monitorData = {
         refreshRate: "100Hz",
         screenSize: "27 inch"
     },
-    "duan-dt-ip2409s": {
+    "ip2409s": {
         name: "Màn hình DUAN DT-IP2409S 23.8 inch IPS Full HD 100Hz 1ms",
         price: 1600000,
         image: "images/duan-dt-ip2409s.jpg",
@@ -1788,7 +1784,7 @@ const monitorData = {
         refreshRate: "100Hz",
         screenSize: "23.8 inch"
     },
-    "duan-ip278s": {
+    "ip278s": {
         name: "Màn hình DUAN IP278S 27 inch 180Hz IPS 1ms",
         price: 2900000,
         image: "images/duan-ip278s.jpg",
@@ -1799,7 +1795,7 @@ const monitorData = {
         refreshRate: "180Hz",
         screenSize: "27 inch"
     },
-    "duan-dt-v2218s": {
+    "v2218s": {
         name: "Màn hình DUAN 22 inch DT-V2218S 100Hz 1ms VA FHD",
         price: 1400000,
         image: "images/duan-dt-v2218s.jpg",
@@ -1888,57 +1884,57 @@ document.getElementById('cpu-type').addEventListener('change', function () {
     // Thêm các tùy chọn CPU tương ứng
     if (selectedCpuType === "Intel") {
         cpuSelect.innerHTML += `
-            <option value="intel-core-i3-9100f">Intel Core i3-9100F</option>
-<option value="intel-core-i3-10100f">Intel Core i3-10100F</option>
-<option value="intel-core-i3-10105">Intel Core i3-10105</option>
-<option value="intel-core-i3-10105f">Intel Core i3-10105F</option>
-<option value="intel-core-i3-12100F">Intel Core i3-12100F</option>
-<option value="intel-core-i3-13100F">Intel Core i3-13100</option>
-<option value="intel-core-i3-14100F">Intel Core i3-13100</option>
-<option value="intel-core-i5-3470">Intel Core i5-3470 (Cũ)</option>
-<option value="intel-core-i5-4570">Intel Core i5-4570 (Cũ)</option>
-<option value="intel-core-i5-6500">Intel Core i5-6500 (Cũ)</option>
-<option value="intel-core-i5-7400">Intel Core i5-7400 (Cũ)</option>
-<option value="intel-core-i5-8400">Intel Core i5-8400 (Cũ)</option>
-<option value="intel-core-i5-9400f">Intel Core i5-9400F</option>
-<option value="intel-core-i5-10400f">Intel Core i5-10400F</option>
-<option value="intel-core-i5-11400f">Intel Core i5-11400F</option>
-<option value="intel-core-i5-12400f">Intel Core i5-12400F</option>
-<option value="intel-core-i5-12600f">Intel Core i5-12600KF</option>
-<option value="intel-core-i5-13400f">Intel Core i5-13400F</option>
-<option value="intel-core-i5-13600kf">Intel Core i5-13600KF</option>
-<option value="intel-core-i5-14600kf">Intel Core i5-14600KF</option>
-<option value="intel-core-i7-8700">Intel Core i7-8700 (Cũ)</option>
-<option value="intel-core-i7-9700k">Intel Core i7-9700K (Cũ)</option>
-<option value="intel-core-i7-10700k">Intel Core i7-10700K (Cũ)</option>
-<option value="intel-core-i7-10700kF">Intel Core i7-10700KF (Cũ)</option>
-<option value="intel-core-i7-12700f">Intel Core i7-12700F</option>
-<option value="intel-core-i7-13700k">Intel Core i7-13700K</option>
+            <option value="9100f">Intel Core i3-9100F</option>
+<option value="10100f">Intel Core i3-10100F</option>
+<option value="10105">Intel Core i3-10105</option>
+<option value="10105f">Intel Core i3-10105F</option>
+<option value="12100F">Intel Core i3-12100F</option>
+<option value="13100F">Intel Core i3-13100</option>
+<option value="14100F">Intel Core i3-13100</option>
+<option value="3470">Intel Core i5-3470 (Cũ)</option>
+<option value="4570">Intel Core i5-4570 (Cũ)</option>
+<option value="6500">Intel Core i5-6500 (Cũ)</option>
+<option value="7400">Intel Core i5-7400 (Cũ)</option>
+<option value="8400">Intel Core i5-8400 (Cũ)</option>
+<option value="9400f">Intel Core i5-9400F</option>
+<option value="10400f">Intel Core i5-10400F</option>
+<option value="11400f">Intel Core i5-11400F</option>
+<option value="12400f">Intel Core i5-12400F</option>
+<option value="12600f">Intel Core i5-12600KF</option>
+<option value="13400f">Intel Core i5-13400F</option>
+<option value="13600kf">Intel Core i5-13600KF</option>
+<option value="14600kf">Intel Core i5-14600KF</option>
+<option value="8700">Intel Core i7-8700 (Cũ)</option>
+<option value="9700k">Intel Core i7-9700K (Cũ)</option>
+<option value="10700k">Intel Core i7-10700K (Cũ)</option>
+<option value="10700kF">Intel Core i7-10700KF (Cũ)</option>
+<option value="12700f">Intel Core i7-12700F</option>
+<option value="13700k">Intel Core i7-13700K</option>
 
         `;
     } else if (selectedCpuType === "Amd") {
         cpuSelect.innerHTML += `
-            <option value="amd-ryzen-5-3600">AMD Ryzen 5 3600 (Cũ)</option>
-<option value="amd-ryzen-5-5500">AMD Ryzen 5 5500</option>
-<option value="amd-ryzen-5-5600">AMD Ryzen 5 5600</option>
-<option value="amd-ryzen-5-5600X">AMD Ryzen 5 5600X</option>
-<option value="amd-ryzen-5-5600G">AMD Ryzen 5 5600G</option>
-<option value="amd-ryzen-5-7500f">AMD Ryzen 5 7500F</option>
-<option value="amd-ryzen-5-7600-tray">AMD Ryzen 5 7600 (Tray)</option>
-<option value="amd-ryzen-5-7600x-tray">AMD Ryzen 5 7600X (Tray)</option>
-<option value="amd-ryzen-7-3700x">AMD Ryzen 7 3700X (Cũ)</option>
-<option value="amd-ryzen-7-5700x">AMD Ryzen 7 5700X</option>
-<option value="amd-ryzen-7-5700x3D">AMD Ryzen 7 5700X3D</option>
-<option value="amd-ryzen-7-5800x">AMD Ryzen 7 5800X</option>
-<option value="amd-ryzen-7-7700x">AMD Ryzen 7 7700X</option>
-<option value="amd-ryzen-7-7800x3d-tray">AMD Ryzen 7 7800X3D (Tray)</option>
-<option value="amd-ryzen-7-7700-tray">AMD Ryzen 7 7700 (Tray)</option>
-<option value="amd-ryzen-9-5900x">AMD Ryzen 9 5900X (Cũ)</option>
-<option value="amd-ryzen-9-5950x">AMD Ryzen 9 5950X (Cũ)</option>
-<option value="amd-ryzen-9-7900x">AMD Ryzen 9 7900X</option>
-<option value="amd-ryzen-9-7950x">AMD Ryzen 9 7950X</option>
-<option value="amd-ryzen-9-7950x3d">AMD Ryzen 9 7950X3D</option>
-<option value="amd-ryzen-9-7900-tray">AMD Ryzen 9 7900 (Tray)</option>
+            <option value="3600">AMD Ryzen 5 3600 (Cũ)</option>
+<option value="5500">AMD Ryzen 5 5500</option>
+<option value="5600">AMD Ryzen 5 5600</option>
+<option value="5600X">AMD Ryzen 5 5600X</option>
+<option value="5600G">AMD Ryzen 5 5600G</option>
+<option value="7500f">AMD Ryzen 5 7500F</option>
+<option value="7600">AMD Ryzen 5 7600 (Tray)</option>
+<option value="7600x">AMD Ryzen 5 7600X (Tray)</option>
+<option value="3700x">AMD Ryzen 7 3700X (Cũ)</option>
+<option value="5700x">AMD Ryzen 7 5700X</option>
+<option value="5700x3D">AMD Ryzen 7 5700X3D</option>
+<option value="5800x">AMD Ryzen 7 5800X</option>
+<option value="7700x">AMD Ryzen 7 7700X</option>
+<option value="7800x3d">AMD Ryzen 7 7800X3D (Tray)</option>
+<option value="7700">AMD Ryzen 7 7700 (Tray)</option>
+<option value="5900x">AMD Ryzen 9 5900X (Cũ)</option>
+<option value="5950x">AMD Ryzen 9 5950X (Cũ)</option>
+<option value="7900x">AMD Ryzen 9 7900X</option>
+<option value="7950x">AMD Ryzen 9 7950X</option>
+<option value="7950x3d">AMD Ryzen 9 7950X3D</option>
+<option value="7900">AMD Ryzen 9 7900 (Tray)</option>
         `;
     }
 });
@@ -1964,17 +1960,17 @@ const components = {
 // Cấu hình global
 const intelBudgetConfigs = {
     '2m-3m': {
-        cpu: "intel-core-i3-9100f",
-        mainboard: "asus-h310m-e",
-        vga: "gtx-1060-6gb-gddr5-msi-gaming-cu",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
     },
     '3m-4m': {
-        cpu: "intel-core-i5-9400f",
+        cpu: "9400f",
         mainboard: "asus-prime-b365m-a",
         vga: "gtx-1660-super-6gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -1984,7 +1980,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '4m-5m': {
-        cpu: "intel-core-i5-10400f",
+        cpu: "10400f",
         mainboard: "gigabyte-h410m-h-v2",
         vga: "rtx-2060-6gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -1994,7 +1990,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '5m-6m': {
-        cpu: "intel-core-i5-11400f",
+        cpu: "11400f",
         mainboard: "asus-prime-h510m-e",
         vga: "rtx-3060-12gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2004,7 +2000,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '6m-7m': {
-        cpu: "intel-core-i5-11600k",
+        cpu: "11600k",
         mainboard: "asus-prime-h610m-k-DDR4",
         vga: "rtx-3060-ti-8gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2014,7 +2010,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '7m-8m': {
-        cpu: "intel-core-i7-11700f",
+        cpu: "11700f",
         mainboard: "gigabyte-h610m-h-ddr4",
         vga: "rtx-3070-8gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2024,7 +2020,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '8m-9m': {
-        cpu: "intel-core-i7-11700k",
+        cpu: "11700k",
         mainboard: "msi-pro-h610m-b-ddr4",
         vga: "rtx-3070-ti-8gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2034,7 +2030,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '9m-10m': {
-        cpu: "intel-core-i7-12700f",
+        cpu: "12700f",
         mainboard: "hnz-h610m-k-ddr4",
         vga: "rtx-3080-10gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2044,7 +2040,7 @@ const intelBudgetConfigs = {
         psu: "vsp-elite-dt660-650w"
     },
     '10m-11m': {
-        cpu: "intel-core-i7-12700k",
+        cpu: "12700k",
         mainboard: "mainboard-gigabyte-b760m-d-ddr4",
         vga: "rtx-3080-ti-12gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2107,7 +2103,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '3m-4m': {
-        cpu: "amd-ryzen-5-3400g",
+        cpu: "3400g",
         mainboard: "asrock-b450m-hdv",
         vga: "gtx-1650-4gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2117,7 +2113,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '4m-5m': {
-        cpu: "amd-ryzen-5-3600",
+        cpu: "3600",
         mainboard: "jginyue-b450m-ti",
         vga: "gtx-1660-super-6gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2127,7 +2123,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '5m-6m': {
-        cpu: "amd-ryzen-5-5600x",
+        cpu: "5600x",
         mainboard: "gigabyte-b550m-aorus-elite",
         vga: "rtx-3060-12gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2137,7 +2133,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '6m-7m': {
-        cpu: "amd-ryzen-5-5600x",
+        cpu: "5600x",
         mainboard: "asrock-b550m-wifi",
         vga: "rtx-3060-ti-8gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2147,7 +2143,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '7m-8m': {
-        cpu: "amd-ryzen-7-5800x",
+        cpu: "5800x",
         mainboard: "asrock-b550m-pro4",
         vga: "rtx-3070-8gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2157,7 +2153,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '8m-9m': {
-        cpu: "amd-ryzen-7-5800x",
+        cpu: "5800x",
         mainboard: "gigabyte-b550m-gaming-wifi",
         vga: "rtx-3070-ti-8gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2167,7 +2163,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '9m-10m': {
-        cpu: "amd-ryzen-7-5800x3d",
+        cpu: "5800x3d",
         mainboard: "jginyue-b650m-d",
         vga: "rtx-3080-10gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2177,7 +2173,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '10m-11m': {
-        cpu: "amd-ryzen-9-5900x",
+        cpu: "5900x",
         mainboard: "jginyue-b650m-pro",
         vga: "rtx-3080-ti-12gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2187,7 +2183,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '11m-12m': {
-        cpu: "amd-ryzen-9-5950x",
+        cpu: "5950x",
         mainboard: "asrock-b650m-hdv-m2",
         vga: "rtx-3090-24gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2197,7 +2193,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '12m-13m': {
-        cpu: "amd-ryzen-9-5950x",
+        cpu: "5950x",
         mainboard: "msi-pro-b650m-p",
         vga: "rtx-3090-ti-24gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2207,7 +2203,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '13m-14m': {
-        cpu: "amd-ryzen-9-7950x",
+        cpu: "7950x",
         mainboard: "asus-tuf-gaming-b650m-e",
         vga: "rtx-4090-24gb",
         ram: "sstc-ddr4-3200mhz-16gb",
@@ -2217,7 +2213,7 @@ const amdBudgetConfigs = {
         psu: "vsp-elite-dt660-450w"
     },
     '14m-15m': {
-        cpu: "amd-ryzen-9-7950x3d",
+        cpu: "7950x3d",
         mainboard: "gigabyte-b650m-gaming-plus-wifi",
         vga: "rtx-4090-ti-24gb",
         ram: "sstc-ddr4-3200mhz-16gb",
