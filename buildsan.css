@@ -252,6 +252,16 @@ footer p {
     font-size: 1em;
 }
 
+.red-section {
+    background-color: #ffe5e5; /* Màu nền nhẹ đỏ */
+    border: 2px solid #ff0000; /* Viền đỏ */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.red-section h2 {
+    color: #ff0000; /* Tiêu đề màu đỏ */
+}
 /* Hiệu ứng Modal */
 .modal {
     display: none;
