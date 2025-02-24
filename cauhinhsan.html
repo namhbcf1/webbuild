@@ -7,17 +7,11 @@
     <title>BUILD PC TRUONG PHAT COMPUTER - Chọn Linh Kiện Máy Tính</title>
     <link rel="stylesheet" href="buildsan.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Build PC - Trường Phát Computer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
+
 <body>
     <header>
         <div class="contact-buttons">
@@ -62,7 +56,7 @@
                 <option value="over-40m">Trên 40 triệu</option>
             </select>
         </section>
-        
+
         <section id="cpu-type-selection" class="selection-section">
             <h2>Chọn Loại CPU</h2>
             <select id="cpu-type" name="cpu-type" class="dropdown">
@@ -70,7 +64,7 @@
                 <option value="Amd">AMD</option>
             </select>
         </section>
-        
+
         <section id="game-selection" class="selection-section">
             <h2>Chọn Game Muốn Chơi</h2>
             <select id="game-genre" name="game-genre" class="dropdown">
@@ -78,7 +72,7 @@
                 <option value="all-games">Tất cả các game</option>
                 <option value="game-offline">Game Offline</option>
                 <option value="game-esport">Game Esport</option>
-                <option value="valorant">Valorant</option>
+                <option value="valorant">Valorant</valorant>
                 <option value="csgo">CS:GO</option>
                 <option value="lol">Liên Minh Huyền Thoại (LOL)</option>
                 <option value="dota2">DOTA 2</option>
@@ -87,85 +81,105 @@
                 <option value="gta-v">GTA V</option>
                 <option value="cyberpunk-2077">Cyberpunk 2077</option>
                 <option value="elden-ring">Elden Ring</option>
-                <option value="god-of-war">God of War</option>
+                <option value="god-of-war">God of War</god-of-war>
             </select>
         </section>
 
-        <section id="component-selection" class="selection-grid">
-            <div class="component">
-                <h2>Chọn CPU</h2>
-                <select id="cpu" name="cpu" class="dropdown">
-                    <option value="" disabled selected>Chọn CPU</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn Mainboard</h2>
-                <select id="mainboard" name="mainboard" class="dropdown">
-                    <option value="" disabled selected>Chọn Mainboard</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn Card Đồ Họa (VGA)</h2>
-                <select id="vga" name="vga" class="dropdown">
-                    <option value="" disabled selected>Chọn VGA</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn RAM</h2>
-                <select id="ram" name="ram" class="dropdown">
-                    <option value="" disabled selected>Chọn RAM</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn Ổ Cứng SSD</h2>
-                <select id="ssd" name="ssd" class="dropdown">
-                    <option value="" disabled selected>Chọn SSD</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn Nguồn (PSU)</h2>
-                <select id="psu" name="psu" class="dropdown">
-                    <option value="" disabled selected>Chọn PSU</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn Vỏ Case</h2>
-                <select id="case" name="case" class="dropdown">
-                    <option value="" disabled selected>Chọn Case</option>
-                </select>
-            </div>
-            <div class="component">
-                <h2>Chọn Tản Nhiệt CPU</h2>
-                <select id="cpu-cooler" name="cpu-cooler" class="dropdown">
-                    <option value="" disabled selected>Chọn Tản Nhiệt CPU</option>
-                </select>
+        <section id="component-selection" class="selection-section">
+            <h2>Lựa Chọn Chính</h2>
+            <div class="components-grid">
+                <div class="component">
+                    <h2>Chọn CPU</h2>
+                    <select id="cpu" name="cpu" class="dropdown">
+                        <option value="" disabled selected>Chọn CPU</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn Mainboard</h2>
+                    <select id="mainboard" name="mainboard" class="dropdown">
+                        <option value="" disabled selected>Chọn Mainboard</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn Card Đồ Họa (VGA)</h2>
+                    <select id="vga" name="vga" class="dropdown">
+                        <option value="" disabled selected>Chọn VGA</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn RAM</h2>
+                    <select id="ram" name="ram" class="dropdown">
+                        <option value="" disabled selected>Chọn RAM</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn Ổ Cứng SSD</h2>
+                    <select id="ssd" name="ssd" class="dropdown">
+                        <option value="" disabled selected>Chọn SSD</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn Nguồn (PSU)</h2>
+                    <select id="psu" name="psu" class="dropdown">
+                        <option value="" disabled selected>Chọn PSU</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn Vỏ Case</h2>
+                    <select id="case" name="case" class="dropdown">
+                        <option value="" disabled selected>Chọn Case</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Chọn Tản Nhiệt CPU</h2>
+                    <select id="cpuCooler" name="cpu-cooler" class="dropdown">
+                        <option value="" disabled selected>Chọn Tản Nhiệt CPU</option>
+                    </select>
+                </div>
             </div>
         </section>
+        
+        <section id="additional-selection" class="selection-section">
+            <h2>Lựa Chọn Thêm (Tùy Chọn)</h2>
+            <div class="components-grid">
+                <div class="component">
+                    <h2>HDD</h2>
+                    <select id="hdd" name="hdd" class="dropdown">
+                        <option value="" disabled selected>Chọn HDD</option>
+                    </select>
+                </div>
+                <div class="component">
+                    <h2>Màn Hình</h2>
+                    <select id="monitor" name="monitor" class="dropdown">
+                        <option value="" disabled selected>Chọn Màn Hình</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        
 
 
         <section id="selected-components">
             <h2>Linh kiện đã chọn</h2>
             <div id="selected-components-list"></div>
         </section>
-             
+
         <div id="summary-modal" class="modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
                 <h2>Cấu hình chi tiết</h2>
-                <div id="modal-summary"></div>
-                <div id="modal-total-price"></div>
-                <div id="image-preview-container"></div>
+                <div id="modal-components-list"> </div>  <div id="modal-total-price">Tổng cộng: 0 VNĐ</div>  <div id="image-preview-container"></div>
             </div>
         </div>
 
         <section id="total-price" class="total-price">
             <h2>Tổng Tiền Dự Kiến</h2>
-            <p>0 VNĐ</p> <!-- Cần cập nhật nội dung thẻ p này -->
+            <p>0 VNĐ</p>
         </section>
 
         <div class="button-group">
             <button type="button" class="action-button primary-btn" id="calculate-button">
-                <i class="fas fa-calculator"></i> Tính Toán Chi Phí
+                <i class="fas fa-calculator"></i> HÌNH ẢNH TẤT CẢ LINH KIỆN ĐÃ CHỌN
             </button>
         </div>
 
@@ -177,4 +191,5 @@
 
     <script src="buildsan.js"></script>
 </body>
+
 </html>
