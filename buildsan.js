@@ -1,3 +1,5 @@
+
+
 const cpuData = {
     "1220v3": { // Added Xeon E3-1220V3
         name: "Intel Xeon E3-1220 v3",
@@ -14,7 +16,7 @@ const cpuData = {
         condition: "2ND" // Or "New" if applicable
     },
     "9100f": {
-        name: "Intel Core i3-9100F",
+        name: "Intel Core i3-9100f",
         price: 500000,
         image: "images/intel-core-i3-9100f.jpg",
         brand: "Intel",
@@ -28,7 +30,7 @@ const cpuData = {
         condition: "2ND"
     },
     "10100f": {
-        name: "Intel Core i3-10100F",
+        name: "Intel Core i3-10100f",
         price: 1100000,
         image: "images/intel-core-i3-10100f.jpg",
         brand: "Intel",
@@ -41,10 +43,10 @@ const cpuData = {
         ram_bus: "2666MHz",
         condition: "2nd"
     },
-    "12100F": {
-        name: "Intel Core i3-12100F",
+    "12100f": {
+        name: "Intel Core i3-12100f",
         price: 1350000,
-        image: "images/intel-core-i3-12100F.jpg",
+        image: "images/intel-core-i3-12100f.jpg",
         brand: "Intel",
         warranty: "36 tháng",
         socket: "LGA1700",
@@ -55,7 +57,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "13100F": {
+    "13100f": {
         name: "Intel Core i3-13100",
         price: 2100000,
         image: "images/intel-core-i3-13100.jpg",
@@ -69,7 +71,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "14100F": {
+    "14100f": {
         name: "Intel Core i3-13100",
         price: 2300000,
         image: "images/intel-core-i3-13100.jpg",
@@ -126,7 +128,7 @@ const cpuData = {
         condition: "2ND"
     },
     "9400f": {
-        name: "Intel Core i5-9400F",
+        name: "Intel Core i5-9400f",
         price: 1100000,
         image: "images/intel-core-i5-9400f.jpg",
         brand: "Intel",
@@ -140,7 +142,7 @@ const cpuData = {
         condition: "NEW"
     },
     "10400f": {
-        name: "Intel Core i5-10400F",
+        name: "Intel Core i5-10400f",
         price: 1600000,
         image: "images/intel-core-i5-10400f.jpg",
         brand: "Intel",
@@ -154,7 +156,7 @@ const cpuData = {
         condition: "NEW"
     },
     "11400f": {
-        name: "Intel Core i5-11400F",
+        name: "Intel Core i5-11400f",
         price: 1700000,
         image: "images/intel-core-i5-11400f.jpg",
         brand: "Intel",
@@ -168,7 +170,7 @@ const cpuData = {
         condition: "NEW"
     },
     "12400f": {
-        name: "Intel Core i5-12400F",
+        name: "Intel Core i5-12400f",
         price: 2400000,
         image: "images/intel-core-i5-12400f.jpg",
         brand: "Intel",
@@ -196,7 +198,7 @@ const cpuData = {
         condition: "NEW"
     },
     "13400f": {
-        name: "Intel Core i5-13400F",
+        name: "Intel Core i5-13400f",
         price: 2800000,
         image: "images/intel-core-i5-13400f.jpg",
         brand: "Intel",
@@ -238,7 +240,7 @@ const cpuData = {
         condition: "NEW"
     },
     "12700f": {
-        name: "Intel Core i7-12700F",
+        name: "Intel Core i7-12700f",
         price: 8800000,
         image: "images/intel-core-i7-12700f.jpg",
         brand: "Intel",
@@ -308,7 +310,7 @@ const cpuData = {
         condition: "NEW"
     },
     "7500f": {
-        name: "AMD Ryzen 5 7500F",
+        name: "AMD Ryzen 5 7500f",
         price: 3800000,
         image: "images/amd-ryzen-5-7500f.jpg",
         brand: "AMD",
@@ -487,7 +489,8 @@ const mainboardData = {
         memoryType: "DDR3",
         condition: "2ND",
         nvmeSlots: 0,
-        pcieVersion: "2.0"
+        pcieVersion: "2.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "H81": {
         name: "ASUS H81M-E (LGA1150 - Cũ)",
@@ -499,7 +502,8 @@ const mainboardData = {
         memoryType: "DDR3",
         condition: "2ND",
         nvmeSlots: 0,
-        pcieVersion: "2.0"
+        pcieVersion: "2.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "H110": {
         name: "Gigabyte H110M-DS2",
@@ -511,7 +515,8 @@ const mainboardData = {
         memoryType: "DDR4",
         condition: "NEW",
         nvmeSlots: 0,
-        pcieVersion: "3.0"
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "H310": {
         name: "ASUS H310M-E",
@@ -523,7 +528,8 @@ const mainboardData = {
         memoryType: "DDR4",
         condition: "NEW",
         nvmeSlots: 1,
-        pcieVersion: "3.0"
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "H410": {
         name: "Gigabyte H410M H V2",
@@ -535,7 +541,8 @@ const mainboardData = {
         memoryType: "DDR4",
         condition: "NEW",
         nvmeSlots: 1,
-        pcieVersion: "3.0"
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "H510": {
         name: "ASUS Prime H510M-E",
@@ -547,7 +554,8 @@ const mainboardData = {
         memoryType: "DDR4",
         condition: "NEW",
         nvmeSlots: 1,
-        pcieVersion: "3.0"
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "ASUS-H610": {
         name: "ASUS PRIME H610M-K D4",
@@ -560,7 +568,8 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "GIGA-H610": {
         name: "GIGABYTE H610M H DDR4",
@@ -573,7 +582,8 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "MSI-H610": {
         name: "MSI PRO H610M-B DDR4",
@@ -586,7 +596,8 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "HNZ-H610": {
         name: "Huananzhi H610M-K DDR4",
@@ -599,145 +610,157 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "B360": {
-        "name": "Gigabyte B360M D3H",
-        "price": 1500000,
-        "image": "images/gigabyte-b360m-d3h.jpg",
-        "brand": "Gigabyte (Cũ)",
-        "warranty": "1 tháng",
-        "socket": "LGA1151-v2",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "nvmeSlots": 1,
-        "pcieVersion": "3.0"
+        name: "Gigabyte B360M D3H",
+        price: 1500000,
+        image: "images/gigabyte-b360m-d3h.jpg",
+        brand: "Gigabyte (Cũ)",
+        warranty: "1 tháng",
+        socket: "LGA1151-v2",
+        memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "B365": {
-        "name": "ASUS Prime B365M-A",
-        "price": 11000000,
-        "image": "images/asus-prime-b365m-a.jpg",
-        "brand": "ASUS (Cũ)",
-        "warranty": "1 tháng",
-        "socket": "LGA1151-v2",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "nvmeSlots": 1,
-        "pcieVersion": "3.0"
+        name: "ASUS Prime B365M-A",
+        price: 11000000,
+        image: "images/asus-prime-b365m-a.jpg",
+        brand: "ASUS (Cũ)",
+        warranty: "1 tháng",
+        socket: "LGA1151-v2",
+        memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "B460": {
-        "name": "Gigabyte B460M DS3H AC",
-        "price": 1900000,
-        "image": "images/gigabyte-b460m-ds3h-ac.jpg",
-        "brand": "Gigabyte (Cũ)",
-        "warranty": "1 tháng",
-        "socket": "LGA1200",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "nvmeSlots": 1,
-        "pcieVersion": "3.0"
+        name: "Gigabyte B460M DS3H AC",
+        price: 1900000,
+        image: "images/gigabyte-b460m-ds3h-ac.jpg",
+        brand: "Gigabyte (Cũ)",
+        warranty: "1 tháng",
+        socket: "LGA1200",
+        memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "B560": {
-        "name": "ASUS Prime B560M-A",
-        "price": 1700000,
-        "image": "images/asus-prime-b560m-a.jpg",
-        "brand": "ASUS (Cũ)",
-        "warranty": "1 tháng",
-        "socket": "LGA1200",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "ASUS Prime B560M-A",
+        price: 1700000,
+        image: "images/asus-prime-b560m-a.jpg",
+        brand: "ASUS (Cũ)",
+        warranty: "1 tháng",
+        socket: "LGA1200",
+        memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "HNZ-B760": {
-        "name": "Main Huananzhi B760M-DDR4 (Màu đen)",
-        "price": 1800000,
-        "image": "images/main-huananzhi-b760m-DDR4-den.jpg",
-        "brand": "Huananzhi",
-        "warranty": "36 tháng",
-        "socket": "LGA1700",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "buss": "3200",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "Main Huananzhi B760M-DDR4 (Màu đen)",
+        price: 1800000,
+        image: "images/main-huananzhi-b760m-DDR4-den.jpg",
+        brand: "Huananzhi",
+        warranty: "36 tháng",
+        socket: "LGA1700",
+        memoryType: "DDR4",
+        condition: "NEW",
+        buss: "3200",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "GIGA-B760": {
-        "name": "Mainboard Gigabyte B760M D DDR4",
-        "price": 2390000,
-        "image": "images/mainboard-gigabyte-b760m-d-ddr4.jpg",
-        "brand": "Gigabyte",
-        "warranty": "36 tháng",
-        "socket": "LGA1700",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "buss": "3200",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "Mainboard Gigabyte B760M D DDR4",
+        price: 2390000,
+        image: "images/mainboard-gigabyte-b760m-d-ddr4.jpg",
+        brand: "Gigabyte",
+        warranty: "36 tháng",
+        socket: "LGA1700",
+        memoryType: "DDR4",
+        condition: "NEW",
+        buss: "3200",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "MSI-B760": {
-        "name": "Mainboard MSI PRO B760M-E DDR4",
-        "price": 2450000,
-        "image": "images/mainboard-msi-pro-b760m-e-ddr4.jpg",
-        "brand": "MSI",
-        "warranty": "36 tháng",
-        "socket": "B760",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "buss": "3200",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "Mainboard MSI PRO B760M-E DDR4",
+        price: 2450000,
+        image: "images/mainboard-msi-pro-b760m-e-ddr4.jpg",
+        brand: "MSI",
+        warranty: "36 tháng",
+        socket: "B760",
+        memoryType: "DDR4",
+        condition: "NEW",
+        buss: "3200",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "ASUS-B760": {
-        "name": "Mainboard Asus PRIME B760M-K DDR4",
-        "price": 2490000,
-        "image": "images/mainboard-asus-prime-b760m-k-ddr4.jpg",
-        "brand": "Asus",
-        "warranty": "36 tháng",
-        "socket": "LGA1700",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "buss": "3200",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "Mainboard Asus PRIME B760M-K DDR4",
+        price: 2490000,
+        image: "images/mainboard-asus-prime-b760m-k-ddr4.jpg",
+        brand: "Asus",
+        warranty: "36 tháng",
+        socket: "LGA1700",
+        memoryType: "DDR4",
+        condition: "NEW",
+        buss: "3200",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "GIGA-B760": {
-        "name": "Mainboard Gigabyte B760M H DDR4",
-        "price": 2699000,
-        "image": "images/mainboard-gigabyte-b760m-h-ddr4.jpg",
-        "brand": "Gigabyte",
-        "warranty": "36 tháng",
-        "socket": "LGA1700",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "buss": "3200",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "Mainboard Gigabyte B760M H DDR4",
+        price: 2699000,
+        image: "images/mainboard-gigabyte-b760m-h-ddr4.jpg",
+        brand: "Gigabyte",
+        warranty: "36 tháng",
+        socket: "LGA1700",
+        memoryType: "DDR4",
+        condition: "NEW",
+        buss: "3200",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "ASROCK-B760": {
-        "name": "Mainboard ASRock B760M Pro RS/DDR4 WIFI",
-        "price": 2990000,
-        "image": "images/mainboard-asrock-b760m-pro-rs-DDR4-wifi.jpg",
-        "brand": "ASRock",
-        "warranty": "36 tháng",
-        "socket": "LGA1700",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "buss": "3200",
-        "nvmeSlots": 2,
-        "pcieVersion": "4.0"
+        name: "Mainboard ASRock B760M Pro RS/DDR4 WIFI",
+        price: 2990000,
+        image: "images/mainboard-asrock-b760m-pro-rs-DDR4-wifi.jpg",
+        brand: "ASRock",
+        warranty: "36 tháng",
+        socket: "LGA1700",
+        memoryType: "DDR4",
+        condition: "NEW",
+        buss: "3200",
+        nvmeSlots: 2,
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "GIGA-B450": {
-        "name": "Gigabyte B450M DS3H V2 (AM4)",
-        "price": 1400000,
-        "image": "images/gigabyte-b450m-ds3h-v2.jpg",
-        "brand": "Gigabyte",
-        "warranty": "36 tháng",
-        "socket": "AM4",
-        "memoryType": "DDR4",
-        "condition": "NEW",
-        "nvmeSlots": 1,
-        "pcieVersion": "3.0"
+        name: "Gigabyte B450M DS3H V2 (AM4)",
+        price: 1400000,
+        image: "images/gigabyte-b450m-ds3h-v2.jpg",
+        brand: "Gigabyte",
+        warranty: "36 tháng",
+        socket: "AM4",
+        memoryType: "DDR4",
+        condition: "NEW",
+        nvmeSlots: 1,
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "JGINYUE-B450": {
         name: "JGinyue B450M-TI (AM4)",
@@ -749,7 +772,8 @@ const mainboardData = {
         memoryType: "DDR4",
         condition: "NEW",
         nvmeSlots: 1,
-        pcieVersion: "3.0"
+        pcieVersion: "3.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "GIGA-B550": {
         name: "Gigabyte B550M AORUS ELITE (AM4)",
@@ -761,7 +785,8 @@ const mainboardData = {
         memoryType: "DDR4",
         condition: "NEW",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "asrock-b550m-wifi": {
         name: "ASRock B550M WIFI (AM4)",
@@ -774,7 +799,8 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "asrock-b550m-se": {
         name: "ASRock B550M SE (AM4)",
@@ -787,7 +813,8 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "asrock-b550m-pro4": {
         name: "ASRock B550M PRO4 (AM4)",
@@ -800,7 +827,8 @@ const mainboardData = {
         condition: "NEW",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "gigabyte-b550m-gaming-wifi": {
         name: "Gigabyte B550M GAMING WIFI (AM4)",
@@ -812,7 +840,8 @@ const mainboardData = {
         memoryType: "DDR4",
         buss: "3200",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "JGINYUE-B650": {
         name: "DDR5 - MAINBOARD JGINYUE B650M-D (AM5)",
@@ -825,190 +854,145 @@ const mainboardData = {
         condition: "NEW",
         buss: "6400",
         nvmeSlots: 1,
-        pcieVersion: "4.0"
+        pcieVersion: "4.0",
+        formFactor: "Micro-ATX" // Thêm kích thước
     },
     "JGINYUE-B650-PRO": {
-        name: "DDR5 - MAINBOARD JGINYUE B650M PRO (AM5)",
-        price: 2100000,
-        image: "images/jginyue-b650m-pro.jpg",
-        brand: "JGinyue",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5200",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+        "name": "DDR5 - MAINBOARD JGINYUE B650M PRO (AM5)",
+        "price": 2100000,
+        "image": "images/jginyue-b650m-pro.jpg",
+        "brand": "JGinyue",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5200",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "asrock-b650m-hdv-m2": {
-        name: "DDR5 - MAINBOARD ASRock B650M-HDV/M.2 (AM5)",
-        price: 2790000,
-        image: "images/asrock-b650m-hdv-m2.jpg",
-        brand: "ASRock",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+    "ASROCK-B650M-HDV-M2": {
+        "name": "DDR5 - MAINBOARD ASRock B650M-HDV/M.2 (AM5)",
+        "price": 2790000,
+        "image": "images/asrock-b650m-hdv-m2.jpg",
+        "brand": "ASRock",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "msi-pro-b650m-p": {
-        name: "DDR5 - MAINBOARD MSI PRO B650M-P (AM5)",
-        price: 2990000,
-        image: "images/msi-pro-b650m-p.jpg",
-        brand: "MSI",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+    "MSI-PRO-B650M-P": {
+        "name": "DDR5 - MAINBOARD MSI PRO B650M-P (AM5)",
+        "price": 2990000,
+        "image": "images/msi-pro-b650m-p.jpg",
+        "brand": "MSI",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "asus-tuf-gaming-b650m-e": {
-        name: "DDR5 - MAINBOARD ASUS TUF GAMING B650M-E (AM5)",
-        price: 3390000,
-        image: "images/asus-tuf-gaming-b650m-e.jpg",
-        brand: "ASUS",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+    "ASUS-TUF-GAMING-B650M-E": {
+        "name": "DDR5 - MAINBOARD ASUS TUF GAMING B650M-E (AM5)",
+        "price": 3390000,
+        "image": "images/asus-tuf-gaming-b650m-e.jpg",
+        "brand": "ASUS",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "gigabyte-b650m-gaming-plus-wifi": {
-        name: "DDR5 - MAINBOARD GIGABYTE B650M GAMING PLUS WIFI (AM5)",
-        price: 3290000,
-        image: "images/gigabyte-b650m-gaming-plus-wifi.jpg",
-        brand: "Gigabyte",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+    "GIGABYTE-B650M-GAMING-PLUS-WIFI": {
+        "name": "DDR5 - MAINBOARD GIGABYTE B650M GAMING PLUS WIFI (AM5)",
+        "price": 3290000,
+        "image": "images/gigabyte-b650m-gaming-plus-wifi.jpg",
+        "brand": "Gigabyte",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "asus-tuf-gaming-b650m-e-wifi": {
-        name: "DDR5 - MAINBOARD ASUS TUF GAMING B650M-E WIFI (AM5)",
-        price: 3790000,
-        image: "images/asus-tuf-gaming-b650m-e-wifi.jpg",
-        brand: "ASUS",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+    "ASUS-TUF-GAMING-B650M-E-WIFI": {
+        "name": "DDR5 - MAINBOARD ASUS TUF GAMING B650M-E WIFI (AM5)",
+        "price": 3790000,
+        "image": "images/asus-tuf-gaming-b650m-e-wifi.jpg",
+        "brand": "ASUS",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "msi-b650m-gaming-plus-wifi": {
-        name: "DDR5 - MAINBOARD MSI B650M GAMING PLUS WIFI (AM5)",
-        price: 3890000,
-        image: "images/msi-b650m-gaming-plus-wifi.jpg",
-        brand: "MSI",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
+    "MSI-B650M-GAMING-PLUS-WIFI": {
+        "name": "DDR5 - MAINBOARD MSI B650M GAMING PLUS WIFI (AM5)",
+        "price": 3890000,
+        "image": "images/msi-b650m-gaming-plus-wifi.jpg",
+        "brand": "MSI",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     },
-    "gigabyte-b650m-aorus-elite": {
-        name: "DDR5 - MAINBOARD GIGABYTE B650M AORUS ELITE (AM5)",
-        price: 4290000,
-        image: "images/gigabyte-b650m-aorus-elite.jpg",
-        brand: "Gigabyte",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
-    },
-    "msi-pro-b650m-a-wifi": {
-        name: "DDR5 - MAINBOARD MSI PRO B650M-A WIFI (AM5)",
-        price: 4490000,
-        image: "images/msi-pro-b650m-a-wifi.jpg",
-        brand: "MSI",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 1,
-        pcieVersion: "4.0"
-    },
-    "asus-tuf-gaming-x670e-plus-wifi": {
-        name: "DDR5 - MAINBOARD ASUS TUF GAMING X670E-PLUS WIFI (AM5)",
-        price: 4490000,
-        image: "images/asus-tuf-gaming-x670e-plus-wifi.jpg",
-        brand: "ASUS",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 2,
-        pcieVersion: "5.0"
-    },
-    "asrock-x870-pro-rs-wifi": {
-        name: "DDR5 - MAINBOARD ASRock X870 PRO RS WiFi (AM5)",
-        price: 6890000,
-        image: "images/asrock-x870-pro-rs-wifi.jpg",
-        brand: "ASRock",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 2,
-        pcieVersion: "5.0"
-    },
-    "asus-rog-strix-x670e-a-gaming-wifi": {
-        name: "DDR5 - MAINBOARD ASUS ROG STRIX X670E-A GAMING WIFI (AM5)",
-        price: 10890000,
-        image: "images/asus-rog-strix-x670e-a-gaming-wifi.jpg",
-        brand: "ASUS",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 2,
-        pcieVersion: "5.0"
-    },
-    "asus-rog-strix-x670e-f-gaming-wifi": {
-        name: "DDR5 - MAINBOARD ASUS ROG STRIX X670E-F GAMING WIFI (AM5)",
-        price: 10990000,
-        image: "images/asus-rog-strix-x670e-f-gaming-wifi.jpg",
-        brand: "ASUS",
-        warranty: "36 tháng",
-        socket: "AM5",
-        memoryType: "DDR5",
-        condition: "NEW",
-        buss: "5600",
-        nvmeSlots: 2,
-        pcieVersion: "5.0"
+    "GIGABYTE-B650M-AORUS-ELITE": {
+        "name": "DDR5 - MAINBOARD GIGABYTE B650M AORUS ELITE (AM5)",
+        "price": 4290000,
+        "image": "images/gigabyte-b650m-aorus-elite.jpg",
+        "brand": "Gigabyte",
+        "warranty": "36 tháng",
+        "socket": "AM5",
+        "memoryType": "DDR5",
+        "condition": "NEW",
+        "buss": "5600",
+        "nvmeSlots": 1,
+        "pcieVersion": "4.0",
+        "formFactor": "Micro-ATX"
     }
 };
 const vgaData = {
     "750ti": { // Added 750Ti
-            name: "GTX 750Ti GIGA-MSI-ASUS",
-            price: 1000000, // Example price, adjust as needed
-            image: "images/750ti.jpg", // Replace with correct image path
-            brand: "NVIDIA", // Or specify the brand if known
-            warranty: "3 tháng", // Or specify if different
-            condition: "2ND", // Or "New" if applicable
-            vram: "2GB", // Or specify if different
-            vram_type: "GDDR5", // Or specify if different
-            card_type: "NVIDIA"
-        },
+        name: "GTX 750Ti GIGA-MSI-ASUS",
+        price: 1000000, // Example price, adjust as needed
+        image: "images/750ti.jpg", // Replace with correct image path
+        brand: "NVIDIA", // Or specify the brand if known
+        warranty: "3 tháng", // Or specify if different
+        condition: "2ND", // Or "New" if applicable
+        vram: "2GB", // Or specify if different
+        vram_type: "GDDR5", // Or specify if different
+        card_type: "NVIDIA"
+    },
+    "960": { // Added 750Ti
+        name: "GTX 960 GIGA-MSI-ASUS",
+        price: 1300000, // Example price, adjust as needed
+        image: "images/gtx960.jpg", // Replace with correct image path
+        brand: "NVIDIA", // Or specify the brand if known
+        warranty: "3 tháng", // Or specify if different
+        condition: "2ND", // Or "New" if applicable
+        vram: "2GB", // Or specify if different
+        vram_type: "GDDR5", // Or specify if different
+        card_type: "NVIDIA"
+    },
     "1050ti-4gb": {
         name: "1050Ti 4GB GDDR5 ASUS/GIGA/MSI",
         price: 1590000,
@@ -1097,12 +1081,34 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "3070": {
-        name: "RTX 3070 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
-        price: 5900000,
-        image: "images/rtx-3070-8gb-msi.jpg",
+    "3060": {
+        name: "RTX 3060 12GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
+        price: 5300000,
+        image: "images/rtx-3060-12gb-msi.jpg",
         brand: "msi",
         warranty: "3 tháng",
+        condition: "2ND",
+        vram: "12GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
+    },
+    "3060ti": {
+        name: "RTX 3060ti 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
+        price: 5700000,
+        image: "images/rtx-3060ti-8gb-msi.jpg",
+        brand: "msi",
+        warranty: "3 tháng",
+        condition: "2ND",
+        vram: "8GB",
+        vram_type: "GDDR6",
+        card_type: "NVIDIA"
+    },
+    "3070": {
+        name: "RTX 3070 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
+        price: 6200000,
+        image: "images/rtx-3070-8gb-msi.jpg",
+        brand: "msi",
+        warranty: "6 tháng",
         condition: "2ND",
         vram: "8GB",
         vram_type: "GDDR6",
@@ -1113,7 +1119,7 @@ const vgaData = {
         price: 7500000,
         image: "images/rtx-3070ti-8gb-asus.jpg",
         brand: "ASUS",
-        warranty: "3 tháng",
+        warranty: "6 tháng",
         condition: "2ND",
         vram: "8GB",
         vram_type: "GDDR6X",
@@ -1328,18 +1334,18 @@ const ramData = {
 };
 const ssdData = {
     "sata-sstc-256": {
-            name: "SSD SSTC Oceanic Whitetip SATA III 256GB", // Changed to SATA
-            price: 450000,
-            image: "images/sstc-oceanic-whitetip-256gb.jpg",
-            brand: "SSTC",
-            warranty: "36 tháng",
-            condition: "NEW",
-            type: "SATA III", // Changed to SATA III
-            speed: "Read 550MB/s, Write 500MB/s" // Example SATA speeds - adjust!
-        },
+        name: "SSD SSTC Oceanic Whitetip SATA III 256GB", // Changed to SATA
+        price: 450000,
+        image: "images/sstc-oceanic-whitetip-256gb.jpg",
+        brand: "SSTC",
+        warranty: "36 tháng",
+        condition: "NEW",
+        type: "SATA III", // Changed to SATA III
+        speed: "Read 550MB/s, Write 500MB/s" // Example SATA speeds - adjust!
+    },
     "sstc-256": {
         name: "SSD SSTC Oceanic Whitetip NVMe M.2 MAX-III 256GB",
-        price: 599000,
+        price: 600000,
         image: "images/sstc-oceanic-whitetip-256gb.jpg",
         brand: "SSTC",
         warranty: "36 tháng",
@@ -1347,9 +1353,9 @@ const ssdData = {
         type: "NVMe PCIe Gen3 x4",
         speed: "Read 3100MB/s, Write 2000MB/s"
     },
-    "sstc-512gb": {
+    "sstc-512": {
         name: "SSD SSTC Oceanic Whitetip NVMe M.2 MAX-III 512GB",
-        price: 899000,
+        price: 900000,
         image: "images/sstc-oceanic-whitetip-512gb.jpg",
         brand: "SSTC",
         warranty: "36 tháng",
@@ -1424,19 +1430,19 @@ const ssdData = {
 const psuData = {
     "350W": {
         name: "Nguồn VSP Delta P350W",
-        price: 350000,
-        image: "images/vsp-delta-p350w.jpg",
-        brand: "VSP",
-        warranty: "24 tháng",
-        condition: "NEW",
-        power: "350W",
-        connectors: {
-            mainboard: "1x 24-pin",
-            cpu: ["1x 4+4-pin ATX12V"],
-            pcie: ["1x 6+2-pin"],
-            sata: 3,
-            molex: 2
-        }
+        price: 350000,
+        image: "images/vsp-delta-p350w.jpg",
+        brand: "VSP",
+        warranty: "24 tháng",
+        condition: "NEW",
+        power: "350W",
+        connectors: {
+            mainboard: "1x 24-pin",
+            cpu: ["1x 4+4-pin ATX12V"],
+            pcie: ["1x 6+2-pin"],
+            sata: 3,
+            molex: 2
+        }
     },
     "DT660": {
         name: "Nguồn VSP Elite DT660 650W",
@@ -1456,7 +1462,7 @@ const psuData = {
     },
     "VSP750": {
         name: "Nguồn VSP VGP750BRN 80Plus Bronze 750W",
-        price: 1100000,
+        price: 1000000,
         image: "images/vsp-vgp750brn-80plus-bronze-750w.jpg",
         brand: "VSP",
         warranty: "36 tháng",
@@ -1546,6 +1552,8 @@ const caseData = {
         brand: "Xigmatek",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["ATX", "M-ATX", "ITX"],
+        dimensions: "400mm x 200mm x 450mm"
     },
     "CUBIM": {
         name: "Xigmatek Cubi M Black",
@@ -1554,6 +1562,8 @@ const caseData = {
         brand: "Xigmatek",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["M-ATX", "ITX"],
+        dimensions: "350mm x 180mm x 400mm"
     },
     "NANO": {
         name: "Xigmatek Cubi M Nano M-ATX Black",
@@ -1562,6 +1572,8 @@ const caseData = {
         brand: "Xigmatek",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["M-ATX", "ITX"],
+        dimensions: "340mm x 170mm x 390mm"
     },
     "GEMINI": {
         name: "Xigmatek Gemini M No Fan",
@@ -1570,6 +1582,8 @@ const caseData = {
         brand: "Xigmatek",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["M-ATX", "ITX"],
+        dimensions: "360mm x 185mm x 410mm"
     },
     "MK400": {
         name: "Vỏ Case Máy Tính KENOO ESPORT MK400 (MATX, Case Bể Cá, Kính Cong)",
@@ -1578,14 +1592,18 @@ const caseData = {
         brand: "KENOO",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["M-ATX", "ITX"],
+        dimensions: "370mm x 190mm x 420mm"
     },
     "GA3": {
-        name: "Vỏ Case 2 Mặt Kính Cường Lực ",
+        name: "Vỏ Case 2 Mặt Kính Cường Lực",
         price: 300000,
         image: "images/gaming-start-ga3fg.jpg",
         brand: "Gaming Start",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["ATX", "M-ATX", "ITX"],
+        dimensions: "410mm x 200mm x 460mm"
     },
     "GA": {
         name: "Vỏ Case Gaming Start GA",
@@ -1594,21 +1612,33 @@ const caseData = {
         brand: "Gaming Start",
         warranty: "12 tháng",
         condition: "NEW",
+        supportedMainboards: ["ATX", "M-ATX", "ITX"],
+        dimensions: "420mm x 210mm x 470mm"
     }
 };
 
 const cpuCoolerData = {
     "STOCK": {
         name: "Tản nhiệt Stock Intel",
-        price: 60000,
-        image: "images/stock-intel-cooler.jpg",
-        brand: "Intel",
-        warranty: "Không bảo hành",
-        condition: "NEW",
-        sockets: ["Intel LGA1700", "LGA1200", "LGA115x"],
-        sync: "Không hỗ trợ"
+        price: 60000,
+        image: "images/stock-intel-cooler.jpg",
+        brand: "Intel",
+        warranty: "Không bảo hành",
+        condition: "NEW",
+        sockets: ["Intel LGA1700", "LGA1200", "LGA115x"],
+        sync: "Không hỗ trợ"
     },
-    
+    "2ongdong": {
+        name: "Tản nhiệt 2 ống đồng",
+        price: 100000,
+        image: "images/2ongdong.jpg",
+        brand: "Intel",
+        warranty: "6 tháng",
+        condition: "NEW",
+        sockets: ["Intel LGA1700", "LGA1200", "LGA115x"],
+        sync: "Không hỗ trợ"
+    },
+
     "CR1000": {
         name: "Jonsbo CR-1000 RGB",
         price: 330000,
@@ -1884,31 +1914,31 @@ document.getElementById('cpu-type').addEventListener('change', function () {
     // Thêm các tùy chọn CPU tương ứng
     if (selectedCpuType === "Intel") {
         cpuSelect.innerHTML += `
-            <option value="9100f">Intel Core i3-9100F</option>
-<option value="10100f">Intel Core i3-10100F</option>
+            <option value="9100f">Intel Core i3-9100f</option>
+<option value="10100f">Intel Core i3-10100f</option>
 <option value="10105">Intel Core i3-10105</option>
 <option value="10105f">Intel Core i3-10105F</option>
-<option value="12100F">Intel Core i3-12100F</option>
-<option value="13100F">Intel Core i3-13100</option>
-<option value="14100F">Intel Core i3-13100</option>
+<option value="12100f">Intel Core i3-12100f</option>
+<option value="13100f">Intel Core i3-13100</option>
+<option value="14100f">Intel Core i3-13100</option>
 <option value="3470">Intel Core i5-3470 (Cũ)</option>
 <option value="4570">Intel Core i5-4570 (Cũ)</option>
 <option value="6500">Intel Core i5-6500 (Cũ)</option>
 <option value="7400">Intel Core i5-7400 (Cũ)</option>
 <option value="8400">Intel Core i5-8400 (Cũ)</option>
-<option value="9400f">Intel Core i5-9400F</option>
-<option value="10400f">Intel Core i5-10400F</option>
-<option value="11400f">Intel Core i5-11400F</option>
-<option value="12400f">Intel Core i5-12400F</option>
+<option value="9400f">Intel Core i5-9400f</option>
+<option value="10400f">Intel Core i5-10400f</option>
+<option value="11400f">Intel Core i5-11400f</option>
+<option value="12400f">Intel Core i5-12400f</option>
 <option value="12600f">Intel Core i5-12600KF</option>
-<option value="13400f">Intel Core i5-13400F</option>
+<option value="13400f">Intel Core i5-13400f</option>
 <option value="13600kf">Intel Core i5-13600KF</option>
 <option value="14600kf">Intel Core i5-14600KF</option>
 <option value="8700">Intel Core i7-8700 (Cũ)</option>
 <option value="9700k">Intel Core i7-9700K (Cũ)</option>
 <option value="10700k">Intel Core i7-10700K (Cũ)</option>
 <option value="10700kF">Intel Core i7-10700KF (Cũ)</option>
-<option value="12700f">Intel Core i7-12700F</option>
+<option value="12700f">Intel Core i7-12700f</option>
 <option value="13700k">Intel Core i7-13700K</option>
 
         `;
@@ -1919,7 +1949,7 @@ document.getElementById('cpu-type').addEventListener('change', function () {
 <option value="5600">AMD Ryzen 5 5600</option>
 <option value="5600X">AMD Ryzen 5 5600X</option>
 <option value="5600G">AMD Ryzen 5 5600G</option>
-<option value="7500f">AMD Ryzen 5 7500F</option>
+<option value="7500f">AMD Ryzen 5 7500f</option>
 <option value="7600">AMD Ryzen 5 7600 (Tray)</option>
 <option value="7600x">AMD Ryzen 5 7600X (Tray)</option>
 <option value="3700x">AMD Ryzen 7 3700X (Cũ)</option>
@@ -1958,8 +1988,8 @@ const components = {
 };
 
 // Cấu hình global
-const intelBudgetConfigs = {
-    '2m-3m': {
+const intelBudgetConfigsValorant = {
+    '3M': {
         cpu: "1220v3",
         mainboard: "H81",
         vga: "750ti",
@@ -1969,260 +1999,2044 @@ const intelBudgetConfigs = {
         cpuCooler: "STOCK",
         psu: "350W"
     },
-    '3m-4m': {
-        cpu: "9400f",
-        mainboard: "asus-prime-b365m-a",
-        vga: "gtx-1660-super-6gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
     },
-    '4m-5m': {
-        cpu: "10400f",
-        mainboard: "gigabyte-h410m-h-v2",
-        vga: "rtx-2060-6gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
     },
-    '5m-6m': {
-        cpu: "11400f",
-        mainboard: "asus-prime-h510m-e",
-        vga: "rtx-3060-12gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
     },
-    '6m-7m': {
-        cpu: "11600k",
-        mainboard: "asus-prime-h610m-k-DDR4",
-        vga: "rtx-3060-ti-8gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
     },
-    '7m-8m': {
-        cpu: "11700f",
-        mainboard: "gigabyte-h610m-h-ddr4",
-        vga: "rtx-3070-8gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
     },
-    '8m-9m': {
-        cpu: "11700k",
-        mainboard: "msi-pro-h610m-b-ddr4",
-        vga: "rtx-3070-ti-8gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
     },
-    '9m-10m': {
-        cpu: "12700f",
-        mainboard: "hnz-h610m-k-ddr4",
-        vga: "rtx-3080-10gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
     },
-    '10m-11m': {
-        cpu: "12700k",
-        mainboard: "mainboard-gigabyte-b760m-d-ddr4",
-        vga: "rtx-3080-ti-12gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
     },
-    '11m-12m': {
-        cpu: "intel-core-i9-12900f",
-        mainboard: "mainboard-msi-pro-b760m-e-ddr4",
-        vga: "rtx-3090-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
     },
-    '12m-13m': {
-        cpu: "intel-core-i9-12900k",
-        mainboard: "mainboard-asus-prime-b760m-k-ddr4",
-        vga: "rtx-3090-ti-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
     },
-    '13m-14m': {
-        cpu: "intel-core-i9-13900f",
-        mainboard: "mainboard-gigabyte-b760m-h-ddr4",
-        vga: "rtx-4090-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
     },
-    '14m-15m': {
-        cpu: "intel-core-i9-13900k",
-        mainboard: "mainboard-asrock-b760m-pro-rs-DDR4-wifi",
-        vga: "rtx-4090-ti-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-650w"
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+};
+
+const amdBudgetConfigsValorant = {
+    '7M': {
+        cpu: "3600",
+        mainboard: "JGINYUE-B450",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const intelBudgetConfigsPubg = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+
+};
+
+const amdBudgetConfigsPubg = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+
+};
+
+const intelBudgetConfigsLol = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const amdBudgetConfigsLol = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const intelBudgetConfigsGtaV = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const amdBudgetConfigsGtaV = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+
+const intelBudgetConfigsCsgo = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const amdBudgetConfigsCsgo = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const intelBudgetConfigsEldenRing = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const amdBudgetConfigsEldenRing = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+
+const intelBudgetConfigsGodOfWar = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+
+const amdBudgetConfigsGodOfWar = {
+    '3M': {
+        cpu: "1220v3",
+        mainboard: "H81",
+        vga: "750ti",
+        ram: "D38G",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '4M': {
+        cpu: "9100f",
+        mainboard: "H310",
+        vga: "750ti",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "STOCK",
+        psu: "350W"
+    },
+    '5M': {
+        cpu: "10100f",
+        mainboard: "H410",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sata-sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '6M': {
+        cpu: "12100F",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '7M': {
+        cpu: "12100f",
+        mainboard: "HNZ-H610",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "2ongdong",
+        psu: "DT660"
+    },
+    '8M': {
+        cpu: "13400f",
+        mainboard: "HNZ-H610",
+        vga: "960",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '9M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1060-3g",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '10M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "1660s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '11M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "DT660"
+    },
+    '12M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "2070s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3060ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '14M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '15M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '16M': {
+        cpu: "13400f",
+        mainboard: "HNZ-B760",
+        vga: "3070ti",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+
+};
+const budgetConfigs = {
+    "csgo": {
+        "Intel": {
+            "3M": {
+                cpu: "Intel Core i3-10100F",
+                mainboard: "ASUS H510M-K",
+                vga: "GTX 1050 Ti",
+                ram: "8GB DDR4 3200MHz",
+                ssd: "Kingston 256GB NVMe"
+            },
+            "4M": {
+                cpu: "Intel Core i5-10400F",
+                mainboard: "MSI B560M PRO",
+                vga: "GTX 1650 Super",
+                ram: "16GB DDR4 3200MHz",
+                ssd: "SSTC 512GB NVMe"
+            }
+        },
+        "AMD": {
+            "3M": {
+                cpu: "Ryzen 3 3100",
+                mainboard: "ASRock A520M-HDV",
+                vga: "RX 570 4GB",
+                ram: "8GB DDR4 3200MHz",
+                ssd: "Kingston 256GB NVMe"
+            },
+            "4M": {
+                cpu: "Ryzen 5 3500X",
+                mainboard: "Gigabyte B450M DS3H",
+                vga: "RX 580 8GB",
+                ram: "16GB DDR4 3200MHz",
+                ssd: "SSTC 512GB NVMe"
+            }
+        }
+    },
+    "valorant": {
+        "Intel": {
+            "3M": {
+                cpu: "Intel Core i3-10100F",
+                mainboard: "ASUS H510M-K",
+                vga: "GTX 1050 Ti",
+                ram: "8GB DDR4 3200MHz",
+                ssd: "Kingston 256GB NVMe"
+            },
+            "4M": {
+                cpu: "Intel Core i5-10400F",
+                mainboard: "MSI B560M PRO",
+                vga: "GTX 1650 Super",
+                ram: "16GB DDR4 3200MHz",
+                ssd: "SSTC 512GB NVMe"
+            }
+        },
+        "AMD": {
+            "3M": {
+                cpu: "Ryzen 3 3100",
+                mainboard: "ASRock A520M-HDV",
+                vga: "RX 570 4GB",
+                ram: "8GB DDR4 3200MHz",
+                ssd: "Kingston 256GB NVMe"
+            },
+            "4M": {
+                cpu: "Ryzen 5 3500X",
+                mainboard: "Gigabyte B450M DS3H",
+                vga: "RX 580 8GB",
+                ram: "16GB DDR4 3200MHz",
+                ssd: "SSTC 512GB NVMe"
+            }
+        }
     }
 };
 
-const amdBudgetConfigs = {
-    '2m-3m': {
-        cpu: "amd-ryzen-3-3200g",
-        mainboard: "gigabyte-b450m-ds3h",
-        vga: "gtx-1050-ti-4gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '3m-4m': {
-        cpu: "3400g",
-        mainboard: "asrock-b450m-hdv",
-        vga: "gtx-1650-4gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '4m-5m': {
-        cpu: "3600",
-        mainboard: "jginyue-b450m-ti",
-        vga: "gtx-1660-super-6gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '5m-6m': {
-        cpu: "5600x",
-        mainboard: "gigabyte-b550m-aorus-elite",
-        vga: "rtx-3060-12gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '6m-7m': {
-        cpu: "5600x",
-        mainboard: "asrock-b550m-wifi",
-        vga: "rtx-3060-ti-8gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '7m-8m': {
-        cpu: "5800x",
-        mainboard: "asrock-b550m-pro4",
-        vga: "rtx-3070-8gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '8m-9m': {
-        cpu: "5800x",
-        mainboard: "gigabyte-b550m-gaming-wifi",
-        vga: "rtx-3070-ti-8gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '9m-10m': {
-        cpu: "5800x3d",
-        mainboard: "jginyue-b650m-d",
-        vga: "rtx-3080-10gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '10m-11m': {
-        cpu: "5900x",
-        mainboard: "jginyue-b650m-pro",
-        vga: "rtx-3080-ti-12gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '11m-12m': {
-        cpu: "5950x",
-        mainboard: "asrock-b650m-hdv-m2",
-        vga: "rtx-3090-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '12m-13m': {
-        cpu: "5950x",
-        mainboard: "msi-pro-b650m-p",
-        vga: "rtx-3090-ti-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '13m-14m': {
-        cpu: "7950x",
-        mainboard: "asus-tuf-gaming-b650m-e",
-        vga: "rtx-4090-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    },
-    '14m-15m': {
-        cpu: "7950x3d",
-        mainboard: "gigabyte-b650m-gaming-plus-wifi",
-        vga: "rtx-4090-ti-24gb",
-        ram: "sstc-ddr4-3200mhz-16gb",
-        ssd: "sstc-oceanic-whitetip-256gb",
-        case: "gaming-start-ga",
-        cpuCooler: "jonsbo-cr-1000-rgb",
-        psu: "vsp-elite-dt660-450w"
-    }
-};
 
 document.addEventListener('DOMContentLoaded', function () {
     // Khai báo các phần tử DOM
@@ -2342,10 +4156,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (value && components[type]?.[value]) {
                 const component = components[type][value];
                 total += component.price;
-
+        
                 const card = document.createElement('div');
                 card.className = 'component-card';
-
+        
                 card.innerHTML = `
                     ${component.image ? `<img src="${component.image}" class="component-image" alt="${component.name}">` : ''}
                     <h3>${component.name} - ${component.price.toLocaleString()} VNĐ</h3>
@@ -2365,13 +4179,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         ${component.size ? `<p>Size: ${component.size}</p>` : ''}
                         ${component.nvmeSlots ? `<p>NVMe Slots: ${component.nvmeSlots}</p>` : ''}
                         ${component.pcieVersion ? `<p>PCIe Version: ${component.pcieVersion}</p>` : ''}
+                        ${component.formFactor ? `<p>Form Factor: ${component.formFactor}</p>` : ''} <!-- Đã thêm dòng này -->
                         ${component.panelType ? `<p>Panel Type: ${component.panelType}</p>` : ''}
                         ${component.refreshRate ? `<p>Refresh Rate: ${component.refreshRate}</p>` : ''}
                         ${component.screenSize ? `<p>Screen Size: ${component.screenSize}</p>` : ''}
         
                         ${component.sockets ? `<p>Sockets hỗ trợ: ${component.sockets.join(', ')}</p>` : ''}
-${component.sync ? `<p>Đồng bộ: ${component.sync}</p>` : ''}
-
+                        ${component.sync ? `<p>Đồng bộ LED: ${component.sync}</p>` : ''}
+        
+                        ${component.supportedMainboards ? `<p>Mainboard hỗ trợ: ${component.supportedMainboards.join(', ')}</p>` : ''}
+                        ${component.dimensions ? `<p>Kích thước Case: ${component.dimensions}</p>` : ''}
         
                         ${component.connectors ? `<div class="connectors">
                             <p>Connectors:</p>
@@ -2387,25 +4204,18 @@ ${component.sync ? `<p>Đồng bộ: ${component.sync}</p>` : ''}
                         ${component.power ? `<p>Power: ${component.power}</p>` : ''}
                     </div>
                 `;
-
+        
                 // Thêm sự kiện click để hiển thị thông tin chi tiết
                 card.addEventListener("click", function () {
                     const info = card.querySelector(".component-info");
                     info.style.display = info.style.display === "none" ? "block" : "none";
                 });
-
+        
                 selectedComponentsList.appendChild(card);
                 selectedComponentsDetails.push(component);
             }
         }
-
-
-
-
-
-
-
-
+        
 
         // Cập nhật tổng giá - FIX CHÍNH
         const priceElement = totalPriceDisplay.querySelector('p');
@@ -2499,30 +4309,164 @@ ${component.sync ? `<p>Đồng bộ: ${component.sync}</p>` : ''}
     }
     function autoSelectConfig() {
         isAutoSelecting = true;
-
-        const selectedBudget = document.getElementById('budget-range').value;
-        const selectedGame = document.getElementById('game-genre').value;
-        const selectedCpuType = document.getElementById('cpu-type').value;
-
-        if (selectedGame === 'valorant') {
-            const budgetConfigs = selectedCpuType === "Intel" ? intelBudgetConfigs : amdBudgetConfigs;
-            const config = budgetConfigs[selectedBudget];
-
-            if (config) {
-                Object.entries(config).forEach(([type, value]) => {
-                    const select = componentSelects[type];
-                    if (select && components[type]?.[value]) {
-                        select.value = value;
-                    } else {
-                        console.warn(`Thành phần "${value}" không tồn tại trong ${type}`);
-                    }
-                });
+    
+        const gameDropdown = document.getElementById('game-genre');
+        const budgetDropdown = document.getElementById('budget-range');
+        const cpuTypeDropdown = document.getElementById('cpu-type');
+        const cpuDropdown = document.getElementById('cpu');
+        const mainboardDropdown = document.getElementById('mainboard');
+    
+        if (!gameDropdown || !budgetDropdown || !cpuTypeDropdown || !cpuDropdown || !mainboardDropdown) {
+            console.error("❌ Không tìm thấy một trong các dropdown! Kiểm tra lại ID.");
+            isAutoSelecting = false;
+            return;
+        }
+    
+        const selectedGame = gameDropdown.value.trim();
+        const selectedBudget = budgetDropdown.value.trim();
+        const selectedCpuType = cpuTypeDropdown.value.trim();
+    
+        if (!selectedGame || !selectedBudget || !selectedCpuType) {
+            console.warn("⚠️ Chưa chọn đầy đủ thông tin! Kiểm tra lại.");
+            isAutoSelecting = false;
+            return;
+        }
+    
+        let selectedConfigList = null;
+    
+        if (selectedCpuType === "Intel") {
+            switch (selectedGame) {
+                case "valorant": selectedConfigList = intelBudgetConfigsValorant; break;
+                case "csgo": selectedConfigList = intelBudgetConfigsCsgo; break;
+                case "pubg": selectedConfigList = intelBudgetConfigsPubg; break;
+                case "lol": selectedConfigList = intelBudgetConfigsLol; break;
+                case "gta-v": selectedConfigList = intelBudgetConfigsGtaV; break;
+                case "elden-ring": selectedConfigList = intelBudgetConfigsEldenRing; break;
+                case "god-of-war": selectedConfigList = intelBudgetConfigsGodOfWar; break;
+                default:
+                    console.warn("❌ Game không được hỗ trợ:", selectedGame);
+                    isAutoSelecting = false;
+                    return;
+            }
+        } else if (selectedCpuType === "Amd") {
+            switch (selectedGame) {
+                case "valorant": selectedConfigList = amdBudgetConfigsValorant; break;
+                case "csgo": selectedConfigList = amdBudgetConfigsCsgo; break;
+                case "pubg": selectedConfigList = amdBudgetConfigsPubg; break;
+                case "lol": selectedConfigList = amdBudgetConfigsLol; break;
+                case "gta-v": selectedConfigList = amdBudgetConfigsGtaV; break;
+                case "elden-ring": selectedConfigList = amdBudgetConfigsEldenRing; break;
+                case "god-of-war": selectedConfigList = amdBudgetConfigsGodOfWar; break;
+                default:
+                    console.warn("❌ Game không được hỗ trợ:", selectedGame);
+                    isAutoSelecting = false;
+                    return;
+            }
+        } else {
+            console.warn("❌ Loại CPU không hợp lệ:", selectedCpuType);
+            isAutoSelecting = false;
+            return;
+        }
+    
+        const config = selectedConfigList[selectedBudget];
+    
+        if (!config) {
+            // Tạo div cho cảnh báo full màn hình
+            const alertDiv = document.createElement('div');
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.top = '0';
+            alertDiv.style.left = '0';
+            alertDiv.style.width = '100%';
+            alertDiv.style.height = '100%';
+            alertDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            alertDiv.style.color = 'white';
+            alertDiv.style.fontSize = '70px';
+            alertDiv.style.display = 'flex';
+            alertDiv.style.alignItems = 'center';
+            alertDiv.style.justifyContent = 'center';
+            alertDiv.style.zIndex = '9999';
+            alertDiv.style.textAlign = 'center';
+            alertDiv.innerHTML = `
+                <p>❌ Không có cấu hình phù hợp với tầm giá này: ${selectedBudget}</p>
+                <p>⚠️ AMD PHẢI TỪ 7 TRIỆU ĐỔ LÊN NHÉ</p>
+            `;
+            
+            // Thêm div vào body
+            document.body.appendChild(alertDiv);
+        
+            // Thêm sự kiện click để xóa cảnh báo khi người dùng ấn vào màn hình
+            alertDiv.addEventListener('click', function() {
+                document.body.removeChild(alertDiv);
+            });
+        
+            // Ngừng chọn tự động
+            isAutoSelecting = false;
+            return;
+        }
+        
+        
+        
+    
+        function updateDropdown(id, value) {
+            const dropdown = document.getElementById(id);
+            if (dropdown) {
+                let existingOptions = Array.from(dropdown.options).map(opt => opt.value);
+                if (!existingOptions.includes(value)) {
+                    dropdown.innerHTML += `<option value="${value}">${value}</option>`;
+                }
+                dropdown.value = value;
             }
         }
-
+    
+        updateDropdown('cpu', config.cpu);
+        updateDropdown('mainboard', config.mainboard);
+        updateDropdown('vga', config.vga);
+        updateDropdown('ram', config.ram);
+        updateDropdown('ssd', config.ssd);
+        updateDropdown('case', config.case);
+        updateDropdown('cpuCooler', config.cpuCooler);
+        updateDropdown('psu', config.psu);
+    
+        // Ẩn CPU và Mainboard của loại CPU không được chọn
+        function filterDropdownByCpuType() {
+            const selectedCpuType = cpuTypeDropdown.value;
+        
+            // Lọc các lựa chọn CPU
+            Array.from(cpuDropdown.options).forEach(option => {
+                if (selectedCpuType === "Intel") {
+                    // Hiển thị tất cả các CPU Intel
+                    option.style.display = option.text.includes("Intel") ? "block" : "none";
+                } else if (selectedCpuType === "AMD") {
+                    // Hiển thị tất cả các CPU AMD
+                    option.style.display = option.text.includes("AMD") ? "block" : "none";
+                } else {
+                    // Hiển thị tất cả các lựa chọn nếu không có loại CPU nào được chọn
+                    option.style.display = "block";
+                }
+            });
+        
+            // Lọc các lựa chọn Mainboard (tương tự như CPU)
+            Array.from(mainboardDropdown.options).forEach(option => {
+                if (selectedCpuType === "Intel") {
+                    // Hiển thị các Mainboard hỗ trợ Intel
+                    option.style.display = option.text.includes("Intel") ? "block" : "none";
+                } else if (selectedCpuType === "AMD") {
+                    // Hiển thị các Mainboard hỗ trợ AMD
+                    option.style.display = option.text.includes("AMD") ? "block" : "none";
+                } else {
+                    // Hiển thị tất cả các lựa chọn nếu không có loại CPU nào được chọn
+                    option.style.display = "block";
+                }
+            });
+        }
+    
+        // Tính toán tổng giá và hiển thị thông tin cấu hình
+        calculateTotalPriceAndSummary(config);
+    
         isAutoSelecting = false;
-        calculateTotalPriceAndSummary();
     }
+
+    
 
     function populateDropdowns() {
         Object.entries(componentSelects).forEach(([type, select]) => {
@@ -2540,9 +4484,15 @@ ${component.sync ? `<p>Đồng bộ: ${component.sync}</p>` : ''}
 
 
     // Event Listeners
-    document.getElementById('game-genre').addEventListener('change', autoSelectConfig);
-    document.getElementById('budget-range').addEventListener('change', autoSelectConfig);
+    document.getElementById("game-genre").addEventListener("change", autoSelectConfig);
+    document.getElementById('budget-range').addEventListener('input', autoSelectConfig);
     document.getElementById('cpu-type').addEventListener('change', autoSelectConfig);
+    document.getElementById('budget-range').addEventListener('change', function () {
+        if (this.value) { // Chỉ chạy nếu value không rỗng
+            autoSelectConfig();
+        }
+    });
+
 
     calculateButton.addEventListener('click', () => {
         console.log("Nút Tính Toán Chi Phí đã được bấm!");
