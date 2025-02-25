@@ -252,6 +252,50 @@ footer p {
     font-size: 1em;
 }
 
+/* CSS chung cho tất cả các thông báo */
+.socket-error-message,
+.score-message,
+.upgrade-message {
+    margin-bottom: 20px;          /* Tăng khoảng cách dưới để tách biệt rõ hơn */
+    padding: 15px 20px;           /* Tăng padding để thông báo rộng rãi hơn */
+    border-radius: 10px;          /* Bo tròn góc nhiều hơn cho mềm mại */
+    font-weight: bold;            /* Vẫn giữ in đậm */
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Thêm bóng đổ nhẹ tạo chiều sâu */
+    font-family: 'Arial', sans-serif; /* Chọn font chữ dễ đọc và hiện đại */
+    text-align: center;           /* Căn giữa chữ trong thông báo */
+    animation: fadeIn 0.5s ease-out; /* Thêm hiệu ứng fade-in khi hiển thị */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); } /* Bắt đầu trong suốt và dịch lên */
+    to { opacity: 1; transform: translateY(0); }       /* Kết thúc rõ ràng và vị trí ban đầu */
+}
+
+/* CSS riêng cho thông báo lỗi socket (màu đỏ nổi bật hơn) */
+.socket-error-message {
+    color: white;               /* Chữ trắng để nổi bật trên nền đỏ */
+    background-color: #f44336;   /* Đỏ đậm hơn, mã màu Material Design Red 500 */
+    border: 2px solid #d32f2f;  /* Viền đỏ đậm hơn chút */
+    /* Thêm icon cảnh báo (tùy chọn, cần thêm HTML để hiển thị icon) */
+    /* background-image: url('icon-warning.png');  */ /* Đường dẫn tới icon cảnh báo */
+    /* background-repeat: no-repeat; */
+    /* background-position: 20px center; */
+    /* padding-left: 50px;  */ /* Để khoảng trống cho icon */
+}
+
+/* CSS riêng cho thông báo điểm (màu xanh lá cây tươi sáng) */
+.score-message {
+    color: white;               /* Chữ trắng nổi bật trên nền xanh */
+    background-color: #4caf50;   /* Xanh lá cây tươi, mã màu Material Design Green 500 */
+    border: 2px solid #388e3c;  /* Viền xanh lá cây đậm hơn chút */
+}
+
+/* CSS riêng cho thông báo nâng cấp (màu xanh dương hiện đại) */
+.upgrade-message {
+    color: white;               /* Chữ trắng nổi bật trên nền xanh dương */
+    background-color: #2196f3;   /* Xanh dương tươi, mã màu Material Design Blue 500 */
+    border: 2px solid #1976d2;  /* Viền xanh dương đậm hơn chút */
+}
 .red-section {
     background-color: #ffe5e5; /* Màu nền nhẹ đỏ */
     border: 2px solid #ff0000; /* Viền đỏ */
@@ -484,7 +528,5 @@ footer p {
     flex: 1;
     min-width: 300px; /* Đảm bảo không quá nhỏ */
 }
-.cpu-options, .mainboard-options {
-    display: none;
-}
+
 /* Media Query: Hiển thị dạng cột trên màn hình nhỏ */
