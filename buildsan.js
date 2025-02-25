@@ -295,7 +295,7 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "5600X": {
+    "5600x": {
         name: "AMD Ryzen 5 5600X",
         price: 2800000,
         image: "images/amd-ryzen-5-5600.jpg",
@@ -351,9 +351,9 @@ const cpuData = {
         ram_bus: "3200MHz",
         condition: "NEW"
     },
-    "5700x3D": {
+    "5700x3d": {
         name: "AMD Ryzen 7 5700X3D",
-        price: 5300000,
+        price: 5100000,
         image: "images/amd-ryzen-7-5700x3d.jpg",
         brand: "AMD",
         warranty: "36 tháng",
@@ -1059,7 +1059,7 @@ const vgaData = {
         vram_type: "GDDR6",
         card_type: "NVIDIA"
     },
-    "2060": {
+    "2060t": {
         name: "RTX 2060 6GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 3400000,
         image: "images/rtx-2060-6gb-msi.jpg",
@@ -1641,7 +1641,7 @@ const cpuCoolerData = {
 
     "CR1000": {
         name: "Jonsbo CR-1000 RGB",
-        price: 330000,
+        price: 300000,
         image: "images/jonsbo-cr-1000-rgb.jpg",
         brand: "Jonsbo",
         warranty: "12 tháng",
@@ -1947,14 +1947,14 @@ document.getElementById('cpu-type').addEventListener('change', function () {
             <option value="3600">AMD Ryzen 5 3600 (Cũ)</option>
 <option value="5500">AMD Ryzen 5 5500</option>
 <option value="5600">AMD Ryzen 5 5600</option>
-<option value="5600X">AMD Ryzen 5 5600X</option>
-<option value="5600G">AMD Ryzen 5 5600G</option>
-<option value="7500f">AMD Ryzen 5 7500f</option>
+<option value="5600x">AMD Ryzen 5 5600X</option>
+<option value="5600g">AMD Ryzen 5 5600G</option>
+<option value="7500f">AMD Ryzen 5 7500F</option>
 <option value="7600">AMD Ryzen 5 7600 (Tray)</option>
 <option value="7600x">AMD Ryzen 5 7600X (Tray)</option>
 <option value="3700x">AMD Ryzen 7 3700X (Cũ)</option>
 <option value="5700x">AMD Ryzen 7 5700X</option>
-<option value="5700x3D">AMD Ryzen 7 5700X3D</option>
+<option value="5700x3d">AMD Ryzen 7 5700X3D</option>
 <option value="5800x">AMD Ryzen 7 5800X</option>
 <option value="7700x">AMD Ryzen 7 7700X</option>
 <option value="7800x3d">AMD Ryzen 7 7800X3D (Tray)</option>
@@ -2143,18 +2143,8 @@ const amdBudgetConfigsValorant = {
         psu: "DT660"
     },
     '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
         vga: "1060-3g",
         ram: "sstc-16",
         ssd: "sstc-256",
@@ -2162,9 +2152,9 @@ const amdBudgetConfigsValorant = {
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
+    '9M': {
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
         vga: "1660s",
         ram: "sstc-16",
         ssd: "sstc-256",
@@ -2172,40 +2162,50 @@ const amdBudgetConfigsValorant = {
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
+    '10M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060t",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
+    '11M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
+    '12M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2070S",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
     '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2213,9 +2213,9 @@ const amdBudgetConfigsValorant = {
         psu: "VSP750"
     },
     '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3060ti",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2223,9 +2223,9 @@ const amdBudgetConfigsValorant = {
         psu: "VSP750"
     },
     '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3070",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2236,26 +2236,6 @@ const amdBudgetConfigsValorant = {
 };
 
 const intelBudgetConfigsPubg = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
     '5M': {
         cpu: "10100f",
         mainboard: "H410",
@@ -2289,7 +2269,7 @@ const intelBudgetConfigsPubg = {
     '8M': {
         cpu: "13400f",
         mainboard: "HNZ-H610",
-        vga: "960",
+        vga: "1060-3g",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -2376,65 +2356,23 @@ const intelBudgetConfigsPubg = {
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
-
-
 };
 
 const amdBudgetConfigsPubg = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100F",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
     '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
+        cpu: "3600",
+        mainboard: "JGINYUE-B450",
+        vga: "960",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
-        cpuCooler: "2ongdong",
+        cpuCooler: "CR1000",
         psu: "DT660"
     },
     '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
+        vga: "1060-3g",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -2442,18 +2380,8 @@ const amdBudgetConfigsPubg = {
         psu: "DT660"
     },
     '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
         vga: "1660s",
         ram: "sstc-16",
         ssd: "sstc-256",
@@ -2461,40 +2389,50 @@ const amdBudgetConfigsPubg = {
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
+    '10M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060t",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
+    '11M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
+    '12M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2070S",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
     '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2502,9 +2440,9 @@ const amdBudgetConfigsPubg = {
         psu: "VSP750"
     },
     '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3060ti",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2512,9 +2450,9 @@ const amdBudgetConfigsPubg = {
         psu: "VSP750"
     },
     '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3070",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2522,9 +2460,7 @@ const amdBudgetConfigsPubg = {
         psu: "VSP750"
     },
 
-
 };
-
 const intelBudgetConfigsLol = {
     '3M': {
         cpu: "1220v3",
@@ -2666,64 +2602,23 @@ const intelBudgetConfigsLol = {
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
-
 };
 
 const amdBudgetConfigsLol = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100F",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
     '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
+        cpu: "3600",
+        mainboard: "JGINYUE-B450",
+        vga: "960",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
-        cpuCooler: "2ongdong",
+        cpuCooler: "CR1000",
         psu: "DT660"
     },
     '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
+        vga: "1060-3g",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -2731,18 +2626,8 @@ const amdBudgetConfigsLol = {
         psu: "DT660"
     },
     '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
         vga: "1660s",
         ram: "sstc-16",
         ssd: "sstc-256",
@@ -2750,40 +2635,50 @@ const amdBudgetConfigsLol = {
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
+    '10M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060t",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
+    '11M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
+    '12M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2070S",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
     '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2791,9 +2686,9 @@ const amdBudgetConfigsLol = {
         psu: "VSP750"
     },
     '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3060ti",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2801,9 +2696,9 @@ const amdBudgetConfigsLol = {
         psu: "VSP750"
     },
     '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3070",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -2954,64 +2849,23 @@ const intelBudgetConfigsGtaV = {
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
-
 };
 
 const amdBudgetConfigsGtaV = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100F",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
     '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
+        cpu: "3600",
+        mainboard: "JGINYUE-B450",
+        vga: "960",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
-        cpuCooler: "2ongdong",
+        cpuCooler: "CR1000",
         psu: "DT660"
     },
     '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
+        vga: "1060-3g",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -3019,18 +2873,8 @@ const amdBudgetConfigsGtaV = {
         psu: "DT660"
     },
     '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
         vga: "1660s",
         ram: "sstc-16",
         ssd: "sstc-256",
@@ -3038,40 +2882,50 @@ const amdBudgetConfigsGtaV = {
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
+    '10M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060t",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
+    '11M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
+    '12M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2070S",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
     '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -3079,9 +2933,9 @@ const amdBudgetConfigsGtaV = {
         psu: "VSP750"
     },
     '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3060ti",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -3089,9 +2943,9 @@ const amdBudgetConfigsGtaV = {
         psu: "VSP750"
     },
     '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3070",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -3101,28 +2955,7 @@ const amdBudgetConfigsGtaV = {
 
 };
 
-
 const intelBudgetConfigsCsgo = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
     '5M': {
         cpu: "10100f",
         mainboard: "H410",
@@ -3243,64 +3076,23 @@ const intelBudgetConfigsCsgo = {
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
-
 };
 
 const amdBudgetConfigsCsgo = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100F",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
     '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
+        cpu: "3600",
+        mainboard: "JGINYUE-B450",
+        vga: "960",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
-        cpuCooler: "2ongdong",
+        cpuCooler: "CR1000",
         psu: "DT660"
     },
     '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
+        vga: "1060-3g",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -3308,18 +3100,8 @@ const amdBudgetConfigsCsgo = {
         psu: "DT660"
     },
     '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
+        cpu: "5600",
+        mainboard: "JGINYUE-B450",
         vga: "1660s",
         ram: "sstc-16",
         ssd: "sstc-256",
@@ -3327,40 +3109,50 @@ const amdBudgetConfigsCsgo = {
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
+    '10M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060t",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "DT660"
     },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
+    '11M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
         cpuCooler: "CR1000",
         psu: "VSP750"
     },
+    '12M': {
+        cpu: "5600x",
+        mainboard: "JGINYUE-B450",
+        vga: "2070S",
+        ram: "sstc-16",
+        ssd: "sstc-512",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
+    '13M': {
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2060s",
+        ram: "sstc-16",
+        ssd: "sstc-256",
+        case: "GA3",
+        cpuCooler: "CR1000",
+        psu: "VSP750"
+    },
     '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -3368,9 +3160,9 @@ const amdBudgetConfigsCsgo = {
         psu: "VSP750"
     },
     '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3060ti",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -3378,9 +3170,9 @@ const amdBudgetConfigsCsgo = {
         psu: "VSP750"
     },
     '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
+        cpu: "5700x3d",
+        mainboard: "JGINYUE-B450",
+        vga: "3070",
         ram: "sstc-16",
         ssd: "sstc-512",
         case: "GA3",
@@ -3966,76 +3758,6 @@ const amdBudgetConfigsGodOfWar = {
     },
 
 };
-const budgetConfigs = {
-    "csgo": {
-        "Intel": {
-            "3M": {
-                cpu: "Intel Core i3-10100F",
-                mainboard: "ASUS H510M-K",
-                vga: "GTX 1050 Ti",
-                ram: "8GB DDR4 3200MHz",
-                ssd: "Kingston 256GB NVMe"
-            },
-            "4M": {
-                cpu: "Intel Core i5-10400F",
-                mainboard: "MSI B560M PRO",
-                vga: "GTX 1650 Super",
-                ram: "16GB DDR4 3200MHz",
-                ssd: "SSTC 512GB NVMe"
-            }
-        },
-        "AMD": {
-            "3M": {
-                cpu: "Ryzen 3 3100",
-                mainboard: "ASRock A520M-HDV",
-                vga: "RX 570 4GB",
-                ram: "8GB DDR4 3200MHz",
-                ssd: "Kingston 256GB NVMe"
-            },
-            "4M": {
-                cpu: "Ryzen 5 3500X",
-                mainboard: "Gigabyte B450M DS3H",
-                vga: "RX 580 8GB",
-                ram: "16GB DDR4 3200MHz",
-                ssd: "SSTC 512GB NVMe"
-            }
-        }
-    },
-    "valorant": {
-        "Intel": {
-            "3M": {
-                cpu: "Intel Core i3-10100F",
-                mainboard: "ASUS H510M-K",
-                vga: "GTX 1050 Ti",
-                ram: "8GB DDR4 3200MHz",
-                ssd: "Kingston 256GB NVMe"
-            },
-            "4M": {
-                cpu: "Intel Core i5-10400F",
-                mainboard: "MSI B560M PRO",
-                vga: "GTX 1650 Super",
-                ram: "16GB DDR4 3200MHz",
-                ssd: "SSTC 512GB NVMe"
-            }
-        },
-        "AMD": {
-            "3M": {
-                cpu: "Ryzen 3 3100",
-                mainboard: "ASRock A520M-HDV",
-                vga: "RX 570 4GB",
-                ram: "8GB DDR4 3200MHz",
-                ssd: "Kingston 256GB NVMe"
-            },
-            "4M": {
-                cpu: "Ryzen 5 3500X",
-                mainboard: "Gigabyte B450M DS3H",
-                vga: "RX 580 8GB",
-                ram: "16GB DDR4 3200MHz",
-                ssd: "SSTC 512GB NVMe"
-            }
-        }
-    }
-};
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -4378,17 +4100,17 @@ document.addEventListener('DOMContentLoaded', function () {
             alertDiv.style.left = '0';
             alertDiv.style.width = '100%';
             alertDiv.style.height = '100%';
-            alertDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            alertDiv.style.backgroundColor = 'rgba(161, 154, 154, 0.8)';
             alertDiv.style.color = 'white';
-            alertDiv.style.fontSize = '70px';
+            alertDiv.style.fontSize = '29px';
             alertDiv.style.display = 'flex';
             alertDiv.style.alignItems = 'center';
             alertDiv.style.justifyContent = 'center';
             alertDiv.style.zIndex = '9999';
             alertDiv.style.textAlign = 'center';
             alertDiv.innerHTML = `
-                <p>❌ Không có cấu hình phù hợp với tầm giá này: ${selectedBudget}</p>
-                <p>⚠️ AMD PHẢI TỪ 7 TRIỆU ĐỔ LÊN NHÉ</p>
+                <H1>❌ KHÔNG CÓ CẤU HÌNH PHÙ HỢP TẦM GIÁ NÀY❌
+                ⚠️ THÊM ÍT TIỀN LÊN NHÉ AE KHÔNG THÌ CÙI LẮM DÙNG CÓ NHƯ KHÔNG MÀ THUI ⚠️</H1>
             `;
             
             // Thêm div vào body
@@ -4428,37 +4150,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateDropdown('psu', config.psu);
     
         // Ẩn CPU và Mainboard của loại CPU không được chọn
-        function filterDropdownByCpuType() {
-            const selectedCpuType = cpuTypeDropdown.value;
-        
-            // Lọc các lựa chọn CPU
-            Array.from(cpuDropdown.options).forEach(option => {
-                if (selectedCpuType === "Intel") {
-                    // Hiển thị tất cả các CPU Intel
-                    option.style.display = option.text.includes("Intel") ? "block" : "none";
-                } else if (selectedCpuType === "AMD") {
-                    // Hiển thị tất cả các CPU AMD
-                    option.style.display = option.text.includes("AMD") ? "block" : "none";
-                } else {
-                    // Hiển thị tất cả các lựa chọn nếu không có loại CPU nào được chọn
-                    option.style.display = "block";
-                }
-            });
-        
-            // Lọc các lựa chọn Mainboard (tương tự như CPU)
-            Array.from(mainboardDropdown.options).forEach(option => {
-                if (selectedCpuType === "Intel") {
-                    // Hiển thị các Mainboard hỗ trợ Intel
-                    option.style.display = option.text.includes("Intel") ? "block" : "none";
-                } else if (selectedCpuType === "AMD") {
-                    // Hiển thị các Mainboard hỗ trợ AMD
-                    option.style.display = option.text.includes("AMD") ? "block" : "none";
-                } else {
-                    // Hiển thị tất cả các lựa chọn nếu không có loại CPU nào được chọn
-                    option.style.display = "block";
-                }
-            });
-        }
     
         // Tính toán tổng giá và hiển thị thông tin cấu hình
         calculateTotalPriceAndSummary(config);
