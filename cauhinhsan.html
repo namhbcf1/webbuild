@@ -198,11 +198,71 @@
 
         <div class="button-group">
             <button type="button" class="action-button primary-btn" id="calculate-button">
-                <i class="fas fa-calculator"></i> HÌNH ẢNH TẤT CẢ LINH KIỆN ĐÃ CHỌN
+                <i class="fas fa-calculator"></i> HÌNH ẢNH TẤT CẢ LINH KIỆN ĐÃ CHỌN VÀ CHẤM ĐIỂM LẠI
             </button>
         </div>
+        <div class="config-table fixed-bottom">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thành phần</th>
+                        <th>Tên</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CPU</td>
+                        <td id="cpu-name">...</td>
+                        <td id="cpu-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>Mainboard</td>
+                        <td id="mainboard-name">...</td>
+                        <td id="mainboard-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>VGA</td>
+                        <td id="vga-name">...</td>
+                        <td id="vga-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>SSD</td>
+                        <td id="ssd-name">...</td>
+                        <td id="ssd-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td id="ram-name">...</td>
+                        <td id="ram-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>CPU Cooler</td>
+                        <td id="cpu-cooler-name">...</td>
+                        <td id="cpu-cooler-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>Nguồn</td>
+                        <td id="psu-name">...</td>
+                        <td id="psu-score">...</td>
+                    </tr>
+                    <tr>
+                        <td>Case</td>
+                        <td id="case-name">...</td>
+                        <td id="case-score">...</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Tổng điểm bộ máy</th>
+                        <th id="total-score">...</th>
+                    </tr>
+                    <div id="socket-message"></div>
+                    <div id="score-message"></div>
+                    <div id="upgrade-message"></div>                    </div>
+                </tbody>
 
-    </div>
+            </table>
+        </div>
+        </div>
 
     <footer>
         <p>&copy; 2025 BUILD PC TRUONG PHAT COMPUTER. All rights reserved.</p>
