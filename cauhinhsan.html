@@ -30,39 +30,10 @@
         <h1>XÂY DỰNG CẤU HÌNH PC</h1>
         <!-- Phần tầm tiền -->
 <section id="budget-range-selection" class="selection-section red-section">
-    <h2>Chọn Cấu Hình Tầm Tiền Mong Muốn (VNĐ)</h2>
-    <select id="budget-range" name="budget-range" class="dropdown" required>
-        <option value="">Chọn tầm tiền mong muốn</option>
-        <option value="3M">3 triệu</option>
-        <option value="4M">4 triệu</option>
-        <option value="5M">5 triệu</option>
-        <option value="6M">6 triệu</option>
-        <option value="7M">7 triệu</option>
-        <option value="8M">8 triệu</option>
-        <option value="9M">9 triệu</option>
-        <option value="10M">10 triệu</option>
-        <option value="11M">11 triệu</option>
-        <option value="12M">12 triệu</option>
-        <option value="13M">13 triệu</option>
-        <option value="14M">14 triệu</option>
-        <option value="15M">15 triệu</option>
-        <option value="16M">16 triệu</option>
-        <option value="17M">17 triệu</option>
-        <option value="18M">18 triệu</option>
-        <option value="19M">19 triệu</option>
-        <option value="20M">20 triệu</option>
-        <option value="21M">21 triệu</option>
-        <option value="22M">22 triệu</option>
-        <option value="23M">23 triệu</option>
-        <option value="24M">24 triệu</option>
-        <option value="25M">25 triệu</option>
-        <option value="26M">26 triệu</option>
-        <option value="27M">27 triệu</option>
-        <option value="28M">28 triệu</option>
-        <option value="29M">29 triệu</option>
-        <option value="30M">30 triệu</option>
-    </select>
-</section>
+            <h2>Chọn Cấu Hình Tầm Tiền Mong Muốn (VNĐ)</h2>
+            <input type="range" id="budget-range" min="3000000" max="30000000" step="1000000" value="3000000" class="slider">
+            <p><span id="budget-value">3 triệu</span></p>
+        </section>
 
 <!-- Phần chọn loại CPU -->
 <section id="cpu-type-selection" class="selection-section red-section">
