@@ -5364,6 +5364,11 @@ const amdBudgetConfigsGodOfWar = {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById("budget-range").addEventListener("input", function () {
+        let value = parseInt(this.value);
+        let formattedValue = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(value);
+        document.getElementById("budget-value").innerText = formattedValue.replace("₫", "") + " triệu";
+    });
     // Khai báo các phần tử DOM
     const componentSelects = {
         cpu: document.getElementById('cpu'),
@@ -5840,22 +5845,22 @@ document.addEventListener('DOMContentLoaded', function () {
         isAutoSelecting = true;
 
         const gameDropdown = document.getElementById('game-genre');
-        const budgetDropdown = document.getElementById('budget-range');
+        const budgetRange = document.getElementById('budget-range');
         const cpuTypeDropdown = document.getElementById('cpu-type');
         const cpuDropdown = document.getElementById('cpu');
         const mainboardDropdown = document.getElementById('mainboard');
 
-        if (!gameDropdown || !budgetDropdown || !cpuTypeDropdown || !cpuDropdown || !mainboardDropdown) {
+        if (!gameDropdown || !budgetRange || !cpuTypeDropdown || !cpuDropdown || !mainboardDropdown) {
             console.error("❌ Không tìm thấy một trong các dropdown! Kiểm tra lại ID.");
             isAutoSelecting = false;
             return;
         }
 
         const selectedGame = gameDropdown.value.trim();
-        const selectedBudget = budgetDropdown.value.trim();
+        const selectedBudget = parseInt(budgetRange.value); // Chuyển đổi về số nguyên
         const selectedCpuType = cpuTypeDropdown.value.trim();
 
-        if (!selectedGame || !selectedBudget || !selectedCpuType) {
+        if (!selectedGame || isNaN(selectedBudget) || !selectedCpuType) {
             console.warn("⚠️ Chưa chọn đầy đủ thông tin! Kiểm tra lại.");
             isAutoSelecting = false;
             return;
@@ -5897,7 +5902,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const config = selectedConfigList[selectedBudget];
+        const config = selectedConfigList[(selectedBudget / 1000000) + "M"];
 
         if (!config) {
             // Tạo div cho cảnh báo full màn hình
@@ -5923,6 +5928,11 @@ document.addEventListener('DOMContentLoaded', function () {
             // Thêm div vào body
             document.body.appendChild(alertDiv);
 
+            setTimeout(() => {
+                if (document.body.contains(alertDiv)) {
+                    document.body.removeChild(alertDiv);
+                }
+            }, 2000); // Cảnh báo tự động ẩn sau 3 giây
             // Thêm sự kiện click để xóa cảnh báo khi người dùng ấn vào màn hình
             alertDiv.addEventListener('click', function () {
                 document.body.removeChild(alertDiv);
@@ -5941,8 +5951,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (dropdown) {
                 let existingOptions = Array.from(dropdown.options).map(opt => opt.value);
                 if (!existingOptions.includes(value)) {
-                    dropdown.innerHTML += `<option value="${value}">${value}</option>`;
+                    const newOption = document.createElement("option");
+                    newOption.value = value;
+                    newOption.textContent = value;
+                    dropdown.appendChild(newOption);
                 }
+
                 dropdown.value = value;
             }
         }
@@ -5963,6 +5977,9 @@ document.addEventListener('DOMContentLoaded', function () {
         calculateTotalPriceAndSummary(config);
 
         isAutoSelecting = false;
+        document.getElementById("budget-range").addEventListener("change", function () {
+            autoSelectConfig();
+        });
     }
 
 
@@ -5987,11 +6004,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("game-genre").addEventListener("change", autoSelectConfig);
     document.getElementById('budget-range').addEventListener('input', autoSelectConfig);
     document.getElementById('cpu-type').addEventListener('change', autoSelectConfig);
-    document.getElementById('budget-range').addEventListener('change', function () {
-        if (this.value) { // Chỉ chạy nếu value không rỗng
-            autoSelectConfig();
-        }
-    });
+    document.getElementById('budget-range').addEventListener('input', autoSelectConfig);
+
 
 
     calculateButton.addEventListener('click', () => {
