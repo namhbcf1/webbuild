@@ -6,7 +6,38 @@
     padding: 0;
     box-sizing: border-box;
 }
+.slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ff4d4d;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .15s ease-in-out;
+}
 
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: red;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: red;
+    cursor: pointer;
+    border-radius: 50%;
+}
 /* CSS Variables for easier theming */
 :root {
     --primary-color: #29b6f6; /* Màu chính - Xanh dương sáng */
