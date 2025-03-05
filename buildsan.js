@@ -1156,7 +1156,7 @@ const vgaData = {
         card_type: "NVIDIA",
         score: 6
     },
-    "2070S": {
+    "2070s": {
         name: "RTX 2070 Super 8GB GDDR6 /GIGA/MSI/ASUS GAMING (Cũ)",
         price: 4500000,
         image: "images/rtx-2070-super-8gb-msi.jpg",
@@ -2284,7 +2284,7 @@ const intelBudgetConfigsValorant = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -2527,7 +2527,7 @@ const amdBudgetConfigsValorant = {
     '12M': {
         cpu: "5600x",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -2547,7 +2547,7 @@ const amdBudgetConfigsValorant = {
     '14M': {
         cpu: "5700x3d",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -2617,7 +2617,7 @@ const amdBudgetConfigsValorant = {
     '21M': {
         cpu: "7800x3d",
         mainboard: "JGINYUE-B650",
-        vga: "2070S",
+        vga: "2070s",
         ram: "tridentz-16-6000",
         ssd: "crucial-500",
         case: "GA",
@@ -2792,7 +2792,7 @@ const intelBudgetConfigsPubg = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -3035,7 +3035,7 @@ const amdBudgetConfigsPubg = {
     '12M': {
         cpu: "5600x",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -3055,7 +3055,7 @@ const amdBudgetConfigsPubg = {
     '14M': {
         cpu: "5700x3d",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -3125,7 +3125,7 @@ const amdBudgetConfigsPubg = {
     '21M': {
         cpu: "7800x3d",
         mainboard: "JGINYUE-B650",
-        vga: "2070S",
+        vga: "2070s",
         ram: "tridentz-16-6000",
         ssd: "crucial-500",
         case: "GA",
@@ -3318,7 +3318,7 @@ const intelBudgetConfigsLol = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -3561,7 +3561,7 @@ const amdBudgetConfigsLol = {
     '12M': {
         cpu: "5600x",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -3581,7 +3581,7 @@ const amdBudgetConfigsLol = {
     '14M': {
         cpu: "5700x3d",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -3651,7 +3651,7 @@ const amdBudgetConfigsLol = {
     '21M': {
         cpu: "7800x3d",
         mainboard: "JGINYUE-B650",
-        vga: "2070S",
+        vga: "2070s",
         ram: "tridentz-16-6000",
         ssd: "crucial-500",
         case: "GA",
@@ -3845,7 +3845,7 @@ const intelBudgetConfigsGtaV = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -4088,7 +4088,7 @@ const amdBudgetConfigsGtaV = {
     '12M': {
         cpu: "5600x",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -4108,7 +4108,7 @@ const amdBudgetConfigsGtaV = {
     '14M': {
         cpu: "5700x3d",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -4178,7 +4178,7 @@ const amdBudgetConfigsGtaV = {
     '21M': {
         cpu: "7800x3d",
         mainboard: "JGINYUE-B650",
-        vga: "2070S",
+        vga: "2070s",
         ram: "tridentz-16-6000",
         ssd: "crucial-500",
         case: "GA",
@@ -4352,7 +4352,7 @@ const intelBudgetConfigsCsgo = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -4595,7 +4595,7 @@ const amdBudgetConfigsCsgo = {
     '12M': {
         cpu: "5600x",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -4615,7 +4615,7 @@ const amdBudgetConfigsCsgo = {
     '14M': {
         cpu: "5700x3d",
         mainboard: "JGINYUE-B450",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "crucial-500",
         case: "GA3",
@@ -4685,7 +4685,7 @@ const amdBudgetConfigsCsgo = {
     '21M': {
         cpu: "7800x3d",
         mainboard: "JGINYUE-B650",
-        vga: "2070S",
+        vga: "2070s",
         ram: "tridentz-16-6000",
         ssd: "crucial-500",
         case: "GA",
@@ -4879,7 +4879,7 @@ const intelBudgetConfigsEldenRing = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -5023,7 +5023,7 @@ const amdBudgetConfigsEldenRing = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -5168,7 +5168,7 @@ const intelBudgetConfigsGodOfWar = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
@@ -5312,7 +5312,7 @@ const amdBudgetConfigsGodOfWar = {
     '12M': {
         cpu: "13400f",
         mainboard: "HNZ-B760",
-        vga: "2070S",
+        vga: "2070s",
         ram: "sstc-16",
         ssd: "sstc-256",
         case: "GA3",
