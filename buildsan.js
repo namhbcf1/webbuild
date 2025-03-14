@@ -1487,13 +1487,105 @@ function estimateGameFPS(performanceRating, gameId) {
     if (!gameInfo) return { fps: "N/A", description: "Không có dữ liệu" };
     
     const graphicsQuality = document.getElementById('graphics-quality').value;
+    const selectedCPU = document.getElementById('cpu').value;
+    const selectedVGA = document.getElementById('vga').value;
     
-    // Lấy trực tiếp FPS từ GAME_FPS_ESTIMATES theo graphics quality đã chọn
+    // Lấy điểm CPU và GPU
+    const cpuScore = getCPUScore(selectedCPU);
+    const gpuScore = getGPUScore(selectedVGA);
+    
+    // Lấy FPS cơ bản từ GAME_FPS_ESTIMATES
     const fpsData = gameInfo[graphicsQuality] || gameInfo.medium;
+    let [minFps, maxFps] = fpsData.fps.split('-').map(num => parseInt(num));
     
+    // Xác định loại game và mức độ phụ thuộc CPU
+    const gameType = window.GAME_TYPES[gameId];
+    const cpuDependency = gameType?.cpuDependency || "medium";
+    
+    // Hệ số giảm FPS dựa trên điểm CPU
+    let cpuBottleneckFactor = 1;
+    if (cpuScore < 50) { // CPU yếu
+        switch(cpuDependency) {
+            case "very-high":
+                cpuBottleneckFactor = 0.4; // Giảm mạnh FPS với game phụ thuộc nhiều vào CPU
+                break;
+            case "high":
+                cpuBottleneckFactor = 0.5;
+                break;
+            case "medium":
+                cpuBottleneckFactor = 0.6;
+                break;
+            case "low":
+                cpuBottleneckFactor = 0.7;
+                break;
+        }
+    } else if (cpuScore < 70) { // CPU trung bình
+        switch(cpuDependency) {
+            case "very-high":
+                cpuBottleneckFactor = 0.7;
+                break;
+            case "high":
+                cpuBottleneckFactor = 0.8;
+                break;
+            case "medium":
+                cpuBottleneckFactor = 0.9;
+                break;
+            case "low":
+                cpuBottleneckFactor = 1;
+                break;
+        }
+    }
+
+    // Hệ số giảm FPS dựa trên điểm GPU và quality setting
+    let gpuLimitationFactor = 1;
+    if (gpuScore < 50) { // GPU yếu
+        switch(graphicsQuality) {
+            case "ultra":
+                gpuLimitationFactor = 0.3;
+                break;
+            case "high":
+                gpuLimitationFactor = 0.5;
+                break;
+            case "medium":
+                gpuLimitationFactor = 0.7;
+                break;
+            case "low":
+                gpuLimitationFactor = 0.9;
+                break;
+        }
+    } else if (gpuScore < 70) { // GPU trung bình
+        switch(graphicsQuality) {
+            case "ultra":
+                gpuLimitationFactor = 0.5;
+                break;
+            case "high":
+                gpuLimitationFactor = 0.7;
+                break;
+            case "medium":
+                gpuLimitationFactor = 0.9;
+                break;
+            case "low":
+                gpuLimitationFactor = 1;
+                break;
+        }
+    }
+
+    // Áp dụng cả hai hệ số giảm
+    const finalFactor = Math.min(cpuBottleneckFactor, gpuLimitationFactor);
+    minFps = Math.floor(minFps * finalFactor);
+    maxFps = Math.floor(maxFps * finalFactor);
+
+    // Thêm thông tin về bottleneck vào description
+    let bottleneckInfo = "";
+    if (cpuBottleneckFactor < 1 && cpuBottleneckFactor <= gpuLimitationFactor) {
+        bottleneckInfo = " (CPU đang là điểm nghẽn)";
+    } else if (gpuLimitationFactor < 1 && gpuLimitationFactor < cpuBottleneckFactor) {
+        bottleneckInfo = " (Card đồ họa đang là điểm nghẽn)";
+    }
+
     return {
-        fps: fpsData.fps,
-        description: fpsData.description
+        fps: `${minFps}-${maxFps}`,
+        description: fpsData.description + bottleneckInfo
     };
 }
 
