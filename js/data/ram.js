@@ -50,8 +50,6 @@ export const ramData = {
         score: 6 // Added score
     },
 
-
-
     "cosair-16": {
         name: "RAM Corsair Vengeance LPX 16GB DDR4 (Bus 3200)",
         price: 700000,

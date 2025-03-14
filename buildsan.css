@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* buildsan.css */
 
 /* Reset CSS và CSS chung */
@@ -7,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .slider {
     width: 100%;
     -webkit-appearance: none;
@@ -39,17 +39,27 @@
     cursor: pointer;
     border-radius: 50%;
 }
+
 /* CSS Variables for easier theming */
 :root {
-    --primary-color: #29b6f6; /* Màu chính - Xanh dương sáng */
-    --secondary-color: #1976d2; /* Màu phụ - Xanh dương đậm */
-    --background-color: #e3f2fd; /* Màu nền - Xanh rất nhạt */
-    --text-color: #333; /* Màu chữ chính */
-    --card-background: #ffffff; /* Màu nền card */
-    --border-color: #e0e0e0; /* Màu viền */
-    --hover-border-color: #bbdefb; /* Màu viền khi hover */
-    --box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ */
-    --transition-speed: 0.3s; /* Tốc độ hiệu ứng */
+    --primary-color: #29b6f6;
+    /* Màu chính - Xanh dương sáng */
+    --secondary-color: #1976d2;
+    /* Màu phụ - Xanh dương đậm */
+    --background-color: #e3f2fd;
+    /* Màu nền - Xanh rất nhạt */
+    --text-color: #333;
+    /* Màu chữ chính */
+    --card-background: #ffffff;
+    /* Màu nền card */
+    --border-color: #e0e0e0;
+    /* Màu viền */
+    --hover-border-color: #bbdefb;
+    /* Màu viền khi hover */
+    --box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    /* Bóng đổ */
+    --transition-speed: 0.3s;
+    /* Tốc độ hiệu ứng */
 }
 
 body {
@@ -62,43 +72,248 @@ body {
     min-height: 100vh;
 }
 
+/* Enhanced Header with Vibrant Colors and Dynamic Effects */
 header {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
     color: #fff;
-    padding: 15px 0;
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 100;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    animation: rotate 6s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+header .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+header .logo:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+header .logo i {
+    color: #ffeb3b;
+    font-size: 1.8em;
+    margin-right: 10px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+header .logo span {
+    color: white;
+    font-weight: 800;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 header .contact-buttons {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 10px;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
-header .contact-button {
-    color: #fff;
+/* Zalo button with unique styling */
+header .contact-buttons a:nth-child(1) {
+    background-color: #0068ff;
+    color: white;
     text-decoration: none;
     font-size: 1.1em;
-    padding: 10px 15px;
+    padding: 10px 18px;
     border-radius: 8px;
-    background-color: var(--secondary-color);
-    transition: background-color var(--transition-speed) ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 104, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-header .contact-button:hover {
-    background-color: #1565c0;
+header .contact-buttons a:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: 0;
 }
 
-header .contact-button i {
-    margin-right: 8px;
+header .contact-buttons a:nth-child(1):hover::before {
+    left: 100%;
 }
 
-header span {
-    color: #0d47a1;
-    font-weight: bold;
+header .contact-buttons a:nth-child(1):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 104, 255, 0.4);
+    background-color: #0074e8;
+}
+
+/* Phone number with unique styling */
+header .phone-number {
+    background: linear-gradient(45deg, #ff9a38, #ffcb7c);
+    color: #333;
+    padding: 10px 18px;
+    border-radius: 8px;
     font-size: 1.1em;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(255, 154, 56, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header .phone-number:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(255, 154, 56, 0.4);
+}
+
+header .phone-number i {
+    margin-right: 10px;
+    color: #333;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Facebook button with unique styling */
+header .contact-buttons a:nth-child(3) {
+    background-color: #1877f2;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header .contact-buttons a:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+header .contact-buttons a:nth-child(3):hover::before {
+    left: 100%;
+}
+
+header .contact-buttons a:nth-child(3):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(24, 119, 242, 0.4);
+    background-color: #0d65d9;
+}
+
+header .contact-buttons a i,
+header .phone-number i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive design for header */
+@media (max-width: 768px) {
+    header .contact-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    header .phone-number,
+    header .contact-buttons a {
+        width: 80%;
+        justify-content: center;
+    }
 }
 
 .container {
@@ -111,7 +326,8 @@ header span {
     flex-grow: 1;
 }
 
-.selection-grid, .additional-components-grid {
+.selection-grid,
+.additional-components-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
@@ -218,18 +434,22 @@ h1 {
 
 .total-price {
     text-align: center;
-    margin-bottom: 20px; /* giảm khoảng cách dưới */
+    margin-bottom: 20px;
+    /* giảm khoảng cách dưới */
 }
 
 .total-price h2 {
-    margin-bottom: 10px; /* giảm khoảng cách dưới tiêu đề */
+    margin-bottom: 10px;
+    /* giảm khoảng cách dưới tiêu đề */
     color: #37474f;
-    font-size: 1.0em; /* giảm kích thước tiêu đề */
+    font-size: 1.0em;
+    /* giảm kích thước tiêu đề */
     font-weight: 600;
 }
 
 .total-price p {
-    font-size: 1.5em; /* giảm kích thước tổng tiền */
+    font-size: 1.5em;
+    /* giảm kích thước tổng tiền */
     font-weight: bold;
     color: var(--secondary-color);
     text-shadow: 1px 1px 1px #e0f7fa;
@@ -288,56 +508,90 @@ footer p {
 .socket-error-message,
 .score-message,
 .upgrade-message {
-    margin-bottom: 20px;          /* Tăng khoảng cách dưới để tách biệt rõ hơn */
-    padding: 15px 20px;           /* Tăng padding để thông báo rộng rãi hơn */
-    border-radius: 10px;          /* Bo tròn góc nhiều hơn cho mềm mại */
-    font-weight: bold;            /* Vẫn giữ in đậm */
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Thêm bóng đổ nhẹ tạo chiều sâu */
-    font-family: 'Arial', sans-serif; /* Chọn font chữ dễ đọc và hiện đại */
-    text-align: center;           /* Căn giữa chữ trong thông báo */
-    animation: fadeIn 0.5s ease-out; /* Thêm hiệu ứng fade-in khi hiển thị */
+    margin-bottom: 20px;
+    /* Tăng khoảng cách dưới để tách biệt rõ hơn */
+    padding: 15px 20px;
+    /* Tăng padding để thông báo rộng rãi hơn */
+    border-radius: 10px;
+    /* Bo tròn góc nhiều hơn cho mềm mại */
+    font-weight: bold;
+    /* Vẫn giữ in đậm */
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    /* Thêm bóng đổ nhẹ tạo chiều sâu */
+    font-family: 'Arial', sans-serif;
+    /* Chọn font chữ dễ đọc và hiện đại */
+    text-align: center;
+    /* Căn giữa chữ trong thông báo */
+    animation: fadeIn 0.5s ease-out;
+    /* Thêm hiệu ứng fade-in khi hiển thị */
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); } /* Bắt đầu trong suốt và dịch lên */
-    to { opacity: 1; transform: translateY(0); }       /* Kết thúc rõ ràng và vị trí ban đầu */
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    /* Bắt đầu trong suốt và dịch lên */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Kết thúc rõ ràng và vị trí ban đầu */
 }
 
 /* CSS riêng cho thông báo lỗi socket (màu đỏ nổi bật hơn) */
 .socket-error-message {
-    color: white;               /* Chữ trắng để nổi bật trên nền đỏ */
-    background-color: #f44336;   /* Đỏ đậm hơn, mã màu Material Design Red 500 */
-    border: 2px solid #d32f2f;  /* Viền đỏ đậm hơn chút */
+    color: white;
+    /* Chữ trắng để nổi bật trên nền đỏ */
+    background-color: #f44336;
+    /* Đỏ đậm hơn, mã màu Material Design Red 500 */
+    border: 2px solid #d32f2f;
+    /* Viền đỏ đậm hơn chút */
     /* Thêm icon cảnh báo (tùy chọn, cần thêm HTML để hiển thị icon) */
-    /* background-image: url('icon-warning.png');  */ /* Đường dẫn tới icon cảnh báo */
+    /* background-image: url('icon-warning.png');  */
+    /* Đường dẫn tới icon cảnh báo */
     /* background-repeat: no-repeat; */
     /* background-position: 20px center; */
-    /* padding-left: 50px;  */ /* Để khoảng trống cho icon */
+    /* padding-left: 50px;  */
+    /* Để khoảng trống cho icon */
 }
 
 /* CSS riêng cho thông báo điểm (màu xanh lá cây tươi sáng) */
 .score-message {
-    color: white;               /* Chữ trắng nổi bật trên nền xanh */
-    background-color: #4caf50;   /* Xanh lá cây tươi, mã màu Material Design Green 500 */
-    border: 2px solid #388e3c;  /* Viền xanh lá cây đậm hơn chút */
+    color: white;
+    /* Chữ trắng nổi bật trên nền xanh */
+    background-color: #4caf50;
+    /* Xanh lá cây tươi, mã màu Material Design Green 500 */
+    border: 2px solid #388e3c;
+    /* Viền xanh lá cây đậm hơn chút */
 }
 
 /* CSS riêng cho thông báo nâng cấp (màu xanh dương hiện đại) */
 .upgrade-message {
-    color: white;               /* Chữ trắng nổi bật trên nền xanh dương */
-    background-color: #2196f3;   /* Xanh dương tươi, mã màu Material Design Blue 500 */
-    border: 2px solid #1976d2;  /* Viền xanh dương đậm hơn chút */
+    color: white;
+    /* Chữ trắng nổi bật trên nền xanh dương */
+    background-color: #2196f3;
+    /* Xanh dương tươi, mã màu Material Design Blue 500 */
+    border: 2px solid #1976d2;
+    /* Viền xanh dương đậm hơn chút */
 }
+
 .red-section {
-    background-color: #ffe5e5; /* Màu nền nhẹ đỏ */
-    border: 2px solid #ff0000; /* Viền đỏ */
+    background-color: #ffe5e5;
+    /* Màu nền nhẹ đỏ */
+    border: 2px solid #ff0000;
+    /* Viền đỏ */
     padding: 20px;
     border-radius: 8px;
 }
 
 .red-section h2 {
-    color: #ff0000; /* Tiêu đề màu đỏ */
+    color: #ff0000;
+    /* Tiêu đề màu đỏ */
 }
+
 /* Hiệu ứng Modal */
 .modal {
     display: none;
@@ -389,7 +643,8 @@ footer p {
     border-spacing: 0;
 }
 
-.component-table th, .component-table td {
+.component-table th,
+.component-table td {
     padding: 12px 18px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
@@ -500,13 +755,17 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 78px) {
-    .selection-grid, .additional-components-grid {
+
+    .selection-grid,
+    .additional-components-grid {
         grid-template-columns: 1fr;
     }
+
     .component-card {
         width: 100%;
     }
 }
+
 .components-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -515,12 +774,14 @@ footer p {
 
 /* Giảm kích thước hình ảnh trong linh kiện đã chọn */
 .component-card img.component-image {
-    max-width: 60px; /* giảm từ 80px xuống 60px */
+    max-width: 60px;
+    /* giảm từ 80px xuống 60px */
     height: auto;
     border-radius: 6px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .component-info {
     display: none;
     margin-top: 10px;
@@ -548,6 +809,7 @@ footer p {
 .component-card.active .component-info {
     display: block;
 }
+
 .choices-container {
     display: flex;
     flex-wrap: wrap;
@@ -556,13 +818,13 @@ footer p {
 }
 
 /* Lựa chọn chính và phụ */
-.main-choices, .optional-choices {
+.main-choices,
+.optional-choices {
     flex: 1;
-    min-width: 300px; /* Đảm bảo không quá nhỏ */
+    min-width: 300px;
+    /* Đảm bảo không quá nhỏ */
 }
 
-/* Media Query: Hiển thị dạng cột trên màn hình nhỏ */
-=======
 /* buildsan.css */
 
 /* Reset CSS và CSS chung */
@@ -1166,8 +1428,15 @@ header {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Modal Styles */
@@ -1196,8 +1465,15 @@ header {
 }
 
 @keyframes modalFadeIn {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-header {
@@ -1515,22 +1791,33 @@ footer {
     .components-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .cpu-brand-selection {
         gap: 15px;
     }
-    
+
     .brand-option {
         width: 130px;
         height: 130px;
     }
-    
+
     .button-group {
         flex-direction: column;
     }
-    
+
     .progress-step .step-label {
         font-size: 0.7rem;
+    }
+
+    header .contact-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    header .phone-number,
+    header .contact-buttons a {
+        width: 80%;
+        justify-content: center;
     }
 }
 
@@ -1605,6 +1892,7 @@ footer {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1620,4 +1908,32 @@ footer {
     border: 2px solid var(--primary-color);
     background-color: rgba(0, 102, 204, 0.05);
 }
->>>>>>> 8c3d9aa (Initial commit)
+
+/* Zalo button with unique styling */
+header .contact-buttons a:nth-child(1) {
+    background-color: var(--zalo-color);
+    /* ... */
+}
+
+/* Phone number with unique styling */
+header .phone-number {
+    background: linear-gradient(45deg, var(--phone-gradient-start), var(--phone-gradient-end));
+    /* ... */
+}
+
+/* Facebook button with unique styling */
+header .contact-buttons a:nth-child(3) {
+    background-color: var(--facebook-color);
+    /* ... */
+}
+
+header .phone-number i {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
