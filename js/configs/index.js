@@ -3,6 +3,9 @@ import { configs as intelCsgoConfigs } from './intel/csgo.js';
 import { configs as intelPubgConfigs } from './intel/pubg.js';
 import { configs as intelLolConfigs } from './intel/lol.js';
 import { configs as intelGtaVConfigs } from './intel/gta-v.js';
+import { configs as intelEldenRingConfigs } from './intel/elden-ring.js';
+import { configs as intelNarakaConfigs } from './intel/naraka.js';
+import { configs as intelGenshinConfigs } from './intel/genshin.js';
 // Import các cấu hình Intel cho các game khác
 
 import { configs as amdValorantConfigs } from './amd/valorant.js';
@@ -10,6 +13,9 @@ import { configs as amdCsgoConfigs } from './amd/csgo.js';
 import { configs as amdPubgConfigs } from './amd/pubg.js';
 import { configs as amdLolConfigs } from './amd/lol.js';
 import { configs as amdGtaVConfigs } from './amd/gta-v.js';
+import { configs as amdEldenRingConfigs } from './amd/elden-ring.js';
+import { configs as amdNarakaConfigs } from './amd/naraka.js';
+import { configs as amdGenshinConfigs } from './amd/genshin.js';
 // Import các cấu hình AMD cho các game khác
 
 // Định nghĩa các cấu hình cho từng loại CPU và từng game
@@ -19,7 +25,9 @@ const intelConfigs = {
     'pubg': intelPubgConfigs,
     'lol': intelLolConfigs,
     'gta-v': intelGtaVConfigs,
-    'elden-ring': {}, // Sẽ được bổ sung sau
+    'elden-ring': intelEldenRingConfigs,
+    'naraka': intelNarakaConfigs,
+    'genshin': intelGenshinConfigs,
     'god-of-war': {}  // Sẽ được bổ sung sau
 };
 
@@ -29,7 +37,9 @@ const amdConfigs = {
     'pubg': amdPubgConfigs,
     'lol': amdLolConfigs,
     'gta-v': amdGtaVConfigs,
-    'elden-ring': {}, // Sẽ được bổ sung sau
+    'elden-ring': amdEldenRingConfigs,
+    'naraka': amdNarakaConfigs,
+    'genshin': amdGenshinConfigs,
     'god-of-war': {}  // Sẽ được bổ sung sau
 };
 

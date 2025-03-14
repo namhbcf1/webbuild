@@ -95,43 +95,79 @@ window.VGA_RATINGS = {
     "RX 7900 XTX": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT }
 };
 
-// Game FPS estimates
+// Extend the GAME_FPS_ESTIMATES with data from HowManyFPS
 window.GAME_FPS_ESTIMATES = {
+    ...window.GAME_FPS_ESTIMATES,
+    "pubg": {
+        notes: "PUBG khá nặng, yêu cầu cả CPU và GPU mạnh để chơi mượt mà.",
+        low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "80-100 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
     "valorant": {
         notes: "Valorant chạy tốt trên hầu hết các cấu hình, các CPU mạnh sẽ cải thiện FPS đáng kể.",
-        low: { fps: "70-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        low: { fps: "200+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "200+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        high: { fps: "70-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
     },
     "csgo": {
         notes: "CS:GO là game có thể chạy tốt ngay cả trên hệ thống phổ thông, phụ thuộc nhiều vào CPU.",
-        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        low: { fps: "250+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "150-200 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "250+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        high: { fps: "90-120 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
     },
     "gta-v": {
         notes: "GTA V yêu cầu cân bằng giữa CPU và GPU, game đòi hỏi cấu hình khá.",
-        low: { fps: "45-60 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "90-120 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
-    },
-    "pubg": {
-        notes: "PUBG khá nặng, yêu cầu cả CPU và GPU mạnh để chơi mượt mà.",
-        low: { fps: "60-70 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "80-100 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "120+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
-    },
-    "lol": {
-        notes: "LoL có thể chạy tốt trên hầu hết cấu hình, kể cả máy tính có cấu hình thấp.",
-        low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "120-140 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "160+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        high: { fps: "45-60 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
     },
     "fortnite": {
         notes: "Fortnite có thể tối ưu trên nhiều cấu hình khác nhau, nhưng cài đặt cao đòi hỏi GPU tốt.",
-        low: { fps: "60-80 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        low: { fps: "144+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "100-120 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "144+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    "lol": {
+        notes: "LoL có thể chạy tốt trên hầu hết cấu hình, kể cả máy tính có cấu hình thấp.",
+        low: { fps: "160+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "120-140 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "80-100 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    // Thêm game mới - FIFA Online 4 (Online game - cấu hình giống Valorant)
+    "fo4": {
+        notes: "FIFA Online 4 là game thể thao online, tối ưu khá tốt và có thể chạy mượt trên nhiều cấu hình.",
+        low: { fps: "180+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    // Thêm game mới - Black Myth: Wukong (Offline game - cấu hình giống GTA V)
+    "black-myth-wukong": {
+        notes: "Black Myth: Wukong là game hành động RPG đòi hỏi cấu hình mạnh, đặc biệt là VGA để xử lý hiệu ứng đồ họa.",
+        low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "50-70 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "30-45 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    // Thêm game mới - Elden Ring (Offline game - cấu hình giống GTA V)
+    "elden-ring": {
+        notes: "Elden Ring đòi hỏi cấu hình khá để chơi mượt mà, đặc biệt là trong các khu vực rộng lớn.",
+        low: { fps: "75-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "55-75 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "40-55 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    // Thêm game mới - Naraka: Bladepoint (Online game - cấu hình giống Valorant)
+    "naraka": {
+        notes: "Naraka: Bladepoint là game hành động battle royale, yêu cầu VGA tốt để xử lý hiệu ứng và chuyển động nhanh.",
+        low: { fps: "140+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "100-130 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    // Thêm game mới - Genshin Impact (Online game - cấu hình giống Valorant nhưng nhẹ hơn)
+    "genshin-impact": {
+        notes: "Genshin Impact là game online open-world, tối ưu tốt và có thể chạy mượt trên nhiều cấu hình khác nhau.",
+        low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "90-110 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
     }
 };
 
@@ -1239,7 +1275,12 @@ function getGameName(gameId) {
         "pubg": "PlayerUnknown's Battlegrounds",
         "lol": "League of Legends",
         "gta-v": "Grand Theft Auto V",
-        "fortnite": "Fortnite"
+        "fortnite": "Fortnite",
+        "fo4": "FIFA Online 4",
+        "black-myth-wukong": "Black Myth: Wukong",
+        "elden-ring": "Elden Ring",
+        "naraka": "Naraka: Bladepoint",
+        "genshin-impact": "Genshin Impact"
     };
     return gameNames[gameId] || gameId;
 }
@@ -1343,4 +1384,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initial evaluation if components are already selected
         evaluateSystemPerformance();
     }
+});
+
+// Function to update UI with game-specific data
+function updateGameSpecificUI(selectedGame) {
+    const gameData = window.GAME_FPS_ESTIMATES[selectedGame];
+    if (gameData) {
+        document.getElementById('game-specific-performance').innerHTML = `
+            <p><strong>${getGameName(selectedGame)}</strong> - ${gameData.notes}</p>
+            <p>Low: ${gameData.low.fps} (${gameData.low.description})</p>
+            <p>Medium: ${gameData.medium.fps} (${gameData.medium.description})</p>
+            <p>High: ${gameData.high.fps} (${gameData.high.description})</p>
+        `;
+    }
+}
+
+// Call this function when a game is selected
+document.getElementById('game-genre').addEventListener('change', function() {
+    updateGameSpecificUI(this.value);
 });
