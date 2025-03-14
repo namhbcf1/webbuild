@@ -15,6 +15,126 @@ import {
 // Import các cấu hình budget từ module configs
 import { getConfig, intelConfigs, amdConfigs } from './js/configs/index.js';
 
+// Định nghĩa các hằng số đánh giá hiệu năng
+const PERFORMANCE_RATINGS = {
+    EXCELLENT: { label: "Xuất sắc", color: "#28a745", percentage: 95 },
+    VERY_GOOD: { label: "Rất tốt", color: "#5cb85c", percentage: 80 },
+    GOOD: { label: "Tốt", color: "#4bbf73", percentage: 65 },
+    AVERAGE: { label: "Trung bình", color: "#f0ad4e", percentage: 50 },
+    FAIR: { label: "Khá", color: "#fd7e14", percentage: 35 },
+    WEAK: { label: "Yếu", color: "#dc3545", percentage: 20 }
+};
+
+// Định nghĩa đánh giá CPU
+const CPU_RATINGS = {
+    "Core i3": { 
+        gaming: PERFORMANCE_RATINGS.FAIR, 
+        graphics: PERFORMANCE_RATINGS.FAIR, 
+        office: PERFORMANCE_RATINGS.GOOD 
+    },
+    "Core i5": { 
+        gaming: PERFORMANCE_RATINGS.GOOD, 
+        graphics: PERFORMANCE_RATINGS.GOOD, 
+        office: PERFORMANCE_RATINGS.VERY_GOOD 
+    },
+    "Core i7": { 
+        gaming: PERFORMANCE_RATINGS.VERY_GOOD, 
+        graphics: PERFORMANCE_RATINGS.VERY_GOOD, 
+        office: PERFORMANCE_RATINGS.EXCELLENT 
+    },
+    "Core i9": { 
+        gaming: PERFORMANCE_RATINGS.EXCELLENT, 
+        graphics: PERFORMANCE_RATINGS.EXCELLENT, 
+        office: PERFORMANCE_RATINGS.EXCELLENT 
+    },
+    "Ryzen 3": { 
+        gaming: PERFORMANCE_RATINGS.FAIR, 
+        graphics: PERFORMANCE_RATINGS.FAIR, 
+        office: PERFORMANCE_RATINGS.GOOD 
+    },
+    "Ryzen 5": { 
+        gaming: PERFORMANCE_RATINGS.GOOD, 
+        graphics: PERFORMANCE_RATINGS.GOOD, 
+        office: PERFORMANCE_RATINGS.VERY_GOOD 
+    },
+    "Ryzen 7": { 
+        gaming: PERFORMANCE_RATINGS.VERY_GOOD, 
+        graphics: PERFORMANCE_RATINGS.VERY_GOOD, 
+        office: PERFORMANCE_RATINGS.EXCELLENT 
+    },
+    "Ryzen 9": { 
+        gaming: PERFORMANCE_RATINGS.EXCELLENT, 
+        graphics: PERFORMANCE_RATINGS.EXCELLENT, 
+        office: PERFORMANCE_RATINGS.EXCELLENT 
+    }
+};
+
+// Định nghĩa đánh giá VGA
+const VGA_RATINGS = {
+    "GTX 1650": { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR },
+    "GTX 1660": { gaming: PERFORMANCE_RATINGS.AVERAGE, graphics: PERFORMANCE_RATINGS.AVERAGE },
+    "RTX 2060": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
+    "RTX 2070": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
+    "RTX 3060": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
+    "RTX 3070": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
+    "RTX 3080": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RTX 4060": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
+    "RTX 4070": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RTX 4080": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RTX 4090": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 570": { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR },
+    "RX 580": { gaming: PERFORMANCE_RATINGS.AVERAGE, graphics: PERFORMANCE_RATINGS.AVERAGE },
+    "RX 5600 XT": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
+    "RX 5700 XT": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
+    "RX 6600": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
+    "RX 6700 XT": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
+    "RX 6800 XT": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 7600": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
+    "RX 7700 XT": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 7800 XT": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 7900 XTX": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT }
+};
+
+// Game FPS estimates
+const GAME_FPS_ESTIMATES = {
+    "valorant": {
+        notes: "Valorant chạy tốt trên hầu hết các cấu hình, các CPU mạnh sẽ cải thiện FPS đáng kể.",
+        low: { fps: "70-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "200+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    "csgo": {
+        notes: "CS:GO là game có thể chạy tốt ngay cả trên hệ thống phổ thông, phụ thuộc nhiều vào CPU.",
+        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "150-200 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "250+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    "gta-v": {
+        notes: "GTA V yêu cầu cân bằng giữa CPU và GPU, game đòi hỏi cấu hình khá.",
+        low: { fps: "45-60 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "90-120 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    "pubg": {
+        notes: "PUBG khá nặng, yêu cầu cả CPU và GPU mạnh để chơi mượt mà.",
+        low: { fps: "60-70 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "80-100 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "120+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    "lol": {
+        notes: "LoL có thể chạy tốt trên hầu hết cấu hình, kể cả máy tính có cấu hình thấp.",
+        low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "120-140 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "160+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    "fortnite": {
+        notes: "Fortnite có thể tối ưu trên nhiều cấu hình khác nhau, nhưng cài đặt cao đòi hỏi GPU tốt.",
+        low: { fps: "60-80 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "100-120 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "144+ FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    }
+};
+
 const components = {
     cpu: cpuData,
     mainboard: mainboardData,
@@ -164,3178 +284,6 @@ function handleImageError(img) {
 // Giả sử các dữ liệu components đã được định nghĩa đầy đủ
 
 
-// Cấu hình global
-const intelBudgetConfigsValorant = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '20M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '21M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '22M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '23M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '24M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '25M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060ti-16G",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '26M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '28M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '29M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '30M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070S",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-};
-
-const amdBudgetConfigsValorant = {
-    '7M': {
-        cpu: "3600",
-        mainboard: "JGINYUE-B450",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060t",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '12M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "4060",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '20M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "3070ti",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '21M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "2070s",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '22M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3060ti",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '23M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3070",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '24M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '25M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '26M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '28M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '29M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '30M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-
-
-};
-
-const intelBudgetConfigsPubg = {
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '20M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '21M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '22M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '23M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '24M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '25M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060ti-16G",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '26M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '28M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '29M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '30M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070S",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-};
-
-const amdBudgetConfigsPubg = {
-    '7M': {
-        cpu: "3600",
-        mainboard: "JGINYUE-B450",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060t",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '12M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "4060",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '20M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "3070ti",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '21M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "2070s",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '22M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3060ti",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '23M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3070",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '24M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '25M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '26M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '28M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '29M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '30M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-
-};
-const intelBudgetConfigsLol = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '20M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '21M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '22M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '23M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '24M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '25M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060ti-16G",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '26M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '28M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '29M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '30M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070S",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-};
-
-const amdBudgetConfigsLol = {
-    '7M': {
-        cpu: "3600",
-        mainboard: "JGINYUE-B450",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060t",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '12M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "4060",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '20M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "3070ti",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '21M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "2070s",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '22M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3060ti",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '23M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3070",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '24M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '25M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '26M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '28M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '29M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '30M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-
-};
-
-const intelBudgetConfigsGtaV = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '20M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '21M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '22M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '23M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '24M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '25M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060ti-16G",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '26M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '28M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '29M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '30M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070S",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-};
-
-const amdBudgetConfigsGtaV = {
-    '7M': {
-        cpu: "3600",
-        mainboard: "JGINYUE-B450",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060t",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '12M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "4060",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '20M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "3070ti",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '21M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "2070s",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '22M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3060ti",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '23M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3070",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '24M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '25M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '26M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '28M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '29M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '30M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-
-};
-
-const intelBudgetConfigsCsgo = {
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "13400f",
-        mainboard: "MSI-B760",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '20M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '21M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '22M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '23M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '24M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "3080",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '25M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4060ti-16G",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '26M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '28M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '29M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '30M': {
-        cpu: "14600kf",
-        mainboard: "B760M-E",
-        vga: "4070S",
-        ram: "sstc-32",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-};
-
-const amdBudgetConfigsCsgo = {
-    '7M': {
-        cpu: "3600",
-        mainboard: "JGINYUE-B450",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "5600",
-        mainboard: "JGINYUE-B450",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060t",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '12M': {
-        cpu: "5600x",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '17M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '18M': {
-        cpu: "5700x3d",
-        mainboard: "JGINYUE-B450",
-        vga: "4060",
-        ram: "sstc-32",
-        ssd: "crucial-1tb",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '19M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '20M': {
-        cpu: "7600x",
-        mainboard: "JGINYUE-B650",
-        vga: "3070ti",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '21M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "2070s",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '22M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3060ti",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '23M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3070",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '24M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '25M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '26M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "4060",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "VSP750"
-    },
-    '27M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '28M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-16-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '29M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-500",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-    '30M': {
-        cpu: "7800x3d",
-        mainboard: "JGINYUE-B650",
-        vga: "3080",
-        ram: "tridentz-32-6000",
-        ssd: "crucial-1tb",
-        case: "GA",
-        cpuCooler: "TMR120SE",
-        psu: "COSAIR850"
-    },
-
-};
-
-const intelBudgetConfigsEldenRing = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-
-};
-
-const amdBudgetConfigsEldenRing = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-
-};
-
-
-const intelBudgetConfigsGodOfWar = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-
-};
-
-const amdBudgetConfigsGodOfWar = {
-    '3M': {
-        cpu: "1220v3",
-        mainboard: "H81",
-        vga: "750ti",
-        ram: "D38G",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '4M': {
-        cpu: "9100f",
-        mainboard: "H310",
-        vga: "750ti",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "STOCK",
-        psu: "350W"
-    },
-    '5M': {
-        cpu: "10100f",
-        mainboard: "H410",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sata-sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '6M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '7M': {
-        cpu: "12100f",
-        mainboard: "HNZ-H610",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "2ongdong",
-        psu: "DT660"
-    },
-    '8M': {
-        cpu: "13400f",
-        mainboard: "HNZ-H610",
-        vga: "960",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '9M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1060-3g",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '10M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "1660s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '11M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2060s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "DT660"
-    },
-    '12M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "2070s",
-        ram: "sstc-16",
-        ssd: "sstc-256",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '13M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3060ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '14M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '15M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-    '16M': {
-        cpu: "13400f",
-        mainboard: "HNZ-B760",
-        vga: "3070ti",
-        ram: "sstc-16",
-        ssd: "crucial-500",
-        case: "GA3",
-        cpuCooler: "CR1000",
-        psu: "VSP750"
-    },
-
-};
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -4086,3 +1034,303 @@ function updateDropdown(id, value) {
     dropdown.dispatchEvent(changeEvent);
     console.log(`Dispatched change event for dropdown ${id}`);
 }
+
+/**
+ * Đánh giá hiệu năng của cấu hình CPU và VGA đã chọn cho các tác vụ khác nhau
+ * và cập nhật giao diện người dùng
+ */
+function evaluateSystemPerformance() {
+    const selectedCPU = document.getElementById('cpu').value;
+    const selectedVGA = document.getElementById('vga').value;
+    const selectedGame = document.getElementById('game-genre').value;
+    
+    if (!selectedCPU || !selectedVGA) return resetPerformanceInfo();
+    
+    document.getElementById('performance-details').style.display = 'block';
+    
+    const cpuFamily = extractCPUFamily(selectedCPU);
+    const vgaModel = extractVGAModel(selectedVGA);
+    
+    console.log("CPU Family:", cpuFamily);
+    console.log("VGA Model:", vgaModel);
+    
+    const cpuRating = CPU_RATINGS[cpuFamily] || defaultCPURating();
+    const vgaRating = VGA_RATINGS[vgaModel] || defaultVGARating();
+    
+    console.log("CPU Rating:", cpuRating);
+    console.log("VGA Rating:", vgaRating);
+    
+    updateRating('cpu', cpuFamily, cpuRating.gaming);
+    updateRating('vga', vgaModel, vgaRating.gaming);
+    
+    const gamePerformance = determineOverallPerformance(cpuRating.gaming, vgaRating.gaming, 0.3, 0.7);
+    const graphicPerformance = determineOverallPerformance(cpuRating.graphics, vgaRating.graphics, 0.4, 0.6);
+    const officePerformance = cpuRating.office;
+    
+    updatePerformanceMetrics(gamePerformance, graphicPerformance, officePerformance);
+    handleGameSpecificPerformance(selectedGame, gamePerformance);
+    updatePerformanceChart(gamePerformance, graphicPerformance, officePerformance);
+}
+
+function updateRating(type, model, rating) {
+    const elementId = `${type}-rating`;
+    document.getElementById(elementId).textContent = getDescription(type, model);
+    document.getElementById(elementId).style.color = rating.color;
+    document.getElementById(`${type}-progress-bar`).style.width = `${rating.percentage}%`;
+    document.getElementById(`${type}-progress-bar`).style.backgroundColor = rating.color;
+}
+
+function getDescription(type, model) {
+    const descriptions = {
+        cpu: {
+            "Core i3": "Tầm trung, đủ cho nhu cầu văn phòng và game nhẹ",
+            "Core i5": "Mạnh, tốt cho gaming và công việc đa nhiệm",
+            "Core i7": "Rất mạnh, xuất sắc cho gaming và đồ họa",
+            "Core i9": "Siêu mạnh, tối ưu cho mọi tác vụ nặng",
+            "Ryzen 3": "Tầm trung, đủ cho nhu cầu văn phòng và game nhẹ",
+            "Ryzen 5": "Mạnh, tốt cho gaming và công việc đa nhiệm",
+            "Ryzen 7": "Rất mạnh, xuất sắc cho gaming và đồ họa",
+            "Ryzen 9": "Siêu mạnh, tối ưu cho mọi tác vụ nặng"
+        },
+        vga: {
+            "GTX 1650": "Tầm trung thấp, gaming 1080p các game nhẹ",
+            "GTX 1660": "Tầm trung, gaming 1080p tốt",
+            "RTX 2060": "Khá tốt, gaming 1080p các game AAA",
+            "RTX 2070": "Khá tốt, gaming 1080p/1440p mượt mà",
+            "RTX 3060": "Tốt, gaming 1080p/1440p mượt mà",
+            "RTX 3070": "Rất tốt, gaming 1440p chất lượng cao",
+            "RTX 3080": "Cao cấp, gaming 4K ổn định",
+            "RTX 4060": "Hiệu năng tốt, gaming 1080p/1440p mượt mà",
+            "RTX 4070": "Hiệu năng cao, gaming 1440p/4K chất lượng cao",
+            "RTX 4080": "Siêu cao cấp, gaming 4K ổn định",
+            "RTX 4090": "Đỉnh cao hiệu năng, gaming 4K/8K",
+            "RX 570": "Tầm trung thấp, gaming 1080p các game nhẹ",
+            "RX 580": "Tầm trung, gaming 1080p tốt",
+            "RX 5600 XT": "Khá tốt, gaming 1080p các game AAA",
+            "RX 5700 XT": "Tốt, gaming 1440p",
+            "RX 6600": "Tốt, gaming 1080p/1440p",
+            "RX 6700 XT": "Rất tốt, gaming 1440p chất lượng cao",
+            "RX 6800 XT": "Cao cấp, gaming 4K ổn định",
+            "RX 7600": "Hiệu năng tốt, gaming 1080p/1440p mượt mà",
+            "RX 7700 XT": "Hiệu năng cao, gaming 1440p chất lượng cao",
+            "RX 7800 XT": "Hiệu năng rất cao, gaming 1440p/4K",
+            "RX 7900 XTX": "Siêu cao cấp, gaming 4K/8K"
+        }
+    };
+    return descriptions[type][model] || "Chưa xác định";
+}
+
+function determineOverallPerformance(cpuRating, vgaRating, cpuWeight, vgaWeight) {
+    const overallPercentage = (cpuRating.percentage * cpuWeight) + (vgaRating.percentage * vgaWeight);
+    return getPerformanceRatingFromPercentage(overallPercentage);
+}
+
+function handleGameSpecificPerformance(selectedGame, gamePerformance) {
+    if (!selectedGame || !GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
+    const fpsEstimate = estimateGameFPS(gamePerformance, selectedGame);
+    const gameInfo = GAME_FPS_ESTIMATES[selectedGame];
+    
+    document.getElementById('fps-estimate-container').style.display = 'flex';
+    document.getElementById('fps-estimate').textContent = fpsEstimate.fps;
+    document.getElementById('fps-estimate').style.color = gamePerformance.color;
+    
+    document.getElementById('game-specific-performance').innerHTML = `
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+            <p><strong>${getGameName(selectedGame)}</strong> - ${fpsEstimate.description}</p>
+            <p style="color: ${gamePerformance.color}; font-weight: 600;">${fpsEstimate.fps}</p>
+            <p style="font-style: italic; margin-top: 8px;">${gameInfo.notes}</p>
+        </div>
+    `;
+}
+
+function resetGameSpecificPerformance() {
+    document.getElementById('fps-estimate-container').style.display = 'none';
+    document.getElementById('game-specific-performance').innerHTML = '';
+}
+
+function updatePerformanceMetrics(gamePerformance, graphicPerformance, officePerformance) {
+    updateMetric('game', gamePerformance);
+    updateMetric('graphic', graphicPerformance);
+    updateMetric('office', officePerformance);
+}
+
+function updateMetric(type, performance) {
+    const elementId = `${type}-performance`;
+    document.getElementById(elementId).textContent = performance.label;
+    document.getElementById(elementId).style.color = performance.color;
+}
+
+function defaultCPURating() {
+    return { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR, office: PERFORMANCE_RATINGS.GOOD };
+}
+
+function defaultVGARating() {
+    return { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR };
+}
+
+/**
+ * Trích xuất dòng CPU từ tên CPU được chọn
+ */
+function extractCPUFamily(cpuName) {
+    if (!cpuName) return "";
+    
+    // Extract Intel Core i3/i5/i7/i9 or AMD Ryzen 3/5/7/9
+    let match = cpuName.match(/(Core i[3579]|Ryzen [3579])/);
+    return match ? match[0] : "";
+}
+
+/**
+ * Trích xuất mẫu VGA từ tên VGA được chọn
+ */
+function extractVGAModel(vgaName) {
+    if (!vgaName) return "";
+    
+    // Match GPU models like RTX 3060, RTX 4090, GTX 1660, RX 6700 XT, etc.
+    let match = vgaName.match(/(RTX\s\d{4}|GTX\s\d{4}|RX\s\d{4}\sXT|RX\s\d{3})/);
+    return match ? match[0] : "";
+}
+
+/**
+ * Lấy xếp hạng hiệu năng từ phần trăm
+ */
+function getPerformanceRatingFromPercentage(percentage) {
+    if (percentage >= 85) return PERFORMANCE_RATINGS.EXCELLENT;
+    if (percentage >= 70) return PERFORMANCE_RATINGS.VERY_GOOD;
+    if (percentage >= 55) return PERFORMANCE_RATINGS.GOOD;
+    if (percentage >= 40) return PERFORMANCE_RATINGS.AVERAGE;
+    if (percentage >= 25) return PERFORMANCE_RATINGS.FAIR;
+    return PERFORMANCE_RATINGS.WEAK;
+}
+
+/**
+ * Ước tính FPS cho game cụ thể dựa trên xếp hạng hiệu năng tổng thể
+ */
+function estimateGameFPS(performanceRating, gameId) {
+    const gameInfo = GAME_FPS_ESTIMATES[gameId];
+    if (!gameInfo) return { fps: "N/A", description: "Không có dữ liệu" };
+    
+    // Dựa vào hiệu năng tổng thể, chọn mức FPS phù hợp
+    if (performanceRating === PERFORMANCE_RATINGS.EXCELLENT ||
+        performanceRating === PERFORMANCE_RATINGS.VERY_GOOD) {
+        return gameInfo.high;
+    } else if (performanceRating === PERFORMANCE_RATINGS.GOOD ||
+              performanceRating === PERFORMANCE_RATINGS.AVERAGE) {
+        return gameInfo.medium;
+    } else {
+        return gameInfo.low;
+    }
+}
+
+/**
+ * Lấy tên game đẹp hơn từ ID
+ */
+function getGameName(gameId) {
+    const gameNames = {
+        "valorant": "Valorant",
+        "csgo": "Counter-Strike: Global Offensive",
+        "pubg": "PlayerUnknown's Battlegrounds",
+        "lol": "League of Legends",
+        "gta-v": "Grand Theft Auto V",
+        "fortnite": "Fortnite"
+    };
+    return gameNames[gameId] || gameId;
+}
+
+/**
+ * Cập nhật biểu đồ hiệu năng
+ */
+function updatePerformanceChart(gamePerformance, graphicPerformance, officePerformance) {
+    const ctx = document.getElementById('performance-chart').getContext('2d');
+    
+    // Kiểm tra xem biểu đồ đã tồn tại chưa
+    if (window.performanceChart) {
+        // Nếu đã tồn tại, chỉ cập nhật dữ liệu
+        window.performanceChart.data.datasets[0].data = [
+            gamePerformance.percentage, 
+            graphicPerformance.percentage, 
+            officePerformance.percentage
+        ];
+        window.performanceChart.data.datasets[0].backgroundColor = `rgba(${hexToRgb(gamePerformance.color)}, 0.7)`;
+        window.performanceChart.data.datasets[0].borderColor = gamePerformance.color;
+        window.performanceChart.update();
+        return;
+    }
+    
+    // Khởi tạo biểu đồ mới nếu chưa tồn tại
+    window.performanceChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Gaming', 'Đồ họa/Video', 'Văn phòng'],
+            datasets: [{
+                label: 'Hiệu năng',
+                data: [
+                    gamePerformance.percentage, 
+                    graphicPerformance.percentage, 
+                    officePerformance.percentage
+                ],
+                backgroundColor: `rgba(${hexToRgb(gamePerformance.color)}, 0.7)`,
+                borderColor: gamePerformance.color,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    angleLines: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            }
+        }
+    });
+}
+
+/**
+ * Chuyển đổi mã màu Hex sang RGB
+ */
+function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `${r}, ${g}, ${b}`;
+}
+
+/**
+ * Reset thông tin hiệu năng
+ */
+function resetPerformanceInfo() {
+    document.getElementById('performance-details').style.display = 'none';
+    document.getElementById('fps-estimate-container').style.display = 'none';
+    document.getElementById('game-performance').textContent = "Chưa xác định";
+    document.getElementById('game-performance').style.color = "";
+    document.getElementById('graphic-performance').textContent = "Chưa xác định";
+    document.getElementById('graphic-performance').style.color = "";
+    document.getElementById('office-performance').textContent = "Chưa xác định";
+    document.getElementById('office-performance').style.color = "";
+    document.getElementById('game-specific-performance').innerHTML = '';
+    
+    // Reset chart if it exists
+    if (window.performanceChart) {
+        window.performanceChart.data.datasets[0].data = [0, 0, 0];
+        window.performanceChart.update();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+    
+    // Thêm event listeners cho các dropdown để đánh giá hiệu năng
+    const cpuSelect = document.getElementById('cpu');
+    const vgaSelect = document.getElementById('vga');
+    const gameSelect = document.getElementById('game-genre');
+    
+    if (cpuSelect) cpuSelect.addEventListener('change', evaluateSystemPerformance);
+    if (vgaSelect) vgaSelect.addEventListener('change', evaluateSystemPerformance);
+    if (gameSelect) gameSelect.addEventListener('change', evaluateSystemPerformance);
+    
+    // Gọi hàm đánh giá hiệu năng ban đầu
+    evaluateSystemPerformance();
+});

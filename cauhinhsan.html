@@ -364,6 +364,11 @@
                             <div class="metric-label">Game:</div>
                             <div class="metric-value" id="game-performance">Chưa xác định</div>
                         </div>
+                        <div class="metric" id="fps-estimate-container" style="display: none;">
+                            <div class="metric-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="metric-label">FPS dự kiến:</div>
+                            <div class="metric-value" id="fps-estimate">--</div>
+                        </div>
                         <div class="metric">
                             <div class="metric-icon"><i class="fas fa-film"></i></div>
                             <div class="metric-label">Đồ họa/video:</div>
@@ -373,6 +378,24 @@
                             <div class="metric-icon"><i class="fas fa-laptop-code"></i></div>
                             <div class="metric-label">Văn phòng:</div>
                             <div class="metric-value" id="office-performance">Chưa xác định</div>
+                        </div>
+                        <div class="metric" id="performance-details" style="display: none; margin-top: 15px; background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+                            <h4 style="margin-bottom: 10px; font-size: 16px;"><i class="fas fa-info-circle"></i> Chi tiết hiệu năng</h4>
+                            <div id="cpu-performance-details">
+                                <p><strong>CPU:</strong> <span id="cpu-rating">Chưa xác định</span></p>
+                                <div class="progress" style="height: 8px; margin-bottom: 15px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
+                                    <div id="cpu-progress-bar" class="progress-bar" style="height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                            <div id="vga-performance-details">
+                                <p><strong>VGA:</strong> <span id="vga-rating">Chưa xác định</span></p>
+                                <div class="progress" style="height: 8px; margin-bottom: 15px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
+                                    <div id="vga-progress-bar" class="progress-bar" style="height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                            <div id="game-specific-performance" style="font-size: 14px; line-height: 1.5;">
+                                <!-- Game-specific information will be added here -->
+                            </div>
                         </div>
                     </div>
                 </div>
