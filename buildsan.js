@@ -101,150 +101,128 @@ window.GAME_FPS_ESTIMATES = window.GAME_FPS_ESTIMATES || {};
 // Extend the GAME_FPS_ESTIMATES with data from HowManyFPS
 window.GAME_FPS_ESTIMATES = {
     ...window.GAME_FPS_ESTIMATES,
-    "pubg": {
-        notes: "PUBG khá nặng, yêu cầu cả CPU và GPU mạnh để chơi mượt mà.",
-        low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "80-100 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
-    },
     "valorant": {
-        notes: "Valorant là game esports nhẹ, dễ chơi trên nhiều cấu hình.",
-        low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "80-100 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "40-60 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+        notes: "Valorant là game esports nhẹ, tối ưu tốt cho cả CPU và GPU.",
+        low: { fps: "350-400", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "300-350", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "250-300", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "200-250", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
     "csgo": {
-        notes: "CS:GO là game có thể chạy tốt ngay cả trên hệ thống phổ thông, phụ thuộc nhiều vào CPU.",
-        low: { fps: "250+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "150-200 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "90-120 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        notes: "CS:GO phụ thuộc nhiều vào sức mạnh CPU, tối ưu tốt cho gaming.",
+        low: { fps: "320-350", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "270-300", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "220-250", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "170-200", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    "gta-v": {
-        notes: "GTA V yêu cầu cân bằng giữa CPU và GPU, game đòi hỏi cấu hình khá.",
-        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "45-60 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
-    },
-    "fortnite": {
-        notes: "Fortnite có thể tối ưu trên nhiều cấu hình khác nhau, nhưng cài đặt cao đòi hỏi GPU tốt.",
-        low: { fps: "144+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "100-120 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    "pubg": {
+        notes: "PUBG đòi hỏi cân bằng giữa CPU và GPU để đạt hiệu năng tốt nhất.",
+        low: { fps: "160-180", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "130-150", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "100-120", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "80-100", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
     "lol": {
-        notes: "LoL có thể chạy tốt trên hầu hết cấu hình, kể cả máy tính có cấu hình thấp.",
-        low: { fps: "160+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "120-140 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "80-100 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        notes: "Liên Minh Huyền Thoại được tối ưu rất tốt, chạy mượt trên hầu hết cấu hình.",
+        low: { fps: "350-400", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "300-350", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "250-300", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "200-250", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    // Thêm game mới - FIFA Online 4 (Online game - cấu hình giống Valorant)
-    "fo4": {
-        notes: "FIFA Online 4 là game thể thao online, tối ưu khá tốt và có thể chạy mượt trên nhiều cấu hình.",
-        low: { fps: "180+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "45-60 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    "gta-v": {
+        notes: "GTA V là game open-world đòi hỏi cả CPU và GPU mạnh để đạt FPS cao.",
+        low: { fps: "100-120", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "80-100", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-80", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "45-60", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    // Thêm game mới - Black Myth: Wukong (Offline game - cấu hình giống GTA V)
-    "black-myth-wukong": {
-        notes: "Black Myth: Wukong là game hành động RPG đòi hỏi cấu hình mạnh, đặc biệt là VGA để xử lý hiệu ứng đồ họa.",
-        low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "50-70 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "30-45 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "20-30 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    // Thêm game mới - Elden Ring (Offline game - cấu hình giống GTA V)
     "elden-ring": {
-        notes: "Elden Ring đòi hỏi cấu hình khá để chơi mượt mà, đặc biệt là trong các khu vực rộng lớn.",
-        low: { fps: "75-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "55-75 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "40-55 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        notes: "Elden Ring có giới hạn FPS và đòi hỏi cấu hình khá để chơi mượt.",
+        low: { fps: "80-90", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "65-75", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "50-60", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "40-50", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    // Thêm game mới - Naraka: Bladepoint (Online game - cấu hình giống Valorant)
     "naraka": {
-        notes: "Naraka: Bladepoint là game hành động battle royale, yêu cầu VGA tốt để xử lý hiệu ứng và chuyển động nhanh.",
-        low: { fps: "140+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "100-130 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        notes: "Naraka: Bladepoint cần GPU tốt để xử lý đồ họa và hiệu ứng.",
+        low: { fps: "120-140", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "100-120", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "80-100", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "60-80", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    // Thêm game mới - Genshin Impact (Online game - cấu hình giống Valorant nhưng nhẹ hơn)
-    "genshin-impact": {
-        notes: "Genshin Impact là game online open-world, tối ưu tốt và có thể chạy mượt trên nhiều cấu hình khác nhau.",
-        low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "90-110 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    "genshin": {
+        notes: "Genshin Impact được tối ưu tốt và có thể chạy mượt trên nhiều cấu hình.",
+        low: { fps: "180-200", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "160-180", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "140-160", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "120-140", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    'valorant': {
-        notes: "Valorant là game esports nhẹ, dễ chơi trên nhiều cấu hình.",
-        low: { fps: "200+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "70-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "50-70 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    "fo4": {
+        notes: "FIFA Online 4 được tối ưu tốt cho cả CPU và GPU.",
+        low: { fps: "280-300", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "230-250", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "180-200", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "130-150", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    'csgo': {
-        notes: "CS:GO chạy được trên hầu hết các cấu hình, CPU mạnh sẽ cải thiện FPS đáng kể.",
-        low: { fps: "250+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "150-200 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "90-120 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "70-90 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    "black-myth-wukong": {
+        notes: "Black Myth: Wukong là game AAA đòi hỏi cấu hình mạnh.",
+        low: { fps: "90-100", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "75-85", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-70", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "50-60", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
-    'pubg': {
-        notes: "PUBG cần GPU mạnh để đạt FPS ổn định.",
-        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "45-60 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "30-45 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'lol': {
-        notes: "LOL chạy tốt trên hầu hết các cấu hình PC.",
-        low: { fps: "144+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "100-120 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "50-70 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'gta-v': {
-        notes: "GTA V vẫn đòi hỏi cấu hình khá mạnh để chơi ở cài đặt cao.",
-        low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "50-70 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "30-45 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "25-35 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'elden-ring': {
-        notes: "Elden Ring khá đòi hỏi về cấu hình và có giới hạn FPS.",
-        low: { fps: "75-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "55-75 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "40-55 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "30-45 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'naraka': {
-        notes: "Naraka: Bladepoint cần cấu hình mạnh để đạt FPS ổn định.",
-        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "40-60 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "30-45 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'genshin': {
-        notes: "Genshin Impact khá nhẹ nhưng cũng cần cấu hình ổn cho setting cao.",
-        low: { fps: "100-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "70-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "50-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "40-60 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'black-myth-wukong': {
-        notes: "Black Myth: Wukong là game AAA đòi hỏi cấu hình cao.",
-        low: { fps: "75-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "55-75 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "40-55 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "30-40 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
-    },
-    'god-of-war': {
+    "god-of-war": {
         notes: "God of War là game đòi hỏi cấu hình mạnh cho các cài đặt cao.",
-        low: { fps: "70-85 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "50-65 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "35-50 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
-        ultra: { fps: "25-40 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+        low: { fps: "100-110", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "85-95", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "70-80", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "60-70", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    "battle-teams-2": {
+        notes: "Battle Teams 2 là game bắn súng nhẹ, tối ưu tốt cho nhiều cấu hình.",
+        low: { fps: "200-250", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "150-200", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "100-150", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "80-100", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    "delta-force": {
+        notes: "Delta Force là game bắn súng cổ điển, chạy tốt trên hầu hết cấu hình.",
+        low: { fps: "250-300", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "200-250", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "150-200", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "100-150", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    "audition": {
+        notes: "Audition là game nhảy nhẹ, tối ưu tốt cho mọi cấu hình.",
+        low: { fps: "200-250", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "180-220", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "150-180", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "120-150", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    "mu-origin": {
+        notes: "MU Origin là game nhập vai nhẹ, chạy tốt trên nhiều cấu hình.",
+        low: { fps: "180-220", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "150-180", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "120-150", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "90-120", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    "crossfire": {
+        notes: "CrossFire là game bắn súng online phổ biến, tối ưu tốt cho CPU.",
+        low: { fps: "300-350", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "250-300", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "200-250", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "150-200", description: "Cài đặt ultra, độ phân giải 1080p" }
     }
+};
+
+// Update game type classifications
+window.GAME_TYPES = {
+    ...window.GAME_TYPES,
+    "battle-teams-2": { type: "esports", cpuDependency: "high" },
+    "delta-force": { type: "esports", cpuDependency: "medium" },
+    "audition": { type: "casual", cpuDependency: "low" },
+    "mu-origin": { type: "mmorpg", cpuDependency: "medium" },
+    "crossfire": { type: "esports", cpuDependency: "very-high" }
 };
 
 const components = {
@@ -455,18 +433,65 @@ document.addEventListener('DOMContentLoaded', function () {
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .component-card:hover::before {
+            left: 100%;
+        }
+
         .component-image {
             max-width: 100px;
             margin-right: 20px;
             object-fit: contain;
+            transition: transform 0.3s ease;
         }
+
+        .component-card:hover .component-image {
+            transform: scale(1.1);
+        }
+
         #total-price {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 15px;
             margin-top: 20px;
             border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: priceGlow 2s infinite alternate;
         }
+
+        @keyframes priceGlow {
+            from {
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            to {
+                box-shadow: 0 2px 20px rgba(0,128,255,0.2);
+            }
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -476,7 +501,20 @@ document.addEventListener('DOMContentLoaded', function () {
             height: 100%;
             background: rgba(0,0,0,0.5);
             z-index: 1000;
+            animation: modalFade 0.3s ease;
         }
+
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .modal-content {
             background: white;
             padding: 20px;
@@ -484,28 +522,157 @@ document.addEventListener('DOMContentLoaded', function () {
             max-width: 800px;
             margin: 50px auto;
             border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            animation: modalSlide 0.3s ease;
         }
-         /* CSS cho bảng */
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .component-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            animation: tableAppear 0.5s ease;
         }
-        .component-table th, .component-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+
+        @keyframes tableAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .component-table th {
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e8e8e8 100%);
             font-weight: bold;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s ease;
         }
+
+        .component-table th:hover {
+            background: linear-gradient(135deg, #e8e8e8 0%, #f4f4f4 100%);
+        }
+
+        .component-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .component-table tr:hover td {
+            background-color: #f8f9fa;
+        }
+
         .component-table img {
-            max-width: 70px; /* Điều chỉnh kích thước ảnh trong bảng */
+            max-width: 70px;
             height: auto;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .component-table img:hover {
+            transform: scale(1.2);
+        }
+
+        .score-message, .upgrade-message {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            animation: messageSlide 0.5s ease;
+        }
+
+        @keyframes messageSlide {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .score-message {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            box-shadow: 0 2px 10px rgba(40,167,69,0.2);
+        }
+
+        .upgrade-message {
+            background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+            color: white;
+            box-shadow: 0 2px 10px rgba(253,126,20,0.2);
+        }
+
+        .graphics-quality-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            animation: qualityAppear 0.5s ease;
+        }
+
+        @keyframes qualityAppear {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fps-estimate-container {
+            background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            animation: fpsGlow 2s infinite alternate;
+        }
+
+        @keyframes fpsGlow {
+            from {
+                box-shadow: 0 2px 10px rgba(0,123,255,0.2);
+            }
+            to {
+                box-shadow: 0 2px 20px rgba(102,16,242,0.4);
+            }
+        }
+
+        #game-specific-performance {
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            margin: 15px 0;
+            animation: performanceSlide 0.5s ease;
+        }
+
+        @keyframes performanceSlide {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     `;
     document.head.appendChild(style);
@@ -1319,24 +1486,105 @@ function estimateGameFPS(performanceRating, gameId) {
     const gameInfo = window.GAME_FPS_ESTIMATES[gameId];
     if (!gameInfo) return { fps: "N/A", description: "Không có dữ liệu" };
     
-    // Get the selected graphics quality
+    const selectedCPU = document.getElementById('cpu').value;
+    const selectedVGA = document.getElementById('vga').value;
     const graphicsQuality = document.getElementById('graphics-quality').value;
     
-    // Return the FPS estimate for the selected quality if available
-    if (graphicsQuality && gameInfo[graphicsQuality]) {
-        return gameInfo[graphicsQuality];
+    // Get base hardware scores
+    let cpuScore = getCPUScore(selectedCPU);
+    const gpuScore = getGPUScore(selectedVGA);
+    
+    // Get CPU architecture info
+    const cpuArch = getCPUArchitecture(selectedCPU);
+    if (cpuArch) {
+        // Adjust CPU score based on architecture and cache
+        cpuScore = adjustCPUScore(cpuScore, cpuArch);
     }
     
-    // Fallback to the old logic if no quality is selected or the selected quality is not available
-    if (performanceRating === window.PERFORMANCE_RATINGS.EXCELLENT ||
-        performanceRating === window.PERFORMANCE_RATINGS.VERY_GOOD) {
-        return gameInfo.high;
-    } else if (performanceRating === window.PERFORMANCE_RATINGS.GOOD ||
-              performanceRating === window.PERFORMANCE_RATINGS.AVERAGE) {
-        return gameInfo.medium;
+    // Get game type and calculate performance score
+    const gameType = window.GAME_TYPES[gameId];
+    const performanceScore = calculateGamePerformanceScore(
+        cpuScore,
+        gpuScore,
+        gameType.type,
+        graphicsQuality
+    );
+    
+    // Get base FPS range for the selected quality
+    let fpsRange = gameInfo[graphicsQuality] || gameInfo.medium;
+    
+    // Parse FPS range
+    let [minFps, maxFps] = parseFpsRange(fpsRange.fps);
+    
+    // Apply game-specific adjustments
+    if (gameType.cpuDependency === "very-high" && graphicsQuality === "low") {
+        // For CPU-heavy games at low settings, CPU has even more impact
+        minFps = Math.round(minFps * (cpuScore / 100) * 1.2);
+        maxFps = Math.round(maxFps * (cpuScore / 100) * 1.2);
     } else {
-        return gameInfo.low;
+        // Normal performance scaling
+        minFps = Math.round(minFps * (performanceScore / 100));
+        maxFps = Math.round(maxFps * (performanceScore / 100));
     }
+    
+    return {
+        fps: `${minFps}-${maxFps}`,
+        description: fpsRange.description
+    };
+}
+
+function getCPUScore(cpuName) {
+    // Try to find exact match
+    for (const [key, score] of Object.entries(window.HARDWARE_SCORES.cpu)) {
+        if (cpuName.includes(key)) return score;
+    }
+    
+    // Fallback to family-based score
+    const family = extractCPUFamily(cpuName);
+    switch (family) {
+        case "Core i9": return 95;
+        case "Core i7": return 85;
+        case "Core i5": return 75;
+        case "Core i3": return 55;
+        case "Ryzen 9": return 95;
+        case "Ryzen 7": return 85;
+        case "Ryzen 5": return 75;
+        case "Ryzen 3": return 55;
+        default: return 50;
+    }
+}
+
+function getGPUScore(gpuName) {
+    // Try to find exact match
+    for (const [key, score] of Object.entries(window.HARDWARE_SCORES.gpu)) {
+        if (gpuName.includes(key)) return score;
+    }
+    
+    // Fallback to series-based score
+    if (gpuName.includes("RTX 40")) return 90;
+    if (gpuName.includes("RTX 30")) return 80;
+    if (gpuName.includes("RTX 20")) return 70;
+    if (gpuName.includes("GTX 16")) return 60;
+    if (gpuName.includes("GTX 10")) return 50;
+    if (gpuName.includes("RX 7000")) return 90;
+    if (gpuName.includes("RX 6000")) return 80;
+    if (gpuName.includes("RX 5000")) return 70;
+    return 40;
+}
+
+function parseFpsRange(fpsString) {
+    // Remove "FPS" and any whitespace
+    fpsString = fpsString.replace(/FPS/gi, "").trim();
+    
+    // Handle "X+" format
+    if (fpsString.includes("+")) {
+        const base = parseInt(fpsString);
+        return [base, Math.round(base * 1.2)];
+    }
+    
+    // Handle "X-Y" format
+    const [min, max] = fpsString.split("-").map(num => parseInt(num.trim()));
+    return [min || 30, max || 60];
 }
 
 /**
@@ -1520,5 +1768,164 @@ function updateFpsEstimate(gamePerformance, selectedGame) {
     document.getElementById('fps-estimate-container').style.display = 'flex';
     document.getElementById('fps-estimate').textContent = fpsEstimate.fps;
     document.getElementById('fps-estimate').style.color = gamePerformance.color;
+}
+
+// Add performance scores for older and newer hardware
+window.HARDWARE_SCORES = {
+    cpu: {
+        // Intel old gen
+        "Core i7-1220v3": 45,
+        "Core i5-1220v3": 35,
+        "Core i3-1220v3": 25,
+        // Intel current gen
+        "Core i9-13900K": 100,
+        "Core i7-13700K": 90,
+        "Core i5-13600K": 80,
+        "Core i3-13100": 60,
+        // AMD old gen
+        "Ryzen 7 1800X": 50,
+        "Ryzen 5 1600X": 40,
+        "Ryzen 3 1300X": 30,
+        // AMD current gen
+        "Ryzen 9 7950X": 100,
+        "Ryzen 7 7700X": 90,
+        "Ryzen 5 7600X": 80,
+        "Ryzen 3 7300X": 60
+    },
+    gpu: {
+        // NVIDIA old gen
+        "GTX 750 Ti": 20,
+        "GTX 960": 30,
+        "GTX 1050 Ti": 35,
+        // NVIDIA current gen
+        "RTX 4090": 100,
+        "RTX 4080": 95,
+        "RTX 4070": 85,
+        "RTX 4060": 75,
+        // AMD old gen
+        "RX 460": 25,
+        "RX 560": 30,
+        "RX 570": 35,
+        // AMD current gen
+        "RX 7900 XTX": 100,
+        "RX 7800 XT": 90,
+        "RX 7700 XT": 80,
+        "RX 7600": 70
+    }
+};
+
+// Add CPU architecture information
+window.CPU_ARCHITECTURES = {
+    // AMD
+    "Ryzen 7 7800X3D": { arch: "zen4", cache: "large", ipc: 1.15 },
+    "Ryzen 5 7600X": { arch: "zen4", cache: "normal", ipc: 1.15 },
+    "Ryzen 9 5950X": { arch: "zen3", cache: "normal", ipc: 1.1 },
+    "Ryzen 7 5800X3D": { arch: "zen3", cache: "large", ipc: 1.1 },
+    // Intel
+    "Core i9-14900K": { arch: "raptorlake", cache: "normal", ipc: 1.05 },
+    "Core i7-14700K": { arch: "raptorlake", cache: "normal", ipc: 1.05 },
+    "Core i5-14600K": { arch: "raptorlake", cache: "normal", ipc: 1.05 }
+};
+
+// Add game type classifications
+window.GAME_TYPES = {
+    "valorant": { type: "esports", cpuDependency: "high" },
+    "csgo": { type: "esports", cpuDependency: "very-high" },
+    "lol": { type: "esports", cpuDependency: "medium" },
+    "pubg": { type: "battle-royale", cpuDependency: "medium" },
+    "gta-v": { type: "aaa", cpuDependency: "balanced" },
+    "elden-ring": { type: "aaa", cpuDependency: "balanced" },
+    "god-of-war": { type: "aaa", cpuDependency: "balanced" },
+    "black-myth-wukong": { type: "aaa", cpuDependency: "balanced" },
+    "battle-teams-2": { type: "esports", cpuDependency: "high" },
+    "delta-force": { type: "esports", cpuDependency: "medium" },
+    "audition": { type: "casual", cpuDependency: "low" },
+    "mu-origin": { type: "mmorpg", cpuDependency: "medium" },
+    "crossfire": { type: "esports", cpuDependency: "very-high" }
+};
+
+function getCPUArchitecture(cpuName) {
+    for (const [key, value] of Object.entries(window.CPU_ARCHITECTURES)) {
+        if (cpuName.includes(key)) {
+            return value;
+        }
+    }
+    return null;
+}
+
+function calculateGamePerformanceScore(cpuScore, gpuScore, gameType, graphicsQuality) {
+    let cpuWeight, gpuWeight;
+    
+    switch(gameType) {
+        case 'esports':
+            if (graphicsQuality === 'low') {
+                cpuWeight = 0.7;
+                gpuWeight = 0.3;
+            } else if (graphicsQuality === 'medium') {
+                cpuWeight = 0.5;
+                gpuWeight = 0.5;
+            } else {
+                cpuWeight = 0.3;
+                gpuWeight = 0.7;
+            }
+            break;
+            
+        case 'mmorpg':
+            if (graphicsQuality === 'low') {
+                cpuWeight = 0.5;
+                gpuWeight = 0.5;
+            } else if (graphicsQuality === 'medium') {
+                cpuWeight = 0.4;
+                gpuWeight = 0.6;
+            } else {
+                cpuWeight = 0.3;
+                gpuWeight = 0.7;
+            }
+            break;
+            
+        case 'casual':
+            if (graphicsQuality === 'low') {
+                cpuWeight = 0.6;
+                gpuWeight = 0.4;
+            } else if (graphicsQuality === 'medium') {
+                cpuWeight = 0.5;
+                gpuWeight = 0.5;
+            } else {
+                cpuWeight = 0.4;
+                gpuWeight = 0.6;
+            }
+            break;
+            
+        case 'battle-royale':
+        case 'aaa':
+        default:
+            if (graphicsQuality === 'low') {
+                cpuWeight = 0.4;
+                gpuWeight = 0.6;
+            } else if (graphicsQuality === 'medium') {
+                cpuWeight = 0.3;
+                gpuWeight = 0.7;
+            } else {
+                cpuWeight = 0.2;
+                gpuWeight = 0.8;
+            }
+            break;
+    }
+    
+    return (cpuScore * cpuWeight) + (gpuScore * gpuWeight);
+}
+
+function adjustCPUScore(baseCpuScore, cpuInfo) {
+    let finalScore = baseCpuScore;
+    
+    // Apply IPC multiplier
+    finalScore *= cpuInfo.ipc;
+    
+    // Apply cache bonus for large cache CPUs
+    if (cpuInfo.cache === "large") {
+        finalScore *= 1.2;
+    }
+    
+    return Math.round(finalScore);
 }
 
