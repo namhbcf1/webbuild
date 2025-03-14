@@ -1777,16 +1777,124 @@ function displayGameSpecificPerformance(gamePerformance, selectedGame) {
     // Update FPS estimate
     updateFpsEstimate(gamePerformance, selectedGame);
     
-    // Update game-specific performance details
+    // Update game-specific performance details with enhanced styling
     const gameSpecificElement = document.getElementById('game-specific-performance');
     if (gameSpecificElement && gameInfo) {
+        const selectedCPU = document.getElementById('cpu').value;
+        const isX3D = selectedCPU.toLowerCase().includes('x3d');
+        const gameType = window.GAME_TYPES[selectedGame];
+        
+        // Calculate performance score based on game type
+        let performanceScore = 0;
+        if (gameType) {
+            switch(gameType.type) {
+                case "esports":
+                    performanceScore = isX3D ? 95 : 85;
+                    break;
+                case "battle-royale":
+                    performanceScore = isX3D ? 90 : 80;
+                    break;
+                case "mmorpg":
+                    performanceScore = isX3D ? 88 : 78;
+                    break;
+                case "aaa":
+                    performanceScore = isX3D ? 85 : 75;
+                    break;
+                default:
+                    performanceScore = isX3D ? 85 : 75;
+            }
+        }
+
+        // Get performance rating color based on score
+        const getPerformanceColor = (score) => {
+            if (score >= 90) return '#28a745';
+            if (score >= 80) return '#5cb85c';
+            if (score >= 70) return '#4bbf73';
+            if (score >= 60) return '#f0ad4e';
+            return '#dc3545';
+        };
+
+        // Get CPU dependency text and color
+        const getCpuDependencyInfo = (dependency) => {
+            switch(dependency) {
+                case "very-high":
+                    return { text: "Rất cao", color: "#dc3545" };
+                case "high":
+                    return { text: "Cao", color: "#f0ad4e" };
+                case "medium":
+                    return { text: "Trung bình", color: "#5cb85c" };
+                case "low":
+                    return { text: "Thấp", color: "#28a745" };
+                default:
+                    return { text: "Cân bằng", color: "#4bbf73" };
+            }
+        };
+
+        const cpuDependency = getCpuDependencyInfo(gameType?.cpuDependency);
+        
         gameSpecificElement.innerHTML = `
-            <p><strong>${getGameName(selectedGame)}</strong> - ${gameInfo.notes || 'Không có ghi chú'}</p>
-            <div style="margin-top: 10px; padding-top: 5px; border-top: 1px solid #eee;">
-                <p>Thấp: ${gameInfo.low.fps} (${gameInfo.low.description})</p>
-                <p>Trung bình: ${gameInfo.medium.fps} (${gameInfo.medium.description})</p>
-                <p>Cao: ${gameInfo.high.fps} (${gameInfo.high.description})</p>
-                ${gameInfo.ultra ? `<p>Ultra: ${gameInfo.ultra.fps} (${gameInfo.ultra.description})</p>` : ''}
+            <div class="game-performance-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div class="game-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div class="game-title" style="flex: 1;">
+                        <h3 style="margin: 0; color: #333; font-size: 1.5em;">${getGameName(selectedGame)}</h3>
+                        <p style="margin: 5px 0 0 0; color: #666;">${gameInfo.notes}</p>
+                    </div>
+                    <div class="performance-score" style="text-align: center; background: ${getPerformanceColor(performanceScore)}; color: white; padding: 10px 20px; border-radius: 8px;">
+                        <div style="font-size: 1.8em; font-weight: bold;">${performanceScore}</div>
+                        <div style="font-size: 0.8em;">Điểm hiệu năng</div>
+                    </div>
+                </div>
+
+                <div class="game-details" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+                    <div class="detail-card" style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h4 style="margin: 0 0 10px 0; color: #333;">Thông tin game</h4>
+                        <p style="margin: 5px 0; color: #666;">
+                            <span style="display: inline-block; width: 120px;">Thể loại:</span>
+                            <strong>${gameType?.type.toUpperCase() || 'N/A'}</strong>
+                        </p>
+                        <p style="margin: 5px 0; color: #666;">
+                            <span style="display: inline-block; width: 120px;">Phụ thuộc CPU:</span>
+                            <strong style="color: ${cpuDependency.color}">${cpuDependency.text}</strong>
+                        </p>
+                    </div>
+
+                    <div class="detail-card" style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h4 style="margin: 0 0 10px 0; color: #333;">FPS dự kiến</h4>
+                        <div class="fps-table" style="display: grid; gap: 5px;">
+                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
+                                <span style="color: #28a745;">Thấp:</span>
+                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.low.fps} FPS</div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
+                                <span style="color: #ffc107;">Trung bình:</span>
+                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.medium.fps} FPS</div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
+                                <span style="color: #dc3545;">Cao:</span>
+                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.high.fps} FPS</div>
+                            </div>
+                            ${gameInfo.ultra ? `
+                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
+                                <span style="color: #6f42c1;">Ultra:</span>
+                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.ultra.fps} FPS</div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="optimization-tips" style="margin-top: 15px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h4 style="margin: 0 0 10px 0; color: #333;">Gợi ý tối ưu</h4>
+                    <ul style="margin: 0; padding-left: 20px; color: #666;">
+                        ${gameType?.cpuDependency === "very-high" || gameType?.cpuDependency === "high" ? 
+                            `<li>Game này phụ thuộc nhiều vào CPU, nên ưu tiên nâng cấp CPU để tăng FPS</li>` : ''}
+                        ${isX3D ? 
+                            `<li>CPU X3D của bạn sẽ cho hiệu năng vượt trội trong game này</li>` : ''}
+                        <li>Điều chỉnh cài đặt đồ họa để cân bằng giữa chất lượng hình ảnh và FPS</li>
+                        ${gameType?.type === "esports" ? 
+                            `<li>Khuyến nghị chơi ở cài đặt thấp để đạt FPS cao nhất</li>` : ''}
+                    </ul>
+                </div>
             </div>
         `;
     }
@@ -1964,4 +2072,47 @@ function adjustCPUScore(baseCpuScore, cpuInfo) {
     
     return Math.round(finalScore);
 }
+
+// Add CSS for animations
+const style = document.createElement('style');
+style.textContent = `
+    .game-performance-card {
+        animation: slideIn 0.3s ease-out;
+    }
+
+    .detail-card {
+        transition: transform 0.2s ease-out;
+    }
+
+    .detail-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .performance-score {
+        animation: scoreIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scoreIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+`;
+document.head.appendChild(style);
 
