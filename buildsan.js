@@ -1554,6 +1554,35 @@ function estimateGameFPS(performanceRating, gameId) {
     };
 }
 
+/**
+ * Trích xuất dòng CPU từ tên CPU được chọn
+ * @param {string} cpuName - Tên đầy đủ của CPU
+ * @returns {string} - Dòng CPU (Core i3/i5/i7/i9 hoặc Ryzen 3/5/7/9)
+ */
+function extractCPUFamily(cpuName) {
+    if (!cpuName) return "";
+    
+    // Xử lý cho CPU Intel
+    if (cpuName.toLowerCase().includes('intel') || cpuName.toLowerCase().includes('core')) {
+        if (cpuName.includes('i9')) return 'Core i9';
+        if (cpuName.includes('i7')) return 'Core i7';
+        if (cpuName.includes('i5')) return 'Core i5';
+        if (cpuName.includes('i3')) return 'Core i3';
+    }
+    
+    // Xử lý cho CPU AMD
+    if (cpuName.toLowerCase().includes('amd') || cpuName.toLowerCase().includes('ryzen')) {
+        if (cpuName.includes('9')) return 'Ryzen 9';
+        if (cpuName.includes('7')) return 'Ryzen 7';
+        if (cpuName.includes('5')) return 'Ryzen 5';
+        if (cpuName.includes('3')) return 'Ryzen 3';
+    }
+    
+    // Nếu không tìm thấy match, thử dùng regex
+    const match = cpuName.match(/(Core i[3579]|Ryzen [3579])/i);
+    return match ? match[0] : "";
+}
+
 function getCPUScore(cpuName) {
     // Try to find exact match
     for (const [key, score] of Object.entries(window.HARDWARE_SCORES.cpu)) {
