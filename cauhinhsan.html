@@ -20,6 +20,14 @@
             window.module = { exports: window.exports };
         }
         
+        // Fix for 'require is not defined' error
+        if (typeof require === 'undefined') {
+            window.require = function(module) {
+                console.log('Mock require called for:', module);
+                return {};
+            };
+        }
+        
         // Fix for potential infinite recursion in getWindow/getComputedStyle
         const originalGetComputedStyle = window.getComputedStyle;
         window.getComputedStyle = function(element, pseudoElt) {
@@ -31,6 +39,30 @@
             }
             return originalGetComputedStyle(element, pseudoElt);
         };
+        
+        // Fix for "Cannot set property top of #<Window> which has only a getter"
+        try {
+            // Create a proxy for window to intercept property access
+            const windowProxy = new Proxy(window, {
+                set: function(obj, prop, value) {
+                    // Ignore attempts to set read-only properties
+                    if (prop === 'top' || prop === 'parent' || prop === 'self') {
+                        console.warn(`Attempted to set read-only property window.${prop}`);
+                        return true; // Pretend it worked
+                    }
+                    // For all other properties, set them normally
+                    obj[prop] = value;
+                    return true;
+                }
+            });
+            
+            // This won't actually replace window, but it might help with some scripts
+            if (typeof globalThis !== 'undefined') {
+                globalThis.windowProxy = windowProxy;
+            }
+        } catch (e) {
+            console.warn('Failed to create window proxy:', e);
+        }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -638,7 +670,7 @@
             
             // Khởi tạo tooltips cho các thành phần
             try {
-                if (window.tippy) {
+                if (typeof tippy !== 'undefined') {
                     tippy('[data-tippy-content]', {
                         placement: 'top',
                         arrow: true,

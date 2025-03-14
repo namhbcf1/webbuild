@@ -95,9 +95,6 @@ window.VGA_RATINGS = {
     "RX 7900 XTX": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT }
 };
 
-// Initialize GAME_FPS_ESTIMATES as an empty object first
-window.GAME_FPS_ESTIMATES = window.GAME_FPS_ESTIMATES || {};
-
 // Extend the GAME_FPS_ESTIMATES with data from HowManyFPS
 window.GAME_FPS_ESTIMATES = {
     ...window.GAME_FPS_ESTIMATES,
