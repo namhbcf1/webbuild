@@ -1315,20 +1315,105 @@ function updateDropdown(id, value) {
 }
 
 /**
- * Đánh giá hiệu năng của cấu hình CPU và VGA đã chọn cho các tác vụ khác nhau
- * và cập nhật giao diện người dùng
+ * Đánh giá hiệu năng hệ thống dựa trên CPU và GPU được chọn
  */
 function evaluateSystemPerformance() {
-    const selectedCPU = document.getElementById('cpu').value;
-    const selectedVGA = document.getElementById('vga').value;
+    console.log('Đang đánh giá hiệu năng hệ thống...');
     
-    if (!selectedCPU || !selectedVGA) return;
+    // Lấy CPU và GPU được chọn
+    const cpuDropdown = document.getElementById('cpu-dropdown');
+    const gpuDropdown = document.getElementById('gpu-dropdown');
     
-    const cpuScore = getCPUScore(selectedCPU);
-    const gpuScore = getGPUScore(selectedVGA);
+    if (!cpuDropdown || !gpuDropdown) {
+        console.error('Không tìm thấy dropdown CPU hoặc GPU');
+        return;
+    }
     
-    updatePerformanceUI(cpuScore, gpuScore);
-    // ... rest of the existing evaluateSystemPerformance function ...
+    const selectedCpu = cpuDropdown.value;
+    const selectedGpu = gpuDropdown.value;
+    
+    if (!selectedCpu || !selectedGpu) {
+        console.warn('Người dùng chưa chọn CPU hoặc GPU');
+        return;
+    }
+    
+    // Tính điểm CPU và GPU
+    cpuScore = getScoreForCpu(selectedCpu);
+    gpuScore = getScoreForGpu(selectedGpu);
+    
+    console.log('Điểm số CPU:', cpuScore, 'Điểm số GPU:', gpuScore);
+    
+    // Cập nhật tất cả các metrics hiệu năng
+    updateAllPerformanceMetrics();
+    
+    // Hiển thị thông tin chi tiết về hiệu năng cho game được chọn
+    const gameId = getSelectedGameId();
+    if (gameId) {
+        displayDetailedPerformance(gameId);
+    }
+    
+    // Tính và hiển thị tổng điểm
+    const totalScore = Math.round((cpuScore + gpuScore) / 2);
+    const totalPerformanceElement = document.getElementById('total-performance');
+    if (totalPerformanceElement) {
+        totalPerformanceElement.textContent = totalScore;
+    }
+    
+    console.log('Đã hoàn thành đánh giá hiệu năng hệ thống');
+}
+
+// Hàm tính toán hiệu năng tổng thể
+function calculateOverallPerformance(cpuScore, gpuScore, type) {
+    let score, label, color;
+    
+    switch(type) {
+        case 'gaming':
+            score = Math.round((cpuScore * 0.4 + gpuScore * 0.6) * 1.1); // Ưu tiên GPU cho gaming
+            break;
+        case 'graphics':
+            score = Math.round((cpuScore * 0.3 + gpuScore * 0.7) * 1.05); // Ưu tiên cao cho GPU
+            break;
+        case 'office':
+            score = Math.round((cpuScore * 0.7 + gpuScore * 0.3) * 1.2); // Ưu tiên CPU
+            break;
+        default:
+            score = Math.round((cpuScore + gpuScore) / 2);
+    }
+    
+    // Giới hạn score trong khoảng 0-100
+    score = Math.min(100, Math.max(0, score));
+    
+    // Xác định label và color dựa trên score
+    if (score >= 90) {
+        label = "Xuất sắc";
+        color = "#28a745";
+    } else if (score >= 75) {
+        label = "Rất tốt";
+        color = "#4bbf73";
+    } else if (score >= 60) {
+        label = "Tốt";
+        color = "#5cb85c";
+    } else if (score >= 45) {
+        label = "Trung bình";
+        color = "#f0ad4e";
+    } else if (score >= 30) {
+        label = "Yếu";
+        color = "#fd7e14";
+    } else {
+        label = "Rất yếu";
+        color = "#dc3545";
+    }
+    
+    return { score, label, color };
+}
+
+// Hàm cập nhật hiển thị hiệu năng
+function updatePerformanceDisplay(elementId, performance) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.textContent = `${performance.label} (${performance.score}%)`;
+        element.style.color = performance.color;
+    }
 }
 
 function calculateBottleneck(cpuScore, gpuScore) {
@@ -1357,52 +1442,118 @@ function getBottleneckDescription(bottleneckData) {
     return { text: `${component} giới hạn nghiêm trọng (${percentage}%)`, color: "#dc3545" };
 }
 
+/**
+ * Cập nhật giao diện hiệu năng dựa trên điểm CPU và GPU
+ */
 function updatePerformanceUI(cpuScore, gpuScore) {
-    const bottleneckData = calculateBottleneck(cpuScore, gpuScore);
-    const bottleneckInfo = getBottleneckDescription(bottleneckData);
-    
-    // Update CPU performance display
-    const cpuDetails = document.getElementById('cpu-performance-details');
-    if (cpuDetails) {
-        cpuDetails.innerHTML = `
-            <div class="performance-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 15px; margin-bottom: 15px;">
-                <div class="performance-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <h4 style="margin: 0; color: #333;">CPU Performance</h4>
-                    <span class="score-badge" style="background: ${getScoreColor(cpuScore)}; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">${cpuScore}%</span>
-                </div>
-                <div class="progress" style="height: 10px; background-color: #e9ecef; border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
-                    <div id="cpu-progress-bar" class="progress-bar" style="height: 100%; width: ${cpuScore}%; background: ${getScoreColor(cpuScore)}; transition: width 0.5s ease;"></div>
-                </div>
-                ${bottleneckData.isCpuBottleneck ? `
-                    <div class="bottleneck-warning" style="background: ${bottleneckInfo.color}20; color: ${bottleneckInfo.color}; padding: 8px; border-radius: 6px; font-size: 0.9em; margin-top: 8px;">
-                        <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
-                        ${bottleneckInfo.text}
-                    </div>
-                ` : ''}
-            </div>
-        `;
-    }
+    console.log('Đang cập nhật UI hiệu năng với CPU:', cpuScore, 'GPU:', gpuScore);
+    const gamePerformance = calculateGamePerformance(cpuScore, gpuScore);
+    const graphicPerformance = calculateGraphicsPerformance(cpuScore, gpuScore);
+    const officePerformance = calculateOfficePerformance(cpuScore, gpuScore);
+    console.log('Hiệu năng đã tính toán:', {
+        game: gamePerformance,
+        graphic: graphicPerformance,
+        office: officePerformance
+    });
+    updateProgressBar('game-performance', gamePerformance);
+    updateProgressBar('graphic-performance', graphicPerformance);
+    updateProgressBar('office-performance', officePerformance);
+    const livestreamValue = updateLivestreamAndRenderPerformance(gamePerformance, graphicPerformance, officePerformance);
+    updateBottleneckUI(cpuScore, gpuScore);
+    updatePerformanceChart();
+    console.log('Đã cập nhật UI hiệu năng thành công');
+    return { gamePerformance, graphicPerformance, officePerformance, livestreamValue };
+}
 
-    // Update VGA performance display
-    const vgaDetails = document.getElementById('vga-performance-details');
-    if (vgaDetails) {
-        vgaDetails.innerHTML = `
-            <div class="performance-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 15px;">
-                <div class="performance-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <h4 style="margin: 0; color: #333;">GPU Performance</h4>
-                    <span class="score-badge" style="background: ${getScoreColor(gpuScore)}; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">${gpuScore}%</span>
-                </div>
-                <div class="progress" style="height: 10px; background-color: #e9ecef; border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
-                    <div id="vga-progress-bar" class="progress-bar" style="height: 100%; width: ${gpuScore}%; background: ${getScoreColor(gpuScore)}; transition: width 0.5s ease;"></div>
-                </div>
-                ${!bottleneckData.isCpuBottleneck ? `
-                    <div class="bottleneck-warning" style="background: ${bottleneckInfo.color}20; color: ${bottleneckInfo.color}; padding: 8px; border-radius: 6px; font-size: 0.9em; margin-top: 8px;">
-                        <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
-                        ${bottleneckInfo.text}
-                    </div>
-                ` : ''}
-            </div>
-        `;
+function updateProgressBar(elementId, performance) {
+    const progressBar = document.getElementById(elementId);
+    if (progressBar) {
+        progressBar.style.width = `${performance}%`;
+        let backgroundColor;
+        if (performance >= 80) {
+            backgroundColor = '#4CAF50';
+        } else if (performance >= 60) {
+            backgroundColor = '#8BC34A';
+        } else if (performance >= 40) {
+            backgroundColor = '#FFC107';
+        } else {
+            backgroundColor = '#F44336';
+        }
+        progressBar.style.backgroundColor = backgroundColor;
+        const metricHeader = progressBar.closest('.performance-metric').querySelector('.metric-header span');
+        if (metricHeader) {
+            metricHeader.setAttribute('data-score', performance);
+            metricHeader.textContent = `${performance}`;
+        }
+    } else {
+        console.warn(`Không tìm thấy thanh tiến trình với id ${elementId}`);
+    }
+}
+
+function updateLivestreamAndRenderPerformance(gamePerformance, graphicPerformance, officePerformance) {
+    console.log('Cập nhật hiệu năng livestream và render với:', {
+        game: gamePerformance,
+        graphic: graphicPerformance,
+        office: officePerformance
+    });
+    const livestreamPerformance = Math.floor((gamePerformance * 0.5 + graphicPerformance * 0.3 + officePerformance * 0.2) * 0.95);
+    const renderPerformance = Math.floor((gamePerformance * 0.2 + graphicPerformance * 0.7 + officePerformance * 0.1) * 0.98);
+    console.log('Hiệu năng đã tính:', {
+        livestream: livestreamPerformance,
+        render: renderPerformance
+    });
+    const livestreamElement = document.getElementById('livestream-performance');
+    if (livestreamElement) {
+        livestreamElement.style.width = `${livestreamPerformance}%`;
+        livestreamElement.style.backgroundColor = getScoreColor(livestreamPerformance);
+        livestreamElement.setAttribute('data-value', livestreamPerformance);
+        const livestreamSpan = document.querySelector('.metric-header i.fa-broadcast-tower')?.closest('.metric-header')?.querySelector('span');
+        if (livestreamSpan) {
+            livestreamSpan.setAttribute('data-score', livestreamPerformance);
+            livestreamSpan.textContent = 'Livestream';
+        }
+    }
+    const renderElement = document.getElementById('render-performance');
+    if (renderElement) {
+        renderElement.style.width = `${renderPerformance}%`;
+        renderElement.style.backgroundColor = getScoreColor(renderPerformance);
+        renderElement.setAttribute('data-value', renderPerformance);
+        const renderSpan = document.querySelector('.metric-header i.fa-film')?.closest('.metric-header')?.querySelector('span');
+        if (renderSpan) {
+            renderSpan.setAttribute('data-score', renderPerformance);
+            renderSpan.textContent = 'Render';
+        }
+    }
+    return livestreamPerformance;
+}
+
+function updateBottleneckUI(cpuScore, gpuScore) {
+    const bottleneckFill = document.getElementById('bottleneck-indicator');
+    const bottleneckPercentage = document.getElementById('bottleneck-percentage');
+    if (!bottleneckFill || !bottleneckPercentage) {
+        console.warn('Không tìm thấy phần tử bottleneck-indicator hoặc bottleneck-percentage');
+        return;
+    }
+    const bottleneckData = calculateBottleneck(cpuScore, gpuScore);
+    let position = 50 + (bottleneckData.percentage / 2);
+    position = Math.max(5, Math.min(95, position));
+    bottleneckFill.style.left = `${position}%`;
+    if (Math.abs(bottleneckData.percentage) <= 10) {
+        bottleneckFill.style.backgroundColor = '#4caf50';
+        bottleneckFill.style.border = '2px solid #2e7d32';
+    } else if (Math.abs(bottleneckData.percentage) <= 30) {
+        bottleneckFill.style.backgroundColor = '#ffeb3b';
+        bottleneckFill.style.border = '2px solid #fbc02d';
+    } else {
+        bottleneckFill.style.backgroundColor = '#f44336';
+        bottleneckFill.style.border = '2px solid #c62828';
+    }
+    if (bottleneckData.percentage === 0) {
+        bottleneckPercentage.textContent = 'Cân bằng lý tưởng';
+    } else if (bottleneckData.percentage < 0) {
+        bottleneckPercentage.textContent = `CPU bottleneck ${Math.abs(bottleneckData.percentage).toFixed(0)}%`;
+    } else {
+        bottleneckPercentage.textContent = `GPU bottleneck ${bottleneckData.percentage.toFixed(0)}%`;
     }
 }
 
@@ -1554,25 +1705,100 @@ function estimateGameFPS(performanceRating, gameId) {
     };
 }
 
-function getCPUScore(cpuName) {
-    // Try to find exact match
-    for (const [key, score] of Object.entries(window.HARDWARE_SCORES.cpu)) {
-        if (cpuName.includes(key)) return score;
+// Hàm trích xuất model CPU từ tên CPU
+function extractCPUFamily(cpuName) {
+    if (!cpuName) return null;
+    
+    // Xử lý cho Intel
+    if (cpuName.includes('Intel') || cpuName.includes('Core')) {
+        if (cpuName.includes('i3')) return 'Core i3';
+        if (cpuName.includes('i5')) return 'Core i5';
+        if (cpuName.includes('i7')) return 'Core i7';
+        if (cpuName.includes('i9')) return 'Core i9';
+        if (cpuName.includes('Xeon')) return 'Core i7'; // Xeon tương đương i7 về hiệu năng
+        return 'Core i3'; // Mặc định cho các CPU Intel khác
     }
     
-    // Fallback to family-based score
-    const family = extractCPUFamily(cpuName);
-    switch (family) {
-        case "Core i9": return 95;
-        case "Core i7": return 85;
-        case "Core i5": return 75;
-        case "Core i3": return 55;
-        case "Ryzen 9": return 95;
-        case "Ryzen 7": return 85;
-        case "Ryzen 5": return 75;
-        case "Ryzen 3": return 55;
-        default: return 50;
+    // Xử lý cho AMD
+    if (cpuName.includes('AMD') || cpuName.includes('Ryzen')) {
+        if (cpuName.includes('Ryzen 3')) return 'Ryzen 3';
+        if (cpuName.includes('Ryzen 5')) return 'Ryzen 5';
+        if (cpuName.includes('Ryzen 7')) return 'Ryzen 7';
+        if (cpuName.includes('Ryzen 9')) return 'Ryzen 9';
+        return 'Ryzen 3'; // Mặc định cho các CPU AMD khác
     }
+    
+    // Nếu không nhận dạng được, trả về null
+    return null;
+}
+
+// Hàm lấy điểm CPU dựa trên tên
+function getCPUScore(cpuName) {
+    if (!cpuName) return 0;
+    
+    // Nếu là mã CPU từ object cpuData, lấy điểm từ đó
+    const cpuKey = Object.keys(cpuData).find(key => cpuData[key].name === cpuName);
+    if (cpuKey && cpuData[cpuKey].score) {
+        return cpuData[cpuKey].score * 10; // Điểm trong data nhân 10 để có thang điểm 100
+    }
+    
+    // Nếu không tìm thấy trong data, tính điểm dựa trên tên CPU
+    const cpuFamily = extractCPUFamily(cpuName);
+    
+    if (!cpuFamily) return 30; // Giá trị mặc định nếu không xác định được dòng CPU
+    
+    // Điểm cơ bản dựa trên dòng CPU
+    let baseScore = 0;
+    switch (cpuFamily) {
+        case 'Core i3':
+        case 'Ryzen 3':
+            baseScore = 35;
+            break;
+        case 'Core i5':
+        case 'Ryzen 5':
+            baseScore = 60;
+            break;
+        case 'Core i7':
+        case 'Ryzen 7':
+            baseScore = 80;
+            break;
+        case 'Core i9':
+        case 'Ryzen 9':
+            baseScore = 95;
+            break;
+        default:
+            baseScore = 30;
+    }
+    
+    // Điều chỉnh dựa trên thế hệ CPU (nếu có thông tin)
+    const generation = getCPUGeneration(cpuName);
+    if (generation) {
+        baseScore += (generation - 8) * 5; // Mỗi thế hệ tăng 5 điểm so với Gen 8
+    }
+    
+    // Giới hạn trong khoảng 10-100
+    return Math.min(100, Math.max(10, baseScore));
+}
+
+// Hàm phân tích thế hệ CPU
+function getCPUGeneration(cpuName) {
+    if (!cpuName) return null;
+    
+    // Tìm thế hệ cho Intel
+    const intelGenMatch = cpuName.match(/(\d+)th Gen|[i][3579]-(\d{1,2})\d{3}/);
+    if (intelGenMatch) {
+        // Ưu tiên match từ "10th Gen" format
+        const gen = intelGenMatch[1] || intelGenMatch[2];
+        if (gen) return parseInt(gen, 10);
+    }
+    
+    // Tìm thế hệ cho AMD Ryzen
+    const ryzenGenMatch = cpuName.match(/Ryzen \d+ (\d)000/);
+    if (ryzenGenMatch && ryzenGenMatch[1]) {
+        return parseInt(ryzenGenMatch[1], 10);
+    }
+    
+    return null;
 }
 
 function getGPUScore(gpuName) {
@@ -1618,12 +1844,17 @@ function getGameName(gameId) {
         "pubg": "PlayerUnknown's Battlegrounds",
         "lol": "League of Legends",
         "gta-v": "Grand Theft Auto V",
-        "fortnite": "Fortnite",
-        "fo4": "FIFA Online 4",
-        "black-myth-wukong": "Black Myth: Wukong",
         "elden-ring": "Elden Ring",
         "naraka": "Naraka: Bladepoint",
-        "genshin-impact": "Genshin Impact"
+        "genshin": "Genshin Impact",
+        "fo4": "FIFA Online 4",
+        "black-myth-wukong": "Black Myth: Wukong",
+        "god-of-war": "God of War",
+        "battle-teams-2": "Battle Teams 2",
+        "delta-force": "Delta Force",
+        "audition": "Audition",
+        "mu-origin": "MU Origin",
+        "crossfire": "CrossFire"
     };
     return gameNames[gameId] || gameId;
 }
@@ -1631,476 +1862,1030 @@ function getGameName(gameId) {
 /**
  * Cập nhật biểu đồ hiệu năng
  */
-function updatePerformanceChart(gamePerformance, graphicPerformance, officePerformance) {
-    const ctx = document.getElementById('performance-chart').getContext('2d');
+function updatePerformanceChart(gamingValue, graphicsValue, officeValue, livestreamValue, renderValue, multitaskingValue) {
+    console.log("Đang cập nhật biểu đồ hiệu năng...");
     
-    // Kiểm tra xem biểu đồ đã tồn tại chưa
-    if (window.performanceChart) {
-        // Nếu đã tồn tại, chỉ cập nhật dữ liệu
-        window.performanceChart.data.datasets[0].data = [
-            gamePerformance.percentage, 
-            graphicPerformance.percentage, 
-            officePerformance.percentage
-        ];
-        window.performanceChart.data.datasets[0].backgroundColor = `rgba(${hexToRgb(gamePerformance.color)}, 0.7)`;
-        window.performanceChart.data.datasets[0].borderColor = gamePerformance.color;
-        window.performanceChart.update();
+    const ctx = document.getElementById("performance-chart");
+    if (!ctx) {
+        console.error("Không tìm thấy phần tử canvas cho biểu đồ hiệu năng");
         return;
     }
     
-    // Khởi tạo biểu đồ mới nếu chưa tồn tại
-    window.performanceChart = new Chart(ctx, {
+    // Sử dụng biến toàn cục thay vì lấy lại từ Chart.getChart
+    if (!performanceChartInstance) {
+        console.log("Biểu đồ chưa được khởi tạo, đang khởi tạo...");
+        performanceChartInstance = initPerformanceChart();
+    }
+    
+    // Nếu không có tham số, tính toán các giá trị hiệu năng
+    if (typeof gamingValue === "undefined" || typeof graphicsValue === "undefined" || typeof officeValue === "undefined") {
+        if (typeof cpuScore === "undefined" || typeof gpuScore === "undefined" || cpuScore === 0 || gpuScore === 0) {
+            console.warn("cpuScore hoặc gpuScore chưa được định nghĩa hoặc bằng 0");
+            return;
+        }
+        
+        gamingValue = calculateGamePerformance(cpuScore, gpuScore);
+        graphicsValue = calculateGraphicsPerformance(cpuScore, gpuScore);
+        officeValue = calculateOfficePerformance(cpuScore, gpuScore);
+    }
+    
+    // Nếu không có tham số livestream và render, tính toán chúng
+    if (typeof livestreamValue === "undefined") {
+        livestreamValue = Math.min(100, Math.round((gamingValue * 0.4) + (cpuScore * 0.6)));
+    }
+    
+    if (typeof renderValue === "undefined") {
+        renderValue = Math.min(100, Math.round((graphicsValue * 0.5) + (cpuScore * 0.3) + (gpuScore * 0.2)));
+    }
+    
+    // Nếu không có tham số multitasking, tính toán nó
+    if (typeof multitaskingValue === "undefined") {
+        multitaskingValue = Math.min(100, Math.round((cpuScore * 0.7) + (officeValue * 0.3)));
+    }
+    
+    console.log("Các giá trị hiệu năng đã tính toán:", {
+        gaming: gamingValue,
+        graphics: graphicsValue,
+        office: officeValue,
+        livestream: livestreamValue,
+        render: renderValue,
+        multitasking: multitaskingValue
+    });
+    
+    // Chuẩn hóa các giá trị để hiển thị trên biểu đồ (thang điểm 0-10)
+    const normalizedValues = [
+        gamingValue / 10,
+        graphicsValue / 10,
+        officeValue / 10,
+        livestreamValue / 10,
+        renderValue / 10,
+        multitaskingValue / 10
+    ];
+    
+    // Tạo gradient cho background
+    const gradient = createGradient(ctx.getContext("2d"), "rgba(255, 152, 0, 0.2)", "rgba(255, 87, 34, 0.2)");
+    
+    // Cập nhật dữ liệu biểu đồ
+    performanceChartInstance.data.datasets[0].data = normalizedValues;
+    performanceChartInstance.data.datasets[0].backgroundColor = gradient;
+    performanceChartInstance.update();
+    
+    // Cập nhật phân tích hiệu năng
+    updatePerformanceAnalysis(gamingValue, graphicsValue, officeValue, livestreamValue, renderValue, multitaskingValue);
+    
+    console.log("Đã cập nhật biểu đồ hiệu năng thành công");
+}
+
+// Hàm tạo gradient cho biểu đồ
+function createGradient(ctx, colorStart, colorEnd) {
+    const chartArea = ctx.chart.chartArea;
+    if (!chartArea) {
+        // Fallback nếu chart area chưa có sẵn
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, colorStart);
+        gradient.addColorStop(1, colorEnd);
+        return gradient;
+    }
+    
+    const centerX = (chartArea.left + chartArea.right) / 2;
+    const centerY = (chartArea.top + chartArea.bottom) / 2;
+    const r = Math.min(
+        (chartArea.right - chartArea.left) / 2,
+        (chartArea.bottom - chartArea.top) / 2
+    );
+    
+    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, r);
+    gradient.addColorStop(0, colorStart);
+    gradient.addColorStop(0.5, 'rgba(255, 171, 64, 0.5)');
+    gradient.addColorStop(1, colorEnd);
+    
+    return gradient;
+}
+
+// Hàm cập nhật phần phân tích hiệu năng
+function updatePerformanceAnalysis(gamingValue, graphicsValue, officeValue, livestreamValue, renderValue, multitaskingValue) {
+    console.log('Cập nhật phân tích hiệu năng với các giá trị:', {
+        gamingValue, graphicsValue, officeValue, livestreamValue, renderValue, multitaskingValue
+    });
+    
+    // Chuẩn hóa dữ liệu
+    const data = [
+        { name: 'Gaming', value: gamingValue },
+        { name: 'Đồ họa', value: graphicsValue },
+        { name: 'Văn phòng', value: officeValue },
+        { name: 'Livestream', value: livestreamValue },
+        { name: 'Render', value: renderValue },
+        { name: 'Đa nhiệm', value: multitaskingValue }
+    ];
+    
+    // Sắp xếp dữ liệu
+    data.sort((a, b) => b.value - a.value);
+    
+    // Lấy điểm mạnh và điểm yếu
+    const strengths = data.slice(0, 2);
+    const weaknesses = data.slice(-2);
+    
+    // Cập nhật UI
+    const strengthsList = document.getElementById('strength-metrics');
+    const weaknessesList = document.getElementById('weakness-metrics');
+    
+    if (strengthsList) {
+        strengthsList.innerHTML = '';
+        strengths.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name}: ${item.value}/100 điểm`;
+            li.className = 'performance-list-item';
+            strengthsList.appendChild(li);
+        });
+    } else {
+        console.warn('Không tìm thấy phần tử strength-metrics');
+    }
+    
+    if (weaknessesList) {
+        weaknessesList.innerHTML = '';
+        weaknesses.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name}: ${item.value}/100 điểm`;
+            li.className = 'performance-list-item';
+            weaknessesList.appendChild(li);
+        });
+    } else {
+        console.warn('Không tìm thấy phần tử weakness-metrics');
+    }
+    
+    // Tạo các đề xuất nâng cấp
+    const upgradeRecommendations = document.getElementById('upgrade-recommendations');
+    if (upgradeRecommendations) {
+        upgradeRecommendations.innerHTML = '';
+        
+        // Kiểm tra các giá trị hiệu năng để đưa ra đề xuất
+        if (gamingValue < 60) {
+            addRecommendation(upgradeRecommendations, 'Nâng cấp GPU để cải thiện hiệu năng gaming');
+        }
+        
+        if (graphicsValue < 60 && gamingValue >= 60) {
+            addRecommendation(upgradeRecommendations, 'Cân nhắc GPU chuyên nghiệp hơn cho công việc đồ họa');
+        }
+        
+        if (livestreamValue < 50) {
+            addRecommendation(upgradeRecommendations, 'Nâng cấp CPU để cải thiện khả năng livestream');
+        }
+        
+        if (renderValue < 60) {
+            addRecommendation(upgradeRecommendations, 'Bổ sung RAM và nâng cấp CPU để cải thiện khả năng render');
+        }
+        
+        if (multitaskingValue < 55) {
+            addRecommendation(upgradeRecommendations, 'Thêm RAM và nâng cấp CPU để cải thiện khả năng đa nhiệm');
+        }
+        
+        if (officeValue < 50) {
+            addRecommendation(upgradeRecommendations, 'Nâng cấp ổ SSD để cải thiện hiệu năng các tác vụ văn phòng');
+        }
+        
+        // Nếu tất cả đều cao, đưa ra lời khuyên chung
+        if (gamingValue >= 70 && graphicsValue >= 70 && officeValue >= 70 &&
+            livestreamValue >= 70 && renderValue >= 70 && multitaskingValue >= 70) {
+            addRecommendation(upgradeRecommendations, 'Hệ thống của bạn đã có hiệu năng rất tốt cho hầu hết các tác vụ!');
+        }
+        
+        // Thêm lời khuyên về game tips từ hàm generatePerformanceTips
+        if (typeof generatePerformanceTips === 'function') {
+            const gameId = getSelectedGameId();
+            const gameType = getGameType(gameId);
+            const gameTips = generatePerformanceTips(gameType, cpuScore, gpuScore);
+            
+            if (gameTips && gameTips.length > 0) {
+                const tipsDiv = document.createElement('div');
+                tipsDiv.className = 'mt-3 game-tips';
+                tipsDiv.innerHTML = '<h5 class="tips-heading">Gợi ý tối ưu game:</h5>';
+                
+                const tipsList = document.createElement('ul');
+                tipsList.className = 'tips-list';
+                
+                gameTips.forEach(tip => {
+                    const tipItem = document.createElement('li');
+                    tipItem.textContent = tip;
+                    tipsList.appendChild(tipItem);
+                });
+                
+                tipsDiv.appendChild(tipsList);
+                upgradeRecommendations.appendChild(tipsDiv);
+            }
+        }
+    } else {
+        console.warn('Không tìm thấy phần tử upgrade-recommendations');
+    }
+    
+    console.log('Đã cập nhật phân tích hiệu năng thành công');
+}
+
+// Hàm trợ giúp để thêm đề xuất
+function addRecommendation(container, text) {
+    const recommendation = document.createElement('div');
+    recommendation.className = 'recommendation-item';
+    recommendation.innerHTML = `<i class="fas fa-angle-right"></i> ${text}`;
+    container.appendChild(recommendation);
+}
+
+// Hàm hỗ trợ để lấy loại game
+function getGameType(gameId) {
+    const gameTypes = {
+        'lol': { type: 'esports', cpuDependency: 'medium' },
+        'csgo': { type: 'esports', cpuDependency: 'high' },
+        'valorant': { type: 'esports', cpuDependency: 'high' },
+        'pubg': { type: 'battle-royale', cpuDependency: 'high' },
+        'fortnite': { type: 'battle-royale', cpuDependency: 'medium' },
+        'cyberpunk': { type: 'aaa', cpuDependency: 'high' },
+        'cod': { type: 'aaa', cpuDependency: 'medium' },
+        'minecraft': { type: 'sandbox', cpuDependency: 'very-high' },
+        'gta5': { type: 'aaa', cpuDependency: 'high' },
+        'apex': { type: 'battle-royale', cpuDependency: 'high' },
+        'dota2': { type: 'esports', cpuDependency: 'medium' },
+        'rdr2': { type: 'aaa', cpuDependency: 'high' },
+        'battlefield': { type: 'aaa', cpuDependency: 'high' },
+        'rainbow6': { type: 'esports', cpuDependency: 'medium' },
+        'overwatch': { type: 'esports', cpuDependency: 'medium' },
+        'wow': { type: 'mmorpg', cpuDependency: 'very-high' },
+        'starcraft': { type: 'strategy', cpuDependency: 'very-high' }
+    };
+    
+    return gameTypes[gameId] || { type: 'general', cpuDependency: 'medium' };
+}
+
+// Hàm để viết hoa chữ cái đầu tiên
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Hàm để lấy màu cho độ ổn định
+function getStabilityColor(stability) {
+    switch (stability) {
+        case 'Rất ổn định':
+            return 'rgba(40, 167, 69, 0.2)';
+        case 'Ổn định':
+            return 'rgba(255, 193, 7, 0.2)';
+        case 'Tương đối ổn định':
+            return 'rgba(255, 152, 0, 0.2)';
+                default:
+            return 'rgba(220, 53, 69, 0.2)';
+    }
+}
+
+/**
+ * Hiển thị thông báo về điểm số tổng thể
+ * @param {number} totalScore Điểm tổng thể của hệ thống
+ */
+function updateScoreMessage(totalScore) {
+    const scoreMessage = document.getElementById('score-message');
+    
+    if (!scoreMessage) return;
+    
+    let message = '';
+    let messageClass = '';
+    
+    if (totalScore >= 90) {
+        message = '💪 Cấu hình xuất sắc, đáp ứng mọi nhu cầu từ gaming, đồ họa đến công việc nặng.';
+        messageClass = 'excellent-score';
+    } else if (totalScore >= 75) {
+        message = '✨ Cấu hình rất tốt, phù hợp cho cả gaming và các tác vụ đồ họa nặng.';
+        messageClass = 'very-good-score';
+    } else if (totalScore >= 60) {
+        message = '👍 Cấu hình tốt, chơi game ổn định và làm đồ họa tốt.';
+        messageClass = 'good-score';
+    } else if (totalScore >= 45) {
+        message = '🎮 Cấu hình đạt yêu cầu gaming. Đủ mạnh cho hầu hết các game ở mức trung bình.';
+        messageClass = 'decent-score';
+    } else if (totalScore >= 30) {
+        message = '💻 Cấu hình cơ bản, phù hợp cho việc văn phòng và giải trí nhẹ.';
+        messageClass = 'basic-score';
+    } else {
+        message = '⚠️ Cấu hình entry-level, phù hợp cho các tác vụ văn phòng và web.';
+        messageClass = 'low-score';
+    }
+    
+    // Thêm gợi ý nâng cấp
+    if (totalScore < 60) {
+        const upgradeMessage = document.getElementById('upgrade-message');
+        if (upgradeMessage) {
+            upgradeMessage.innerHTML = '🔧 Gợi ý nâng cấp: Xem xét nâng cấp <strong>CPU</strong> hoặc <strong>GPU</strong> để có trải nghiệm tốt hơn.';
+            upgradeMessage.style.display = 'block';
+        }
+    }
+    
+    // Cập nhật thông báo
+    scoreMessage.innerHTML = message;
+    scoreMessage.className = 'system-message ' + messageClass;
+    scoreMessage.style.display = 'block';
+}
+
+/**
+ * Reset thông tin hiệu năng game cụ thể
+ */
+function resetGameSpecificPerformance() {
+    // Ẩn container thông tin chi tiết game
+    const gamePerformanceDetails = document.getElementById('game-performance-details');
+    if (gamePerformanceDetails) {
+        gamePerformanceDetails.style.display = 'none';
+        gamePerformanceDetails.innerHTML = '';
+    }
+    
+    // Thiết lập các giá trị mặc định trên UI
+    const fpsEstimate = document.getElementById('fps-estimate');
+    if (fpsEstimate) {
+        fpsEstimate.textContent = '--';
+    }
+}
+
+/**
+ * Tính độ ổn định của FPS dựa trên sự chênh lệch giữa điểm CPU và GPU
+ * @param {number} cpuScore Điểm CPU
+ * @param {number} gpuScore Điểm GPU
+ * @returns {string} Mô tả độ ổn định
+ */
+function calculateStability(cpuScore, gpuScore) {
+    const difference = Math.abs(cpuScore - gpuScore);
+    if (difference <= 10) return "Rất ổn định";
+    if (difference <= 20) return "Ổn định";
+    if (difference <= 30) return "Tương đối ổn định";
+    return "Có thể không ổn định";
+}
+
+/**
+ * Tạo phiên bản sáng hơn của màu được cung cấp
+ * @param {string} color Mã màu hex (ví dụ: #FF9800)
+ * @returns {string} Mã màu hex sáng hơn
+ */
+function getLighterColor(color) {
+    // Chuyển đổi từ mã màu hex sang RGB
+    let hex = color.replace('#', '');
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+    
+    // Làm nhạt màu (tăng độ sáng)
+    r = Math.min(255, r + 40);
+    g = Math.min(255, g + 40);
+    b = Math.min(255, b + 40);
+    
+    // Chuyển đổi lại thành mã hex
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+}
+
+/**
+ * Lấy màu dựa trên giá trị FPS
+ * @param {number} fps Giá trị FPS
+ * @returns {string} Mã màu hex tương ứng với mức FPS
+ */
+function getFpsColor(fps) {
+    if (fps >= 240) {
+        return '#388E3C'; // dark green - excellent
+    } else if (fps >= 144) {
+        return '#7CB342'; // light green - great
+    } else if (fps >= 100) {
+        return '#039BE5'; // blue - good
+    } else if (fps >= 60) {
+        return '#FB8C00'; // orange - acceptable
+    } else if (fps >= 30) {
+        return '#E53935'; // light red - poor
+    } else {
+        return '#B71C1C'; // dark red - very poor
+    }
+}
+
+/**
+ * Tạo gợi ý tối ưu hiệu năng dựa trên loại game và điểm CPU/GPU
+ * @param {Object} gameType Thông tin về loại game
+ * @param {number} cpuScore Điểm CPU
+ * @param {number} gpuScore Điểm GPU
+ * @returns {string} HTML chuỗi các gợi ý hiệu năng
+ */
+function generatePerformanceTips(gameType, cpuScore, gpuScore) {
+    console.log('Tạo gợi ý tối ưu cho loại game:', gameType, 'với CPU:', cpuScore, 'GPU:', gpuScore);
+    
+    // Nếu gameType là một đối tượng, lấy thuộc tính type
+    if (typeof gameType === 'object' && gameType !== null) {
+        gameType = gameType.type;
+    }
+    
+    const tips = [];
+    const totalScore = (cpuScore + gpuScore) / 2;
+    const bottleneck = calculateBottleneck(cpuScore, gpuScore);
+    
+    // Thêm gợi ý chung cho tất cả các loại game
+    if (totalScore < 50) {
+        tips.push('Cân nhắc giảm độ phân giải xuống 720p để có FPS cao hơn.');
+        tips.push('Tắt các tùy chọn hình ảnh nâng cao như MSAA, Motion Blur, và Depth of Field.');
+    }
+    
+    // Thêm gợi ý dựa trên bottleneck
+    if (bottleneck.percentage < -20) {
+        tips.push('CPU đang là điểm nghẽn - giảm các cài đặt liên quan đến CPU như khoảng cách hiển thị và mật độ NPC.');
+    } else if (bottleneck.percentage > 20) {
+        tips.push('GPU đang là điểm nghẽn - giảm các cài đặt liên quan đến GPU như độ phân giải texture và hiệu ứng hậu xử lý.');
+    }
+    
+    // Thêm gợi ý cụ thể cho từng loại game
+    switch (gameType) {
+        case 'esports':
+            tips.push('Đặt độ phân giải texture ở mức Thấp/Trung bình để tối đa hóa FPS.');
+            if (cpuScore < 70) {
+                tips.push('Giảm cài đặt đồ họa của game để đạt FPS ổn định 144+ cho trải nghiệm esports tốt nhất.');
+            }
+            tips.push('Tắt V-Sync để giảm độ trễ đầu vào.');
+            break;
+            
+        case 'aaa':
+            if (gpuScore < 70) {
+                tips.push('Sử dụng DLSS/FSR nếu có sẵn để tăng FPS mà vẫn giữ chất lượng hình ảnh tốt.');
+                tips.push('Giảm chất lượng bóng đổ xuống Trung bình để cải thiện FPS đáng kể.');
+            }
+            tips.push('Cân nhắc giữ hiệu ứng hậu xử lý ở mức Cao nếu có thể, đây là yếu tố quan trọng với game AAA.');
+            break;
+            
+        case 'strategy':
+            if (cpuScore < 70) {
+                tips.push('Giảm số lượng đơn vị hiển thị và mật độ đơn vị để cải thiện hiệu năng khi có nhiều đơn vị trên màn hình.');
+            }
+            tips.push('Giảm cài đặt vật lý trong game để cải thiện hiệu năng khi có nhiều tương tác.');
+            break;
+            
+        default:
+            tips.push('Điều chỉnh cài đặt để cân bằng giữa chất lượng hình ảnh và FPS dựa trên ưu tiên của bạn.');
+            break;
+    }
+    
+    // Thêm gợi ý dựa trên điểm số tổng thể
+    if (totalScore > 85) {
+        tips.push('Cấu hình của bạn rất mạnh - hãy tận hưởng chất lượng hình ảnh cao và FPS ổn định!');
+    } else if (totalScore < 40) {
+        tips.push('Cân nhắc cập nhật phần cứng để có trải nghiệm game tốt hơn.');
+    }
+    
+    console.log('Đã tạo', tips.length, 'gợi ý tối ưu');
+    return tips;
+}
+
+/**
+ * Tính toán hiệu năng gaming dựa trên điểm CPU và GPU
+ */
+function calculateGamePerformance(cpuScore, gpuScore) {
+    if (typeof cpuScore === 'undefined' || typeof gpuScore === 'undefined') {
+        console.warn('cpuScore hoặc gpuScore chưa được định nghĩa');
+        return 0;
+    }
+    const gameId = getSelectedGameId();
+    const gameType = getGameType(gameId).type;
+    let cpuWeight = 0.3;
+    let gpuWeight = 0.7;
+    if (gameType === 'esports') {
+                cpuWeight = 0.5;
+                gpuWeight = 0.5;
+    } else if (gameType === 'strategy') {
+        cpuWeight = 0.6;
+        gpuWeight = 0.4;
+    } else if (gameType === 'aaa') {
+        cpuWeight = 0.2;
+        gpuWeight = 0.8;
+    }
+    const performance = Math.round(cpuScore * cpuWeight + gpuScore * gpuWeight);
+    return Math.min(100, performance);
+}
+
+/**
+ * Tính toán hiệu năng đồ họa dựa trên điểm CPU và GPU
+ */
+function calculateGraphicsPerformance(cpuScore, gpuScore) {
+    if (typeof cpuScore === 'undefined' || typeof gpuScore === 'undefined') {
+        console.warn('cpuScore hoặc gpuScore chưa được định nghĩa');
+        return 0;
+    }
+    const performance = Math.round(gpuScore * 0.8 + cpuScore * 0.2);
+    return Math.min(100, performance);
+}
+
+/**
+ * Tính toán hiệu năng văn phòng dựa trên điểm CPU và GPU
+ */
+function calculateOfficePerformance(cpuScore, gpuScore) {
+    if (typeof cpuScore === 'undefined' || typeof gpuScore === 'undefined') {
+        console.warn('cpuScore hoặc gpuScore chưa được định nghĩa');
+        return 0;
+    }
+    const performance = Math.round(cpuScore * 0.7 + gpuScore * 0.3);
+    return Math.min(100, performance);
+}
+
+/**
+ * Cập nhật tất cả các metrics hiệu năng dựa trên CPU và GPU
+ */
+function updateAllPerformanceMetrics() {
+    console.log('Cập nhật tất cả các metrics hiệu năng với cpuScore:', cpuScore, 'gpuScore:', gpuScore);
+    
+    if (typeof cpuScore === 'undefined' || typeof gpuScore === 'undefined' || cpuScore === 0 || gpuScore === 0) {
+        console.warn('cpuScore hoặc gpuScore chưa được định nghĩa hoặc bằng 0');
+        return;
+    }
+    
+    // Cập nhật các chỉ số hiệu năng
+    const gamePerformance = calculateGamePerformance(cpuScore, gpuScore);
+    const graphicPerformance = calculateGraphicsPerformance(cpuScore, gpuScore);
+    const officePerformance = calculateOfficePerformance(cpuScore, gpuScore);
+    
+    // Cập nhật UI hiệu năng
+    updatePerformanceUI(cpuScore, gpuScore);
+    
+    // Cập nhật biểu đồ hiệu năng
+    const livestreamValue = Math.min(100, Math.round((gamePerformance * 0.4) + (cpuScore * 0.6)));
+    const renderValue = Math.min(100, Math.round((graphicPerformance * 0.5) + (cpuScore * 0.3) + (gpuScore * 0.2)));
+    const multitaskingValue = Math.min(100, Math.round((cpuScore * 0.7) + (officePerformance * 0.3)));
+    
+    updatePerformanceChart(gamePerformance, graphicPerformance, officePerformance, livestreamValue, renderValue, multitaskingValue);
+    
+    // Cập nhật bottleneck và phân tích hiệu năng
+    updateBottleneckUI(cpuScore, gpuScore);
+    
+    console.log('Đã cập nhật tất cả các metrics hiệu năng thành công');
+}
+
+function displayDetailedPerformance(gameId) {
+    console.log('Hiển thị thông tin chi tiết cho game ID:', gameId);
+    
+    if (!gameId) {
+        console.warn('Không có game ID được cung cấp');
+        return;
+    }
+    
+    // Lấy loại game (esports, aaa, hoặc strategy)
+    const gameType = getGameType(gameId);
+    if (!gameType) {
+        console.warn('Không tìm thấy thông tin loại game cho ID:', gameId);
+        return;
+    }
+    
+    console.log('Loại game:', gameType);
+    
+    // Tính toán FPS dự kiến
+    const fpsInfo = calculateEstimatedFPS(gameId, cpuScore, gpuScore);
+    console.log('Thông tin FPS:', fpsInfo);
+    
+    // Tìm phần tử để hiển thị thông tin
+    const performanceDetailsContainer = document.getElementById('game-performance-details');
+    if (!performanceDetailsContainer) {
+        console.error('Không tìm thấy phần tử game-performance-details');
+        return;
+    }
+    
+    // Lấy tên game từ ID
+    const gameName = getGameName(gameId);
+    
+    // Tạo HTML hiển thị thông tin
+    let html = `
+        <div class="game-info">
+            <h4 class="game-title"><i class="fas fa-gamepad"></i> ${gameName}</h4>
+            <div class="fps-container">
+                <div class="fps-display">
+                    <span class="fps-label">FPS Dự kiến:</span>
+                    <span class="fps-value" style="color: ${getFpsColor(fpsInfo.fps)};">${fpsInfo.fps}</span>
+                </div>
+                <div class="settings-row">
+                    <div class="setting-item">
+                        <span class="setting-label">Chất lượng:</span>
+                        <span class="setting-value">${fpsInfo.quality}</span>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Độ phân giải:</span>
+                        <span class="setting-value">${fpsInfo.resolution}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="performance-tips">
+                <h5><i class="fas fa-lightbulb"></i> Gợi ý tối ưu:</h5>
+                <ul class="tips-list">
+    `;
+    
+    // Thêm các gợi ý tối ưu
+    const performanceTips = generatePerformanceTips(gameType, cpuScore, gpuScore);
+    performanceTips.forEach(tip => {
+        html += `<li>${tip}</li>`;
+    });
+    
+    html += `
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    // Cập nhật nội dung
+    performanceDetailsContainer.innerHTML = html;
+    
+    console.log('Đã hiển thị thông tin chi tiết hiệu năng cho game thành công');
+}
+
+
+// Hàm lấy điểm CPU dựa vào CPU được chọn
+function getScoreForCpu(cpuName) {
+    // Thiết lập điểm mặc định nếu CPU không được tìm thấy
+    let score = 50;
+    
+    // Điểm CPU cho các CPU Intel phổ biến
+    const intelScores = {
+        'i3-10100': 45,
+        'i3-10300': 50,
+        'i3-12100': 60,
+        'i3-12100F': 60,
+        'i5-10400': 65,
+        'i5-10600K': 70,
+        'i5-11400': 72,
+        'i5-11600K': 75,
+        'i5-12400': 78,
+        'i5-12600K': 85,
+        'i5-13400': 80,
+        'i5-13600K': 88,
+        'i7-10700K': 80,
+        'i7-11700K': 83,
+        'i7-12700K': 90,
+        'i7-13700K': 95,
+        'i9-10900K': 85,
+        'i9-11900K': 87,
+        'i9-12900K': 93,
+        'i9-13900K': 98
+    };
+    
+    // Điểm CPU cho các CPU AMD phổ biến
+    const amdScores = {
+        'Ryzen 3 3100': 45,
+        'Ryzen 3 4100': 50,
+        'Ryzen 5 3600': 68,
+        'Ryzen 5 5600': 75,
+        'Ryzen 5 5600X': 77,
+        'Ryzen 5 7600X': 85,
+        'Ryzen 7 3700X': 75,
+        'Ryzen 7 5700X': 82,
+        'Ryzen 7 5800X': 85,
+        'Ryzen 7 7800X3D': 95,
+        'Ryzen 9 5900X': 90,
+        'Ryzen 9 5950X': 93,
+        'Ryzen 9 7900X': 95,
+        'Ryzen 9 7950X': 97
+    };
+    
+    // Tìm CPU trong danh sách Intel
+    for (const cpu in intelScores) {
+        if (cpuName.includes(cpu)) {
+            score = intelScores[cpu];
+            break;
+        }
+    }
+    
+    // Tìm CPU trong danh sách AMD
+    for (const cpu in amdScores) {
+        if (cpuName.includes(cpu)) {
+            score = amdScores[cpu];
+            break;
+        }
+    }
+    
+    return score;
+}
+
+// Hàm lấy điểm GPU dựa vào GPU được chọn
+function getScoreForGpu(gpuName) {
+    // Thiết lập điểm mặc định nếu GPU không được tìm thấy
+    let score = 50;
+    
+    // Điểm GPU cho các GPU NVIDIA phổ biến
+    const nvidiaScores = {
+        'GTX 1650': 40,
+        'GTX 1650 Super': 45,
+        'GTX 1660': 50,
+        'GTX 1660 Super': 55,
+        'GTX 1660 Ti': 57,
+        'RTX 2060': 60,
+        'RTX 2060 Super': 65,
+        'RTX 2070': 70,
+        'RTX 2070 Super': 75,
+        'RTX 2080': 80,
+        'RTX 2080 Super': 83,
+        'RTX 2080 Ti': 87,
+        'RTX 3050': 55,
+        'RTX 3060': 65,
+        'RTX 3060 Ti': 75,
+        'RTX 3070': 80,
+        'RTX 3070 Ti': 83,
+        'RTX 3080': 90,
+        'RTX 3080 Ti': 93,
+        'RTX 3090': 95,
+        'RTX 3090 Ti': 97,
+        'RTX 4060': 70,
+        'RTX 4060 Ti': 78,
+        'RTX 4070': 85,
+        'RTX 4070 Ti': 90,
+        'RTX 4080': 95,
+        'RTX 4090': 99
+    };
+    
+    // Điểm GPU cho các GPU AMD phổ biến
+    const amdGpuScores = {
+        'RX 6500 XT': 45,
+        'RX 6600': 60,
+        'RX 6600 XT': 65,
+        'RX 6650 XT': 68,
+        'RX 6700 XT': 75,
+        'RX 6750 XT': 78,
+        'RX 6800': 82,
+        'RX 6800 XT': 87,
+        'RX 6900 XT': 92,
+        'RX 6950 XT': 94,
+        'RX 7600': 65,
+        'RX 7700 XT': 80,
+        'RX 7800 XT': 87,
+        'RX 7900 XT': 93,
+        'RX 7900 XTX': 96
+    };
+    
+    // Tìm GPU trong danh sách NVIDIA
+    for (const gpu in nvidiaScores) {
+        if (gpuName.includes(gpu)) {
+            score = nvidiaScores[gpu];
+            break;
+        }
+    }
+    
+    // Tìm GPU trong danh sách AMD
+    for (const gpu in amdGpuScores) {
+        if (gpuName.includes(gpu)) {
+            score = amdGpuScores[gpu];
+            break;
+        }
+    }
+    
+    return score;
+}
+
+// Hàm lấy ID game được chọn hiện tại
+function getSelectedGameId() {
+    // Thử các ID khác nhau để tìm ra phần tử phù hợp
+    const gameDropdown = document.getElementById('game-genre') || 
+                         document.getElementById('game-dropdown');
+    
+    if (gameDropdown && gameDropdown.value) {
+        return gameDropdown.value;
+    }
+    
+    // Kiểm tra xem có game card nào được chọn không
+    const selectedCard = document.querySelector('.game-card.selected');
+    if (selectedCard && selectedCard.dataset.game) {
+        return selectedCard.dataset.game;
+    }
+    
+    // Giá trị mặc định nếu không tìm thấy
+    console.warn('Không tìm thấy game được chọn, dùng "valorant" làm mặc định');
+    return 'valorant';
+}
+
+// Hàm tính FPS ước tính cho một game cụ thể
+function calculateEstimatedFPS(gameId, cpuScore, gpuScore) {
+    if (!gameId || !cpuScore || !gpuScore) {
+        return { fps: 0, quality: 'N/A', resolution: 'N/A' };
+    }
+    
+    // Lấy thông tin game
+    const gameType = getGameType(gameId);
+    
+    // Cân bằng CPU và GPU dựa vào loại game
+    let cpuWeight = 0.3;
+    let gpuWeight = 0.7;
+    
+    if (gameType === 'esports') {
+        cpuWeight = 0.6;
+        gpuWeight = 0.4;
+    } else if (gameType === 'strategy') {
+        cpuWeight = 0.5;
+        gpuWeight = 0.5;
+    } else if (gameType === 'aaa') {
+        cpuWeight = 0.2;
+        gpuWeight = 0.8;
+    }
+    
+    // Tính toán điểm tổng hợp
+    const combinedScore = (cpuScore * cpuWeight) + (gpuScore * gpuWeight);
+    
+    // Ước tính FPS dựa vào điểm tổng hợp và loại game
+    let baseFps = 0;
+    let quality = 'Thấp';
+    let resolution = '1080p';
+    
+    if (gameType === 'esports') {
+        // Esports games thường chạy ở FPS cao hơn
+        baseFps = combinedScore * 3;
+        
+        if (combinedScore >= 85) {
+            quality = 'Ultra';
+            resolution = '1440p';
+        } else if (combinedScore >= 70) {
+            quality = 'Cao';
+            resolution = '1080p';
+        } else if (combinedScore >= 50) {
+            quality = 'Trung bình';
+            resolution = '1080p';
+        } else {
+            quality = 'Thấp';
+            resolution = '1080p';
+        }
+    } else if (gameType === 'aaa') {
+        // AAA games thường đòi hỏi nhiều tài nguyên hơn
+        baseFps = combinedScore * 1.2;
+        
+        if (combinedScore >= 90) {
+            quality = 'Ultra';
+            resolution = '4K';
+        } else if (combinedScore >= 80) {
+            quality = 'Ultra';
+            resolution = '1440p';
+        } else if (combinedScore >= 70) {
+            quality = 'Cao';
+            resolution = '1440p';
+        } else if (combinedScore >= 60) {
+            quality = 'Cao';
+            resolution = '1080p';
+        } else if (combinedScore >= 50) {
+            quality = 'Trung bình';
+            resolution = '1080p';
+        } else {
+            quality = 'Thấp';
+            resolution = '1080p';
+        }
+    } else {
+        // Các game khác
+        baseFps = combinedScore * 1.5;
+        
+        if (combinedScore >= 85) {
+            quality = 'Ultra';
+            resolution = '1440p';
+        } else if (combinedScore >= 70) {
+            quality = 'Cao';
+            resolution = '1080p';
+        } else if (combinedScore >= 55) {
+            quality = 'Trung bình';
+            resolution = '1080p';
+        } else {
+            quality = 'Thấp';
+            resolution = '1080p';
+        }
+    }
+    
+    // Làm tròn FPS
+    const fps = Math.round(baseFps);
+    
+    return { fps, quality, resolution };
+}
+
+// Hàm lấy tên game dựa vào ID
+// S? d?ng h�m getGameName d� khai b�o ? d�ng ~1868
+
+// Khai báo biến toàn cục
+let cpuScore = 0;
+let gpuScore = 0;
+let performanceChartInstance = null;
+
+// Hàm khởi tạo biểu đồ hiệu năng
+function initPerformanceChart() {
+    console.log('Đang khởi tạo biểu đồ hiệu năng...');
+    const ctx = document.getElementById('performance-chart');
+    if (!ctx) {
+        console.error('Không tìm thấy phần tử canvas cho biểu đồ hiệu năng');
+        return;
+    }
+    
+    // Hủy biểu đồ cũ nếu tồn tại
+    if (performanceChartInstance) {
+        performanceChartInstance.destroy();
+    }
+    
+    // Khởi tạo biểu đồ mới
+    performanceChartInstance = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Gaming', 'Đồ họa/Video', 'Văn phòng'],
+            labels: ['Gaming', 'Đồ họa', 'Văn phòng', 'Livestream', 'Render', 'Đa nhiệm'],
             datasets: [{
                 label: 'Hiệu năng',
-                data: [
-                    gamePerformance.percentage, 
-                    graphicPerformance.percentage, 
-                    officePerformance.percentage
-                ],
-                backgroundColor: `rgba(${hexToRgb(gamePerformance.color)}, 0.7)`,
-                borderColor: gamePerformance.color,
-                borderWidth: 2
+                data: [0, 0, 0, 0, 0, 0],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(255, 99, 132, 1)'
             }]
         },
         options: {
+            elements: {
+                line: {
+                    tension: 0.1
+                }
+            },
             scales: {
                 r: {
                     angleLines: {
-                        color: 'rgba(0, 0, 0, 0.1)'
+                        display: true
                     },
                     suggestedMin: 0,
-                    suggestedMax: 100
+                    suggestedMax: 10,
+                    ticks: {
+                        stepSize: 2
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + (context.raw * 10).toFixed(0) + '/100';
+                        }
+                    }
                 }
             }
         }
     });
-}
-
-/**
- * Chuyển đổi mã màu Hex sang RGB
- */
-function hexToRgb(hex) {
-    hex = hex.replace('#', '');
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    return `${r}, ${g}, ${b}`;
-}
-
-/**
- * Reset thông tin hiệu năng
- */
-function resetPerformanceInfo() {
-    document.getElementById('performance-details').style.display = 'none';
-    document.getElementById('fps-estimate-container').style.display = 'none';
-    document.getElementById('game-performance').textContent = "Chưa xác định";
-    document.getElementById('game-performance').style.color = "";
-    document.getElementById('graphic-performance').textContent = "Chưa xác định";
-    document.getElementById('graphic-performance').style.color = "";
-    document.getElementById('office-performance').textContent = "Chưa xác định";
-    document.getElementById('office-performance').style.color = "";
-    document.getElementById('game-specific-performance').innerHTML = '';
     
-    // Reset chart if it exists
-    if (window.performanceChart) {
-        window.performanceChart.data.datasets[0].data = [0, 0, 0];
-        window.performanceChart.update();
+    console.log('Đã khởi tạo biểu đồ hiệu năng thành công');
+    return performanceChartInstance;
+}
+
+// Hàm khởi tạo tất cả các thành phần hiệu năng
+function initPerformance() {
+    console.log('Đang khởi tạo thành phần hiệu năng...');
+    
+    // Khởi tạo biểu đồ hiệu năng
+    initPerformanceChart();
+    
+    // Khởi tạo sự kiện để cập nhật hiệu năng khi người dùng thay đổi cấu hình
+    const cpuDropdown = document.getElementById('cpu-dropdown');
+    const gpuDropdown = document.getElementById('gpu-dropdown');
+    const gameGenre = document.getElementById('game-genre');
+    
+    if (cpuDropdown) {
+        cpuDropdown.addEventListener('change', function() {
+            console.log('CPU đã thay đổi:', this.value);
+            evaluateSystemPerformance();
+        });
     }
-}
-
-// Add event listeners to trigger performance evaluation
-document.addEventListener('DOMContentLoaded', function() {
-    const cpuSelect = document.getElementById('cpu');
-    const vgaSelect = document.getElementById('vga');
-    const gameSelect = document.getElementById('game-genre');
     
-    if (cpuSelect && vgaSelect) {
-        cpuSelect.addEventListener('change', evaluateSystemPerformance);
-        vgaSelect.addEventListener('change', evaluateSystemPerformance);
-        if (gameSelect) {
-            gameSelect.addEventListener('change', evaluateSystemPerformance);
-        }
-        
-        // Initial evaluation if components are already selected
+    if (gpuDropdown) {
+        gpuDropdown.addEventListener('change', function() {
+            console.log('GPU đã thay đổi:', this.value);
+            evaluateSystemPerformance();
+        });
+    }
+    
+    if (gameGenre) {
+        gameGenre.addEventListener('change', function() {
+            console.log('Game đã thay đổi:', this.value);
+            const gameId = this.value;
+            if (gameId && cpuScore && gpuScore) {
+                displayDetailedPerformance(gameId);
+            }
+        });
+    }
+    
+    // Tự động đánh giá hiệu năng nếu đã có CPU và GPU được chọn
+    const selectedCpu = cpuDropdown?.value;
+    const selectedGpu = gpuDropdown?.value;
+    
+    if (selectedCpu && selectedGpu) {
+        console.log('CPU và GPU đã được chọn, tự động đánh giá hiệu năng');
         evaluateSystemPerformance();
     }
+    
+    console.log('Đã khởi tạo thành phần hiệu năng thành công');
+}
+
+// Đảm bảo rằng initPerformance được gọi khi trang được tải
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM đã sẵn sàng, khởi tạo thành phần hiệu năng');
+    setTimeout(initPerformance, 1000); // Delay một chút để đảm bảo tất cả các thành phần đã được tải
 });
 
-// Function to update UI with game-specific data
-function updateGameSpecificUI(selectedGame) {
-    const gameData = window.GAME_FPS_ESTIMATES[selectedGame];
-    if (gameData) {
-        document.getElementById('game-specific-performance').innerHTML = `
-            <p><strong>${getGameName(selectedGame)}</strong> - ${gameData.notes}</p>
-            <p>Low: ${gameData.low.fps} (${gameData.low.description})</p>
-            <p>Medium: ${gameData.medium.fps} (${gameData.medium.description})</p>
-            <p>High: ${gameData.high.fps} (${gameData.high.description})</p>
-        `;
-    }
-}
-
-// Call this function when a game is selected
-document.getElementById('game-genre').addEventListener('change', function() {
-    updateGameSpecificUI(this.value);
-});
-
-/**
- * Hiển thị thông tin hiệu năng cho game cụ thể
- */
-function displayGameSpecificPerformance(gamePerformance, selectedGame) {
-    if (!selectedGame || !window.GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
-    const gameInfo = window.GAME_FPS_ESTIMATES[selectedGame];
-    
-    // Show the graphics quality selector
-    document.getElementById('graphics-quality-container').style.display = 'flex';
-    
-    // Add event listener to update FPS when graphics quality changes
-    document.getElementById('graphics-quality').addEventListener('change', function() {
-        updateFpsEstimate(gamePerformance, selectedGame);
-    });
-    
-    // Update FPS estimate
-    updateFpsEstimate(gamePerformance, selectedGame);
-    
-    // Update game-specific performance details with enhanced styling
-    const gameSpecificElement = document.getElementById('game-specific-performance');
-    if (gameSpecificElement && gameInfo) {
-        const selectedCPU = document.getElementById('cpu').value;
-        const isX3D = selectedCPU.toLowerCase().includes('x3d');
-        const gameType = window.GAME_TYPES[selectedGame];
-        
-        // Calculate performance score based on game type
-        let performanceScore = 0;
-        if (gameType) {
-            switch(gameType.type) {
-                case "esports":
-                    performanceScore = isX3D ? 95 : 85;
-                    break;
-                case "battle-royale":
-                    performanceScore = isX3D ? 90 : 80;
-                    break;
-                case "mmorpg":
-                    performanceScore = isX3D ? 88 : 78;
-                    break;
-                case "aaa":
-                    performanceScore = isX3D ? 85 : 75;
-                    break;
-                default:
-                    performanceScore = isX3D ? 85 : 75;
-            }
-        }
-
-        // Get performance rating color based on score
-        const getPerformanceColor = (score) => {
-            if (score >= 90) return '#28a745';
-            if (score >= 80) return '#5cb85c';
-            if (score >= 70) return '#4bbf73';
-            if (score >= 60) return '#f0ad4e';
-            return '#dc3545';
-        };
-
-        // Get CPU dependency text and color
-        const getCpuDependencyInfo = (dependency) => {
-            switch(dependency) {
-                case "very-high":
-                    return { text: "Rất cao", color: "#dc3545" };
-                case "high":
-                    return { text: "Cao", color: "#f0ad4e" };
-                case "medium":
-                    return { text: "Trung bình", color: "#5cb85c" };
-                case "low":
-                    return { text: "Thấp", color: "#28a745" };
-                default:
-                    return { text: "Cân bằng", color: "#4bbf73" };
-            }
-        };
-
-        const cpuDependency = getCpuDependencyInfo(gameType?.cpuDependency);
-        
-        gameSpecificElement.innerHTML = `
-            <div class="game-performance-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <div class="game-header" style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div class="game-title" style="flex: 1;">
-                        <h3 style="margin: 0; color: #333; font-size: 1.5em;">${getGameName(selectedGame)}</h3>
-                        <p style="margin: 5px 0 0 0; color: #666;">${gameInfo.notes}</p>
-                    </div>
-                    <div class="performance-score" style="text-align: center; background: ${getPerformanceColor(performanceScore)}; color: white; padding: 10px 20px; border-radius: 8px;">
-                        <div style="font-size: 1.8em; font-weight: bold;">${performanceScore}</div>
-                        <div style="font-size: 0.8em;">Điểm hiệu năng</div>
-                    </div>
-                </div>
-
-                <div class="game-details" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
-                    <div class="detail-card" style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <h4 style="margin: 0 0 10px 0; color: #333;">Thông tin game</h4>
-                        <p style="margin: 5px 0; color: #666;">
-                            <span style="display: inline-block; width: 120px;">Thể loại:</span>
-                            <strong>${gameType?.type.toUpperCase() || 'N/A'}</strong>
-                        </p>
-                        <p style="margin: 5px 0; color: #666;">
-                            <span style="display: inline-block; width: 120px;">Phụ thuộc CPU:</span>
-                            <strong style="color: ${cpuDependency.color}">${cpuDependency.text}</strong>
-                        </p>
-                    </div>
-
-                    <div class="detail-card" style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <h4 style="margin: 0 0 10px 0; color: #333;">FPS dự kiến</h4>
-                        <div class="fps-table" style="display: grid; gap: 5px;">
-                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
-                                <span style="color: #28a745;">Thấp:</span>
-                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.low.fps} FPS</div>
-                            </div>
-                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
-                                <span style="color: #ffc107;">Trung bình:</span>
-                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.medium.fps} FPS</div>
-                            </div>
-                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
-                                <span style="color: #dc3545;">Cao:</span>
-                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.high.fps} FPS</div>
-                            </div>
-                            ${gameInfo.ultra ? `
-                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center;">
-                                <span style="color: #6f42c1;">Ultra:</span>
-                                <div style="background: #f8f9fa; padding: 5px 10px; border-radius: 4px;">${gameInfo.ultra.fps} FPS</div>
-                            </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="optimization-tips" style="margin-top: 15px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <h4 style="margin: 0 0 10px 0; color: #333;">Gợi ý tối ưu</h4>
-                    <ul style="margin: 0; padding-left: 20px; color: #666;">
-                        ${gameType?.cpuDependency === "very-high" || gameType?.cpuDependency === "high" ? 
-                            `<li>Game này phụ thuộc nhiều vào CPU, nên ưu tiên nâng cấp CPU để tăng FPS</li>` : ''}
-                        ${isX3D ? 
-                            `<li>CPU X3D của bạn sẽ cho hiệu năng vượt trội trong game này</li>` : ''}
-                        <li>Điều chỉnh cài đặt đồ họa để cân bằng giữa chất lượng hình ảnh và FPS</li>
-                        ${gameType?.type === "esports" ? 
-                            `<li>Khuyến nghị chơi ở cài đặt thấp để đạt FPS cao nhất</li>` : ''}
-                    </ul>
-                </div>
-            </div>
-        `;
-    }
-}
-
-/**
- * Update FPS estimate based on selected graphics quality
- */
-function updateFpsEstimate(gamePerformance, selectedGame) {
-    const fpsEstimate = estimateGameFPS(gamePerformance, selectedGame);
-    
-    document.getElementById('fps-estimate-container').style.display = 'flex';
-    document.getElementById('fps-estimate').textContent = fpsEstimate.fps;
-    document.getElementById('fps-estimate').style.color = gamePerformance.color;
-}
-
-// Add performance scores for older and newer hardware
-window.HARDWARE_SCORES = {
-    cpu: {
-        // Intel old gen
-        "Core i7-1220v3": 45,
-        "Core i5-1220v3": 35,
-        "Core i3-1220v3": 25,
-        // Intel current gen
-        "Core i9-13900K": 100,
-        "Core i7-13700K": 90,
-        "Core i5-13600K": 80,
-        "Core i3-13100": 60,
-        // AMD old gen
-        "Ryzen 7 1800X": 50,
-        "Ryzen 5 1600X": 40,
-        "Ryzen 3 1300X": 30,
-        // AMD current gen
-        "Ryzen 9 7950X": 100,
-        "Ryzen 7 7700X": 90,
-        "Ryzen 5 7600X": 80,
-        "Ryzen 3 7300X": 60
-    },
-    gpu: {
-        // NVIDIA old gen
-        "GTX 750 Ti": 20,
-        "GTX 960": 30,
-        "GTX 1050 Ti": 35,
-        // NVIDIA current gen
-        "RTX 4090": 100,
-        "RTX 4080": 95,
-        "RTX 4070": 85,
-        "RTX 4060": 75,
-        // AMD old gen
-        "RX 460": 25,
-        "RX 560": 30,
-        "RX 570": 35,
-        // AMD current gen
-        "RX 7900 XTX": 100,
-        "RX 7800 XT": 90,
-        "RX 7700 XT": 80,
-        "RX 7600": 70
-    }
-};
-
-// Add CPU architecture information
-window.CPU_ARCHITECTURES = {
-    // AMD X3D Series
-    "Ryzen 7 7800X3D": { arch: "zen4", cache: "x3d", ipc: 1.4 },
-    "Ryzen 7 5800X3D": { arch: "zen3", cache: "x3d", ipc: 1.35 },
-    "Ryzen 7 5700X3D": { arch: "zen3", cache: "x3d", ipc: 1.35 },
-    // AMD Standard
-    "Ryzen 9 7950X": { arch: "zen4", cache: "normal", ipc: 1.15 },
-    "Ryzen 7 7700X": { arch: "zen4", cache: "normal", ipc: 1.15 },
-    "Ryzen 5 7600X": { arch: "zen4", cache: "normal", ipc: 1.15 },
-    // Intel
-    "Core i9-14900K": { arch: "raptorlake", cache: "normal", ipc: 1.05 },
-    "Core i7-14700K": { arch: "raptorlake", cache: "normal", ipc: 1.05 },
-    "Core i5-14600K": { arch: "raptorlake", cache: "normal", ipc: 1.05 }
-};
-
-// Add game type classifications
-window.GAME_TYPES = {
-    "valorant": { type: "esports", cpuDependency: "high" },
-    "csgo": { type: "esports", cpuDependency: "very-high" },
-    "lol": { type: "esports", cpuDependency: "medium" },
-    "pubg": { type: "battle-royale", cpuDependency: "medium" },
-    "gta-v": { type: "aaa", cpuDependency: "balanced" },
-    "elden-ring": { type: "aaa", cpuDependency: "balanced" },
-    "god-of-war": { type: "aaa", cpuDependency: "balanced" },
-    "black-myth-wukong": { type: "aaa", cpuDependency: "balanced" },
-    "battle-teams-2": { type: "esports", cpuDependency: "high" },
-    "delta-force": { type: "esports", cpuDependency: "medium" },
-    "audition": { type: "casual", cpuDependency: "low" },
-    "mu-origin": { type: "mmorpg", cpuDependency: "medium" },
-    "crossfire": { type: "esports", cpuDependency: "very-high" }
-};
-
-function getCPUArchitecture(cpuName) {
-    for (const [key, value] of Object.entries(window.CPU_ARCHITECTURES)) {
-        if (cpuName.includes(key)) {
-            return value;
-        }
-    }
-    return null;
-}
-
-function calculateGamePerformanceScore(cpuScore, gpuScore, gameType, graphicsQuality) {
-    let cpuWeight, gpuWeight;
-    
-    switch(gameType) {
-        case 'esports':
-            if (graphicsQuality === 'low') {
-                cpuWeight = 0.7;
-                gpuWeight = 0.3;
-            } else if (graphicsQuality === 'medium') {
-                cpuWeight = 0.5;
-                gpuWeight = 0.5;
+// Polyfill cho require để tránh lỗi khi sử dụng các thư viện từ node
+// Giải quyết lỗi "Mock require called for: @popperjs/core"
+if (typeof window !== 'undefined' && !window.require) {
+    window.require = function(moduleName) {
+        console.log(`Mock require called for: ${moduleName}`);
+        // Trả về đối tượng mô phỏng cho các module phổ biến
+        if (moduleName === '@popperjs/core') {
+            // Kiểm tra xem Popper đã được tải chưa
+            if (typeof Popper !== 'undefined') {
+                return Popper;
             } else {
-                cpuWeight = 0.3;
-                gpuWeight = 0.7;
+                console.warn('Popper.js chưa được tải, nhưng được yêu cầu');
+                return {}; // Trả về đối tượng rỗng để tránh lỗi
             }
-            break;
-            
-        case 'mmorpg':
-            if (graphicsQuality === 'low') {
-                cpuWeight = 0.5;
-                gpuWeight = 0.5;
-            } else if (graphicsQuality === 'medium') {
-                cpuWeight = 0.4;
-                gpuWeight = 0.6;
-            } else {
-                cpuWeight = 0.3;
-                gpuWeight = 0.7;
-            }
-            break;
-            
-        case 'casual':
-            if (graphicsQuality === 'low') {
-                cpuWeight = 0.6;
-                gpuWeight = 0.4;
-            } else if (graphicsQuality === 'medium') {
-                cpuWeight = 0.5;
-                gpuWeight = 0.5;
-            } else {
-                cpuWeight = 0.4;
-                gpuWeight = 0.6;
-            }
-            break;
-            
-        case 'battle-royale':
-        case 'aaa':
-        default:
-            if (graphicsQuality === 'low') {
-                cpuWeight = 0.4;
-                gpuWeight = 0.6;
-            } else if (graphicsQuality === 'medium') {
-                cpuWeight = 0.3;
-                gpuWeight = 0.7;
-            } else {
-                cpuWeight = 0.2;
-                gpuWeight = 0.8;
-            }
-            break;
-    }
-    
-    return (cpuScore * cpuWeight) + (gpuScore * gpuWeight);
+        }
+        return {}; // Trả về đối tượng rỗng cho các module khác
+    };
 }
-
-function adjustCPUScore(baseCpuScore, cpuInfo) {
-    let finalScore = baseCpuScore;
-    
-    // Apply IPC multiplier
-    finalScore *= cpuInfo.ipc;
-    
-    // Apply cache bonus for large cache CPUs
-    if (cpuInfo.cache === "large") {
-        finalScore *= 1.2;
-    }
-    
-    return Math.round(finalScore);
-}
-
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    .game-performance-card {
-        animation: slideIn 0.3s ease-out;
-    }
-
-    .detail-card {
-        transition: transform 0.2s ease-out;
-    }
-
-    .detail-card:hover {
-        transform: translateY(-2px);
-    }
-
-    .performance-score {
-        animation: scoreIn 0.5s ease-out;
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes scoreIn {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-`;
-document.head.appendChild(style);
-

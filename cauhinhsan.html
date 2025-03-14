@@ -28,6 +28,15 @@
             };
         }
         
+        // Fix for "process is not defined" error
+        if (typeof process === 'undefined') {
+            window.process = {
+                env: { NODE_ENV: 'production' },
+                browser: true,
+                versions: { node: false }
+            };
+        }
+        
         // Fix for potential infinite recursion in getWindow/getComputedStyle
         const originalGetComputedStyle = window.getComputedStyle;
         window.getComputedStyle = function(element, pseudoElt) {
@@ -66,9 +75,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy.css">
 </head>
 
 <body>
@@ -431,59 +440,127 @@
                     <i class="fas fa-chart-line"></i>
                     <h2>Hiệu Năng Dự Kiến</h2>
                 </div>
-                <div class="performance-charts">
-                    <div class="chart-container">
-                        <canvas id="performance-chart"></canvas>
-                    </div>
-                    <div class="performance-metrics">
-                        <div class="metric">
-                            <div class="metric-icon"><i class="fas fa-gamepad"></i></div>
-                            <div class="metric-label">Game:</div>
-                            <div class="metric-value" id="game-performance">Chưa xác định</div>
-                        </div>
-                        <div class="metric" id="graphics-quality-container" style="display: none;">
-                            <div class="metric-icon"><i class="fas fa-sliders-h"></i></div>
-                            <div class="metric-label">Mức đồ họa:</div>
-                            <div class="metric-value">
-                                <select id="graphics-quality" class="graphics-quality-select">
-                                    <option value="low">Thấp</option>
-                                    <option value="medium" selected>Trung bình</option>
-                                    <option value="high">Cao</option>
-                                    <option value="ultra">Ultra</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="metric" id="fps-estimate-container" style="display: none;">
-                            <div class="metric-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            <div class="metric-label">FPS dự kiến:</div>
-                            <div class="metric-value" id="fps-estimate">--</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-icon"><i class="fas fa-film"></i></div>
-                            <div class="metric-label">Đồ họa/video:</div>
-                            <div class="metric-value" id="graphic-performance">Chưa xác định</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-icon"><i class="fas fa-laptop-code"></i></div>
-                            <div class="metric-label">Văn phòng:</div>
-                            <div class="metric-value" id="office-performance">Chưa xác định</div>
-                        </div>
-                        <div class="metric" id="performance-details" style="display: none; margin-top: 15px; background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
-                            <h4 style="margin-bottom: 10px; font-size: 16px;"><i class="fas fa-info-circle"></i> Chi tiết hiệu năng</h4>
-                            <div id="cpu-performance-details">
-                                <p><strong>CPU:</strong> <span id="cpu-rating">Chưa xác định</span></p>
-                                <div class="progress" style="height: 8px; margin-bottom: 15px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
-                                    <div id="cpu-progress-bar" class="progress-bar" style="height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                <div class="performance-section">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="performance-details">
+                                <div class="chart-overview">
+                                    <h4 class="section-title"><i class="fas fa-chart-line"></i> Hiệu năng</h4>
+                                    <div class="performance-metrics-container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="performance-metrics">
+                                                    <div class="performance-metric">
+                                                        <div class="metric-header">
+                                                            <i class="fas fa-gamepad"></i>
+                                                            <span data-score="0">Game</span>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div id="game-performance" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="performance-metric">
+                                                        <div class="metric-header">
+                                                            <i class="fas fa-photo-video"></i>
+                                                            <span data-score="0">Đồ họa</span>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div id="graphic-performance" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="performance-metric">
+                                                        <div class="metric-header">
+                                                            <i class="fas fa-file-word"></i>
+                                                            <span data-score="0">Văn phòng</span>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div id="office-performance" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="performance-metric">
+                                                        <div class="metric-header">
+                                                            <i class="fas fa-broadcast-tower"></i>
+                                                            <span data-score="0">Livestream</span>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div id="livestream-performance" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="performance-metric">
+                                                        <div class="metric-header">
+                                                            <i class="fas fa-film"></i>
+                                                            <span data-score="0">Render</span>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div id="render-performance" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="bottleneck-indicator">
+                                                        <div class="bottleneck-title"><i class="fas fa-balance-scale"></i> Cân bằng CPU/GPU</div>
+                                                        <div class="balance-labels">
+                                                            <span>CPU</span>
+                                                            <span>GPU</span>
+                                                        </div>
+                                                        <div class="bottleneck-bar">
+                                                            <div class="bottleneck-fill" id="bottleneck-indicator" style="left: 50%;"></div>
+                                                        </div>
+                                                        <div class="bottleneck-percentage" id="bottleneck-percentage">Đang phân tích...</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div id="game-performance-details" class="game-performance-details">
+                                                    <!-- Game performance details will be inserted here -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="vga-performance-details">
-                                <p><strong>VGA:</strong> <span id="vga-rating">Chưa xác định</span></p>
-                                <div class="progress" style="height: 8px; margin-bottom: 15px; background-color: #e9ecef; border-radius: 4px; overflow: hidden;">
-                                    <div id="vga-progress-bar" class="progress-bar" style="height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <h4 class="section-title"><i class="fas fa-chart-radar"></i> Phân tích hiệu năng tổng thể</h4>
+                                <canvas id="performance-chart"></canvas>
+                                <div class="performance-analysis">
+                                    <div class="analysis-header">
+                                        <h5><i class="fas fa-microscope"></i> Phân tích cấu hình</h5>
+                                    </div>
+                                    <div class="analysis-content">
+                                        <p class="chart-intro">
+                                            Biểu đồ radar trên thể hiện hiệu năng của cấu hình máy tính của bạn 
+                                            trong các tác vụ khác nhau. Các điểm gần trung tâm có hiệu suất thấp hơn, 
+                                            càng ra ngoài biên thể hiện hiệu suất càng cao.
+                                        </p>
+                                        <div class="strength-weakness">
+                                            <div class="strength">
+                                                <h6><i class="fas fa-thumbs-up"></i> Điểm mạnh</h6>
+                                                <div class="metric-highlights" id="strength-metrics">
+                                                    <!-- Strength metrics will be inserted here -->
+                                                </div>
+                                            </div>
+                                            <div class="weakness">
+                                                <h6><i class="fas fa-thumbs-down"></i> Điểm yếu</h6>
+                                                <div class="metric-highlights" id="weakness-metrics">
+                                                    <!-- Weakness metrics will be inserted here -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="recommendations">
+                                            <h6><i class="fas fa-lightbulb"></i> Khuyến nghị nâng cấp</h6>
+                                            <ul class="recommendation-list" id="upgrade-recommendations">
+                                                <!-- Recommendations will be inserted here -->
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="game-specific-performance" style="font-size: 14px; line-height: 1.5;">
-                                <!-- Game-specific information will be added here -->
                             </div>
                         </div>
                     </div>
@@ -641,6 +718,12 @@
             const amdOption = document.getElementById('amd-option');
             const cpuTypeDropdown = document.getElementById('cpu-type');
             
+            // Đặt giá trị mặc định là Intel
+            if (cpuTypeDropdown) {
+                cpuTypeDropdown.value = 'Intel';
+                intelOption.classList.add('selected');
+            }
+            
             intelOption.addEventListener('click', function() {
                 intelOption.classList.add('selected');
                 amdOption.classList.remove('selected');
@@ -655,7 +738,7 @@
                 cpuTypeDropdown.dispatchEvent(new Event('change'));
             });
             
-            // Xử lý cho các game card
+            // Xử lý cho các card game
             const gameCards = document.querySelectorAll('.game-card');
             const gameGenreDropdown = document.getElementById('game-genre');
             
@@ -696,11 +779,17 @@
             // Khởi tạo tooltips cho các thành phần
             try {
                 if (typeof tippy !== 'undefined') {
-                    tippy('[data-tippy-content]', {
-                        placement: 'top',
-                        arrow: true,
-                        animation: 'scale'
-                    });
+                    const tippyFn = window.tippy || tippy;
+                    if (tippyFn && typeof tippyFn === 'function') {
+                        tippyFn('[data-tippy-content]', {
+                            placement: 'top',
+                            arrow: true,
+                            animation: 'scale',
+                            plugins: [] // Thêm mảng plugins trống để tránh lỗi
+                        });
+                    } else {
+                        console.warn('Tippy function not available');
+                    }
                 } else {
                     console.warn('Tippy.js not loaded properly');
                 }
@@ -737,12 +826,12 @@
                             label: 'Hiệu năng',
                             data: [0, 0, 0, 0, 0, 0],
                             fill: true,
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            pointBackgroundColor: 'rgb(255, 99, 132)',
+                            backgroundColor: 'rgba(255, 152, 0, 0.2)',
+                            borderColor: 'rgb(255, 152, 0)',
+                            pointBackgroundColor: 'rgb(255, 152, 0)',
                             pointBorderColor: '#fff',
                             pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: 'rgb(255, 99, 132)'
+                            pointHoverBorderColor: 'rgb(255, 87, 34)'
                         }]
                     },
                     options: {
@@ -754,15 +843,79 @@
                         scales: {
                             r: {
                                 angleLines: {
-                                    display: true
+                                    display: true,
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
                                 },
                                 suggestedMin: 0,
-                                suggestedMax: 10
+                                suggestedMax: 10,
+                                ticks: {
+                                    color: '#666',
+                                    backdropColor: 'transparent'
+                                },
+                                pointLabels: {
+                                    color: '#333',
+                                    font: {
+                                        size: 12,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 152, 0, 0.8)',
+                                titleColor: '#fff',
+                                bodyColor: '#fff',
+                                titleFont: {
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                bodyFont: {
+                                    size: 13
+                                },
+                                padding: 10,
+                                displayColors: false
                             }
                         }
                     }
                 });
             }
+            
+            // Khởi tạo trình xử lý sự kiện cho phần hiệu năng
+            function initPerformanceHandlers() {
+                // Đảm bảo các thanh tiến trình có màu mặc định
+                document.querySelectorAll('.progress-bar').forEach(bar => {
+                    if (bar.style.width === '0%' || !bar.style.width) {
+                        bar.style.width = '0%';
+                        bar.style.backgroundColor = '#ff9800';
+                    }
+                });
+                
+                // Kiểm tra bottleneck indicator
+                const bottleneckIndicator = document.getElementById('bottleneck-indicator');
+                if (bottleneckIndicator && bottleneckIndicator.style.left === '') {
+                    bottleneckIndicator.style.left = '50%';
+                    bottleneckIndicator.style.backgroundColor = '#4caf50';
+                    bottleneckIndicator.style.border = '2px solid #2e7d32';
+                }
+                
+                // Kiểm tra bottleneck percentage
+                const bottleneckPercentage = document.getElementById('bottleneck-percentage');
+                if (bottleneckPercentage && bottleneckPercentage.textContent === 'Đang phân tích...') {
+                    bottleneckPercentage.textContent = 'Cân bằng lý tưởng';
+                }
+                
+                console.log('Đã khởi tạo các trình xử lý cho phần hiệu năng');
+            }
+            
+            // Gọi hàm khởi tạo
+            initPerformanceHandlers();
             
             // Mặc định chọn Intel
             intelOption.click();
@@ -791,6 +944,52 @@
                         alert('Some required elements are missing. Please refresh the page and try again.');
                     }
                 });
+            }
+            
+            // Khởi tạo CPU và GPU mặc định để kích hoạt hiệu năng
+            try {
+                // Đặt giá trị mặc định cho dropdowns
+                const cpuDropdown = document.getElementById('cpu-dropdown');
+                const gpuDropdown = document.getElementById('gpu-dropdown');
+                
+                if (cpuDropdown && !cpuDropdown.value) {
+                    cpuDropdown.value = 'i5-12400';
+                }
+                
+                if (gpuDropdown && !gpuDropdown.value) {
+                    gpuDropdown.value = 'RTX 3060';
+                }
+                
+                // Đảm bảo rằng hàm đánh giá hiệu năng được gọi ban đầu
+                if (typeof evaluateSystemPerformance === 'function') {
+                    console.log('Gọi đánh giá hiệu năng lần đầu...');
+                    setTimeout(evaluateSystemPerformance, 500);
+                    
+                    // Thêm event listeners để cập nhật hiệu năng khi CPU hoặc GPU thay đổi
+                    if (cpuDropdown) {
+                        cpuDropdown.addEventListener('change', evaluateSystemPerformance);
+                    }
+                    
+                    if (gpuDropdown) {
+                        gpuDropdown.addEventListener('change', evaluateSystemPerformance);
+                    }
+                    
+                    // Nút cập nhật thủ công
+                    const updateButton = document.createElement('button');
+                    updateButton.textContent = 'Cập nhật hiệu năng';
+                    updateButton.className = 'btn btn-primary update-performance-btn';
+                    updateButton.style.margin = '10px 0';
+                    updateButton.addEventListener('click', evaluateSystemPerformance);
+                    
+                    const performanceSection = document.querySelector('.performance-section');
+                    if (performanceSection) {
+                        performanceSection.prepend(updateButton);
+                    }
+                } else {
+                    console.error('Hàm evaluateSystemPerformance không tồn tại!');
+                }
+            } catch (e) {
+                console.error('Lỗi khi khởi tạo hiệu năng:', e);
             }
         });
     </script>
