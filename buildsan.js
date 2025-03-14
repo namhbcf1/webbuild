@@ -15,8 +15,8 @@ import {
 // Import các cấu hình budget từ module configs
 import { getConfig, intelConfigs, amdConfigs } from './js/configs/index.js';
 
-// Định nghĩa các hằng số đánh giá hiệu năng
-const PERFORMANCE_RATINGS = {
+// Đảm bảo các biến đánh giá hiệu năng là biến toàn cục - Fix cho Chrome
+window.PERFORMANCE_RATINGS = {
     EXCELLENT: { label: "Xuất sắc", color: "#28a745", percentage: 95 },
     VERY_GOOD: { label: "Rất tốt", color: "#5cb85c", percentage: 80 },
     GOOD: { label: "Tốt", color: "#4bbf73", percentage: 65 },
@@ -26,77 +26,77 @@ const PERFORMANCE_RATINGS = {
 };
 
 // Định nghĩa đánh giá CPU
-const CPU_RATINGS = {
+window.CPU_RATINGS = {
     "Core i3": { 
-        gaming: PERFORMANCE_RATINGS.FAIR, 
-        graphics: PERFORMANCE_RATINGS.FAIR, 
-        office: PERFORMANCE_RATINGS.GOOD 
+        gaming: window.PERFORMANCE_RATINGS.FAIR, 
+        graphics: window.PERFORMANCE_RATINGS.FAIR, 
+        office: window.PERFORMANCE_RATINGS.GOOD 
     },
     "Core i5": { 
-        gaming: PERFORMANCE_RATINGS.GOOD, 
-        graphics: PERFORMANCE_RATINGS.GOOD, 
-        office: PERFORMANCE_RATINGS.VERY_GOOD 
+        gaming: window.PERFORMANCE_RATINGS.GOOD, 
+        graphics: window.PERFORMANCE_RATINGS.GOOD, 
+        office: window.PERFORMANCE_RATINGS.VERY_GOOD 
     },
     "Core i7": { 
-        gaming: PERFORMANCE_RATINGS.VERY_GOOD, 
-        graphics: PERFORMANCE_RATINGS.VERY_GOOD, 
-        office: PERFORMANCE_RATINGS.EXCELLENT 
+        gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, 
+        graphics: window.PERFORMANCE_RATINGS.VERY_GOOD, 
+        office: window.PERFORMANCE_RATINGS.EXCELLENT 
     },
     "Core i9": { 
-        gaming: PERFORMANCE_RATINGS.EXCELLENT, 
-        graphics: PERFORMANCE_RATINGS.EXCELLENT, 
-        office: PERFORMANCE_RATINGS.EXCELLENT 
+        gaming: window.PERFORMANCE_RATINGS.EXCELLENT, 
+        graphics: window.PERFORMANCE_RATINGS.EXCELLENT, 
+        office: window.PERFORMANCE_RATINGS.EXCELLENT 
     },
     "Ryzen 3": { 
-        gaming: PERFORMANCE_RATINGS.FAIR, 
-        graphics: PERFORMANCE_RATINGS.FAIR, 
-        office: PERFORMANCE_RATINGS.GOOD 
+        gaming: window.PERFORMANCE_RATINGS.FAIR, 
+        graphics: window.PERFORMANCE_RATINGS.FAIR, 
+        office: window.PERFORMANCE_RATINGS.GOOD 
     },
     "Ryzen 5": { 
-        gaming: PERFORMANCE_RATINGS.GOOD, 
-        graphics: PERFORMANCE_RATINGS.GOOD, 
-        office: PERFORMANCE_RATINGS.VERY_GOOD 
+        gaming: window.PERFORMANCE_RATINGS.GOOD, 
+        graphics: window.PERFORMANCE_RATINGS.GOOD, 
+        office: window.PERFORMANCE_RATINGS.VERY_GOOD 
     },
     "Ryzen 7": { 
-        gaming: PERFORMANCE_RATINGS.VERY_GOOD, 
-        graphics: PERFORMANCE_RATINGS.VERY_GOOD, 
-        office: PERFORMANCE_RATINGS.EXCELLENT 
+        gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, 
+        graphics: window.PERFORMANCE_RATINGS.VERY_GOOD, 
+        office: window.PERFORMANCE_RATINGS.EXCELLENT 
     },
     "Ryzen 9": { 
-        gaming: PERFORMANCE_RATINGS.EXCELLENT, 
-        graphics: PERFORMANCE_RATINGS.EXCELLENT, 
-        office: PERFORMANCE_RATINGS.EXCELLENT 
+        gaming: window.PERFORMANCE_RATINGS.EXCELLENT, 
+        graphics: window.PERFORMANCE_RATINGS.EXCELLENT, 
+        office: window.PERFORMANCE_RATINGS.EXCELLENT 
     }
 };
 
 // Định nghĩa đánh giá VGA
-const VGA_RATINGS = {
-    "GTX 1650": { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR },
-    "GTX 1660": { gaming: PERFORMANCE_RATINGS.AVERAGE, graphics: PERFORMANCE_RATINGS.AVERAGE },
-    "RTX 2060": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
-    "RTX 2070": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
-    "RTX 3060": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
-    "RTX 3070": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
-    "RTX 3080": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RTX 4060": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
-    "RTX 4070": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RTX 4080": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RTX 4090": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RX 570": { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR },
-    "RX 580": { gaming: PERFORMANCE_RATINGS.AVERAGE, graphics: PERFORMANCE_RATINGS.AVERAGE },
-    "RX 5600 XT": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
-    "RX 5700 XT": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
-    "RX 6600": { gaming: PERFORMANCE_RATINGS.GOOD, graphics: PERFORMANCE_RATINGS.GOOD },
-    "RX 6700 XT": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
-    "RX 6800 XT": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RX 7600": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.VERY_GOOD },
-    "RX 7700 XT": { gaming: PERFORMANCE_RATINGS.VERY_GOOD, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RX 7800 XT": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT },
-    "RX 7900 XTX": { gaming: PERFORMANCE_RATINGS.EXCELLENT, graphics: PERFORMANCE_RATINGS.EXCELLENT }
+window.VGA_RATINGS = {
+    "GTX 1650": { gaming: window.PERFORMANCE_RATINGS.FAIR, graphics: window.PERFORMANCE_RATINGS.FAIR },
+    "GTX 1660": { gaming: window.PERFORMANCE_RATINGS.AVERAGE, graphics: window.PERFORMANCE_RATINGS.AVERAGE },
+    "RTX 2060": { gaming: window.PERFORMANCE_RATINGS.GOOD, graphics: window.PERFORMANCE_RATINGS.GOOD },
+    "RTX 2070": { gaming: window.PERFORMANCE_RATINGS.GOOD, graphics: window.PERFORMANCE_RATINGS.VERY_GOOD },
+    "RTX 3060": { gaming: window.PERFORMANCE_RATINGS.GOOD, graphics: window.PERFORMANCE_RATINGS.GOOD },
+    "RTX 3070": { gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, graphics: window.PERFORMANCE_RATINGS.VERY_GOOD },
+    "RTX 3080": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RTX 4060": { gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, graphics: window.PERFORMANCE_RATINGS.VERY_GOOD },
+    "RTX 4070": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RTX 4080": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RTX 4090": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 570": { gaming: window.PERFORMANCE_RATINGS.FAIR, graphics: window.PERFORMANCE_RATINGS.FAIR },
+    "RX 580": { gaming: window.PERFORMANCE_RATINGS.AVERAGE, graphics: window.PERFORMANCE_RATINGS.AVERAGE },
+    "RX 5600 XT": { gaming: window.PERFORMANCE_RATINGS.GOOD, graphics: window.PERFORMANCE_RATINGS.GOOD },
+    "RX 5700 XT": { gaming: window.PERFORMANCE_RATINGS.GOOD, graphics: window.PERFORMANCE_RATINGS.GOOD },
+    "RX 6600": { gaming: window.PERFORMANCE_RATINGS.GOOD, graphics: window.PERFORMANCE_RATINGS.GOOD },
+    "RX 6700 XT": { gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, graphics: window.PERFORMANCE_RATINGS.VERY_GOOD },
+    "RX 6800 XT": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 7600": { gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, graphics: window.PERFORMANCE_RATINGS.VERY_GOOD },
+    "RX 7700 XT": { gaming: window.PERFORMANCE_RATINGS.VERY_GOOD, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 7800 XT": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT },
+    "RX 7900 XTX": { gaming: window.PERFORMANCE_RATINGS.EXCELLENT, graphics: window.PERFORMANCE_RATINGS.EXCELLENT }
 };
 
 // Game FPS estimates
-const GAME_FPS_ESTIMATES = {
+window.GAME_FPS_ESTIMATES = {
     "valorant": {
         notes: "Valorant chạy tốt trên hầu hết các cấu hình, các CPU mạnh sẽ cải thiện FPS đáng kể.",
         low: { fps: "70-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
@@ -1054,8 +1054,9 @@ function evaluateSystemPerformance() {
     console.log("CPU Family:", cpuFamily);
     console.log("VGA Model:", vgaModel);
     
-    const cpuRating = CPU_RATINGS[cpuFamily] || defaultCPURating();
-    const vgaRating = VGA_RATINGS[vgaModel] || defaultVGARating();
+    // Sử dụng window.CPU_RATINGS thay vì CPU_RATINGS trực tiếp
+    const cpuRating = window.CPU_RATINGS[cpuFamily] || defaultCPURating();
+    const vgaRating = window.VGA_RATINGS[vgaModel] || defaultVGARating();
     
     console.log("CPU Rating:", cpuRating);
     console.log("VGA Rating:", vgaRating);
@@ -1126,9 +1127,9 @@ function determineOverallPerformance(cpuRating, vgaRating, cpuWeight, vgaWeight)
 }
 
 function handleGameSpecificPerformance(selectedGame, gamePerformance) {
-    if (!selectedGame || !GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
+    if (!selectedGame || !window.GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
     const fpsEstimate = estimateGameFPS(gamePerformance, selectedGame);
-    const gameInfo = GAME_FPS_ESTIMATES[selectedGame];
+    const gameInfo = window.GAME_FPS_ESTIMATES[selectedGame];
     
     document.getElementById('fps-estimate-container').style.display = 'flex';
     document.getElementById('fps-estimate').textContent = fpsEstimate.fps;
@@ -1161,11 +1162,18 @@ function updateMetric(type, performance) {
 }
 
 function defaultCPURating() {
-    return { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR, office: PERFORMANCE_RATINGS.GOOD };
+    return { 
+        gaming: window.PERFORMANCE_RATINGS.FAIR, 
+        graphics: window.PERFORMANCE_RATINGS.FAIR, 
+        office: window.PERFORMANCE_RATINGS.GOOD 
+    };
 }
 
 function defaultVGARating() {
-    return { gaming: PERFORMANCE_RATINGS.FAIR, graphics: PERFORMANCE_RATINGS.FAIR };
+    return { 
+        gaming: window.PERFORMANCE_RATINGS.FAIR, 
+        graphics: window.PERFORMANCE_RATINGS.FAIR 
+    };
 }
 
 /**
@@ -1194,27 +1202,27 @@ function extractVGAModel(vgaName) {
  * Lấy xếp hạng hiệu năng từ phần trăm
  */
 function getPerformanceRatingFromPercentage(percentage) {
-    if (percentage >= 85) return PERFORMANCE_RATINGS.EXCELLENT;
-    if (percentage >= 70) return PERFORMANCE_RATINGS.VERY_GOOD;
-    if (percentage >= 55) return PERFORMANCE_RATINGS.GOOD;
-    if (percentage >= 40) return PERFORMANCE_RATINGS.AVERAGE;
-    if (percentage >= 25) return PERFORMANCE_RATINGS.FAIR;
-    return PERFORMANCE_RATINGS.WEAK;
+    if (percentage >= 85) return window.PERFORMANCE_RATINGS.EXCELLENT;
+    if (percentage >= 70) return window.PERFORMANCE_RATINGS.VERY_GOOD;
+    if (percentage >= 55) return window.PERFORMANCE_RATINGS.GOOD;
+    if (percentage >= 40) return window.PERFORMANCE_RATINGS.AVERAGE;
+    if (percentage >= 25) return window.PERFORMANCE_RATINGS.FAIR;
+    return window.PERFORMANCE_RATINGS.WEAK;
 }
 
 /**
  * Ước tính FPS cho game cụ thể dựa trên xếp hạng hiệu năng tổng thể
  */
 function estimateGameFPS(performanceRating, gameId) {
-    const gameInfo = GAME_FPS_ESTIMATES[gameId];
+    const gameInfo = window.GAME_FPS_ESTIMATES[gameId];
     if (!gameInfo) return { fps: "N/A", description: "Không có dữ liệu" };
     
     // Dựa vào hiệu năng tổng thể, chọn mức FPS phù hợp
-    if (performanceRating === PERFORMANCE_RATINGS.EXCELLENT ||
-        performanceRating === PERFORMANCE_RATINGS.VERY_GOOD) {
+    if (performanceRating === window.PERFORMANCE_RATINGS.EXCELLENT ||
+        performanceRating === window.PERFORMANCE_RATINGS.VERY_GOOD) {
         return gameInfo.high;
-    } else if (performanceRating === PERFORMANCE_RATINGS.GOOD ||
-              performanceRating === PERFORMANCE_RATINGS.AVERAGE) {
+    } else if (performanceRating === window.PERFORMANCE_RATINGS.GOOD ||
+              performanceRating === window.PERFORMANCE_RATINGS.AVERAGE) {
         return gameInfo.medium;
     } else {
         return gameInfo.low;
@@ -1319,18 +1327,20 @@ function resetPerformanceInfo() {
     }
 }
 
+// Add event listeners to trigger performance evaluation
 document.addEventListener('DOMContentLoaded', function() {
-    // ... existing code ...
-    
-    // Thêm event listeners cho các dropdown để đánh giá hiệu năng
     const cpuSelect = document.getElementById('cpu');
     const vgaSelect = document.getElementById('vga');
     const gameSelect = document.getElementById('game-genre');
     
-    if (cpuSelect) cpuSelect.addEventListener('change', evaluateSystemPerformance);
-    if (vgaSelect) vgaSelect.addEventListener('change', evaluateSystemPerformance);
-    if (gameSelect) gameSelect.addEventListener('change', evaluateSystemPerformance);
-    
-    // Gọi hàm đánh giá hiệu năng ban đầu
-    evaluateSystemPerformance();
+    if (cpuSelect && vgaSelect) {
+        cpuSelect.addEventListener('change', evaluateSystemPerformance);
+        vgaSelect.addEventListener('change', evaluateSystemPerformance);
+        if (gameSelect) {
+            gameSelect.addEventListener('change', evaluateSystemPerformance);
+        }
+        
+        // Initial evaluation if components are already selected
+        evaluateSystemPerformance();
+    }
 });
