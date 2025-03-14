@@ -1502,12 +1502,38 @@ function estimateGameFPS(performanceRating, gameId) {
     const gameType = window.GAME_TYPES[gameId];
     const cpuDependency = gameType?.cpuDependency || "medium";
     
+    // Kiểm tra xem có phải CPU AMD không
+    const isAMD = selectedCPU.toLowerCase().includes('ryzen');
+    
+    // Hệ số tăng FPS cho CPU AMD trong game online
+    let amdBoostFactor = 1;
+    if (isAMD) {
+        const isOnlineGame = gameType?.type === "esports" || gameId === "lol" || gameId === "valorant" || 
+                            gameId === "csgo" || gameId === "crossfire" || gameId === "battle-teams-2";
+        if (isOnlineGame) {
+            // Tăng boost dựa vào loại game và mức độ phụ thuộc CPU
+            switch(cpuDependency) {
+                case "very-high":
+                    amdBoostFactor = 1.20; // Tăng 20% cho game phụ thuộc nhiều vào CPU
+                    break;
+                case "high":
+                    amdBoostFactor = 1.15; // Tăng 15%
+                    break;
+                case "medium":
+                    amdBoostFactor = 1.12; // Tăng 12%
+                    break;
+                default:
+                    amdBoostFactor = 1.10; // Tăng 10% cho các trường hợp còn lại
+            }
+        }
+    }
+    
     // Hệ số giảm FPS dựa trên điểm CPU
     let cpuBottleneckFactor = 1;
     if (cpuScore < 50) { // CPU yếu
         switch(cpuDependency) {
             case "very-high":
-                cpuBottleneckFactor = 0.4; // Giảm mạnh FPS với game phụ thuộc nhiều vào CPU
+                cpuBottleneckFactor = 0.4;
                 break;
             case "high":
                 cpuBottleneckFactor = 0.5;
@@ -1570,22 +1596,27 @@ function estimateGameFPS(performanceRating, gameId) {
         }
     }
 
-    // Áp dụng cả hai hệ số giảm
-    const finalFactor = Math.min(cpuBottleneckFactor, gpuLimitationFactor);
+    // Áp dụng các hệ số
+    const finalFactor = Math.min(cpuBottleneckFactor, gpuLimitationFactor) * amdBoostFactor;
     minFps = Math.floor(minFps * finalFactor);
     maxFps = Math.floor(maxFps * finalFactor);
 
-    // Thêm thông tin về bottleneck vào description
-    let bottleneckInfo = "";
+    // Thêm thông tin về bottleneck và AMD boost vào description
+    let additionalInfo = "";
     if (cpuBottleneckFactor < 1 && cpuBottleneckFactor <= gpuLimitationFactor) {
-        bottleneckInfo = " (CPU đang là điểm nghẽn)";
+        additionalInfo = " (CPU đang là điểm nghẽn)";
     } else if (gpuLimitationFactor < 1 && gpuLimitationFactor < cpuBottleneckFactor) {
-        bottleneckInfo = " (Card đồ họa đang là điểm nghẽn)";
+        additionalInfo = " (Card đồ họa đang là điểm nghẽn)";
+    }
+    
+    if (isAMD && amdBoostFactor > 1) {
+        const boostPercent = Math.round((amdBoostFactor - 1) * 100);
+        additionalInfo += ` (+${boostPercent}% hiệu năng từ CPU AMD)`;
     }
 
     return {
         fps: `${minFps}-${maxFps}`,
-        description: fpsData.description + bottleneckInfo
+        description: fpsData.description + additionalInfo
     };
 }
 
