@@ -1486,71 +1486,14 @@ function estimateGameFPS(performanceRating, gameId) {
     const gameInfo = window.GAME_FPS_ESTIMATES[gameId];
     if (!gameInfo) return { fps: "N/A", description: "Không có dữ liệu" };
     
-    const selectedCPU = document.getElementById('cpu').value;
-    const selectedVGA = document.getElementById('vga').value;
     const graphicsQuality = document.getElementById('graphics-quality').value;
     
-    // Get base hardware scores
-    let cpuScore = getCPUScore(selectedCPU);
-    const gpuScore = getGPUScore(selectedVGA);
+    // Lấy trực tiếp FPS từ GAME_FPS_ESTIMATES theo graphics quality đã chọn
+    const fpsData = gameInfo[graphicsQuality] || gameInfo.medium;
     
-    // Get CPU architecture info
-    const cpuArch = getCPUArchitecture(selectedCPU);
-    if (cpuArch) {
-        cpuScore = adjustCPUScore(cpuScore, cpuArch);
-    }
-    
-    // Get game type and calculate performance score
-    const gameType = window.GAME_TYPES[gameId];
-    const performanceScore = calculateGamePerformanceScore(
-        cpuScore,
-        gpuScore,
-        gameType.type,
-        graphicsQuality
-    );
-    
-    // Get base FPS range for the selected quality
-    let fpsRange = gameInfo[graphicsQuality] || gameInfo.medium;
-    
-    // Parse FPS range
-    let [minFps, maxFps] = parseFpsRange(fpsRange.fps);
-    
-    // Adjust FPS based on performance score
-    // New calculation method that better matches advertised FPS
-    const performanceMultiplier = performanceScore / 100;
-    const cpuDependencyMultiplier = {
-        'very-high': 1.2,
-        'high': 1.1,
-        'medium': 1.0,
-        'low': 0.9
-    }[gameType.cpuDependency] || 1.0;
-
-    // Calculate final FPS
-    if (gameType.type === 'esports') {
-        // For esports titles, maintain higher FPS values
-        minFps = Math.round(minFps * Math.min(1.2, performanceMultiplier * cpuDependencyMultiplier));
-        maxFps = Math.round(maxFps * Math.min(1.2, performanceMultiplier * cpuDependencyMultiplier));
-    } else {
-        // For other games, scale more conservatively
-        minFps = Math.round(minFps * Math.min(1.1, performanceMultiplier));
-        maxFps = Math.round(maxFps * Math.min(1.1, performanceMultiplier));
-    }
-
-    // Ensure FPS doesn't exceed reasonable limits
-    const maxPossibleFPS = {
-        'esports': 500,
-        'battle-royale': 300,
-        'mmorpg': 200,
-        'aaa': 240,
-        'casual': 300
-    }[gameType.type] || 300;
-
-    maxFps = Math.min(maxFps, maxPossibleFPS);
-    minFps = Math.min(minFps, maxFps - 20);
-
     return {
-        fps: `${minFps}-${maxFps}`,
-        description: fpsRange.description
+        fps: fpsData.fps,
+        description: fpsData.description
     };
 }
 
