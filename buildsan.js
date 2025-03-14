@@ -105,10 +105,11 @@ window.GAME_FPS_ESTIMATES = {
         high: { fps: "60-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
     },
     "valorant": {
-        notes: "Valorant chạy tốt trên hầu hết các cấu hình, các CPU mạnh sẽ cải thiện FPS đáng kể.",
-        low: { fps: "200+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
-        medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "70-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        notes: "Valorant là game esports nhẹ, dễ chơi trên nhiều cấu hình.",
+        low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "80-100 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "40-60 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
     "csgo": {
         notes: "CS:GO là game có thể chạy tốt ngay cả trên hệ thống phổ thông, phụ thuộc nhiều vào CPU.",
@@ -168,6 +169,76 @@ window.GAME_FPS_ESTIMATES = {
         low: { fps: "120+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "90-110 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
         high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+    },
+    'valorant': {
+        notes: "Valorant là game esports nhẹ, dễ chơi trên nhiều cấu hình.",
+        low: { fps: "200+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "70-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "50-70 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'csgo': {
+        notes: "CS:GO chạy được trên hầu hết các cấu hình, CPU mạnh sẽ cải thiện FPS đáng kể.",
+        low: { fps: "250+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "150-200 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "90-120 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "70-90 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'pubg': {
+        notes: "PUBG cần GPU mạnh để đạt FPS ổn định.",
+        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "45-60 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "30-45 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'lol': {
+        notes: "LOL chạy tốt trên hầu hết các cấu hình PC.",
+        low: { fps: "144+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "100-120 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "60-80 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "50-70 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'gta-v': {
+        notes: "GTA V vẫn đòi hỏi cấu hình khá mạnh để chơi ở cài đặt cao.",
+        low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "50-70 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "30-45 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "25-35 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'elden-ring': {
+        notes: "Elden Ring khá đòi hỏi về cấu hình và có giới hạn FPS.",
+        low: { fps: "75-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "55-75 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "40-55 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "30-45 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'naraka': {
+        notes: "Naraka: Bladepoint cần cấu hình mạnh để đạt FPS ổn định.",
+        low: { fps: "90-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "60-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "40-60 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "30-45 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'genshin': {
+        notes: "Genshin Impact khá nhẹ nhưng cũng cần cấu hình ổn cho setting cao.",
+        low: { fps: "100-120 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "70-90 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "50-70 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "40-60 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'black-myth-wukong': {
+        notes: "Black Myth: Wukong là game AAA đòi hỏi cấu hình cao.",
+        low: { fps: "75-90 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "55-75 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "40-55 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "30-40 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
+    },
+    'god-of-war': {
+        notes: "God of War là game đòi hỏi cấu hình mạnh cho các cài đặt cao.",
+        low: { fps: "70-85 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
+        medium: { fps: "50-65 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
+        high: { fps: "35-50 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "25-40 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
     }
 };
 
@@ -1164,20 +1235,9 @@ function determineOverallPerformance(cpuRating, vgaRating, cpuWeight, vgaWeight)
 
 function handleGameSpecificPerformance(selectedGame, gamePerformance) {
     if (!selectedGame || !window.GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
-    const fpsEstimate = estimateGameFPS(gamePerformance, selectedGame);
-    const gameInfo = window.GAME_FPS_ESTIMATES[selectedGame];
     
-    document.getElementById('fps-estimate-container').style.display = 'flex';
-    document.getElementById('fps-estimate').textContent = fpsEstimate.fps;
-    document.getElementById('fps-estimate').style.color = gamePerformance.color;
-    
-    document.getElementById('game-specific-performance').innerHTML = `
-        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-            <p><strong>${getGameName(selectedGame)}</strong> - ${fpsEstimate.description}</p>
-            <p style="color: ${gamePerformance.color}; font-weight: 600;">${fpsEstimate.fps}</p>
-            <p style="font-style: italic; margin-top: 8px;">${gameInfo.notes}</p>
-        </div>
-    `;
+    // Use the new display function that includes the graphics quality selector
+    displayGameSpecificPerformance(gamePerformance, selectedGame);
 }
 
 function resetGameSpecificPerformance() {
@@ -1253,7 +1313,15 @@ function estimateGameFPS(performanceRating, gameId) {
     const gameInfo = window.GAME_FPS_ESTIMATES[gameId];
     if (!gameInfo) return { fps: "N/A", description: "Không có dữ liệu" };
     
-    // Dựa vào hiệu năng tổng thể, chọn mức FPS phù hợp
+    // Get the selected graphics quality
+    const graphicsQuality = document.getElementById('graphics-quality').value;
+    
+    // Return the FPS estimate for the selected quality if available
+    if (graphicsQuality && gameInfo[graphicsQuality]) {
+        return gameInfo[graphicsQuality];
+    }
+    
+    // Fallback to the old logic if no quality is selected or the selected quality is not available
     if (performanceRating === window.PERFORMANCE_RATINGS.EXCELLENT ||
         performanceRating === window.PERFORMANCE_RATINGS.VERY_GOOD) {
         return gameInfo.high;
@@ -1403,3 +1471,56 @@ function updateGameSpecificUI(selectedGame) {
 document.getElementById('game-genre').addEventListener('change', function() {
     updateGameSpecificUI(this.value);
 });
+
+/**
+ * Hiển thị thông tin hiệu năng cho game cụ thể
+ */
+function displayGameSpecificPerformance(gamePerformance, selectedGame) {
+    if (!selectedGame || !window.GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
+    const gameInfo = window.GAME_FPS_ESTIMATES[selectedGame];
+    
+    // Show the graphics quality selector
+    document.getElementById('graphics-quality-container').style.display = 'flex';
+    
+    // Add event listener to update FPS when graphics quality changes
+    document.getElementById('graphics-quality').addEventListener('change', function() {
+        updateFpsEstimate(gamePerformance, selectedGame);
+    });
+    
+    // Update FPS estimate
+    updateFpsEstimate(gamePerformance, selectedGame);
+    
+    // Update game-specific performance details
+    const gameSpecificElement = document.getElementById('game-specific-performance');
+    if (gameSpecificElement && gameInfo) {
+        gameSpecificElement.innerHTML = `
+            <p><strong>${getGameName(selectedGame)}</strong> - ${gameInfo.notes || 'Không có ghi chú'}</p>
+            <div style="margin-top: 10px; padding-top: 5px; border-top: 1px solid #eee;">
+                <p>Thấp: ${gameInfo.low.fps} (${gameInfo.low.description})</p>
+                <p>Trung bình: ${gameInfo.medium.fps} (${gameInfo.medium.description})</p>
+                <p>Cao: ${gameInfo.high.fps} (${gameInfo.high.description})</p>
+                ${gameInfo.ultra ? `<p>Ultra: ${gameInfo.ultra.fps} (${gameInfo.ultra.description})</p>` : ''}
+            </div>
+        `;
+    }
+}
+
+/**
+ * Update FPS estimate based on selected graphics quality
+ */
+function updateFpsEstimate(gamePerformance, selectedGame) {
+    const fpsEstimate = estimateGameFPS(gamePerformance, selectedGame);
+    
+    document.getElementById('fps-estimate-container').style.display = 'flex';
+    document.getElementById('fps-estimate').textContent = fpsEstimate.fps;
+    document.getElementById('fps-estimate').style.color = gamePerformance.color;
+}
+
+/**
+ * Reset game-specific performance display
+ */
+function resetGameSpecificPerformance() {
+    document.getElementById('fps-estimate-container').style.display = 'none';
+    document.getElementById('graphics-quality-container').style.display = 'none';
+    document.getElementById('game-specific-performance').innerHTML = '';
+}
