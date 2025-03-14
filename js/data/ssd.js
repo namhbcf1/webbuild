@@ -91,7 +91,7 @@ export const ssdData = {
     "crucial-1tb": {
         name: "SSD Crucial P3 1TB PCIe Gen4",
         price: 1650000,
-        image: "images/crucial-p3-1TB.jpg",
+        image: "images/crucial-p3.jpg",
         brand: "Crucial",
         warranty: "36 tháng",
         condition: "NEW",

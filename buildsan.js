@@ -1321,163 +1321,151 @@ function updateDropdown(id, value) {
 function evaluateSystemPerformance() {
     const selectedCPU = document.getElementById('cpu').value;
     const selectedVGA = document.getElementById('vga').value;
-    const selectedGame = document.getElementById('game-genre').value;
     
-    if (!selectedCPU || !selectedVGA) return resetPerformanceInfo();
+    if (!selectedCPU || !selectedVGA) return;
     
-    document.getElementById('performance-details').style.display = 'block';
+    const cpuScore = getCPUScore(selectedCPU);
+    const gpuScore = getGPUScore(selectedVGA);
     
-    const cpuFamily = extractCPUFamily(selectedCPU);
-    const vgaModel = extractVGAModel(selectedVGA);
-    
-    console.log("CPU Family:", cpuFamily);
-    console.log("VGA Model:", vgaModel);
-    
-    // Sử dụng window.CPU_RATINGS thay vì CPU_RATINGS trực tiếp
-    const cpuRating = window.CPU_RATINGS[cpuFamily] || defaultCPURating();
-    const vgaRating = window.VGA_RATINGS[vgaModel] || defaultVGARating();
-    
-    console.log("CPU Rating:", cpuRating);
-    console.log("VGA Rating:", vgaRating);
-    
-    updateRating('cpu', cpuFamily, cpuRating.gaming);
-    updateRating('vga', vgaModel, vgaRating.gaming);
-    
-    const gamePerformance = determineOverallPerformance(cpuRating.gaming, vgaRating.gaming, 0.3, 0.7);
-    const graphicPerformance = determineOverallPerformance(cpuRating.graphics, vgaRating.graphics, 0.4, 0.6);
-    const officePerformance = cpuRating.office;
-    
-    updatePerformanceMetrics(gamePerformance, graphicPerformance, officePerformance);
-    handleGameSpecificPerformance(selectedGame, gamePerformance);
-    updatePerformanceChart(gamePerformance, graphicPerformance, officePerformance);
+    updatePerformanceUI(cpuScore, gpuScore);
+    // ... rest of the existing evaluateSystemPerformance function ...
 }
 
-function updateRating(type, model, rating) {
-    const elementId = `${type}-rating`;
-    document.getElementById(elementId).textContent = getDescription(type, model);
-    document.getElementById(elementId).style.color = rating.color;
-    document.getElementById(`${type}-progress-bar`).style.width = `${rating.percentage}%`;
-    document.getElementById(`${type}-progress-bar`).style.backgroundColor = rating.color;
+function calculateBottleneck(cpuScore, gpuScore) {
+    // Calculate relative performance difference
+    const maxScore = Math.max(cpuScore, gpuScore);
+    const minScore = Math.min(cpuScore, gpuScore);
+    const bottleneckPercentage = ((maxScore - minScore) / maxScore) * 100;
+    
+    // Determine which component is the bottleneck
+    const isCpuBottleneck = cpuScore < gpuScore;
+    
+    return {
+        percentage: Math.round(bottleneckPercentage),
+        isCpuBottleneck: isCpuBottleneck
+    };
 }
 
-function getDescription(type, model) {
-    const descriptions = {
-        cpu: {
-            "Core i3": "Tầm trung, đủ cho nhu cầu văn phòng và game nhẹ",
-            "Core i5": "Mạnh, tốt cho gaming và công việc đa nhiệm",
-            "Core i7": "Rất mạnh, xuất sắc cho gaming và đồ họa",
-            "Core i9": "Siêu mạnh, tối ưu cho mọi tác vụ nặng",
-            "Ryzen 3": "Tầm trung, đủ cho nhu cầu văn phòng và game nhẹ",
-            "Ryzen 5": "Mạnh, tốt cho gaming và công việc đa nhiệm",
-            "Ryzen 7": "Rất mạnh, xuất sắc cho gaming và đồ họa",
-            "Ryzen 9": "Siêu mạnh, tối ưu cho mọi tác vụ nặng"
-        },
-        vga: {
-            "GTX 1650": "Tầm trung thấp, gaming 1080p các game nhẹ",
-            "GTX 1660": "Tầm trung, gaming 1080p tốt",
-            "RTX 2060": "Khá tốt, gaming 1080p các game AAA",
-            "RTX 2070": "Khá tốt, gaming 1080p/1440p mượt mà",
-            "RTX 3060": "Tốt, gaming 1080p/1440p mượt mà",
-            "RTX 3070": "Rất tốt, gaming 1440p chất lượng cao",
-            "RTX 3080": "Cao cấp, gaming 4K ổn định",
-            "RTX 4060": "Hiệu năng tốt, gaming 1080p/1440p mượt mà",
-            "RTX 4070": "Hiệu năng cao, gaming 1440p/4K chất lượng cao",
-            "RTX 4080": "Siêu cao cấp, gaming 4K ổn định",
-            "RTX 4090": "Đỉnh cao hiệu năng, gaming 4K/8K",
-            "RX 570": "Tầm trung thấp, gaming 1080p các game nhẹ",
-            "RX 580": "Tầm trung, gaming 1080p tốt",
-            "RX 5600 XT": "Khá tốt, gaming 1080p các game AAA",
-            "RX 5700 XT": "Tốt, gaming 1440p",
-            "RX 6600": "Tốt, gaming 1080p/1440p",
-            "RX 6700 XT": "Rất tốt, gaming 1440p chất lượng cao",
-            "RX 6800 XT": "Cao cấp, gaming 4K ổn định",
-            "RX 7600": "Hiệu năng tốt, gaming 1080p/1440p mượt mà",
-            "RX 7700 XT": "Hiệu năng cao, gaming 1440p chất lượng cao",
-            "RX 7800 XT": "Hiệu năng rất cao, gaming 1440p/4K",
-            "RX 7900 XTX": "Siêu cao cấp, gaming 4K/8K"
+function getBottleneckDescription(bottleneckData) {
+    const { percentage, isCpuBottleneck } = bottleneckData;
+    const component = isCpuBottleneck ? "CPU" : "GPU";
+    
+    if (percentage <= 5) return { text: "Cân bằng hoàn hảo", color: "#28a745" };
+    if (percentage <= 10) return { text: `${component} giới hạn nhẹ (${percentage}%)`, color: "#4bbf73" };
+    if (percentage <= 20) return { text: `${component} giới hạn trung bình (${percentage}%)`, color: "#f0ad4e" };
+    if (percentage <= 30) return { text: `${component} giới hạn đáng kể (${percentage}%)`, color: "#fd7e14" };
+    return { text: `${component} giới hạn nghiêm trọng (${percentage}%)`, color: "#dc3545" };
+}
+
+function updatePerformanceUI(cpuScore, gpuScore) {
+    const bottleneckData = calculateBottleneck(cpuScore, gpuScore);
+    const bottleneckInfo = getBottleneckDescription(bottleneckData);
+    
+    // Update CPU performance display
+    const cpuDetails = document.getElementById('cpu-performance-details');
+    if (cpuDetails) {
+        cpuDetails.innerHTML = `
+            <div class="performance-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 15px; margin-bottom: 15px;">
+                <div class="performance-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <h4 style="margin: 0; color: #333;">CPU Performance</h4>
+                    <span class="score-badge" style="background: ${getScoreColor(cpuScore)}; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">${cpuScore}%</span>
+                </div>
+                <div class="progress" style="height: 10px; background-color: #e9ecef; border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
+                    <div id="cpu-progress-bar" class="progress-bar" style="height: 100%; width: ${cpuScore}%; background: ${getScoreColor(cpuScore)}; transition: width 0.5s ease;"></div>
+                </div>
+                ${bottleneckData.isCpuBottleneck ? `
+                    <div class="bottleneck-warning" style="background: ${bottleneckInfo.color}20; color: ${bottleneckInfo.color}; padding: 8px; border-radius: 6px; font-size: 0.9em; margin-top: 8px;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
+                        ${bottleneckInfo.text}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    // Update VGA performance display
+    const vgaDetails = document.getElementById('vga-performance-details');
+    if (vgaDetails) {
+        vgaDetails.innerHTML = `
+            <div class="performance-card" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 15px;">
+                <div class="performance-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <h4 style="margin: 0; color: #333;">GPU Performance</h4>
+                    <span class="score-badge" style="background: ${getScoreColor(gpuScore)}; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">${gpuScore}%</span>
+                </div>
+                <div class="progress" style="height: 10px; background-color: #e9ecef; border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
+                    <div id="vga-progress-bar" class="progress-bar" style="height: 100%; width: ${gpuScore}%; background: ${getScoreColor(gpuScore)}; transition: width 0.5s ease;"></div>
+                </div>
+                ${!bottleneckData.isCpuBottleneck ? `
+                    <div class="bottleneck-warning" style="background: ${bottleneckInfo.color}20; color: ${bottleneckInfo.color}; padding: 8px; border-radius: 6px; font-size: 0.9em; margin-top: 8px;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
+                        ${bottleneckInfo.text}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+}
+
+function getScoreColor(score) {
+    if (score >= 90) return '#28a745'; // Excellent - Green
+    if (score >= 75) return '#4bbf73'; // Very Good - Light Green
+    if (score >= 60) return '#5cb85c'; // Good - Lime Green
+    if (score >= 45) return '#f0ad4e'; // Average - Yellow
+    if (score >= 30) return '#fd7e14'; // Fair - Orange
+    return '#dc3545'; // Weak - Red
+}
+
+// Add CSS for animations and hover effects
+const performanceStyle = document.createElement('style');
+performanceStyle.textContent = `
+    .performance-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .performance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .progress-bar {
+        animation: progressAnimation 1s ease-out;
+    }
+    
+    .score-badge {
+        animation: badgeAnimation 0.5s ease-out;
+    }
+    
+    .bottleneck-warning {
+        animation: warningAnimation 0.5s ease-out;
+    }
+    
+    @keyframes progressAnimation {
+        from { width: 0%; }
+    }
+    
+    @keyframes badgeAnimation {
+        from {
+            transform: scale(0);
+            opacity: 0;
         }
-    };
-    return descriptions[type][model] || "Chưa xác định";
-}
-
-function determineOverallPerformance(cpuRating, vgaRating, cpuWeight, vgaWeight) {
-    const overallPercentage = (cpuRating.percentage * cpuWeight) + (vgaRating.percentage * vgaWeight);
-    return getPerformanceRatingFromPercentage(overallPercentage);
-}
-
-function handleGameSpecificPerformance(selectedGame, gamePerformance) {
-    if (!selectedGame || !window.GAME_FPS_ESTIMATES[selectedGame]) return resetGameSpecificPerformance();
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
     
-    // Use the new display function that includes the graphics quality selector
-    displayGameSpecificPerformance(gamePerformance, selectedGame);
-}
-
-function resetGameSpecificPerformance() {
-    document.getElementById('fps-estimate-container').style.display = 'none';
-    document.getElementById('graphics-quality-container').style.display = 'none';
-    document.getElementById('game-specific-performance').innerHTML = '';
-}
-
-function updatePerformanceMetrics(gamePerformance, graphicPerformance, officePerformance) {
-    updateMetric('game', gamePerformance);
-    updateMetric('graphic', graphicPerformance);
-    updateMetric('office', officePerformance);
-}
-
-function updateMetric(type, performance) {
-    const elementId = `${type}-performance`;
-    document.getElementById(elementId).textContent = performance.label;
-    document.getElementById(elementId).style.color = performance.color;
-}
-
-function defaultCPURating() {
-    return { 
-        gaming: window.PERFORMANCE_RATINGS.FAIR, 
-        graphics: window.PERFORMANCE_RATINGS.FAIR, 
-        office: window.PERFORMANCE_RATINGS.GOOD 
-    };
-}
-
-function defaultVGARating() {
-    return { 
-        gaming: window.PERFORMANCE_RATINGS.FAIR, 
-        graphics: window.PERFORMANCE_RATINGS.FAIR 
-    };
-}
-
-/**
- * Trích xuất dòng CPU từ tên CPU được chọn
- */
-function extractCPUFamily(cpuName) {
-    if (!cpuName) return "";
-    
-    // Extract Intel Core i3/i5/i7/i9 or AMD Ryzen 3/5/7/9
-    let match = cpuName.match(/(Core i[3579]|Ryzen [3579])/);
-    return match ? match[0] : "";
-}
-
-/**
- * Trích xuất mẫu VGA từ tên VGA được chọn
- */
-function extractVGAModel(vgaName) {
-    if (!vgaName) return "";
-    
-    // Match GPU models like RTX 3060, RTX 4090, GTX 1660, RX 6700 XT, etc.
-    let match = vgaName.match(/(RTX\s\d{4}|GTX\s\d{4}|RX\s\d{4}\sXT|RX\s\d{3})/);
-    return match ? match[0] : "";
-}
-
-/**
- * Lấy xếp hạng hiệu năng từ phần trăm
- */
-function getPerformanceRatingFromPercentage(percentage) {
-    if (percentage >= 85) return window.PERFORMANCE_RATINGS.EXCELLENT;
-    if (percentage >= 70) return window.PERFORMANCE_RATINGS.VERY_GOOD;
-    if (percentage >= 55) return window.PERFORMANCE_RATINGS.GOOD;
-    if (percentage >= 40) return window.PERFORMANCE_RATINGS.AVERAGE;
-    if (percentage >= 25) return window.PERFORMANCE_RATINGS.FAIR;
-    return window.PERFORMANCE_RATINGS.WEAK;
-}
+    @keyframes warningAnimation {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(performanceStyle);
 
 /**
  * Ước tính FPS cho game cụ thể dựa trên xếp hạng hiệu năng tổng thể
