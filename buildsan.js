@@ -1490,10 +1490,6 @@ function estimateGameFPS(performanceRating, gameId) {
     const selectedCPU = document.getElementById('cpu').value;
     const selectedVGA = document.getElementById('vga').value;
     
-    // Lấy điểm CPU và GPU
-    const cpuScore = getCPUScore(selectedCPU);
-    const gpuScore = getGPUScore(selectedVGA);
-    
     // Lấy FPS cơ bản từ GAME_FPS_ESTIMATES
     const fpsData = gameInfo[graphicsQuality] || gameInfo.medium;
     let [minFps, maxFps] = fpsData.fps.split('-').map(num => parseInt(num));
@@ -1502,138 +1498,66 @@ function estimateGameFPS(performanceRating, gameId) {
     const gameType = window.GAME_TYPES[gameId];
     const cpuDependency = gameType?.cpuDependency || "medium";
     
-    // Kiểm tra xem có phải CPU AMD không và có phải dòng X3D không
+    // Kiểm tra CPU và xác định hệ số tăng FPS
     const isAMD = selectedCPU.toLowerCase().includes('ryzen');
     const isX3D = selectedCPU.toLowerCase().includes('x3d');
     
-    // Hệ số tăng FPS cho CPU AMD
-    let amdBoostFactor = 1;
-    if (isAMD) {
-        const isOnlineGame = gameType?.type === "esports" || gameId === "lol" || gameId === "valorant" || 
-                            gameId === "csgo" || gameId === "crossfire" || gameId === "battle-teams-2";
-        
-        // Xử lý đặc biệt cho CPU X3D
-        if (isX3D) {
-            // X3D có lợi thế rất lớn trong gaming nhờ cache L3 lớn
-            switch(gameType?.type) {
-                case "esports":
-                    amdBoostFactor = 1.5; // Tăng 50% cho game esports
-                    break;
-                case "battle-royale":
-                    amdBoostFactor = 1.45; // Tăng 45% cho game battle royale
-                    break;
-                case "mmorpg":
-                    amdBoostFactor = 1.4; // Tăng 40% cho game MMORPG
-                    break;
-                default:
-                    amdBoostFactor = 1.4; // Tăng 40% cho các game khác
-            }
-        } else if (isOnlineGame) {
-            // Xử lý cho các CPU AMD thường trong game online
+    // Hệ số tăng FPS cho CPU
+    let cpuBoostFactor = 1;
+    
+    if (isX3D) {
+        // Xử lý đặc biệt cho CPU X3D với mức tăng FPS cao hơn
+        switch(gameType?.type) {
+            case "esports":
+                cpuBoostFactor = 1.5; // +50% cho esports
+                if (cpuDependency === "very-high") {
+                    cpuBoostFactor = 1.6; // +60% cho esports phụ thuộc nhiều vào CPU
+                }
+                break;
+            case "battle-royale":
+                cpuBoostFactor = 1.45; // +45% cho battle royale
+                break;
+            case "mmorpg":
+                cpuBoostFactor = 1.45; // +45% cho MMORPG
+                break;
+            case "aaa":
+                cpuBoostFactor = 1.4; // +40% cho game AAA
+                break;
+            default:
+                cpuBoostFactor = 1.4; // +40% cho các game khác
+        }
+    } else if (isAMD) {
+        // Xử lý cho các CPU AMD thường
+        const isOnlineGame = gameType?.type === "esports";
+        if (isOnlineGame) {
             switch(cpuDependency) {
                 case "very-high":
-                    amdBoostFactor = 1.20;
+                    cpuBoostFactor = 1.2;
                     break;
                 case "high":
-                    amdBoostFactor = 1.15;
+                    cpuBoostFactor = 1.15;
                     break;
                 case "medium":
-                    amdBoostFactor = 1.12;
+                    cpuBoostFactor = 1.12;
                     break;
                 default:
-                    amdBoostFactor = 1.10;
+                    cpuBoostFactor = 1.1;
             }
         }
     }
     
-    // Hệ số giảm FPS dựa trên điểm CPU
-    let cpuBottleneckFactor = 1;
-    if (cpuScore < 50) { // CPU yếu
-        switch(cpuDependency) {
-            case "very-high":
-                cpuBottleneckFactor = 0.4;
-                break;
-            case "high":
-                cpuBottleneckFactor = 0.5;
-                break;
-            case "medium":
-                cpuBottleneckFactor = 0.6;
-                break;
-            case "low":
-                cpuBottleneckFactor = 0.7;
-                break;
-        }
-    } else if (cpuScore < 70) { // CPU trung bình
-        switch(cpuDependency) {
-            case "very-high":
-                cpuBottleneckFactor = 0.7;
-                break;
-            case "high":
-                cpuBottleneckFactor = 0.8;
-                break;
-            case "medium":
-                cpuBottleneckFactor = 0.9;
-                break;
-            case "low":
-                cpuBottleneckFactor = 1;
-                break;
-        }
-    }
-
-    // Hệ số giảm FPS dựa trên điểm GPU và quality setting
-    let gpuLimitationFactor = 1;
-    if (gpuScore < 50) { // GPU yếu
-        switch(graphicsQuality) {
-            case "ultra":
-                gpuLimitationFactor = 0.3;
-                break;
-            case "high":
-                gpuLimitationFactor = 0.5;
-                break;
-            case "medium":
-                gpuLimitationFactor = 0.7;
-                break;
-            case "low":
-                gpuLimitationFactor = 0.9;
-                break;
-        }
-    } else if (gpuScore < 70) { // GPU trung bình
-        switch(graphicsQuality) {
-            case "ultra":
-                gpuLimitationFactor = 0.5;
-                break;
-            case "high":
-                gpuLimitationFactor = 0.7;
-                break;
-            case "medium":
-                gpuLimitationFactor = 0.9;
-                break;
-            case "low":
-                gpuLimitationFactor = 1;
-                break;
-        }
-    }
-
-    // Áp dụng các hệ số
-    const finalFactor = Math.min(cpuBottleneckFactor, gpuLimitationFactor) * amdBoostFactor;
-    minFps = Math.floor(minFps * finalFactor);
-    maxFps = Math.floor(maxFps * finalFactor);
-
-    // Thêm thông tin về bottleneck và AMD boost vào description
-    let additionalInfo = "";
-    if (cpuBottleneckFactor < 1 && cpuBottleneckFactor <= gpuLimitationFactor) {
-        additionalInfo = " (CPU đang là điểm nghẽn)";
-    } else if (gpuLimitationFactor < 1 && gpuLimitationFactor < cpuBottleneckFactor) {
-        additionalInfo = " (Card đồ họa đang là điểm nghẽn)";
-    }
+    // Áp dụng hệ số CPU và tính toán FPS cuối cùng
+    minFps = Math.floor(minFps * cpuBoostFactor);
+    maxFps = Math.floor(maxFps * cpuBoostFactor);
     
-    if (isAMD && amdBoostFactor > 1) {
-        const boostPercent = Math.round((amdBoostFactor - 1) * 100);
-        if (isX3D) {
-            additionalInfo += ` (+${boostPercent}% hiệu năng từ CPU AMD X3D với 3D V-Cache)`;
-        } else {
-            additionalInfo += ` (+${boostPercent}% hiệu năng từ CPU AMD)`;
-        }
+    // Thêm thông tin về boost vào description
+    let additionalInfo = "";
+    if (isX3D) {
+        const boostPercent = Math.round((cpuBoostFactor - 1) * 100);
+        additionalInfo = ` (+${boostPercent}% hiệu năng từ CPU AMD X3D với 3D V-Cache)`;
+    } else if (isAMD && cpuBoostFactor > 1) {
+        const boostPercent = Math.round((cpuBoostFactor - 1) * 100);
+        additionalInfo = ` (+${boostPercent}% hiệu năng từ CPU AMD)`;
     }
 
     return {
@@ -1925,11 +1849,14 @@ window.HARDWARE_SCORES = {
 
 // Add CPU architecture information
 window.CPU_ARCHITECTURES = {
-    // AMD
-    "Ryzen 7 7800X3D": { arch: "zen4", cache: "large", ipc: 1.15 },
+    // AMD X3D Series
+    "Ryzen 7 7800X3D": { arch: "zen4", cache: "x3d", ipc: 1.4 },
+    "Ryzen 7 5800X3D": { arch: "zen3", cache: "x3d", ipc: 1.35 },
+    "Ryzen 7 5700X3D": { arch: "zen3", cache: "x3d", ipc: 1.35 },
+    // AMD Standard
+    "Ryzen 9 7950X": { arch: "zen4", cache: "normal", ipc: 1.15 },
+    "Ryzen 7 7700X": { arch: "zen4", cache: "normal", ipc: 1.15 },
     "Ryzen 5 7600X": { arch: "zen4", cache: "normal", ipc: 1.15 },
-    "Ryzen 9 5950X": { arch: "zen3", cache: "normal", ipc: 1.1 },
-    "Ryzen 7 5800X3D": { arch: "zen3", cache: "large", ipc: 1.1 },
     // Intel
     "Core i9-14900K": { arch: "raptorlake", cache: "normal", ipc: 1.05 },
     "Core i7-14700K": { arch: "raptorlake", cache: "normal", ipc: 1.05 },
