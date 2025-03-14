@@ -140,14 +140,16 @@ window.GAME_FPS_ESTIMATES = {
         notes: "FIFA Online 4 là game thể thao online, tối ưu khá tốt và có thể chạy mượt trên nhiều cấu hình.",
         low: { fps: "180+ FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "120-150 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "60-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        high: { fps: "60-90 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "45-60 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
     // Thêm game mới - Black Myth: Wukong (Offline game - cấu hình giống GTA V)
     "black-myth-wukong": {
         notes: "Black Myth: Wukong là game hành động RPG đòi hỏi cấu hình mạnh, đặc biệt là VGA để xử lý hiệu ứng đồ họa.",
         low: { fps: "80-100 FPS", description: "Cài đặt thấp, độ phân giải 1080p" },
         medium: { fps: "50-70 FPS", description: "Cài đặt trung bình, độ phân giải 1080p" },
-        high: { fps: "30-45 FPS", description: "Cài đặt cao, độ phân giải 1080p" }
+        high: { fps: "30-45 FPS", description: "Cài đặt cao, độ phân giải 1080p" },
+        ultra: { fps: "20-30 FPS", description: "Cài đặt ultra, độ phân giải 1080p" }
     },
     // Thêm game mới - Elden Ring (Offline game - cấu hình giống GTA V)
     "elden-ring": {

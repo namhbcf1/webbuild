@@ -6,6 +6,8 @@ import { configs as intelGtaVConfigs } from './intel/gta-v.js';
 import { configs as intelEldenRingConfigs } from './intel/elden-ring.js';
 import { configs as intelNarakaConfigs } from './intel/naraka.js';
 import { configs as intelGenshinConfigs } from './intel/genshin.js';
+import { configs as intelFo4Configs } from './intel/fo4.js';
+import { configs as intelBlackMythWukongConfigs } from './intel/black-myth-wukong.js';
 // Import các cấu hình Intel cho các game khác
 
 import { configs as amdValorantConfigs } from './amd/valorant.js';
@@ -16,6 +18,8 @@ import { configs as amdGtaVConfigs } from './amd/gta-v.js';
 import { configs as amdEldenRingConfigs } from './amd/elden-ring.js';
 import { configs as amdNarakaConfigs } from './amd/naraka.js';
 import { configs as amdGenshinConfigs } from './amd/genshin.js';
+import { configs as amdFo4Configs } from './amd/fo4.js';
+import { configs as amdBlackMythWukongConfigs } from './amd/black-myth-wukong.js';
 // Import các cấu hình AMD cho các game khác
 
 // Định nghĩa các cấu hình cho từng loại CPU và từng game
@@ -28,6 +32,8 @@ const intelConfigs = {
     'elden-ring': intelEldenRingConfigs,
     'naraka': intelNarakaConfigs,
     'genshin': intelGenshinConfigs,
+    'fo4': intelFo4Configs,
+    'black-myth-wukong': intelBlackMythWukongConfigs,
     'god-of-war': {}  // Sẽ được bổ sung sau
 };
 
@@ -40,6 +46,8 @@ const amdConfigs = {
     'elden-ring': amdEldenRingConfigs,
     'naraka': amdNarakaConfigs,
     'genshin': amdGenshinConfigs,
+    'fo4': amdFo4Configs,
+    'black-myth-wukong': amdBlackMythWukongConfigs,
     'god-of-war': {}  // Sẽ được bổ sung sau
 };
 
