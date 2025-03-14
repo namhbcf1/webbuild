@@ -1502,28 +1502,46 @@ function estimateGameFPS(performanceRating, gameId) {
     const gameType = window.GAME_TYPES[gameId];
     const cpuDependency = gameType?.cpuDependency || "medium";
     
-    // Kiểm tra xem có phải CPU AMD không
+    // Kiểm tra xem có phải CPU AMD không và có phải dòng X3D không
     const isAMD = selectedCPU.toLowerCase().includes('ryzen');
+    const isX3D = selectedCPU.toLowerCase().includes('x3d');
     
-    // Hệ số tăng FPS cho CPU AMD trong game online
+    // Hệ số tăng FPS cho CPU AMD
     let amdBoostFactor = 1;
     if (isAMD) {
         const isOnlineGame = gameType?.type === "esports" || gameId === "lol" || gameId === "valorant" || 
                             gameId === "csgo" || gameId === "crossfire" || gameId === "battle-teams-2";
-        if (isOnlineGame) {
-            // Tăng boost dựa vào loại game và mức độ phụ thuộc CPU
-            switch(cpuDependency) {
-                case "very-high":
-                    amdBoostFactor = 1.20; // Tăng 20% cho game phụ thuộc nhiều vào CPU
+        
+        // Xử lý đặc biệt cho CPU X3D
+        if (isX3D) {
+            // X3D có lợi thế rất lớn trong gaming nhờ cache L3 lớn
+            switch(gameType?.type) {
+                case "esports":
+                    amdBoostFactor = 1.5; // Tăng 50% cho game esports
                     break;
-                case "high":
-                    amdBoostFactor = 1.15; // Tăng 15%
+                case "battle-royale":
+                    amdBoostFactor = 1.45; // Tăng 45% cho game battle royale
                     break;
-                case "medium":
-                    amdBoostFactor = 1.12; // Tăng 12%
+                case "mmorpg":
+                    amdBoostFactor = 1.4; // Tăng 40% cho game MMORPG
                     break;
                 default:
-                    amdBoostFactor = 1.10; // Tăng 10% cho các trường hợp còn lại
+                    amdBoostFactor = 1.4; // Tăng 40% cho các game khác
+            }
+        } else if (isOnlineGame) {
+            // Xử lý cho các CPU AMD thường trong game online
+            switch(cpuDependency) {
+                case "very-high":
+                    amdBoostFactor = 1.20;
+                    break;
+                case "high":
+                    amdBoostFactor = 1.15;
+                    break;
+                case "medium":
+                    amdBoostFactor = 1.12;
+                    break;
+                default:
+                    amdBoostFactor = 1.10;
             }
         }
     }
@@ -1611,7 +1629,11 @@ function estimateGameFPS(performanceRating, gameId) {
     
     if (isAMD && amdBoostFactor > 1) {
         const boostPercent = Math.round((amdBoostFactor - 1) * 100);
-        additionalInfo += ` (+${boostPercent}% hiệu năng từ CPU AMD)`;
+        if (isX3D) {
+            additionalInfo += ` (+${boostPercent}% hiệu năng từ CPU AMD X3D với 3D V-Cache)`;
+        } else {
+            additionalInfo += ` (+${boostPercent}% hiệu năng từ CPU AMD)`;
+        }
     }
 
     return {
