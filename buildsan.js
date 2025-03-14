@@ -1497,7 +1497,6 @@ function estimateGameFPS(performanceRating, gameId) {
     // Get CPU architecture info
     const cpuArch = getCPUArchitecture(selectedCPU);
     if (cpuArch) {
-        // Adjust CPU score based on architecture and cache
         cpuScore = adjustCPUScore(cpuScore, cpuArch);
     }
     
@@ -1516,17 +1515,39 @@ function estimateGameFPS(performanceRating, gameId) {
     // Parse FPS range
     let [minFps, maxFps] = parseFpsRange(fpsRange.fps);
     
-    // Apply game-specific adjustments
-    if (gameType.cpuDependency === "very-high" && graphicsQuality === "low") {
-        // For CPU-heavy games at low settings, CPU has even more impact
-        minFps = Math.round(minFps * (cpuScore / 100) * 1.2);
-        maxFps = Math.round(maxFps * (cpuScore / 100) * 1.2);
+    // Adjust FPS based on performance score
+    // New calculation method that better matches advertised FPS
+    const performanceMultiplier = performanceScore / 100;
+    const cpuDependencyMultiplier = {
+        'very-high': 1.2,
+        'high': 1.1,
+        'medium': 1.0,
+        'low': 0.9
+    }[gameType.cpuDependency] || 1.0;
+
+    // Calculate final FPS
+    if (gameType.type === 'esports') {
+        // For esports titles, maintain higher FPS values
+        minFps = Math.round(minFps * Math.min(1.2, performanceMultiplier * cpuDependencyMultiplier));
+        maxFps = Math.round(maxFps * Math.min(1.2, performanceMultiplier * cpuDependencyMultiplier));
     } else {
-        // Normal performance scaling
-        minFps = Math.round(minFps * (performanceScore / 100));
-        maxFps = Math.round(maxFps * (performanceScore / 100));
+        // For other games, scale more conservatively
+        minFps = Math.round(minFps * Math.min(1.1, performanceMultiplier));
+        maxFps = Math.round(maxFps * Math.min(1.1, performanceMultiplier));
     }
-    
+
+    // Ensure FPS doesn't exceed reasonable limits
+    const maxPossibleFPS = {
+        'esports': 500,
+        'battle-royale': 300,
+        'mmorpg': 200,
+        'aaa': 240,
+        'casual': 300
+    }[gameType.type] || 300;
+
+    maxFps = Math.min(maxFps, maxPossibleFPS);
+    minFps = Math.min(minFps, maxFps - 20);
+
     return {
         fps: `${minFps}-${maxFps}`,
         description: fpsRange.description
