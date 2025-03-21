@@ -377,7 +377,7 @@ export const cpuData = {
     },
     "5700x3d": {
         name: "AMD Ryzen 7 5700X3D",
-        price: 5300000,
+        price: 5800000,
         image: "images/amd-ryzen-7-5700x3d.jpg",
         brand: "AMD",
         warranty: "36 tháng",
@@ -422,7 +422,7 @@ export const cpuData = {
     },
     "7800x3d": {
         name: "AMD Ryzen 7 7800X3D",
-        price: 10490000,
+        price: 9490000,
         image: "images/amd-ryzen-7-7800x3d-tray.jpg",
         brand: "AMD",
         warranty: "36 tháng",
